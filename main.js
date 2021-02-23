@@ -27,52 +27,42 @@ function removeActiveClasses() {
 // })
 
 
+///close button 
 
 
 
 
 
-const slideAnimation = function (panelClass, numClass, techNum) {
+
+
+const slideAnimation = function (panelClass, numClass) {
     document.getElementById(panelClass).addEventListener("click", () => {
-        //todo: clean stuff befroe
+ //todo: clean stuff befroe
             
-  
-        if (document.querySelector('.slide').style.display === "flex" ||
-            document.querySelector(numClass).style.display === "flex" ||
-            document.querySelector(techNum).style.display ==="block") {
-            document.querySelector('.slide').style.display = "none"
-            document.querySelector(numClass).style.display ="none"
-            document.querySelector(techNum).style.display ="none"
-        
-        }
-        else {
-            document.querySelector('.slide').style.display = "flex"
-            document.querySelector(numClass).style.display = "flex"
-            document.querySelector(techNum).style.display = "block"
-            // }
-            
-       
+            document.querySelector('.slide').style.display = 'flex';
+            document.querySelector(numClass).style.display = "block"
             function pageScroll() {
                 window.scroll({
-                    top: 500,
+                    top: 550,
                     behavior: 'smooth'
 
                 });
             };
-            
             pageScroll();
 
-        };
-    
-    
-    });
-    slideAnimation('oboi', '.two', ".p2");
-    slideAnimation('flaut', '.one', ".p1");
-    slideAnimation('vioara', '.three', ".p3")
-    slideAnimation("sax", ".four", ".p4")
-    slideAnimation("trompeta", ".five", ".p5")
-    slideAnimation("trombone", ".six", ".p6")
-    slideAnimation("acordeon", ".seven", ".p7")
+        });
+};
+slideAnimation('oboi', '.two');
+slideAnimation('flaut', '.one');
+slideAnimation('vioara', '.three')
+slideAnimation("sax", ".four")
+slideAnimation("trompeta", ".five")
+slideAnimation("trombone", ".six")
+slideAnimation("acordeon", ".seven")
+// console.log(slideAnimation());
+
+//!coment out for testing pupuses
+
     const tesimonialContainer = document.querySelector(".testimonial-container")
     const testimonial = document.querySelector(".testimonial")
     const userImage = document.querySelector(".user-image")
@@ -123,7 +113,3 @@ const slideAnimation = function (panelClass, numClass, techNum) {
 
 
 
-
-
-
-}
