@@ -27,20 +27,31 @@ function removeActiveClasses() {
 // })
 
 
-///close button 
 
 
 
+// removeStuff('#flaut');
+        // removeStuff('#vioara');
+        // removeStuff('#sax');
+        // removeStuff('#trompeta');
+        // removeStuff('#trombone');
+        // removeStuff('#acordeon');
 
-
-
-
+// let removeStuff;
 const slideAnimation = function (panelClass, numClass) {
+   
+    
     document.getElementById(panelClass).addEventListener("click", () => {
- //todo: clean stuff befroe
-            
+        
+            //todo: clean stuff befroe
+            removeSlide();
+            document.querySelector('.slide').style.display !== 'none' && document.querySelector(".content-slide").style.display !== "none"
             document.querySelector('.slide').style.display = 'flex';
             document.querySelector(numClass).style.display = "block"
+            console.log('show slide');
+        
+        
+
             function pageScroll() {
                 window.scroll({
                     top: 550,
@@ -49,9 +60,21 @@ const slideAnimation = function (panelClass, numClass) {
                 });
             };
             pageScroll();
-
-        });
+        }) 
 };
+
+
+const slide =document.querySelectorAll('.panel');
+const removeSlide = () => {
+    slide.forEach(panel => {
+        panel.addEventListener('click', () => {
+            document.querySelector('.slide').style.display = 'none';
+            document.querySelector(".content-slide").style.display = "none";
+            console.log("hide slide");
+        })
+    })
+}
+
 slideAnimation('oboi', '.two');
 slideAnimation('flaut', '.one');
 slideAnimation('vioara', '.three')
@@ -59,9 +82,15 @@ slideAnimation("sax", ".four")
 slideAnimation("trompeta", ".five")
 slideAnimation("trombone", ".six")
 slideAnimation("acordeon", ".seven")
-// console.log(slideAnimation());
 
-//!coment out for testing pupuses
+
+
+   
+
+
+
+    // Testimonials
+
 
     const tesimonialContainer = document.querySelector(".testimonial-container")
     const testimonial = document.querySelector(".testimonial")

@@ -208,15 +208,6 @@ body {
   position: relative;
 }
 
-.closebtn {
-  top: 0.6rem;
-  right: 3rem;
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  z-index: 50;
-}
-
 /* TESTIMONIALS */
 
 .testimonial-container {
