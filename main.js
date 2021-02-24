@@ -30,57 +30,74 @@ function removeActiveClasses() {
 
 
 
-// removeStuff('#flaut');
-        // removeStuff('#vioara');
-        // removeStuff('#sax');
-        // removeStuff('#trompeta');
-        // removeStuff('#trombone');
-        // removeStuff('#acordeon');
 
-// let removeStuff;
+
+
+
+
+
 const slideAnimation = function (panelClass, numClass) {
-
+    
     document.getElementById(panelClass).addEventListener("click", () => {
         
-            //todo: clean stuff befroe
-            removeSlide();
-            document.querySelector('.slide').style.display !== 'none' && document.querySelector(".content-slide").style.display !== "none"
+      
+        
             document.querySelector('.slide').style.display = 'flex';
+        
             document.querySelector(numClass).style.display = "block"
             console.log('show slide');
-        
-        
-
             function pageScroll() {
                 window.scroll({
-                    top: 550,
+                    top: 450,
                     behavior: 'smooth'
 
                 });
             };
             pageScroll();
-        }) 
+    }) 
+    
+   
 };
 
 
-const slide =document.querySelectorAll('.panel');
-const removeSlide = () => {
-    slide.forEach(panel => {
-        panel.addEventListener('click', () => {
-            document.querySelector('.slide').style.display = 'none';
-            document.querySelector(".content-slide").style.display = "none";
-            console.log("hide slide");
-        })
-    })
-}
 
-slideAnimation('oboi', '.two');
+const slide1 = document.querySelector('.content-slide.one');
+const slide2 = document.querySelector('.content-slide.two');
+const slide3 = document.querySelector('.content-slide.three');
+const slide4 = document.querySelector('.content-slide.four');
+const slide5 = document.querySelector('.content-slide.five');
+const slide6 = document.querySelector('.content-slide.six');
+const slide7 = document.querySelector('.content-slide.seven');
+;
+const removeSlide = () => {
+    panels.forEach(panel => {
+        panel.addEventListener('click', () => {
+            slide1.style.display = "none";
+            slide2.style.display = "none";
+            slide3.style.display = "none";
+            slide4.style.display = "none";
+            slide5.style.display = "none";
+            slide6.style.display = "none";
+            slide7.style.display = "none";
+            
+        });
+        
+    });
+
+
+};
+removeSlide();
 slideAnimation('flaut', '.one');
-slideAnimation('vioara', '.three')
+slideAnimation('oboi', '.two');
+slideAnimation('vioara', '.three');
 slideAnimation("sax", ".four")
-slideAnimation("trompeta", ".five")
-slideAnimation("trombone", ".six")
-slideAnimation("acordeon", ".seven")
+slideAnimation("trompeta", ".five");
+slideAnimation("trombone", ".six");
+slideAnimation("acordeon", ".seven");
+
+
+
+
 
 
 
@@ -89,6 +106,7 @@ slideAnimation("acordeon", ".seven")
 
 
     // Testimonials
+
 
 
     const tesimonialContainer = document.querySelector(".testimonial-container")
