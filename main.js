@@ -39,8 +39,7 @@ function removeActiveClasses() {
 
 // let removeStuff;
 const slideAnimation = function (panelClass, numClass) {
-   
-    
+
     document.getElementById(panelClass).addEventListener("click", () => {
         
             //todo: clean stuff befroe
