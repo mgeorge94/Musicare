@@ -1,22 +1,3 @@
-
-
-
-//show navigation
-const container = document.querySelector('.container');
-const content = document.querySelector('.content');
-const showNav = document.querySelector("#open").addEventListener("click", () => {
-    
-    container.classList.add("show-nav")
-})
-content.addEventListener("click", () => {
-    container.classList.remove("show-nav")
-    
-})
-
-
-
-
-
 //panels
 
 const panels = document.querySelectorAll('.panel')
