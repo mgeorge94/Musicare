@@ -149,10 +149,15 @@ slideAnimation("acordeon", ".seven");
     //////////////////////////////////
 
     //FAQ
-const faqButton = document.querySelector('.faq-button').addEventListener('mouse-over', () => {
+    //? ce pizda masii are
+const faqButton = document.querySelector('.faq-button');faqButton.addEventListener('click', () => {
     console.log("click faq");
     document.querySelector('.container-faq ').style.display= 'block';
 })
+
+
+
+
     
 
     const addFAQ = document.querySelectorAll('.faq');
