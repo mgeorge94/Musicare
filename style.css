@@ -23,7 +23,7 @@ body {
 /* intro */
 
 /* ! slide comented for ease of testing */
-/* .container-intro {
+.container-intro {
   display: block;
   max-width: 100vw;
   max-height: 100vh;
@@ -96,7 +96,7 @@ body {
   100% {
     transform: translateY(-100%);
   }
-} */
+}
 
 /* pagina */
 .container {

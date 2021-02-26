@@ -165,12 +165,13 @@ addFAQ.forEach(FAQ => {
     FAQ.addEventListener("click", () => {
         removeFAQ();
         FAQ.classList.add("active")
-       
-    })
-})
-content.addEventListener("click", () => {
-    faqContent.style.display= 'none';
-})
+        
+    });
+    
+});
+// content.addEventListener("click", () => {
+//     faqContent.style.display= 'none';
+// })
 function removeFAQ() {
     addFAQ.forEach(faq => {
         faq.classList.remove("active")
