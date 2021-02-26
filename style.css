@@ -21,7 +21,9 @@ body {
 }
 
 /* intro */
-.container-intro {
+
+/* ! slide comented for ease of testing */
+/* .container-intro {
   display: block;
   max-width: 100vw;
   max-height: 100vh;
@@ -37,7 +39,7 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  animation: slideUp 3.4s ease-in forwards;
+  animation: slideUp 2.4s ease-in forwards;
   z-index: 400;
 }
 @keyframes slideUp {
@@ -81,7 +83,7 @@ body {
   height: 100%;
   z-index: 502;
   bottom: 0px;
-  animation: slideUpSlide 4s ease-in-out forwards;
+  animation: slideUpSlide 3s ease-in-out forwards;
 }
 @keyframes slideUpSlide {
   0% {
@@ -94,7 +96,7 @@ body {
   100% {
     transform: translateY(-100%);
   }
-}
+} */
 
 /* pagina */
 .container {
@@ -103,7 +105,7 @@ body {
   background-color: #333;
   width: 100vw;
   min-height: 100%;
-  /* padding-bottom: 8rem; */
+  z-index: 3;
 }
 .container.show-nav {
   transform: translate(-20rem);
@@ -116,7 +118,7 @@ body {
 
 .nav-container {
   position: fixed;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
   top: 0;
   left: 0;
   right: 0;
@@ -150,7 +152,6 @@ nav {
   position: fixed;
   bottom: 3rem;
   right: 0;
-  z-index: -43;
 }
 nav ul {
   list-style-type: none;
@@ -160,6 +161,7 @@ nav ul li {
   text-transform: uppercase;
   margin: 2rem 0;
   text-decoration-color: honeydew;
+  cursor: pointer;
 }
 
 /* Title */
@@ -235,7 +237,7 @@ nav ul li {
 /* slide */
 
 .slide {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(24 24 24);
   background-size: cover;
   color: #fff;
   position: relative;
@@ -349,7 +351,7 @@ nav ul li {
     transform: scaleX(0);
   }
 }
-/* //////////////////////////////////// */
+/* Faq */
 h1 {
   color: #666;
   text-align: center;
@@ -357,8 +359,8 @@ h1 {
 .container-faq {
   position: relative;
   border-radius: 15px;
-  background-color: white;
-  max-width: 80vw;
+  background-color: rgb(24, 24, 24);
+  max-width: 50rem;
   margin: auto;
   animation: slide 0.5s ease-in-out forwards;
   display: none;
@@ -369,23 +371,29 @@ h1 {
   padding: 3rem;
 }
 .container-faq-body {
-  padding: 10px;
+  padding: 1rem;
 }
 
 .faq.active {
-  background-color: white;
-  background-image: url(../resources/logo/faq-active-background.jpg);
+  background-color: rgb(0, 0, 0);
+  background-image: url(../resources/logo/faq-active-background-black.jpg);
   background-position: right;
-
+  position: relative;
+  left: -1.5rem;
+  right: -1.5rem;
   background-repeat: no-repeat;
+  width: 52rem;
   height: 100%;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 3px 6px rgba(255, 255, 255, 0.1),
+    0 3px 6px rgba(255, 255, 255, 0.1); */
+  /* width: 85vw; */
   justify-content: center;
+  align-items: center;
 }
 .faq {
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(31, 31, 31);
   border-radius: 10px;
-  color: #666;
+  color: rgb(168, 168, 168);
   margin: 7px 0;
   padding: 30px;
   overflow: hidden;

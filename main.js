@@ -4,11 +4,11 @@
 //show navigation
 const container = document.querySelector('.container');
 const content = document.querySelector('.content');
-const showNav = document.querySelector("#open").addEventListener("click", () => {
+const showNav = document.querySelector("#open").addEventListener("mouseenter", () => {
     
     container.classList.add("show-nav")
 })
-content.addEventListener("click", () => {
+content.addEventListener("mouseenter", () => {
     container.classList.remove("show-nav")
     
 })
@@ -64,7 +64,7 @@ const slideAnimation = function (panelClass, numClass) {
     }) 
       
 };
-
+//todo click outside to exit
 const slide1 = document.querySelector('.content-slide.one');
 const slide2 = document.querySelector('.content-slide.two');
 const slide3 = document.querySelector('.content-slide.three');
@@ -75,7 +75,7 @@ const slide7 = document.querySelector('.content-slide.seven');
 ;
 const removeSlide = () => {
     panels.forEach(panel => {
-        panel.addEventListener('click', () => {
+       panel.addEventListener('click', () => {
             slide1.style.display = "none";
             slide2.style.display = "none";
             slide3.style.display = "none";
@@ -85,7 +85,9 @@ const removeSlide = () => {
             slide7.style.display = "none";
         });
     });
+    
 };
+
 removeSlide();
 slideAnimation('flaut', '.one');
 slideAnimation('oboi', '.two');
@@ -146,19 +148,17 @@ slideAnimation("acordeon", ".seven");
     }
     setInterval(updateTestimonial, 10000)
 
-    //////////////////////////////////
 
     //FAQ
-    //? ce pizda masii are
-const faqButton = document.querySelector('.faq-button');faqButton.addEventListener('click', () => {
-    console.log("click faq");
-    document.querySelector('.container-faq ').style.display= 'block';
-})
+    //todo fix click
 
 
-
-
+const faqContent = document.querySelector('.container-faq ');
     
+const faqButton = document.querySelector('.faq-button');faqButton.addEventListener('click', () => {
+    faqContent.style.display = 'block';
+  
+})
 
     const addFAQ = document.querySelectorAll('.faq');
 addFAQ.forEach(FAQ => {
@@ -167,6 +167,9 @@ addFAQ.forEach(FAQ => {
         FAQ.classList.add("active")
        
     })
+})
+content.addEventListener("click", () => {
+    faqContent.style.display= 'none';
 })
 function removeFAQ() {
     addFAQ.forEach(faq => {
