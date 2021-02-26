@@ -146,7 +146,33 @@ slideAnimation("acordeon", ".seven");
     }
     setInterval(updateTestimonial, 10000)
 
+    //////////////////////////////////
+
+    //FAQ
+const faqButton = document.querySelector('.faq-button').addEventListener('mouse-over', () => {
+    console.log("click faq");
+    document.querySelector('.container-faq ').style.display= 'block';
+})
     
+
+    const addFAQ = document.querySelectorAll('.faq');
+addFAQ.forEach(FAQ => {
+    FAQ.addEventListener("click", () => {
+        removeFAQ();
+        FAQ.classList.add("active")
+       
+    })
+})
+function removeFAQ() {
+    addFAQ.forEach(faq => {
+        faq.classList.remove("active")
+    })
+}
+
+
+
+
+
 
 
 
