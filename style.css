@@ -244,7 +244,7 @@ nav ul li {
   margin: 1rem auto;
   width: 80vw;
   border-radius: 15px;
-  display: none;
+  display: flex;
   justify-content: center;
   text-align: justify;
   animation-name: slide;

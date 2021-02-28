@@ -18,14 +18,17 @@ content.addEventListener("mouseenter", () => {
 
 
 //panels
-
-const panels = document.querySelectorAll('.panel')
+const slide = document.querySelector(".slide");
+const panels = document.querySelectorAll('.panel');
 panels.forEach(panel => {
     panel.addEventListener("mouseenter", () => {
         removeActiveClasses()
         panel.classList.add('active')
-       
     })
+   
+       
+     
+    
     const containerPannels = document.querySelector('.container-panel').addEventListener("mouseleave", () => {
         removeActiveClasses()
     })  
@@ -36,22 +39,13 @@ function removeActiveClasses() {
     })
 }
 
-
-//cards-pop-up
-// document.getElementById('oboi').addEventListener("click", function () {
-//         document.querySelector(".background-popup").style.display = 'flex'
-// })
-// document.querySelector('.background-popup').addEventListener("click", () => {
-//     document.querySelector('.background-popup').style.display = "none";
-// })
-
-//SlideAnimation
+//Slide-animation
 
 const slideAnimation = function (panelClass, numClass) {
     
     document.getElementById(panelClass).addEventListener("click", () => {
      
-            document.querySelector('.slide').style.display = 'flex';
+        document.querySelector('.slide').style.display = 'flex';
             document.querySelector(numClass).style.display = "block"
             console.log('show slide');
             function pageScroll() {
@@ -64,6 +58,24 @@ const slideAnimation = function (panelClass, numClass) {
     }) 
       
 };
+
+
+////////////////////
+
+
+// const addFAQ = document.querySelectorAll('.faq');
+// addFAQ.forEach(FAQ => {
+//     FAQ.addEventListener("click", (event) => {
+//         event.stopPropagation();
+//         removeFAQ();
+//         FAQ.classList.add("active")
+        
+//     });
+// });
+slide.addEventListener('click', (event) => {
+    event.stopPropagation();
+})
+
 //todo click outside to exit
 const slide1 = document.querySelector('.content-slide.one');
 const slide2 = document.querySelector('.content-slide.two');
@@ -75,7 +87,8 @@ const slide7 = document.querySelector('.content-slide.seven');
 ;
 const removeSlide = () => {
     panels.forEach(panel => {
-       panel.addEventListener('click', () => {
+        panel.addEventListener('click', (event) => {
+            event.stopPropagation();
             slide1.style.display = "none";
             slide2.style.display = "none";
             slide3.style.display = "none";
@@ -85,8 +98,18 @@ const removeSlide = () => {
             slide7.style.display = "none";
         });
     });
+    content.addEventListener("click", ()=> {
+        slide1.style.display = "none";
+        slide2.style.display = "none";
+        slide3.style.display = "none";
+        slide4.style.display = "none";
+        slide5.style.display = "none";
+        slide6.style.display = "none";
+        slide7.style.display = "none";
+    })
     
 };
+
 
 removeSlide();
 slideAnimation('flaut', '.one');
@@ -162,16 +185,16 @@ const faqButton = document.querySelector('.faq-button');faqButton.addEventListen
 
     const addFAQ = document.querySelectorAll('.faq');
 addFAQ.forEach(FAQ => {
-    FAQ.addEventListener("click", () => {
+    FAQ.addEventListener("click", (event) => {
+        event.stopPropagation();
         removeFAQ();
         FAQ.classList.add("active")
         
     });
-    
 });
-// content.addEventListener("click", () => {
-//     faqContent.style.display= 'none';
-// })
+content.addEventListener("click", (event) => {
+    faqContent.style.display = 'none';
+})
 function removeFAQ() {
     addFAQ.forEach(faq => {
         faq.classList.remove("active")
