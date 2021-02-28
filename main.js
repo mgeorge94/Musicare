@@ -4,20 +4,19 @@
 //show navigation
 const container = document.querySelector('.container');
 const content = document.querySelector('.content');
-const showNav = document.querySelector("#open").addEventListener("mouseenter", () => {
-    
-    container.classList.add("show-nav")
+const openBtn = document.getElementById('open');
+const nav = document.querySelectorAll(".nav");
+openBtn.addEventListener("click", () => {
+    nav.forEach(navElement => navElement.classList.add('visible'))
+    })
+content.addEventListener("click", () => {
+    nav.forEach(navElement => navElement.classList.remove('visible'))
+   
 })
-content.addEventListener("mouseenter", () => {
-    container.classList.remove("show-nav")
-    
-})
 
 
 
-
-
-//panels
+// panels
 const slide = document.querySelector(".slide");
 const panels = document.querySelectorAll('.panel');
 panels.forEach(panel => {
@@ -72,9 +71,9 @@ const slideAnimation = function (panelClass, numClass) {
         
 //     });
 // });
-slide.addEventListener('click', (event) => {
-    event.stopPropagation();
-})
+// slide.addEventListener('click', (event) => {
+//     event.stopPropagation();
+// })
 
 //todo click outside to exit
 const slide1 = document.querySelector('.content-slide.one');
