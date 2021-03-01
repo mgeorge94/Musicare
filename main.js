@@ -38,6 +38,12 @@ function removeActiveClasses() {
     })
 }
 
+function pageScroll() {
+    window.scroll({
+        top: 450,
+        behavior: 'smooth'
+    });
+};
 //Slide-animation
 
 const slideAnimation = function (panelClass, numClass) {
@@ -47,12 +53,7 @@ const slideAnimation = function (panelClass, numClass) {
         document.querySelector('.slide').style.display = 'flex';
             document.querySelector(numClass).style.display = "block"
             console.log('show slide');
-            function pageScroll() {
-                window.scroll({
-                    top: 450,
-                    behavior: 'smooth'
-                });
-            };
+            
             pageScroll();
     }) 
       
@@ -120,6 +121,56 @@ slideAnimation("trombone", ".six");
 slideAnimation("acordeon", ".seven");
 
 
+
+    //FAQ
+
+    const faqContent = document.querySelector('.container-faq ');
+    
+    const faqButton = document.querySelector('.faq-button'); faqButton.addEventListener('click', () => {
+        nav.forEach(navElement => navElement.classList.remove('visible'))
+        faqContent.style.display = 'block';
+        pageScroll();
+      
+    })
+    
+        const addFAQ = document.querySelectorAll('.faq');
+    addFAQ.forEach(FAQ => {
+        FAQ.addEventListener("click", (event) => {
+            event.stopPropagation();
+            removeFAQ();
+            FAQ.classList.add("active")
+            
+        });
+    });
+    content.addEventListener("click", (event) => {
+        faqContent.style.display = 'none';
+    })
+    function removeFAQ() {
+        addFAQ.forEach(faq => {
+            faq.classList.remove("active")
+        })
+}
+    
+
+    //contact form
+
+const form = document.getElementById("form");
+const messageContainer = document.querySelector(".message-container");
+const message = document.querySelector("#message")
+let isValid = false;
+form.addEventListener("submit", processFormData);
+function validateForm() {
+    isValid = form.checkValidity();
+    message.textContent = "Vă rugăm să completați toate spațiile de mai sus"
+    message.style.color = "red";
+    messageContainer.style.borderColor = "red";
+
+}
+function processFormData(event) {
+    event.preventDefault();
+    validateForm();
+}
+
     // Testimonials
 
 
@@ -171,34 +222,7 @@ slideAnimation("acordeon", ".seven");
     setInterval(updateTestimonial, 10000)
 
 
-    //FAQ
-    //todo fix click
 
-
-const faqContent = document.querySelector('.container-faq ');
-    
-const faqButton = document.querySelector('.faq-button');faqButton.addEventListener('click', () => {
-    faqContent.style.display = 'block';
-  
-})
-
-    const addFAQ = document.querySelectorAll('.faq');
-addFAQ.forEach(FAQ => {
-    FAQ.addEventListener("click", (event) => {
-        event.stopPropagation();
-        removeFAQ();
-        FAQ.classList.add("active")
-        
-    });
-});
-content.addEventListener("click", (event) => {
-    faqContent.style.display = 'none';
-})
-function removeFAQ() {
-    addFAQ.forEach(faq => {
-        faq.classList.remove("active")
-    })
-}
 
 
 
