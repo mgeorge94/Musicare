@@ -2,22 +2,23 @@
 
 
 //show navigation
+const faqContent = document.querySelector('.container-faq ');
 const container = document.querySelector('.container');
 const content = document.querySelector('.content');
 const openBtn = document.getElementById('open');
 const nav = document.querySelectorAll(".nav");
 openBtn.addEventListener("click", () => {
-    nav.forEach(navElement => navElement.classList.add('visible'))
-    })
+    nav.forEach(navElement => navElement.classList.add('visible'));
+    faqContent.style.display = 'none';
+})
+    
 content.addEventListener("click", () => {
     nav.forEach(navElement => navElement.classList.remove('visible'))
    
 })
 
-
-
 // panels
-const slide = document.querySelector(".slide");
+// const slide = document.querySelector(".slide");
 const panels = document.querySelectorAll('.panel');
 panels.forEach(panel => {
     panel.addEventListener("mouseenter", () => {
@@ -60,7 +61,6 @@ const slideAnimation = function (panelClass, numClass) {
 };
 
 
-////////////////////
 
 
 // const addFAQ = document.querySelectorAll('.faq');
@@ -76,7 +76,7 @@ const slideAnimation = function (panelClass, numClass) {
 //     event.stopPropagation();
 // })
 
-//todo click outside to exit
+
 const slide1 = document.querySelector('.content-slide.one');
 const slide2 = document.querySelector('.content-slide.two');
 const slide3 = document.querySelector('.content-slide.three');
@@ -84,28 +84,32 @@ const slide4 = document.querySelector('.content-slide.four');
 const slide5 = document.querySelector('.content-slide.five');
 const slide6 = document.querySelector('.content-slide.six');
 const slide7 = document.querySelector('.content-slide.seven');
-;
+const sildes = [slide1, slide2, slide3, slide4, slide5, slide6, slide7];
+// slides = ['.one', '.two', '.three', '.four', '.five', '.six', '.seven']
+// slides.forEach(slide => {
+//     slide = `document.querySelector('${ slide }')`
+//     console.log(slide);
+// })
+
+
 const removeSlide = () => {
     panels.forEach(panel => {
         panel.addEventListener('click', (event) => {
             event.stopPropagation();
-            slide1.style.display = "none";
-            slide2.style.display = "none";
-            slide3.style.display = "none";
-            slide4.style.display = "none";
-            slide5.style.display = "none";
-            slide6.style.display = "none";
-            slide7.style.display = "none";
+            sildes.forEach(slide => {
+               slide.style.display ="none"
+           })
         });
     });
     content.addEventListener("click", ()=> {
-        slide1.style.display = "none";
-        slide2.style.display = "none";
-        slide3.style.display = "none";
-        slide4.style.display = "none";
-        slide5.style.display = "none";
-        slide6.style.display = "none";
-        slide7.style.display = "none";
+        sildes.forEach(slide => {
+            slide.style.display ="none"
+        })
+    })
+    openBtn.addEventListener("click", ()=> {
+        sildes.forEach(slide => {
+            slide.style.display ="none"
+        })
     })
     
 };
@@ -124,18 +128,19 @@ slideAnimation("acordeon", ".seven");
 
     //FAQ
 
-    const faqContent = document.querySelector('.container-faq ');
     
-    const faqButton = document.querySelector('.faq-button'); faqButton.addEventListener('click', () => {
+    
+const faqButton = document.querySelector('.faq-button');
+faqButton.addEventListener('click', () => {
         nav.forEach(navElement => navElement.classList.remove('visible'))
         faqContent.style.display = 'block';
         pageScroll();
       
-    })
+})
     
-        const addFAQ = document.querySelectorAll('.faq');
-    addFAQ.forEach(FAQ => {
-        FAQ.addEventListener("click", (event) => {
+const addFAQ = document.querySelectorAll('.faq');
+addFAQ.forEach(FAQ => {
+    FAQ.addEventListener("click", (event) => {
             event.stopPropagation();
             removeFAQ();
             FAQ.classList.add("active")
@@ -153,23 +158,62 @@ slideAnimation("acordeon", ".seven");
     
 
     //contact form
-
+const contactBtn = document.querySelector(".contact-btn");
+const contactForm = document.querySelector(".form-container");
 const form = document.getElementById("form");
 const messageContainer = document.querySelector(".message-container");
 const message = document.querySelector("#message")
 let isValid = false;
+
+function showForm() {
+    
+    contactBtn.addEventListener("click", ()=>{
+        contactForm.style.display = "flex"
+        nav.forEach(navElement => navElement.classList.remove('visible'))
+       pageScroll();
+    })
+}
+
+content.addEventListener("click", () => {
+    contactForm.style.display = 'none';
+})
+showForm();
+contactForm.addEventListener("click", (event) => {
+    event.stopPropagation();
+})
 form.addEventListener("submit", processFormData);
 function validateForm() {
     isValid = form.checkValidity();
-    message.textContent = "Vă rugăm să completați toate spațiile de mai sus"
-    message.style.color = "red";
-    messageContainer.style.borderColor = "red";
-
+    if (!isValid) {
+        message.textContent = "Vă rugăm să completați toate spațiile de mai sus"
+        message.style.color = "red";
+        messageContainer.style.borderColor = "red";
+    } else if (isValid) {
+        message.textContent = "Mulțumim pentru interes. Vă vorm răspunde în cel mai scurt timp posibil"
+        message.style.color = "#bebebe";
+        messageContainer.style.borderColor = "#bebebe";
+    }
 }
+    function storeFormData() {
+        const user = {
+            name: form.name.value,
+            email: form.email.value,
+            instrument: form.instrument.value,
+            cerere:form.cerere.value
+        };
+        console.log(user);
+    };
+    // !Do something with data
+    
+
 function processFormData(event) {
     event.preventDefault();
     validateForm();
+    if (isValid) {
+        storeFormData();
+    }
 }
+
 
     // Testimonials
 

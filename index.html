@@ -42,10 +42,10 @@
             <div class='hero'>
                 <div >
                     <h1>Musicare</h1>
-                    <p> Noi avem grijă de instrumentul tău</p>
+                    <p class="catchfrase"> Dezlănțuiește-ți potentialul muzical</p>
 
-                    <div id="catch-fraze">
-                        <h2>Alege dintre instrumentele cele mai cautate sau vezi vezi lista completa in meniul de mai sus</h2>
+                    <div class="first-step">
+                        <h2>Alege dintre instrumentele cele mai cautate sau vezi lista completa in meniul de mai sus</h2>
                     </div>
                 </div>
             </div>    
@@ -237,30 +237,31 @@
              <!--CONTACT FORM  -->
         <div class="form-container">
             <div class="info">
+                <h2>Vreți să vă dezlănțuiți întregul potențial muzical?</h2>
+                <h2 class="contacteaza">Contactați-ne</h2>
                 <h3>Program:</h3>
                 <h4>Luni - Vineri: 08:00 – 17:00</h4>
                 <h4>Sambata: 08:00 – 14:00</h4>
                 <h4>Duminica: Indisponibil</h4>
                 <h3>Telefon: 0743934917</h3>
             </div>
-            <h1>Aveți nelămuriri?</h1>
-            <h2 id='contacteaza-ne'>Contactează-ne</h2>
+            
             <form action="" id="form" novalidate>
                 <div class="form">
-                    <input type="text" style="padding-left: 25px"id="name" placeholder = "Cine sunteți?" required minlength="3">
+                    <input type="text" style="padding-left: 25px"id="name" placeholder = "Cine sunteți?" name="name"required minlength="3">
                 </div>
                 <div class="form">
                     <input type="email" style="padding-left: 25px"
                     id="email"
-                     placeholder = "Cum vă putem contacta? " required>
+                     placeholder = "Cum vă putem contacta? " name="email"required>
                 </div>
                 <div class="form">
                     <input type="text" style="padding-left: 25px" id="instrument-text"
-                     placeholder = "Ce instrument are nevoie de atenția noastră?" required minlength='2'>
+                     placeholder = "Ce instrument are nevoie de atenția noastră?" name="instrument" required minlength='2'>
                 </div>
                 <div class="form">
                     <input type="text" style="padding-left: 25px" id="email-text"
-                     placeholder = "Cu ce vă putem fi de folos" required minlenght="20">
+                     placeholder = "Cu ce vă putem fi de folos" name="cerere" required minlenght="20">
                 </div>
 
                 <button class="contact-button" type="trimite">Trimite</button>
@@ -293,15 +294,16 @@
 
     
 <div class="nav  nav-white">
+    <img src="../resources/logo/fav-icon.png" alt="" class="nav stamp">
     <div class="nav  nav-gray">
         <div class="nav  nav-background">
             <img class="nav logo" src="../resources/logo/logo.png"   height=60'>
-            <img src="../resources/logo/fav-icon.png" alt="" class="nav stamp">
+            
             <ul class="list">
                 <li href="#">Cine suntem</li>
                 <li href="#">Noutăți</li>
                 <li class='faq-button' >Întrebări frecvente</li>
-                <li href="#">Contact</li
+                <li class="contact-btn">Contact</li
             </ul>
         </div>
     </div>
