@@ -225,24 +225,24 @@ body {
   align-items: center;
   text-align: center;
   margin-top: 3rem;
-  margin-bottom: 1rem;
+
   z-index: 2;
   position: relative;
 }
 .hero h1 {
   margin-top: 4rem;
-  /* margin-bottom: 1rem; */
 }
 .catchfrase {
-  font-style: oblique;
-  font-size: 2rem;
+  padding-bottom: 2rem;
+  font-size: 1.3rem;
 }
 
 /* catch fraze */
 .first-step {
-  text-align: left;
+  position: relative;
+  font-family: poppins;
+  margin-left: 10px;
   font-size: 0.8rem;
-  padding: 2px;
 }
 
 /* panels */
@@ -254,9 +254,9 @@ body {
   height: 27rem;
   z-index: 1;
   position: absolute;
+  box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
 }
 .container-panel {
-  padding-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -573,7 +573,171 @@ button:focus {
   display: flex;
   padding: 20px;
 }
-@media screen and (max-width: 480px) {
+
+/* AboutUs */
+.aboutUs-container {
+  width: 90vw;
+  height: 90vh;
+  border-radius: 15px;
+  position: relative;
+  margin: 2rem auto;
+  box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display:none;
+  animation: slide 0.5s ease-in-out forwards;
+}
+.left-slide {
+  height: 100%;
+  width: 35%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.visum-left {
+  background-image: linear-gradient(to bottom right, #160807, #221344);
+}
+
+.misso-left {
+  background-image: linear-gradient(to bottom right, #381d17, #2b233a);
+}
+
+.doctrina-left {
+  background-image: linear-gradient(to bottom right, #24130f, #683a28);
+}
+.sumus-left {
+  background-image: linear-gradient(to bottom right, #000000, #6d6a63);
+}
+
+.left-slide > div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-style: oblique;
+  color: #d3d0d0;
+}
+.left-slide h1 {
+  font-size: 1.4rem;
+  margin-top: -2rem;
+}
+.right-slide h1 {
+  font-size: 1.3rem;
+  margin-top: -2rem;
+  color: white;
+}
+.sumus {
+  padding: 4rem;
+  text-align: justify;
+}
+.right-slide {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 35%;
+  width: 65%;
+  transition: transform 0.5s ease-in-out;
+}
+.right-slide > div {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-style: oblique;
+  color: #d3d0d0;
+}
+.visum-right {
+  background-image: url(../resources/about-us/viziunea.jpg);
+}
+.misso-right {
+  background-image: url(../resources/about-us/misiunea.jpg);
+}
+.doctrina-right {
+  background-image: url(../resources/about-us/valori.jpg);
+}
+.sumus-right {
+  background-image: url(../resources/about-us/despre.jpg);
+}
+.action-buttons button {
+  position: absolute;
+  left: 35%;
+  top: 75%;
+  z-index: 100;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 1rem;
+}
+.action-buttons button:hover {
+  color: #a3a3a3;
+}
+.action-buttons button:focus {
+  outline: none;
+}
+
+/* .action-buttons .down-button {
+  transform: translateX(-100%);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+} */
+.action-buttons .up-button {
+  transform: translateY(-100%);
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* fixes for small screns */
+
+@media screen and (max-width:700px){
+  .aboutUs-container {
+    width: 96vw;
+    height: 60vh;
+}
+.sumus {
+  font-size:.9rem;
+  padding-top:3rem;
+  padding: 2rem;
+  text-align: justify;
+}
+.left-slide h1 {
+  font-size: 1rem;
+  margin-top: -2rem;
+}
+.right-slide h1 {
+  font-size: 1rem;
+  margin-top: -2rem;
+  color: white;
+}
+.action-buttons button {
+  position: absolute;
+  left: 35%;
+  top: 84%;
+  z-index: 100;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 1rem;
+  
+}
+.action-buttons button {
+  
+  font-size: 0.7rem;
+  padding: 0.5rem;
+}
+
+@media screen and (max-width: 500px) {
   body {
     font-size: 12px;
   }
@@ -610,4 +774,9 @@ button:focus {
   .catchfrase {
     font-size: 1.3rem;
   }
+  .first-step {
+    margin-left: 5px;
+    font-size: 0.6rem;
+  }
+  
 }

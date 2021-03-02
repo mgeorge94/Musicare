@@ -10,11 +10,12 @@ const nav = document.querySelectorAll(".nav");
 openBtn.addEventListener("click", () => {
     nav.forEach(navElement => navElement.classList.add('visible'));
     faqContent.style.display = 'none';
+    aboutUsContainer.style.display = 'none';
 })
     
 content.addEventListener("click", () => {
     nav.forEach(navElement => navElement.classList.remove('visible'))
-   
+    aboutUsContainer.style.display = 'none';
 })
 
 // panels
@@ -41,7 +42,7 @@ function removeActiveClasses() {
 
 function pageScroll() {
     window.scroll({
-        top: 450,
+        top: 500,
         behavior: 'smooth'
     });
 };
@@ -158,6 +159,9 @@ addFAQ.forEach(FAQ => {
     
 
     //contact form
+
+
+
 const contactBtn = document.querySelector(".contact-btn");
 const contactForm = document.querySelector(".form-container");
 const form = document.getElementById("form");
@@ -202,7 +206,9 @@ function validateForm() {
             cerere:form.cerere.value
         };
         console.log(user);
-    };
+};
+    
+
     // !Do something with data
     
 
@@ -213,10 +219,54 @@ function processFormData(event) {
         storeFormData();
     }
 }
+    //About-us
 
 
+
+const aboutBtn = document.querySelector('.about');
+const aboutUsContainer = document.querySelector('.aboutUs-container');
+const slideRight = document.querySelector('.right-slide');
+const slideLeft = document.querySelector('.left-slide');
+const btnUp = document.querySelector('.up-button');
+const btnDown= document.querySelector('.down-button');
+const slidesLength = slideRight.querySelectorAll('div').length;
+let activeSlideIndex = 0;
+const screenWidth = window.screen.width;
+if (screenWidth < 700) {
+    slideLeft.style.top = `-${ (slidesLength - 1) * 60 }vh`
+} else if (screenWidth > 700){
+    slideLeft.style.top = `-${ (slidesLength - 1) * 90 }vh`
+}
+
+// btnUp.addEventListener("click", ()=>changeSlide('up'))
+btnUp.addEventListener("click", () => changeSlide('down'))
+const changeSlide = (direction) => {
+    const sliderHeight = aboutUsContainer.clientHeight
+    if (direction === "up") {
+        activeSlideIndex++;
+        if (activeSlideIndex > slidesLength - 1) {
+            activeSlideIndex = 0;
+        } 
+    } else if (direction === "down"){
+        activeSlideIndex--;
+        if (activeSlideIndex < 0) {
+            activeSlideIndex = slidesLength - 1;
+        } 
+        
+    }
+    slideRight.style.transform = `translateY(-${ activeSlideIndex * sliderHeight }px)`
+    slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`
+}
+aboutBtn.addEventListener("click", () => {
+    nav.forEach(navElement => navElement.classList.remove('visible'));
+    
+    aboutUsContainer.style.display = 'flex';
+    pageScroll();
+})
+aboutUsContainer.addEventListener("click", (event) => {
+    event.stopPropagation();
     // Testimonials
-
+})
 
 
     const tesimonialContainer = document.querySelector(".testimonial-container")
