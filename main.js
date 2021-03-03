@@ -11,6 +11,7 @@ openBtn.addEventListener("click", () => {
     nav.forEach(navElement => navElement.classList.add('visible'));
     faqContent.style.display = 'none';
     aboutUsContainer.style.display = 'none';
+    newsContent.style.display = "none";
 })
     
 content.addEventListener("click", () => {
@@ -238,19 +239,20 @@ if (screenWidth < 700) {
     slideLeft.style.top = `-${ (slidesLength - 1) * 90 }vh`
 }
 
-// btnUp.addEventListener("click", ()=>changeSlide('up'))
-btnUp.addEventListener("click", () => changeSlide('down'))
+btnDown.addEventListener("click", ()=>changeSlide('up'))
+// btnUp.addEventListener("click", () => changeSlide('down'))
 const changeSlide = (direction) => {
     const sliderHeight = aboutUsContainer.clientHeight
-    if (direction === "up") {
-        activeSlideIndex++;
-        if (activeSlideIndex > slidesLength - 1) {
-            activeSlideIndex = 0;
-        } 
-    } else if (direction === "down"){
+    if (direction === "down") {
         activeSlideIndex--;
         if (activeSlideIndex < 0) {
             activeSlideIndex = slidesLength - 1;
+        } 
+        
+    } else if (direction === "up"){
+        activeSlideIndex++;
+        if (activeSlideIndex > slidesLength - 1) {
+            activeSlideIndex = 0;
         } 
         
     }
@@ -265,8 +267,25 @@ aboutBtn.addEventListener("click", () => {
 })
 aboutUsContainer.addEventListener("click", (event) => {
     event.stopPropagation();
-    // Testimonials
+    
 })
+//NEWS
+    
+const newsBtn = document.querySelector('.news-btn');
+const newsContent = document.querySelector('.card-container');
+newsBtn.addEventListener("click", () => {
+    nav.forEach(navElement => navElement.classList.remove('visible'));
+    console.log("click");
+    newsContent.style.display = "block";
+    
+})
+content.addEventListener('click', () => {
+    newsContent.style.display = "none";
+})
+newsContent.addEventListener("click", (event)=>{
+    event.stopPropagation();
+})
+// Testimonials
 
 
     const tesimonialContainer = document.querySelector(".testimonial-container")
