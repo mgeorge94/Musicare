@@ -218,14 +218,89 @@ body {
   transition: transform 0.7s ease-in-out;
   padding: 2rem;
   color: #bababa;
-  font-style: oblique;
+  font-style: normal;
 }
+.checkbox-container {
+  display: block;
+  position: relative;
+margin-top:1rem;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkbox:hover  {
+ color: white;
+}
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid rgb(223, 0, 0);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: rgb(0, 0, 0);
+}
+.search-btn{
+  float: right;
+  width: 20%;
+  padding: 10px;
+  margin:2rem;
+  background: rgb(43, 43, 43);
+  border-radius:50px;
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  border:none;
+  cursor: pointer;
+}
+.search-btn:hover{
+  background-color:rgb(60, 60,60)
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
 .slider-container {
   max-width: 300px;
   float: left;
 }
 .slider-container h5{
   padding-top:2rem;
+  font-style:oblique
 }
 
 .min-value {
@@ -239,6 +314,16 @@ body {
 .slider-value {
   height: 2rem;
   margin: 1rem 0rem;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 .filter-tab.visible {
   transform: translateX(0vw);
@@ -913,6 +998,12 @@ button:focus {
     max-width: 250px;
     float: left;
   }
+  .filter-tab {
+    height: 100vh;
+    width: 750px;
+    transform: translateX(1000vw);
+   
+  }
 }
 /* slider-config */
 .noUi-connect {
@@ -924,11 +1015,19 @@ button:focus {
   width:20px;
   height:20px;
 }
-
-
-
-
-
+.noUi-active{
+  outline: color;
+  
+}
+.noUi-handle:focus {
+  outline: none;
+}
+.noUi-handle:hover{
+  width:22px;
+  height:22px;
+  
+  
+}
 
 
 
