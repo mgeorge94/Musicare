@@ -223,7 +223,7 @@ body {
 .checkbox-container {
   display: block;
   position: relative;
-margin-top:1rem;
+  margin-top: 1rem;
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
@@ -248,8 +248,8 @@ margin-top:1rem;
   position: absolute;
   display: none;
 }
-.checkbox:hover  {
- color: white;
+.checkbox:hover {
+  color: white;
 }
 .checkbox-container .checkmark:after {
   left: 9px;
@@ -270,20 +270,20 @@ margin-top:1rem;
   width: 25px;
   background-color: rgb(0, 0, 0);
 }
-.search-btn{
+.search-btn {
   float: right;
   width: 20%;
   padding: 10px;
-  margin:2rem;
+  margin: 2rem;
   background: rgb(43, 43, 43);
-  border-radius:50px;
+  border-radius: 50px;
   color: rgb(255, 255, 255);
   font-size: 17px;
-  border:none;
+  border: none;
   cursor: pointer;
 }
-.search-btn:hover{
-  background-color:rgb(60, 60,60)
+.search-btn:hover {
+  background-color: rgb(60, 60, 60);
 }
 
 /* Clear floats */
@@ -293,14 +293,13 @@ form.example::after {
   display: table;
 }
 
-
 .slider-container {
   max-width: 300px;
   float: left;
 }
-.slider-container h5{
-  padding-top:2rem;
-  font-style:oblique
+.slider-container h5 {
+  padding-top: 2rem;
+  font-style: oblique;
 }
 
 .min-value {
@@ -322,7 +321,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 .filter-tab.visible {
@@ -688,7 +687,7 @@ button:focus {
   outline: none;
 }
 ::placeholder {
-  color: #bababa
+  color: #bababa;
 
   font-style: italic;
 }
@@ -853,6 +852,36 @@ button:focus {
 .card-content h5 {
   padding: 5px;
 }
+
+/* instruments */
+.box {
+  background-size: cover;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 200px;
+  max-height: 14rem;
+  width: 30%;
+  box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
+  margin: 1vw;
+}
+.box > img {
+  background-size: cover;
+  width: 100%;
+}
+.grid {
+  background-color: rgb(43, 43, 43);
+  min-height: 80vh;
+  display: flex;
+  width: 80vw;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-radius: 15px;
+  margin: 2rem auto;
+}
+.grid > div {
+  flex-basis: calc(33.3333% -40px);
+}
+
 /* TESTIMONIALS */
 
 .testimonial-container {
@@ -1002,38 +1031,26 @@ button:focus {
     height: 100vh;
     width: 750px;
     transform: translateX(1000vw);
-   
   }
 }
 /* slider-config */
 .noUi-connect {
-	background: rgb(104, 104, 104);
+  background: rgb(104, 104, 104);
 }
-.noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
-	background: rgb(248, 248, 248);
+.noUi-horizontal .noUi-handle,
+.noUi-vertical .noUi-handle {
+  background: rgb(248, 248, 248);
   border-radius: 50%;
-  width:20px;
-  height:20px;
+  width: 20px;
+  height: 20px;
 }
-.noUi-active{
+.noUi-active {
   outline: color;
-  
 }
 .noUi-handle:focus {
   outline: none;
 }
-.noUi-handle:hover{
-  width:22px;
-  height:22px;
-  
-  
+.noUi-handle:hover {
+  width: 22px;
+  height: 22px;
 }
-
-
-
-
-
-
-
-
-

@@ -338,7 +338,6 @@ container.addEventListener("click", () => {
       
 	});
 	
-	// can also be on 'update' for instant update
 	doubleHandleSlider.noUiSlider.on('change', function( values, handle ) { 
 
 		var val = values[handle]; // 0 or 1
