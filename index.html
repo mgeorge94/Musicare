@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"  />
+<link rel="html" href="find-instr.html">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -320,9 +321,7 @@
                        <button class="down-button">
                            <i class="fas fa-arrow-down"></i>
                         </button>
-                        <!-- <button class="up-button">
-                            <i class="fas fa-arrow-down"></i>
-                         </button> -->
+                        
                    </div>
                 </div>
 
@@ -360,29 +359,39 @@
                 </div>
             </div>
 
-
+             <!-- instruments grid  -->
             <div class="grid">
-                <div class="box box1">
-                    <img src="../resources/instruments/sax/sax1.jpg" alt="" class="instrument-img sax1">
+                <div class="box instrument">
+                    <img class="instrument-image" src="../resources/instruments/guitar/guitar1.jpg" alt="">
+                   <h6 class="price">2000</h6>
+                    <p class="instrument-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.</p>
                 </div>
-                <div class="box box2">
-                    <img src="../resources/instruments/sax/sax2.jpg" alt="" class="instrument-img sax2">
+                <div class="box instrument">
+                    <img class="instrument-image" src="../resources/instruments/guitar/guitar1.jpg" alt="">
+                   <h6 class="price">2000 </h6>
+                    <p class="instrument-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.</p>
                 </div>
-                <div class="box box3">
-                    <img src="../resources/instruments/sax/sax3.jpg" alt="" class="instrument-img sax3">
+                <div class="box instrument">
+                    <img class="instrument-image flaut" src="../resources/instruments/guitar/guitar1.jpg" alt="">
+                   <h6 class="price">200</h6>
+                    <p class="instrument-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.</p>
                 </div>
-                <div class="box box4">
-                    <img src="../resources/instruments/guitar/guitar1.jpg" alt="" class="instrument-img sax1">
+                <div class="box instrument">
+                    <img class="instrument-image  chitara" src="../resources/instruments/guitar/guitar1.jpg" alt="">
+                   <h6 class="price">300</h6>
+                    <p class="instrument-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.</p>
                 </div>
-                <div class="box box5">
-                    <img src="../resources/instruments/guitar/guitar2.jpg" alt="" class="instrument-img sax1">
+                <div class="box instrument">
+                    <img class="instrument-image sax" src="../resources/instruments/guitar/guitar1.jpg" alt="">
+                   <h6 class="price">6000</h6>
+                    <p class="instrument-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.</p>
                 </div>
-                <div class="box box6">
-                    <img src="../resources/instruments/guitar/guitar3.jpg" alt="" class="instrument-img sax1">
+                <div class="box instrument">
+                    <img class="instrument-image" src="../resources/instruments/guitar/guitar1.jpg" alt="">
+                   <h6 class="price">2000</h6>
+                    <p class="instrument-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.</p>
                 </div>
-                <div class="box box7">
-                    <img src="../resources/instruments/guitar/guitar4.jpg" alt="" class="instrument-img sax1">
-                </div>
+               
             </div>
 
             <!-- TESTIMONIALS -->
@@ -410,7 +419,9 @@
 
    
 <div class="nav  nav-white">
-     <div class="filter-tab">
+    <!-- filter tab -->
+
+     <div class="filter-tab ">
          <h3>Adaugă filtrele dorite:</h3>
          <div class="slider-container">
             <h5>Ce instrument cauți:</h5>
@@ -441,20 +452,16 @@
             <br /><br /><br /><br />
             <div class="double-handle-slider"></div>
             <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+            <h5 class="see-instruments">Vei să vezi toate instrumentele</h5>
         </div>
 
 
      </div>  
     <img src="../resources/logo/fav-icon.png" alt="" class="nav stamp">
-    
     <div class="nav  nav-gray">
-       
         <div class="nav  nav-background">
-             
             <img class="nav logo" src="../resources/logo/logo.png"   height=60'>
             
-            
-
              <ul class="list">
                     <li class="about">Cine suntem</li>
                     <li class='news-btn'>Noutăți</li>
@@ -462,8 +469,8 @@
                         <div class="instr-options-container">
                             <div class="instr-options-background">
                             <ul >
-                                <li class="filter">Caută</li>
-                                <li class="instrument-list">Vezi lista completă</li>
+                                <li class="filter">Vrei să cumperi?</li>
+                                <li class="instrument-list">Vrei să repari</li>
                             </ul>
                         </div>
                     </div>
@@ -486,7 +493,7 @@
   
 
     
-    <script src="../node_modules/nouislider/distribute/nouislider.js"></script>  
+    <script src="../node_modules/nouislider/distribute/nouislider.min.js"></script>  
     <script src ="main.js"></script>  
 </body>
 </html>

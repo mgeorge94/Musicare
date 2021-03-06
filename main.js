@@ -2,11 +2,15 @@
 
 
 //show navigation
+let index = 1;
 const faqContent = document.querySelector('.container-faq ');
 const container = document.querySelector('.container');
 const content = document.querySelector('.content');
 const openBtn = document.getElementById('open');
 const nav = document.querySelectorAll(".nav");
+const seeInstruments = document.querySelector('.see-instruments');
+const grid = document.querySelector(".grid")
+const hideNav = ()=> nav.forEach(navElement => navElement.classList.remove('visible'))
 
 openBtn.addEventListener("click", () => {
     nav.forEach(navElement => navElement.classList.add('visible'));
@@ -19,7 +23,7 @@ openBtn.addEventListener("click", () => {
 })
 
 content.addEventListener("click", () => {
-    nav.forEach(navElement => navElement.classList.remove('visible'))
+    hideNav();
     aboutUsContainer.style.display = 'none';
 })
 
@@ -48,6 +52,10 @@ function pageScroll() {
         behavior: 'smooth'
     });
 };
+seeInstruments.addEventListener("click", () => {
+    grid.classList.add("active");
+    hideNav();
+})
 //Slide-animation
 const slide1 = document.querySelector('.content-slide.one');
 const slide2 = document.querySelector('.content-slide.two');
@@ -123,8 +131,8 @@ slideAnimation("acordeon", ".seven");
     
 const faqButton = document.querySelector('.faq-button');
 faqButton.addEventListener('click', () => {
-    nav.forEach(navElement => navElement.classList.remove('visible'))
-    
+    hideNav();
+
         faqContent.style.display = 'block';
         pageScroll();
       
@@ -164,7 +172,7 @@ function showForm() {
     
     contactBtn.addEventListener("click", ()=>{
         contactForm.style.display = "flex"
-        nav.forEach(navElement => navElement.classList.remove('visible'))
+        hideNav();
        pageScroll();
     })
 }
@@ -248,7 +256,7 @@ const changeSlide = (direction) => {
     slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`
 }
 aboutBtn.addEventListener("click", () => {
-    nav.forEach(navElement => navElement.classList.remove('visible'));
+    hideNav();
     
     aboutUsContainer.style.display = 'flex';
     pageScroll();
@@ -264,7 +272,7 @@ aboutUsContainer.addEventListener("click", (event) => {
 const newsBtn = document.querySelector('.news-btn');
 const newsContent = document.querySelector('.card-container');
 newsBtn.addEventListener("click", () => {
-    nav.forEach(navElement => navElement.classList.remove('visible'));
+    hideNav();
     pageScroll();
     console.log("click");
     newsContent.style.display = "block";
@@ -292,7 +300,7 @@ instrBtn.addEventListener("click", ()=>{
 if (screenWidth < 700) {
     cautaBtn.addEventListener("click", () => { 
         
-        nav.forEach(navElement => navElement.classList.remove('visible'));
+        hideNav();
         document.querySelector(".filter-tab").classList.add("visible")
         console.log("clicked small screen");
         
@@ -308,24 +316,30 @@ container.addEventListener("click", () => {
     document.querySelector(".filter-tab").classList.remove("visible")
 })
 
+// FILTER INSTRUMENTS
+const allCheckboxes = document.querySelectorAll('.instruments-check')
+const allInstruments =document.querySelectorAll('.instrument')
+let doubleHandleSlider = document.querySelector('.double-handle-slider');
+let minValInput = document.querySelector('.min-value');
+let maxValInput = document.querySelector('.max-value');
+const instrument = document.querySelector(".instrument");
+const instrPrice = document.querySelector(".price");
+const description = document.querySelector(".instrument-description");
+const instrImage = document.querySelector(".instrument-image")
 
+let minPrice;
+let maxPrice;
 
-///Slider
-    ;(function() {
-	
-	var doubleHandleSlider = document.querySelector('.double-handle-slider');
-	var minValInput = document.querySelector('.min-value');
-	var maxValInput = document.querySelector('.max-value');
-
-	
+console.log(instrPrice.innerHTML);
+const sliderFunction =function() {
 	noUiSlider.create(doubleHandleSlider, {
 		start: [ 0, 10000 ],
 		connect: true,
-		tooltips: false,
+		tooltips:false,
 		step: 1,
 		range: {
-			'min': [ 0 ],
-			'max': [ 1000 ]
+			'min': [ 0  ],
+			'max': [Number(instrPrice.innerHTML)]
 		},
 		format: {
 			to: function(value) {
@@ -343,23 +357,31 @@ container.addEventListener("click", () => {
 		var val = values[handle]; // 0 or 1
 		
 		if(handle) {
-			maxValInput.value = Math.round(val);
+			maxValInput.value = Math.round(val) ;
 		} else {
-			minValInput.value = Math.round(val);
+            minValInput.value = Math.round(val);
 		}
 	});
 
+        minValInput.addEventListener('change', function () {
+            doubleHandleSlider.noUiSlider.set([this.value, null]
+               
+            );
+           
+           
+    });
 	
-minValInput.addEventListener('change', function(){
-	doubleHandleSlider.noUiSlider.set([this.value, null]);
-});
-	
-maxValInput.addEventListener('change', function(){
+        maxValInput.addEventListener('change', function () {
+    
 	doubleHandleSlider.noUiSlider.set([null, this.value]);
-});
-	
-	
-})();
+        });
+      
+};
+sliderFunction();
+// doubleHandleSlider.addEventListener("click", () => {
+//    minPrice = doubleHandleSlider.noUiSlider.get([0, null]);
+//     maxPrice = doubleHandleSlider.noUiSlider.get([null, 1]);
+// })
 
 
 // Testimonials
@@ -397,7 +419,7 @@ maxValInput.addEventListener('change', function(){
     
         }
     ]
-    let index = 1;
+    
     function updateTestimonial() {
         const { name, position, photo, text } = testimoniale[index];
         testimonial.innerHTML = text
