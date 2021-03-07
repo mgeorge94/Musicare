@@ -448,9 +448,11 @@ doubleHandleSlider.addEventListener("click", () => {
     let minWantedPrice = Math.min(...doubleHandleSlider.noUiSlider.get([0, null]));
     let maxWantedPrice = Math.max(...doubleHandleSlider.noUiSlider.get([null, 1]));
     const insrumentPricesClass = Array.from(document.querySelectorAll(".instrument>h6"));
-
-
 })
+
+
+
+
 
 
 
