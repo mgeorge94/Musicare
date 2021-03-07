@@ -454,10 +454,9 @@ doubleHandleSlider.addEventListener("click", () => {
 
 
 
-
-
-
 //! Testimonials
+
+
 
 
     const tesimonialContainer = document.querySelector(".testimonial-container")
