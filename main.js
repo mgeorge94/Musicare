@@ -1,7 +1,7 @@
 
 
 
-//show navigation
+//!show navigation
 let index = 1;
 const faqContent = document.querySelector('.container-faq ');
 const container = document.querySelector('.container');
@@ -19,7 +19,7 @@ openBtn.addEventListener("click", () => {
     newsContent.style.display = "none";
     instrOptBkg.classList.remove("active")
     instrOptContainer.classList.remove("active")
-    
+    grid.style.display='none'
 })
 
 content.addEventListener("click", () => {
@@ -27,7 +27,7 @@ content.addEventListener("click", () => {
     aboutUsContainer.style.display = 'none';
 })
 
-// panels
+//! panels
 
 const panels = document.querySelectorAll('.panel');
 panels.forEach(panel => {
@@ -55,8 +55,9 @@ function pageScroll() {
 seeInstruments.addEventListener("click", () => {
     grid.classList.add("active");
     hideNav();
+    pageScroll();
 })
-//Slide-animation
+//!Slide-animation
 const slide1 = document.querySelector('.content-slide.one');
 const slide2 = document.querySelector('.content-slide.two');
 const slide3 = document.querySelector('.content-slide.three');
@@ -125,7 +126,7 @@ slideAnimation("acordeon", ".seven");
 
 
 
-    //FAQ
+    //!FAQ
 
     
     
@@ -157,7 +158,7 @@ addFAQ.forEach(FAQ => {
 }
     
 
-    //contact form
+    //!contact form
 
 
 
@@ -208,7 +209,7 @@ function validateForm() {
 };
     
 
-    // !Do something with data
+/////////    !Do something with data//////
     
 
 function processFormData(event) {
@@ -218,7 +219,7 @@ function processFormData(event) {
         storeFormData();
     }
 }
-    //About-us
+    //!About-us
 
 
 
@@ -267,14 +268,14 @@ aboutUsContainer.addEventListener("click", (event) => {
 })
 
 
-//NEWS
+//!NEWS
     
 const newsBtn = document.querySelector('.news-btn');
 const newsContent = document.querySelector('.card-container');
 newsBtn.addEventListener("click", () => {
     hideNav();
     pageScroll();
-    console.log("click");
+   
     newsContent.style.display = "block";
     
 })
@@ -285,7 +286,7 @@ newsContent.addEventListener("click", (event)=>{
     event.stopPropagation();
 })
  
-//INSTRUMENTE
+//!INSTRUMENTE
 const instrOptBkg = document.querySelector(".instr-options-background");
 const instrOptContainer =document.querySelector(".instr-options-container")
 const instrBtn = document.querySelector(".instruments-btn")
@@ -316,30 +317,95 @@ container.addEventListener("click", () => {
     document.querySelector(".filter-tab").classList.remove("visible")
 })
 
-// FILTER INSTRUMENTS
-const allCheckboxes = document.querySelectorAll('.instruments-check')
-const allInstruments =document.querySelectorAll('.instrument')
+//! FILTER INSTRUMENTS
+
+
 let doubleHandleSlider = document.querySelector('.double-handle-slider');
 let minValInput = document.querySelector('.min-value');
 let maxValInput = document.querySelector('.max-value');
-const instrument = document.querySelector(".instrument");
-const instrPrice = document.querySelector(".price");
-const description = document.querySelector(".instrument-description");
-const instrImage = document.querySelector(".instrument-image")
 
-let minPrice;
-let maxPrice;
+const instruments = Array.from(document.querySelectorAll(".instrument"));
 
-console.log(instrPrice.innerHTML);
+const searchBtn = document.querySelector(".search-btn")
+const getInstrumentType = function () {
+
+    let instrumentType = instruments.map(function (type) {
+        return type.getAttribute('instrumentType');
+    })
+    return instrumentType.filter(function (type, index) {
+        return instrumentType.indexOf(type) === index;
+    })
+}
+
+
+
+const filterTab = document.querySelector(".checkboxes-container");
+const renderChecklist = function (types) {
+    filterTab.innerHTML = types.map(function (type) {
+        const htmlCheckbox =
+            `<label class="checkbox-container">
+            <input type="checkbox" filter="${type }"> ${type}<span class="checkmark"></span></label>`;
+       
+        return htmlCheckbox;
+       
+    }).join('');
+};
+const types = getInstrumentType();
+
+renderChecklist(types);
+
+
+const clickHandler = function (event) {
+    const filter = event.target.getAttribute('filter');
+    if (!filter) return;
+   const grid = document.querySelector(".grid")
+    const instrumentsByType = grid.querySelectorAll(`div[instrumentType="${ filter }"]`)
+    searchBtn.addEventListener("click", () => {
+        if (event.target.checked) {
+            let filtered = instruments.filter(function (instrument) {
+                return instrument.getAttribute('instrumentType')===filter
+            })
+            filtered.forEach(function(instruments){
+    instruments.removeAttribute("hidden")
+            })        
+        }
+        else {
+            instrumentsByType.forEach(instrument => {
+                instrument.setAttribute("hidden", 'true')
+            });
+        };
+        grid.style.display='flex'
+        hideNav();
+        pageScroll();
+    })
+};
+
+document.documentElement.addEventListener("click", clickHandler, false);
+
+
+
+
+const prices = Array.from(document.querySelectorAll('.price'));
+let priceList = prices.map(function (price) {
+    return Number(price.innerHTML);
+})
+
+const maxPrice = Math.max(...priceList);
+const minPrice = Math.min(...priceList)
+
+
+
+
+
 const sliderFunction =function() {
 	noUiSlider.create(doubleHandleSlider, {
-		start: [ 0, 10000 ],
+		start: [ minPrice, maxPrice],
 		connect: true,
 		tooltips:false,
-		step: 1,
+		step: 10,
 		range: {
-			'min': [ 0  ],
-			'max': [Number(instrPrice.innerHTML)]
+			'min': [minPrice],
+			'max': [maxPrice]
 		},
 		format: {
 			to: function(value) {
@@ -378,13 +444,18 @@ const sliderFunction =function() {
       
 };
 sliderFunction();
-// doubleHandleSlider.addEventListener("click", () => {
-//    minPrice = doubleHandleSlider.noUiSlider.get([0, null]);
-//     maxPrice = doubleHandleSlider.noUiSlider.get([null, 1]);
-// })
+doubleHandleSlider.addEventListener("click", () => {
+    let minWantedPrice = Math.min(...doubleHandleSlider.noUiSlider.get([0, null]));
+    let maxWantedPrice = Math.max(...doubleHandleSlider.noUiSlider.get([null, 1]));
+    const insrumentPricesClass = Array.from(document.querySelectorAll(".instrument>h6"));
 
 
-// Testimonials
+})
+
+
+
+
+//! Testimonials
 
 
     const tesimonialContainer = document.querySelector(".testimonial-container")
