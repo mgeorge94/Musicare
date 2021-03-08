@@ -1093,11 +1093,11 @@ button:focus {
 }
 .slider > .thumb.left {
   left: 25%;
-  transform: translate(-60px, -10px);
+  transform: translate(-15px, -10px);
 }
 .slider > .thumb.right {
   right: 25%;
-  transform: translate(60px, -10px);
+  transform: translate(15px, -10px);
 }
 .slider > .thumb.hover {
   box-shadow: 0 0 0 20px rgba(238, 0, 0, 0.1);
