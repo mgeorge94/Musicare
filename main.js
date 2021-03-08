@@ -344,7 +344,7 @@ const renderChecklist = function (types) {
     filterTab.innerHTML = types.map(function (type) {
         const htmlCheckbox =
             `<label class="checkbox-container">
-            <input type="checkbox" filter="${type }"> ${type}<span class="checkmark"></span></label>`;
+            <input type="checkbox" filter="${type}"> ${type}<span class="checkmark"></span></label>`;
        
         return htmlCheckbox;
        
@@ -382,13 +382,43 @@ const clickHandler = function (event) {
 
 document.documentElement.addEventListener("click", clickHandler, false);
 
-
-
-
-const prices = Array.from(document.querySelectorAll('.price'));
-let priceList = prices.map(function (price) {
+(function (price) {
+  
     return Number(price.innerHTML);
 })
+
+
+const prices = Array.from(document.querySelectorAll('.instrument>h6'));
+let priceList = prices.map(function (price) {
+    price.setAttribute('price',`${Number(price.innerHTML)}`)
+    return Number(price.innerHTML);
+})
+
+const priceAttribute = function () {
+    for (let j = 0; j < priceAtr.length; j++){
+        priceAtr[j].setAttribute('price', `${curr}`)
+   
+    for (let i = 0; i < priceList.length; i++){
+        const curr = priceList[i];
+        let priceAtr = Array.from(document.querySelectorAll(".instrument"))
+        
+    }
+       
+    }
+}
+priceAttribute();
+//////////////////////////////
+
+// const renderChecklist = function (types) {
+//     filterTab.innerHTML = types.map(function (type) {
+//         const htmlCheckbox =
+//             `<label class="checkbox-container">
+//             <input type="checkbox" filter="${type}"> ${type}<span class="checkmark"></span></label>`;
+       
+//         return htmlCheckbox;
+//     }).join('');
+
+    ////////////////////////////////////
 
 const maxPrice = Math.max(...priceList);
 const minPrice = Math.min(...priceList)
@@ -433,8 +463,6 @@ const sliderFunction =function() {
             doubleHandleSlider.noUiSlider.set([this.value, null]
                
             );
-           
-           
     });
 	
         maxValInput.addEventListener('change', function () {
@@ -444,13 +472,15 @@ const sliderFunction =function() {
       
 };
 sliderFunction();
+
 doubleHandleSlider.addEventListener("click", () => {
     let minWantedPrice = Math.min(...doubleHandleSlider.noUiSlider.get([0, null]));
     let maxWantedPrice = Math.max(...doubleHandleSlider.noUiSlider.get([null, 1]));
-    const insrumentPricesClass = Array.from(document.querySelectorAll(".instrument>h6"));
+    let priceRange = prices.filter(function (price) {
+     return  price.getAttribute("price")>minWantedPrice &&  price.getAttribute("price")<maxWantedPrice
+    })
+    console.log(priceRange);
 })
-
-
 
 
 
