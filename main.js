@@ -301,15 +301,16 @@ instrBtn.addEventListener("click", ()=>{
 if (screenWidth < 700) {
     cautaBtn.addEventListener("click", () => { 
         
-        hideNav();
+       hideNav();
         document.querySelector(".filter-tab").classList.add("visible")
+        
         console.log("clicked small screen");
         
     })  
 }
 else  if (screenWidth > 700) {
     cautaBtn.addEventListener("click", () => { 
-        nav.forEach(navElement => navElement.classList.add('visible'));
+        // nav.forEach(navElement => navElement.classList.add('visible'));
         document.querySelector(".filter-tab").classList.add("visible")
     })
 }
@@ -317,170 +318,8 @@ container.addEventListener("click", () => {
     document.querySelector(".filter-tab").classList.remove("visible")
 })
 
-//! FILTER INSTRUMENTS
 
 
-let doubleHandleSlider = document.querySelector('.double-handle-slider');
-let minValInput = document.querySelector('.min-value');
-let maxValInput = document.querySelector('.max-value');
-
-const instruments = Array.from(document.querySelectorAll(".instrument"));
-
-const searchBtn = document.querySelector(".search-btn")
-const getInstrumentType = function () {
-
-    let instrumentType = instruments.map(function (type) {
-        return type.getAttribute('instrumentType');
-    })
-    return instrumentType.filter(function (type, index) {
-        return instrumentType.indexOf(type) === index;
-    })
-}
-
-
-
-const filterTab = document.querySelector(".checkboxes-container");
-const renderChecklist = function (types) {
-    filterTab.innerHTML = types.map(function (type) {
-        const htmlCheckbox =
-            `<label class="checkbox-container">
-            <input type="checkbox" filter="${type}"> ${type}<span class="checkmark"></span></label>`;
-       
-        return htmlCheckbox;
-       
-    }).join('');
-};
-const types = getInstrumentType();
-
-renderChecklist(types);
-
-
-const clickHandler = function (event) {
-    const filter = event.target.getAttribute('filter');
-    if (!filter) return;
-   const grid = document.querySelector(".grid")
-    const instrumentsByType = grid.querySelectorAll(`div[instrumentType="${ filter }"]`)
-    searchBtn.addEventListener("click", () => {
-        if (event.target.checked) {
-            let filtered = instruments.filter(function (instrument) {
-                return instrument.getAttribute('instrumentType')===filter
-            })
-            filtered.forEach(function(instruments){
-    instruments.removeAttribute("hidden")
-            })        
-        }
-        else {
-            instrumentsByType.forEach(instrument => {
-                instrument.setAttribute("hidden", 'true')
-            });
-        };
-        grid.style.display='flex'
-        hideNav();
-        pageScroll();
-    })
-};
-
-document.documentElement.addEventListener("click", clickHandler, false);
-
-(function (price) {
-  
-    return Number(price.innerHTML);
-})
-
-
-const prices = Array.from(document.querySelectorAll('.instrument>h6'));
-let priceList = prices.map(function (price) {
-    price.setAttribute('price',`${Number(price.innerHTML)}`)
-    return Number(price.innerHTML);
-})
-
-// const priceAttribute = function () {
-//     for (let j = 0; j < priceAtr.length; j++){
-//         priceAtr[j].setAttribute('price', `${curr}`)
-   
-//     for (let i = 0; i < priceList.length; i++){
-//         const curr = priceList[i];
-//         let priceAtr = Array.from(document.querySelectorAll(".instrument"))
-        
-//     }
-       
-//     }
-// }
-// priceAttribute();
-//////////////////////////////
-
-// const renderChecklist = function (types) {
-//     filterTab.innerHTML = types.map(function (type) {
-//         const htmlCheckbox =
-//             `<label class="checkbox-container">
-//             <input type="checkbox" filter="${type}"> ${type}<span class="checkmark"></span></label>`;
-       
-//         return htmlCheckbox;
-//     }).join('');
-
-    ////////////////////////////////////
-
-const maxPrice = Math.max(...priceList);
-const minPrice = Math.min(...priceList)
-
-
-
-
-
-const sliderFunction =function() {
-	noUiSlider.create(doubleHandleSlider, {
-		start: [ minPrice, maxPrice],
-		connect: true,
-		tooltips:false,
-		step: 10,
-		range: {
-			'min': [minPrice],
-			'max': [maxPrice]
-		},
-		format: {
-			to: function(value) {
-				return value;
-			},
-			from: function(value) {
-				return value;
-			}
-		},
-      
-	});
-	
-	doubleHandleSlider.noUiSlider.on('change', function( values, handle ) { 
-
-		var val = values[handle]; // 0 or 1
-		
-		if(handle) {
-			maxValInput.value = Math.round(val) ;
-		} else {
-            minValInput.value = Math.round(val);
-		}
-	});
-
-        minValInput.addEventListener('change', function () {
-            doubleHandleSlider.noUiSlider.set([this.value, null]
-               
-            );
-    });
-	
-        maxValInput.addEventListener('change', function () {
-    
-	doubleHandleSlider.noUiSlider.set([null, this.value]);
-        });
-      
-};
-sliderFunction();
-
-doubleHandleSlider.addEventListener("click", () => {
-    let minWantedPrice = Math.min(...doubleHandleSlider.noUiSlider.get([0, null]));
-    let maxWantedPrice = Math.max(...doubleHandleSlider.noUiSlider.get([null, 1]));
-    let priceRange = prices.filter(function (price) {
-     return  price.getAttribute("price")>minWantedPrice &&  price.getAttribute("price")<maxWantedPrice
-    })
-    console.log(priceRange);
-})
 
 
 
