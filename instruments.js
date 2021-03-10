@@ -122,7 +122,7 @@ function getInstruments() {
         <p class="instrument-description">${ description }</p>
         </div>`;
         // Insert the html to the end of every iteration
-        instrumentsContainer.insertAdjacentHTML('beforeend', instrumentsHTML);
+        instrumentsContainer.insertAdjacentHTML('afterbegin', instrumentsHTML);
         //make instrument array
         instrArr.push(instrument.type)
         
@@ -305,33 +305,34 @@ doubleHandleSlider.addEventListener("click", () => {
 
 
 //testing new stuf
-
-const instrumentCard = document.querySelectorAll(".instrument")
+let wasCalled= false;
+const instrumentCard = Array.from(document.querySelectorAll(".instrument"))
+console.log(instrumentCard);
 instrumentCard.forEach(function (instrument) {
-    let wasCalled= false;
+    
     let onlyOnce = function () {
         
         instrument.addEventListener("click", () => {
             if (!wasCalled) {
                 instrument.classList.add("active")
-                wascalled = true
+                wasCalled = true
             }
-        
-        })
-        
-            
-        
-        
-    }
-        
-    onlyOnce();
-    
+            instrumentCard.filter(function (instrument) {
+                return !instrument.classList.contains("active")
+            }).forEach(function (instrument) {
+                instrument.setAttribute("hidden", "true")
+            });
+            grid.style.display = 'flex'
+        });
+
+    };
+    onlyOnce();  
 })
 
 //on click instrument image slider
 const imageSliderContainer = document.querySelector(".image-slider-container");
-const sliderBtnLeft = document.querySelector("#btn-left");
-const sliderBtnRight = document.querySelector("#btn-right");
+const sliderBtnUp = document.querySelector("#btn-up");
+
 let sliderIndex = 0;
 // imagesArray
 const moreImages = [
@@ -385,14 +386,9 @@ moreImages.forEach(function (image) {
 const image = imageSliderContainer.querySelectorAll("img");
 
 //Make slider move
-sliderBtnRight.addEventListener("click", function () {
+sliderBtnUp.addEventListener("click", function () {
+    console.log("pula in pizda massiiii");
     sliderIndex++
-    changeImage();
-   
- 
-});
-sliderBtnLeft.addEventListener("click", function () {
-    sliderIndex--
     changeImage();
  
 });
@@ -402,5 +398,5 @@ const changeImage = function(){
     } else if (sliderIndex < 0) {
         sliderIndex = image.length - 1;
     }
-    imageSliderContainer.style.transform = `translateX(${-sliderIndex *100}%)`
+    imageSliderContainer.style.transform = `translateY(${-sliderIndex *90}vh)`
 }
