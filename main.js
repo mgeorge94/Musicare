@@ -333,7 +333,7 @@ container.addEventListener("click", () => {
     const userImage = document.querySelector(".user-image")
     const username = document.querySelector(".username")
     const role = document.querySelector(".role")
-
+    let testimonialIndex =0;
     const testimoniale = [
         {
             name: 'Georgiana Mihailă',
@@ -361,15 +361,16 @@ container.addEventListener("click", () => {
         }
     ]
     
-    function updateTestimonial() {
-        const { name, position, photo, text } = testimoniale[index];
+function updateTestimonial() {
+    
+        const { name, position, photo, text } = testimoniale[testimonialIndex];
         testimonial.innerHTML = text
         userImage.src = photo;
         username.innerHTML = name;
         role.innerHTML = position;
-        index++;
-        if (index > testimoniale.length - 1) {
-            index = 0;
+        testimonialIndex++;
+        if (testimonialIndex > testimoniale.length - 1) {
+            testimonialIndex = 0;
         }
     }
     setInterval(updateTestimonial, 10000)

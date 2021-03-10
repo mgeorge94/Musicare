@@ -13,6 +13,25 @@ const searchBtn = document.querySelector(".search-btn")
 // Instruments object aray
 
 const allInstruments = [
+
+    {
+        type: 'Clarinet',
+        price: 932,
+        description: ' Lorem, FLAUT dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
+        picture: "https://i.pinimg.com/originals/44/5b/8a/445b8a829cf2c88e83e73884671030c2.jpg"
+    },
+    {
+        type: 'Clarinet',
+        price: 589,
+        description: ' Lorem, FLAUT dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
+        picture: "https://sc04.alicdn.com/kf/HTB1F4NxHVXXXXbwXXXXq6xXFXXXk.jpg"
+    },
+    {
+        type: 'Clarinet',
+        price: 8300,
+        description: ' Lorem, FLAUT dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
+        picture: "http://static1.squarespace.com/static/57f8eaa2f5e231f7e7a8e07f/58ca7a6c1b631b18af872428/58d04718e3df284bada517f3/1588434729879/25FEBA3B-DED0-4F26-B0B1-DF548861FF6A_1_201_a.jpeg?format=1500w"
+    },
     {
         type: 'Flaut',
         price: 2500,
@@ -152,7 +171,7 @@ const instruments = Array.from(document.querySelectorAll("div.instrument"));
 const clickHandler = function (event) {
     const filter = event.target.getAttribute('filter');
     if (!filter) return;
-    const instruments = Array.from(document.querySelectorAll("div.instrument"));
+    
     const instrumentsByType = instrumentsContainer.querySelectorAll(`div[instrumentType="${ filter }"]`)
     searchBtn.addEventListener("click", () => {
         if (event.target.checked) {
@@ -230,6 +249,33 @@ doubleHandleSlider.addEventListener("click", () => {
     let maxWantedPrice = Math.max(...doubleHandleSlider.noUiSlider.get([null, 1]));
 
     //filterByPrice
+
+
+
+    doubleHandleSlider.addEventListener('start', () => {
+        searchBtn.addEventListener("click", () => {
+
+            if (doubleHandleSlider.event) {
+                console.log("clicked on handle");
+                let filtered = instruments.filter(function (instrument) {
+                    return instrument.getAttribute('instrumenttype') === filter
+                })
+                filtered.forEach(function (instruments) {
+                    instruments.removeAttribute("hidden")
+                })
+            }
+            else {
+                instrumentsByType.forEach(instrument => {
+                    instrument.setAttribute("hidden", 'true')
+                });
+            };
+            grid.style.display = 'flex'
+            hideNav();
+            pageScroll
+        });
+    });
+    
+    
     // searchBtn.addEventListener("click", function () {
     //     const priceFilter = function () {
     //         allInstruments.forEach(function (instrument) {
@@ -251,12 +297,110 @@ doubleHandleSlider.addEventListener("click", () => {
     //        })
             
     //     };
-    //     priceFilter();
-    //     grid.style.display='flex'
-    //     hideNav();
-    //     pageScroll();
-    // })
+        
+})
 
+    
+// })
+
+
+//testing new stuf
+
+const instrumentCard = document.querySelectorAll(".instrument")
+instrumentCard.forEach(function (instrument) {
+    let wasCalled= false;
+    let onlyOnce = function () {
+        
+        instrument.addEventListener("click", () => {
+            if (!wasCalled) {
+                instrument.classList.add("active")
+                wascalled = true
+            }
+        
+        })
+        
+            
+        
+        
+    }
+        
+    onlyOnce();
     
 })
 
+//on click instrument image slider
+const imageSliderContainer = document.querySelector(".image-slider-container");
+const sliderBtnLeft = document.querySelector("#btn-left");
+const sliderBtnRight = document.querySelector("#btn-right");
+let sliderIndex = 0;
+// imagesArray
+const moreImages = [
+    {
+        name:"yamaha211",
+        picture1: "https://www.garylewisflutes.com/wp-content/uploads/2020/11/Bonneville3924-1.jpg",
+        picture2: "https://res.cloudinary.com/flute-specialists-inc/images/f_auto,q_auto/w_500,h_298,c_fill,g_auto/v1586819476/Armstrong-80N3663-Retake-1-1/Armstrong-80N3663-Retake-1-1-500x298.jpg",
+        picture3: "https://d3re0f381bckq9.cloudfront.net/3586509_flute_1600x1200.jpg",
+        picture4:"https://d3re0f381bckq9.cloudfront.net/3586509_flute_1600x1200.jpg"
+    },
+    {
+        name:'yamaha881',
+        picture1: "https://www.garylewisflutes.com/wp-content/uploads/2020/11/Bonneville3924-1.jpg",
+        picture2: "https://res.cloudinary.com/flute-specialists-inc/images/f_auto,q_auto/w_500,h_298,c_fill,g_auto/v1586819476/Armstrong-80N3663-Retake-1-1/Armstrong-80N3663-Retake-1-1-500x298.jpg",
+        picture3: "https://d3re0f381bckq9.cloudfront.net/3586509_flute_1600x1200.jpg",
+        picture4:"https://d3re0f381bckq9.cloudfront.net/3586509_flute_1600x1200.jpg"
+    },
+    {
+        name: 'muramatsuheavy',
+        picture1: "https://www.garylewisflutes.com/wp-content/uploads/2020/11/Bonneville3924-1.jpg",
+        picture2: "https://res.cloudinary.com/flute-specialists-inc/images/f_auto,q_auto/w_500,h_298,c_fill,g_auto/v1586819476/Armstrong-80N3663-Retake-1-1/Armstrong-80N3663-Retake-1-1-500x298.jpg",
+        picture3: "https://d3re0f381bckq9.cloudfront.net/3586509_flute_1600x1200.jpg",
+        picture4:"https://d3re0f381bckq9.cloudfront.net/3586509_flute_1600x1200.jpg"
+    },
+    {
+        name:'sankyo84567',
+        picture1: "https://www.garylewisflutes.com/wp-content/uploads/2020/11/Bonneville3924-1.jpg",
+        picture2: "https://res.cloudinary.com/flute-specialists-inc/images/f_auto,q_auto/w_500,h_298,c_fill,g_auto/v1586819476/Armstrong-80N3663-Retake-1-1/Armstrong-80N3663-Retake-1-1-500x298.jpg",
+        picture3: "https://d3re0f381bckq9.cloudfront.net/3586509_flute_1600x1200.jpg",
+        picture4:"https://d3re0f381bckq9.cloudfront.net/3586509_flute_1600x1200.jpg"
+    }
+]
+moreImages.forEach(function (image) {
+    
+    pic1 = image.picture1;
+    pic2 = image.picture2;
+    pic3 = image.picture3;
+    pic4 = image.picture4;
+    instrName = image.name;
+     
+
+    //\ HTML
+    const htmlIstrumentImg =
+        `<img src="${ pic1 }" name = "${instrName} " alt="">
+        <img src="${ pic2 }" alt="">
+        <img src="${ pic3 }" alt="">
+        <img src="${ pic4 }" alt="">`
+    //insertt html to the end of every iteration
+     imageSliderContainer.insertAdjacentHTML("beforeend",htmlIstrumentImg)
+})
+const image = imageSliderContainer.querySelectorAll("img");
+
+//Make slider move
+sliderBtnRight.addEventListener("click", function () {
+    sliderIndex++
+    changeImage();
+   
+ 
+});
+sliderBtnLeft.addEventListener("click", function () {
+    sliderIndex--
+    changeImage();
+ 
+});
+const changeImage = function(){
+    if (sliderIndex > image.length -1) {
+   sliderIndex = 0 
+    } else if (sliderIndex < 0) {
+        sliderIndex = image.length - 1;
+    }
+    imageSliderContainer.style.transform = `translateX(${-sliderIndex *100}%)`
+}
