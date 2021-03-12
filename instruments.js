@@ -233,36 +233,24 @@ const filteredInstruments = function (event, instrArray) {
 		document.querySelector('.error-on-filter').style.display = 'none';
 		searchBtn.addEventListener('click', () => {
 			//! filter by price doesnt work together with filter by name
-			// filterBy name
-			instruments.forEach((element) => {
-				if (checkboxChecked !== element.dataset.instrumenttype) {
-					element.setAttribute('hidden', 'true');
-				} else {
-					element.removeAttribute('hidden');
-				}
-			});
 			let minWantedPrice = Math.round(
 				Math.min(...doubleHandleSlider.noUiSlider.get([0, null]))
 			);
 			let maxWantedPrice = Math.round(
 				Math.max(...doubleHandleSlider.noUiSlider.get([null, 1]))
 			);
-			//filterBy price
-			// instruments.forEach((element) => {
-			// 	console.log(element.dataset.price);
-			// 	console.log(minWantedPrice, maxWantedPrice);
-			// 	if (
-			// 		element.dataset.price >= minWantedPrice &&
-			// 		element.dataset.price <= maxWantedPrice
-			// 	) {
-			// 		element.removeAttribute('hidden');
-			// 		console.log('bravo tati');
-			// 	} else {
-			// 		console.log('sugi pula');
-			// 		element.setAttribute('hidden', 'true');
-			// 	}
-			// });
-
+			// filter Instruments
+			instruments.forEach((element) => {
+				if (
+					checkboxChecked === element.dataset.instrumenttype &&
+					element.dataset.price >= minWantedPrice &&
+					element.dataset.price <= maxWantedPrice
+				) {
+					element.removeAttribute('hidden');
+				} else {
+					element.setAttribute('hidden', 'true');
+				}
+			});
 			grid.style.display = 'flex';
 			hideNav();
 		});
