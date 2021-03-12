@@ -83,7 +83,7 @@ body {
   animation: slideUp 2.4s ease-in forwards;
   animation-delay: 0.3s;
 }
-.slider {
+.intro-pic .slider {
   width: 40vw;
   bottom: 0;
   left: 0;
@@ -213,6 +213,11 @@ body {
   font-style: normal;
   position: fixed;
 }
+.error-on-filter {
+  font-size: 1em;
+  color: red;
+  display: none;
+}
 .filter-tab.visible {
   transform: translateX(0px);
   z-index: 400;
@@ -241,7 +246,7 @@ body {
   display: block;
 }
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }
@@ -265,6 +270,7 @@ body {
   width: 20%;
   padding: 10px;
   margin: 2rem;
+  margin-right: 0px;
   background: rgb(43, 43, 43);
   border-radius: 50px;
   color: rgb(255, 255, 255);
@@ -286,7 +292,7 @@ body {
 
 /* Clear floats */
 form.example::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
@@ -319,7 +325,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -395,7 +401,7 @@ input[type="number"] {
 /* Title */
 .hero {
   color: #222;
-  font-family: "Bebas Neue";
+  font-family: 'Bebas Neue';
   font-size: 2rem;
   display: flex;
   justify-content: center;
@@ -675,7 +681,7 @@ input:valid {
   margin-bottom: 2rem;
 }
 button:hover {
-  filter: brightness("200%");
+  filter: brightness('200%');
   background: #d8d8d8;
 }
 button:focus {
@@ -847,12 +853,15 @@ button:focus {
   background-color: rgb(35, 35, 35);
   border-radius: 15px;
   overflow: hidden;
-  min-width: 20rem;
-  max-width: 31%;
   position: relative;
-  margin: 1rem auto;
-  box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
   margin: 1rem;
+  box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.grid > * {
+  flex-basis: 400px;
+  flex-grow: 1;
 }
 .instrument-image {
   position: relative;
@@ -868,6 +877,7 @@ button:focus {
 
 /* testing  new stuf */
 .box.active {
+  top: 0px;
   border-top-right-radius: 0%;
   border-bottom-right-radius: 0%;
 
@@ -882,7 +892,7 @@ button:focus {
   border: 0px;
 }
 .price {
-  font-family: "Bebas Neue";
+  font-family: 'Bebas Neue';
   font-size: 2rem;
   color: #bababa;
   margin-top: 2rem;
@@ -910,7 +920,7 @@ button:focus {
 
 /* INSTRUMENT PICTURE SLIDE*/
 .instrument-picture-container {
-  display: flex;
+  display: none;
 
   align-items: center;
   justify-content: center;
@@ -926,6 +936,7 @@ button:focus {
 }
 .image-slider-container {
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   transform: translateY(0);
   transition: transform 0.5s ease-in-out;
@@ -934,7 +945,15 @@ button:focus {
   height: 90vh;
   background-size: cover;
 }
-.slider-buttons {
+
+.slider-buttons:hover {
+  color: #a3a3a3;
+}
+.slider-buttons:focus {
+  outline: none;
+}
+
+.fa-arrow-up {
   position: absolute;
   top: 75%;
   z-index: 100;
@@ -945,15 +964,6 @@ button:focus {
   font-size: 1rem;
   padding: 1rem;
   outline: none;
-}
-.slider-buttons:hover {
-  color: #a3a3a3;
-}
-.slider-buttons:focus {
-  outline: none;
-}
-
-.fa-arrow-up {
   left: 0rem;
   border-bottom-right-radius: 6px;
   border-top-right-radius: 6px;
@@ -1020,9 +1030,12 @@ button:focus {
 /* fixes for small screns */
 
 @media screen and (max-width: 700px) {
+  .intro-pic {
+    width: 100%;
+  }
+
   .aboutUs-container {
     width: 96vw;
-    height: 60vh;
   }
   .sumus {
     font-size: 0.9rem;
@@ -1054,6 +1067,31 @@ button:focus {
   .action-buttons button {
     font-size: 0.7rem;
     padding: 0.5rem;
+  }
+
+  .box.active {
+    height: 60vh;
+  }
+  .instrumnet-image-slider {
+    height: 60vh;
+  }
+  .image-slider-container img {
+    height: 60vh;
+  }
+
+  .fa-arrow-up {
+    position: absolute;
+    left: 0%;
+    top: 84%;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+  }
+  .instrument-image {
+    height: 8rem;
+  }
+  .price {
+    font-size: 1rem;
+    padding-top: 1rem;
   }
 
   @media screen and (max-width: 500px) {
@@ -1196,7 +1234,7 @@ body {
   box-shadow: 0 0 0 40px rgba(98, 0, 238, 0.2);
 }
 
-input[type="range"] {
+input[type='range'] {
   position: absolute;
   pointer-events: none;
   -webkit-appearance: none;
@@ -1205,7 +1243,7 @@ input[type="range"] {
   width: 100%;
   opacity: 0;
 }
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   pointer-events: all;
   width: 30px;
   height: 30px;
