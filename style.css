@@ -1122,6 +1122,85 @@ button:focus {
 		max-width: 250px;
 		float: left;
 	}
+
+	.grid {
+		width: 96vw;
+	}
+
+	/* testing  new stuf */
+
+	.box.active {
+		top: -45rem;
+		position: absolute;
+		min-width: 100%;
+		height: 15rem;
+		border-top-right-radius: 15px;
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
+		box-shadow: 0px 6px 6px 2px rgba(0, 0, 0, 0.8);
+		z-index: 2;
+	}
+	.price {
+		padding-top: 1rem;
+	}
+	.box.active > img {
+		display: none;
+	}
+
+	/* INSTRUMENT PICTURE SLIDE*/
+	.instrument-picture-container {
+		top: -35rem;
+		right: 0px;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		position: absolute;
+	}
+
+	.instrumnet-image-slider {
+		box-shadow: 0px 6px 6px 2px rgba(0, 0, 0, 0.4);
+		min-width: 100%;
+		height: 32rem;
+		overflow: hidden;
+
+		border-top-right-radius: 15px;
+		border-bottom-left-radius: 15px;
+	}
+	.image-slider-container {
+		display: flex;
+		overflow: hidden;
+		flex-direction: column;
+		transform: translateY(0);
+		transition: transform 0.5s ease-in-out;
+	}
+	.image-slider-container img {
+		height: 80vh;
+		object-fit: cover;
+	}
+
+	.slider-buttons:hover {
+		color: #a3a3a3;
+	}
+	.slider-buttons:focus {
+		outline: none;
+	}
+
+	.fa-arrow-up {
+		position: absolute;
+		top: 75%;
+		z-index: 100;
+		background-color: rgba(51, 51, 51, 0.4);
+		color: rgb(255, 255, 255);
+		border: none;
+		cursor: pointer;
+		font-size: 1rem;
+		padding: 1rem;
+		outline: none;
+		left: 0rem;
+		border-bottom-right-radius: 6px;
+		border-top-right-radius: 6px;
+	}
 }
 
 /* slider-config */

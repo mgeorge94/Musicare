@@ -491,7 +491,7 @@ const filteredInstruments = function (event) {
 								}
 								if (window.screen.width < 700) {
 									imageSliderContainer.style.transform = `translateY(${
-										-sliderIndex * 30
+										-sliderIndex * 80
 									}vh)`;
 								} else if (window.screen.width > 700) {
 									imageSliderContainer.style.transform = `translateY(${
@@ -504,8 +504,12 @@ const filteredInstruments = function (event) {
 							removeInstrumentActive();
 
 							instrument.classList.add('active');
-							grid.style.margin = '35rem auto';
 							morePictures.style.display = 'flex';
+							if (window.screen.width < 500) {
+								grid.style.margin = '47rem auto';
+							} else if (window.screen.width > 500) {
+								grid.style.margin = '35rem auto';
+							}
 
 							pageScroll();
 						});
