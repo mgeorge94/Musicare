@@ -22,11 +22,6 @@ openBtn.addEventListener('click', () => {
 content.addEventListener('click', () => {
 	hideNav();
 	aboutUsContainer.style.display = 'none';
-	instruments.forEach(function (instrument) {
-		instrument.removeAttribute('hidden');
-		instrument.classList.remove('active');
-		morePictures.style.display = 'none';
-	});
 });
 
 //! panels
