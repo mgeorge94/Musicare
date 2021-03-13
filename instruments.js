@@ -1,5 +1,5 @@
 //varialbes
-
+const filterTab = document.querySelector('.filter-tab');
 const checkboxContainer = document.querySelector('.checkboxes-container');
 const instrumentsContainer = document.querySelector('.grid');
 const instrArr = [];
@@ -7,7 +7,7 @@ let doubleHandleSlider = document.querySelector('.double-handle-slider');
 let minValInput = document.querySelector('.min-value');
 let maxValInput = document.querySelector('.max-value');
 const searchBtn = document.querySelector('.search-btn');
-const filterTab = document.querySelector('.filter-tab');
+
 // Instruments object aray
 
 const allInstruments = [
@@ -228,11 +228,8 @@ const filteredInstruments = function (event, instrArray) {
 	// see if checkbox = checked
 	const checkboxChecked = event.target.getAttribute('filter');
 	if (!checkboxChecked) {
-		document.querySelector('.error-on-filter').style.display = 'block';
 	} else {
-		document.querySelector('.error-on-filter').style.display = 'none';
 		searchBtn.addEventListener('click', () => {
-			//! filter by price doesnt work together with filter by name
 			let minWantedPrice = Math.round(
 				Math.min(...doubleHandleSlider.noUiSlider.get([0, null]))
 			);
@@ -251,7 +248,9 @@ const filteredInstruments = function (event, instrArray) {
 					element.setAttribute('hidden', 'true');
 				}
 			});
-			grid.style.display = 'flex';
+			pageScroll();
+			filterTab.style.display = 'none';
+			grid.style.display = 'grid';
 			hideNav();
 		});
 	}
@@ -259,29 +258,25 @@ const filteredInstruments = function (event, instrArray) {
 filterTab.addEventListener('click', filteredInstruments, allInstruments, true);
 const morePictures = document.querySelector('.instrument-picture-container');
 //Instrument slider on instrument card click
-let wasCalled = false;
-const instrumentCard = Array.from(document.querySelectorAll('.instrument'));
-instrumentCard.forEach(function (instrument) {
-	let onlyOnce = function () {
-		instrument.addEventListener('click', () => {
-			if (!wasCalled) {
-				instrument.classList.add('active');
+instruments.forEach(function (instrument) {
+	let showActiveInstrument = function () {
+		instrument.addEventListener('click', (event) => {
+			event.stopPropagation();
+			removeInstrumentActive();
+			instrument.classList.add('active');
+			grid.style.margin = '35rem auto';
+			morePictures.style.display = 'flex';
 
-				morePictures.style.display = 'flex';
-				wasCalled = true;
-			}
-			instrumentCard.filter(function (instrument) {
-				return !instrument.classList.contains('active');
-			});
-			if (!instrument.classList.contains('active')) {
-				instrumentCard.forEach(function (instrument) {
-					instrument.setAttribute('hidden', 'true');
-				});
-			}
+			pageScroll();
 		});
 	};
-	onlyOnce();
+	showActiveInstrument();
 });
+function removeInstrumentActive() {
+	instruments.forEach(function (instrument) {
+		instrument.classList.remove('active');
+	});
+}
 
 //on click instrument image slider
 const imageSliderContainer = document.querySelector('.image-slider-container');
@@ -345,7 +340,8 @@ moreImages.forEach(function (image) {
 const image = imageSliderContainer.querySelectorAll('img');
 
 //Make slider move
-sliderBtnUp.addEventListener('click', function () {
+sliderBtnUp.addEventListener('click', function (event) {
+	event.stopPropagation();
 	sliderIndex++;
 	changeImage();
 });
@@ -356,8 +352,8 @@ const changeImage = function () {
 		sliderIndex = image.length - 1;
 	}
 	if (window.screen.width < 700) {
-		imageSliderContainer.style.transform = `translateY(${-sliderIndex * 60}vh)`;
+		imageSliderContainer.style.transform = `translateY(${-sliderIndex * 30}vh)`;
 	} else if (window.screen.width > 700) {
-		imageSliderContainer.style.transform = `translateY(${-sliderIndex * 90}vh)`;
+		imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
 	}
 };
