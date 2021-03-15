@@ -10,7 +10,6 @@ body {
 	bottom: 0rem;
 	right: 0rem;
 	background-color: rgb(255, 255, 255);
-
 	margin: 0;
 	display: flex;
 }
@@ -102,7 +101,126 @@ body {
 		transform: translateY(-500vh);
 	}
 }
+/* Split Landing page */
+.landingPage-container {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background: transparent;
+	z-index: 100;
+	overflow: hidden;
+}
+@keyframes hideLandingContainer {
+	0% {
+		top: 0px;
+	}
+	70% {
+		top: 0;
+	}
 
+	100% {
+		top: -1000%;
+	}
+}
+
+.split h1 {
+	font-family: 'Bebas Neue';
+	font-size: 3vw;
+	color: #bababa;
+	position: absolute;
+	left: 50%;
+	top: 20%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+}
+.landingPage-container button {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: 50%;
+	top: 40%;
+	transform: translateX(-50%);
+	background-color: rgba(31, 31, 31, 0.4);
+	border-radius: 15px;
+	border: none;
+	font-size: 0.8rem;
+
+	padding: 1.5rem;
+	cursor: pointer;
+}
+.landingPage-container button a {
+	text-decoration: none;
+	color: #bababa;
+	font-weight: bolder;
+}
+.landingPage-container button:hover,
+.landingPage-container button:focus {
+	background-color: rgba(31, 31, 31, 0.8);
+	color: rgb(40, 40, 40);
+}
+
+.landingPage-container button:focus {
+	background-color: rgba(31, 31, 31, 0.8);
+	color: rgb(55, 55, 55);
+}
+
+.split {
+	position: absolute;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+}
+.left {
+	background-image: url(../resources/splitLandingPage/landingPage-Left.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+@keyframes leftHide {
+	0% {
+		left: 0px;
+	}
+	100% {
+		left: -100%;
+	}
+}
+.right {
+	right: 0px;
+	background-image: url(../resources/splitLandingPage/landingPage-Right.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	box-shadow: -6px 0 5px rgba(0, 0, 0, 0.6);
+}
+@keyframes rightHide {
+	0% {
+		right: 0px;
+	}
+	100% {
+		right: -100%;
+	}
+}
+.hover-left .left {
+	box-shadow: 6px 0px 5px rgba(0, 0, 0, 0.6);
+	width: 65%;
+	z-index: 101;
+}
+.hover-left .right {
+	width: 35%;
+}
+.hover-right .right {
+	box-shadow: -6px 0 5px rgba(0, 0, 0, 0.6);
+	width: 65%;
+	z-index: 101;
+}
+.hover-right .left {
+	width: 35%;
+}
+.split.right,
+.split.left,
+.split.right:before,
+.split.left:before {
+	transition: width 0.8s ease-in-out;
+}
 /* pagina */
 .container {
 	top: 0%;
@@ -147,10 +265,18 @@ body {
 	color: white;
 	cursor: pointer;
 }
-.nav-bar button:hover {
+.nav-bar button:hover{
 	color: #bababa;
 	background-color: transparent;
+	outline:none;
 }
+.nav-bar button:focus {
+	color: #bababa;
+	background-color: transparent;
+	outline:none;
+}
+
+
 
 .nav {
 	position: fixed;
@@ -432,11 +558,21 @@ input[type='number'] {
 	background-color: white;
 	top: 0rem;
 	width: 100%;
-	height: 27rem;
+	height: 45rem;
 	z-index: 1;
 	position: absolute;
+	clip-path: polygon(0 0, 100% 1%, 100% 36%, 0 75%);
 	box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
+	animation: polygon 5s linear forwards;
 }
+/* @keyframes polygon {
+	0% {
+		clip-path: polygon(0 0, 100% 1%, 100% 36%, 0 75%);
+	}
+	100% {
+		clip-path: polygon(0 0, 100% 1%, 100% 31%, 100% 83%, 3% 44%);
+	} */
+/* } */
 .container-panel {
 	display: flex;
 	justify-content: center;
@@ -475,7 +611,7 @@ input[type='number'] {
 /* slide */
 
 .slide {
-	background-color: rgb(24 24 24);
+	background-color: rgb(35, 35, 35);
 	background-size: cover;
 	color: #fff;
 	position: relative;
@@ -485,7 +621,7 @@ input[type='number'] {
 	border-radius: 15px;
 	justify-content: center;
 	text-align: justify;
-	box-shadow: 2px 5px 4px 2px rgba(0, 243, 61, 0.6);
+	box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
 	animation: slide 0.5s ease-in-out forwards;
 }
 @keyframes slide {
@@ -503,19 +639,26 @@ input[type='number'] {
 	border-radius: 50%;
 	padding: 1.5rem;
 	animation: pop 1s ease-in-out forwards;
+	width:140px;
+	height:140px;
+	
+	object-fit:cover;
 }
 @keyframes pop {
 	0% {
+		height: 1rem;
 		width: 1rem;
-		height: auto;
+		
 	}
 	80% {
+		height: 9rem;
 		width: 9rem;
-		height: auto;
+		
 	}
 	100% {
+		height: 8rem;
 		width: 8rem;
-		height: auto;
+		
 	}
 }
 .content-slide {
@@ -528,13 +671,94 @@ input[type='number'] {
 	display: none;
 	min-height: 100%;
 }
-.content-slide h3 {
+.content-slide h3, h4 {
 	padding: 10px;
 }
+
+
 .slide-img {
+	border-radius:15px;
 	width: 100%;
 	position: relative;
+	padding:1rem;
+	
 }
+/* leftSlide slides */
+
+#avantaje{
+	position:absolute;
+	left:25%;
+	transform: translateX(-50%);
+	font-family: 'Bebas Neue';
+	font-size:1.7rem;
+	color:#bababa;
+	
+}
+#dezavantaje{
+	position:absolute;
+	right:25%;
+	transform: translateX(50%);
+	font-family: 'Bebas Neue';
+	font-size:1.7rem;
+	color:#bababa;
+}
+.slide-banner-image{
+	height:18rem;
+	width:100%;
+	object-fit:cover;
+	margin:1rem auto;
+	
+	
+}
+.advantages-disadvantages{
+
+	display:flex;
+	border-radius:15px;
+	grid-template-columns:2;
+	margin-top:2rem;
+	grid-template-rows:1;
+}
+
+.advantages-list{
+	width:48%;
+	float:left;
+	left:0px;
+	margin-right:2rem;
+	padding:1rem;
+	
+}
+.disadvantages-list{
+width:48%;
+float:right;
+padding:1rem;
+
+}
+.seeInstrument{
+	position:relative;
+	float:right;
+	background-color: rgba(51, 51, 51, 0.4);
+	
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	padding: 0.7rem;
+	outline: none;
+	width: fit-content;
+	border-radius: 6px;
+	font-family: 'Bebas Neue';
+	font-size: 1.1rem;
+	color: rgb(255, 255, 255);
+
+}
+.seeInstrument:hover {
+	
+	background-color:rgb(60, 60, 60);
+}
+.seeInstrument:focus {
+	outline: none;
+}
+
+
 
 /* Faq */
 h1 {
@@ -678,11 +902,11 @@ input:valid {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 }
-button:hover {
+.contact-button:hover {
 	filter: brightness('200%');
 	background: #d8d8d8;
 }
-button:focus {
+.contact-button:focus {
 	outline: none;
 }
 ::placeholder {
@@ -847,6 +1071,7 @@ button:focus {
 }
 
 /* instruments */
+
 .grid {
 	width: 90vw;
 	margin: 1rem auto;
@@ -875,8 +1100,6 @@ button:focus {
 	box-shadow: 0px 6px 6px 2px rgba(0, 0, 0, 0.4);
 	margin-bottom: 1rem;
 }
-
-/* testing  new stuf */
 
 .box.active {
 	top: -34rem;
@@ -955,6 +1178,30 @@ button:focus {
 	left: 0rem;
 	border-bottom-right-radius: 6px;
 	border-top-right-radius: 6px;
+}
+#buy {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+	z-index: 100;
+	background-color: rgba(51, 51, 51, 0.4);
+	color: rgb(255, 255, 255);
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	padding: 0.7rem;
+	outline: none;
+	width: fit-content;
+	border-radius: 6px;
+	font-family: 'Bebas Neue';
+	font-size: 1.4rem;
+	color: rgb(255, 255, 255);
+}
+#buy:hover {
+	color: #a3a3a3;
+}
+#buy:focus {
+	outline: none;
 }
 
 /* TESTIMONIALS */

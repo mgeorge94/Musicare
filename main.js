@@ -7,6 +7,7 @@ const openBtn = document.getElementById('open');
 const nav = document.querySelectorAll('.nav');
 const seeInstruments = document.querySelector('.see-instruments');
 const grid = document.querySelector('.grid');
+
 const hideNav = () => nav.forEach((navElement) => navElement.classList.remove('visible'));
 
 openBtn.addEventListener('click', () => {
@@ -17,98 +18,14 @@ openBtn.addEventListener('click', () => {
 	instrOptBkg.classList.remove('active');
 	instrOptContainer.classList.remove('active');
 	grid.style.display = 'none';
+	morePictures.style.display = 'none';
+	slideContainer.style.display = 'none';
 });
 
 content.addEventListener('click', () => {
 	hideNav();
 	aboutUsContainer.style.display = 'none';
 });
-
-//! panels
-
-const panels = document.querySelectorAll('.panel');
-panels.forEach((panel) => {
-	panel.addEventListener('mouseenter', () => {
-		removeActiveClasses();
-		panel.classList.add('active');
-	});
-
-	const containerPannels = document
-		.querySelector('.container-panel')
-		.addEventListener('mouseleave', () => {
-			removeActiveClasses();
-		});
-});
-function removeActiveClasses() {
-	panels.forEach((panel) => {
-		panel.classList.remove('active');
-	});
-}
-
-function pageScroll() {
-	window.scroll({
-		top: 500,
-		behavior: 'smooth',
-	});
-}
-seeInstruments.addEventListener('click', () => {
-	grid.classList.add('active');
-	hideNav();
-	pageScroll();
-});
-//!Slide-animation
-const slide1 = document.querySelector('.content-slide.one');
-const slide2 = document.querySelector('.content-slide.two');
-const slide3 = document.querySelector('.content-slide.three');
-const slide4 = document.querySelector('.content-slide.four');
-const slide5 = document.querySelector('.content-slide.five');
-const slide6 = document.querySelector('.content-slide.six');
-const slide7 = document.querySelector('.content-slide.seven');
-const slides = [slide1, slide2, slide3, slide4, slide5, slide6, slide7];
-const slideContainer = document.querySelector('.slide');
-
-slideContainer.addEventListener('click', (event) => {
-	event.stopPropagation();
-});
-const slideAnimation = function (panelClass, numClass) {
-	document.getElementById(panelClass).addEventListener('click', () => {
-		slideContainer.style.display = 'flex';
-		document.querySelector(numClass).style.display = 'block';
-
-		pageScroll();
-	});
-};
-
-const removeSlide = () => {
-	panels.forEach((panel) => {
-		panel.addEventListener('click', (event) => {
-			event.stopPropagation();
-			slideContainer.style.display = 'none';
-			slides.forEach((slide) => {
-				slide.style.display = 'none';
-			});
-		});
-	});
-	content.addEventListener('click', () => {
-		slides.forEach((slide) => {
-			slide.style.display = 'none';
-		});
-	});
-	openBtn.addEventListener('click', () => {
-		slides.forEach((slide) => {
-			slide.style.display = 'none';
-		});
-	});
-};
-
-removeSlide();
-slideAnimation('flaut', '.one');
-slideAnimation('oboi', '.two');
-slideAnimation('vioara', '.three');
-slideAnimation('sax', '.four');
-slideAnimation('trompeta', '.five');
-slideAnimation('trombone', '.six');
-slideAnimation('acordeon', '.seven');
 
 //!FAQ
 
