@@ -1,578 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<link rel="stylesheet" href="nouislider.css" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-			rel="stylesheet"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-		/>
-		<link rel="html" href="find-instr.html" />
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Musicare</title>
+  <head>
+    <link rel="stylesheet" href="nouislider.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link rel="html" href="find-instr.html" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musicare</title>
 
-		<link rel="stylesheet" href="style.css" />
-		<link rel="icon" href="../resources/logo/fav-icon.png" />
-	</head>
-	<body>
-		<!-- ! slide comented for ease of testing -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="../resources/logo/fav-icon.png" />
+  </head>
+  <body>
+    <!-- ! slide comented for ease of testing -->
 
-		<div class="container-intro">
-			<div class="slider-background">
-				<img class="slider" src="../resources/logo/intro-slide.jpg" alt="" />
-			</div>
-			<div class="intro-background">
-				<img
-					src="../resources/logo/intro-background1.jpg"
-					class="intro-pic"
-					alt=""
-				/>
-			</div>
-		</div>
-		<!-- Split Landing Page -->
-		<div class="landingPage-container">
-			<div class="split left">
-				<h1>Cauți un nou instrument?</h1>
-				<button class="btn-split-left">
-					<a href="#">VREAU SĂ CUMPĂR!</a>
-				</button>
-			</div>
-			<div class="split right">
-				<h1>iNSTRUMENTUL TĂU ARE PROBLEME?</h1>
-				<button class="btn-split-right">
-					<a href="#">VREAU SĂ ÎL REPAR!</a>
-				</button>
-			</div>
-		</div>
+    <div class="container-intro">
+      <div class="slider-background">
+        <img class="slider" src="../resources/logo/intro-slide.jpg" alt="" />
+      </div>
+      <div class="intro-background">
+        <img
+          src="../resources/logo/intro-background1.jpg"
+          class="intro-pic"
+          alt=""
+        />
+      </div>
+    </div>
 
-		<!-- stuff -->
-		<div class="container">
-			<div class="nav-container">
-				<div class="nav-bar">
-					<a href="/index.html">
-						<img class="logo" src="../resources/logo/logo.png" height=60'></a
-					>
-					<button id="open">
-						<i class="fas fa-bars"></i>
-					</button>
-				</div>
-			</div>
+    <!-- Split Landing Page -->
+    <div class="landingPage-container">
+      <div class="split left">
+        <h1>Cauți un nou instrument?</h1>
+        <button onclick="buyInstrumentWebsite()" class="btn-split-left">
+          <a href="#">VREAU SĂ CUMPĂR!</a>
+        </button>
+      </div>
+      <div class="split right">
+        <h1>iNSTRUMENTUL TĂU ARE PROBLEME?</h1>
+        <button onclick="repairInstrumentWebsite()" class="btn-split-right">
+          <a href="#">VREAU SĂ ÎL REPAR!</a>
+        </button>
+      </div>
+    </div>
 
-			<div class="content">
-				<div class="hero">
-					<div>
-						<h1>Musicare</h1>
-						<p class="catchfrase">-Dezlănțuiește-ți potențialul muzical-</p>
+    <!-- stuff -->
+    <div class="container">
+      <div class="nav-container">
+        <div class="nav-bar">
+          <a href="/index.html">
+            <img class="logo" src="../resources/logo/logo.png" height=60'></a
+          >
+          <button id="open">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
 
-						<div class="first-step">
-							<h2>
-								Alege dintre instrumentele cele mai cautate sau vezi lista
-								completa in meniul de mai sus
-							</h2>
-						</div>
-					</div>
-				</div>
+      <div class="content">
+        <div class="hero">
+          <div>
+            <h1>Musicare</h1>
+            <p class="catchfrase">-Dezlănțuiește-ți potențialul muzical-</p>
 
-				<!-- PANNELS -->
+            <div class="first-step">
+              <h2>
+                Alege dintre instrumentele cele mai cautate sau vezi lista
+                completa in meniul de mai sus
+              </h2>
+            </div>
+          </div>
+        </div>
 
-				<div class="panel-background"></div>
-				<div class="container-panel" async>
-					<div
-						data-instrumentType="Flaut"
-						class="panel"
-						id="flaut"
-						style="
-							background-image: url('../resources/panel-backgrounds/flute.jpg');
-						"
-					>
-						<h3>Flaut</h3>
-					</div>
-					<div
-						data-instrumentType="Oboi"
-						class="panel"
-						id="oboi"
-						style="
-							background-image: url('../resources/panel-backgrounds/oboe.jpg');
-						"
-					>
-						<h3>Oboe</h3>
-					</div>
-					<div
-						data-instrumentType="Vioară"
-						class="panel"
-						id="vioara"
-						style="
-							background-image: url('../resources/panel-backgrounds/vioara.jpg');
-						"
-					>
-						<h3>Vioară</h3>
-					</div>
-					<div
-						data-instrumentType="Saxofon"
-						class="panel"
-						id="sax"
-						style="
-							background-image: url('../resources/panel-backgrounds/sax.jpg');
-						"
-					>
-						<h3>Saxofon</h3>
-					</div>
-					<div
-						data-instrumentType="Trompetă"
-						class="panel"
-						id="trompeta"
-						style="
-							background-image: url('../resources/panel-backgrounds/trompeta.jpg');
-						"
-					>
-						<h3>Trompetă</h3>
-					</div>
-					<div
-						data-instrumentType="Trombon"
-						class="panel"
-						id="trombone"
-						style="
-							background-image: url('../resources/panel-backgrounds/trombone.webp');
-						"
-					>
-						<h3>Trombon</h3>
-					</div>
-					<div
-						data-instrumentType="Acordeon"
-						class="panel"
-						id="acordeon"
-						style="
-							background-image: url('../resources/panel-backgrounds/acordeon.jpg');
-						"
-					>
-						<h3>Acordeon</h3>
-					</div>
-				</div>
+        <!-- PANNELS -->
 
-				<!-- SLIDE-down -->
+        <div class="panel-background"></div>
+        <div class="container-panel" async>
+          <div
+            data-instrumentType="Flaut"
+            class="panel"
+            id="flaut"
+            style="
+              background-image: url('../resources/panel-backgrounds/flute.jpg');
+            "
+          >
+            <h3>Flaut</h3>
+          </div>
+          <div
+            data-instrumentType="Oboi"
+            class="panel"
+            id="oboi"
+            style="
+              background-image: url('../resources/panel-backgrounds/oboe.jpg');
+            "
+          >
+            <h3>Oboe</h3>
+          </div>
+          <div
+            data-instrumentType="Vioară"
+            class="panel"
+            id="vioara"
+            style="
+              background-image: url('../resources/panel-backgrounds/vioara.jpg');
+            "
+          >
+            <h3>Vioară</h3>
+          </div>
+          <div
+            data-instrumentType="Saxofon"
+            class="panel"
+            id="sax"
+            style="
+              background-image: url('../resources/panel-backgrounds/sax.jpg');
+            "
+          >
+            <h3>Saxofon</h3>
+          </div>
+          <div
+            data-instrumentType="Trompetă"
+            class="panel"
+            id="trompeta"
+            style="
+              background-image: url('../resources/panel-backgrounds/trompeta.jpg');
+            "
+          >
+            <h3>Trompetă</h3>
+          </div>
+          <div
+            data-instrumentType="Trombon"
+            class="panel"
+            id="trombone"
+            style="
+              background-image: url('../resources/panel-backgrounds/trombone.webp');
+            "
+          >
+            <h3>Trombon</h3>
+          </div>
+          <div
+            data-instrumentType="Acordeon"
+            class="panel"
+            id="acordeon"
+            style="
+              background-image: url('../resources/panel-backgrounds/acordeon.jpg');
+            "
+          >
+            <h3>Acordeon</h3>
+          </div>
+        </div>
 
-				<div class="slide"></div>
+        <!-- SLIDE-down -->
 
-				<!-- faq -->
-				<div class="container-faq" id="container-faq">
-					<div class="container-faq-header">
-						<h1>Întrebări adresate frecvent</h1>
-					</div>
-					<div class="container-faq-body">
-						<div class="faq-container">
-							<div class="faq">
-								<h3 class="faq-title">
-									De ce ar trebui sa am incredere in Musicare
-								</h3>
-								<p class="faq-text">
-									Lorem ipsum dolor sit amet consectetur adipisicing
-									elit. Ratione, sapiente.
-								</p>
-							</div>
-							<div class="faq">
-								<h3 class="faq-title">
-									Cine sunt tehnicienii cu care lucrati
-								</h3>
-								<p class="faq-text">
-									Lorem ipsum dolor sit amet consectetur adipisicing
-									elit. Ratione, sapiente.
-								</p>
-							</div>
-							<div class="faq">
-								<h3 class="faq-title">
-									Colaborati cu liceele de muzica, conservatoarele si
-									filarmonicile din Romania?
-								</h3>
-								<p class="faq-text">
-									Lorem ipsum dolor sit amet consectetur adipisicing
-									elit. Ratione, sapiente.
-								</p>
-							</div>
-							<div class="faq">
-								<h3 class="faq-title">
-									Câtă experiență aveți în domeniu
-								</h3>
-								<p class="faq-text">
-									Lorem ipsum dolor sit amet consectetur adipisicing
-									elit. Ratione, sapiente.lorem50 Lorem ipsum dolor sit
-									amet consectetur adipisicing elit. Ratione,
-									sapiente.lorem5Lorem ipsum dolor sit amet consectetur
-									adipisicing elit. Ratione, sapiente.lorem50
-								</p>
-							</div>
-							<div class="faq">
-								<h3 class="faq-title">
-									Care este cea mai mare lucrare facuta de dumneavoastra
-								</h3>
-								<p class="faq-text">
-									Lorem ipsum dolor sit amet consectetur adipisicing
-									elit. Ratione, sapiente.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--CONTACT FORM  -->
-				<div class="form-container">
-					<div class="info">
-						<h2>Vrei să îți dezlănțui întregul potențial muzical?</h2>
-						<h2 class="contacteaza">Contactează-ne</h2>
-						<h3>Program:</h3>
-						<h4>Luni - Vineri: 08:00 – 17:00</h4>
-						<h4>Sambata: 08:00 – 14:00</h4>
-						<h4>Duminica: Indisponibil</h4>
-						<h3>Telefon: 0743934917</h3>
-					</div>
+        <div class="slide"></div>
 
-					<form action="" id="form" novalidate data-netlify="true">
-						<div class="form">
-							<input
-								type="text"
-								style="padding-left: 25px"
-								id="name"
-								placeholder="Cine ești?"
-								name="name"
-								required
-								minlength="3"
-							/>
-						</div>
-						<div class="form">
-							<input
-								type="email"
-								style="padding-left: 25px"
-								id="email"
-								placeholder="Cum te putem contata? "
-								name="email"
-								required
-							/>
-						</div>
-						<div class="form">
-							<input
-								type="text"
-								style="padding-left: 25px"
-								id="instrument-text"
-								placeholder="Ce instrument are nevoie de atenția noastră?"
-								name="instrument"
-								required
-								minlength="2"
-							/>
-						</div>
-						<div class="form">
-							<input
-								type="text"
-								style="padding-left: 25px"
-								id="email-text"
-								placeholder="Cu ce îți putem fi de folos"
-								name="cerere"
-								required
-								minlenght="20"
-							/>
-						</div>
+        <!-- faq -->
+        <div class="container-faq" id="container-faq">
+          <div class="container-faq-header">
+            <h1>Întrebări adresate frecvent</h1>
+          </div>
+          <div class="container-faq-body">
+            <div class="faq-container">
+              <div class="faq">
+                <h3 class="faq-title">
+                  De ce ar trebui sa am incredere in Musicare
+                </h3>
+                <p class="faq-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, sapiente.
+                </p>
+              </div>
+              <div class="faq">
+                <h3 class="faq-title">Cine sunt tehnicienii cu care lucrati</h3>
+                <p class="faq-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, sapiente.
+                </p>
+              </div>
+              <div class="faq">
+                <h3 class="faq-title">
+                  Colaborati cu liceele de muzica, conservatoarele si
+                  filarmonicile din Romania?
+                </h3>
+                <p class="faq-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, sapiente.
+                </p>
+              </div>
+              <div class="faq">
+                <h3 class="faq-title">Câtă experiență aveți în domeniu</h3>
+                <p class="faq-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, sapiente.lorem50 Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Ratione, sapiente.lorem5Lorem
+                  ipsum dolor sit amet consectetur adipisicing elit. Ratione,
+                  sapiente.lorem50
+                </p>
+              </div>
+              <div class="faq">
+                <h3 class="faq-title">
+                  Care este cea mai mare lucrare facuta de dumneavoastra
+                </h3>
+                <p class="faq-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, sapiente.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--CONTACT FORM  -->
+        <div class="form-container">
+          <div class="info">
+            <h2>Vrei să îți dezlănțui întregul potențial muzical?</h2>
+            <h2 class="contacteaza">Contactează-ne</h2>
+            <h3>Program:</h3>
+            <h4>Luni - Vineri: 08:00 – 17:00</h4>
+            <h4>Sambata: 08:00 – 14:00</h4>
+            <h4>Duminica: Indisponibil</h4>
+            <h3>Telefon: 0743934917</h3>
+          </div>
 
-						<button class="contact-button" type="trimite">Trimite</button>
-					</form>
-					<div class="message-container">
-						<h3 id="message">Nu sta pe gânduri!</h3>
-					</div>
-				</div>
+          <form action="" id="form" novalidate data-netlify="true">
+            <div class="form">
+              <input
+                type="text"
+                style="padding-left: 25px"
+                id="name"
+                placeholder="Cine ești?"
+                name="name"
+                required
+                minlength="3"
+              />
+            </div>
+            <div class="form">
+              <input
+                type="email"
+                style="padding-left: 25px"
+                id="email"
+                placeholder="Cum te putem contata? "
+                name="email"
+                required
+              />
+            </div>
+            <div class="form">
+              <input
+                type="text"
+                style="padding-left: 25px"
+                id="instrument-text"
+                placeholder="Ce instrument are nevoie de atenția noastră?"
+                name="instrument"
+                required
+                minlength="2"
+              />
+            </div>
+            <div class="form">
+              <input
+                type="text"
+                style="padding-left: 25px"
+                id="email-text"
+                placeholder="Cu ce îți putem fi de folos"
+                name="cerere"
+                required
+                minlenght="20"
+              />
+            </div>
 
-				<!-- About us -->
-				<div class="aboutUs-container">
-					<div class="left-slide">
-						<div class="sumus-left">
-							<h1>- Qui sumus -</h1>
-						</div>
-						<div class="doctrina-left">
-							<h1>- Doctrina -</h1>
-						</div>
+            <button class="contact-button" type="trimite">Trimite</button>
+          </form>
+          <div class="message-container">
+            <h3 id="message">Nu sta pe gânduri!</h3>
+          </div>
+        </div>
 
-						<div class="misso-left">
-							<h1>- Misso -</h1>
-						</div>
-						<div class="visum-left">
-							<h1>- Visum -</h1>
-						</div>
-					</div>
-					b
-					<div class="right-slide">
-						<div class="visum-right">
-							<h1 class="visum">
-								Recunoașterea pe plan național a calității serviciilor
-								noastre
-							</h1>
-						</div>
-						<div class="misso-right">
-							<h1 class="misso">
-								Să fim mereu aproape de client pentru a încuraja evoluția
-								lor constantă
-							</h1>
-						</div>
-						<div class="doctrina-right">
-							<h1 class="doctrina">
-								PRECIZIE | CALITATE | CONTINUĂ EVOLUȚIE
-							</h1>
-						</div>
-						<div class="sumus-right">
-							<h1 class="sumus">
-								Mișcarea MusiCare a aparut din dorința de a umple un gol
-								din domeniul muzical, gol care era pregnant deja de câteva
-								generații. Necesitatea unui loc unde instrumentele
-								muzicale pot fi îngrijite într-un mod calitativ, chiar la
-								noi în țară, a fost piatra de temelie ce stă și astăzi la
-								baza ideologiei MusiCare.
-							</h1>
-						</div>
-					</div>
-					<div class="action-buttons">
-						<button class="down-button">
-							<i class="fas fa-arrow-down"></i>
-						</button>
-					</div>
-				</div>
+        <!-- About us -->
+        <div class="aboutUs-container">
+          <div class="left-slide">
+            <div class="sumus-left">
+              <h1>- Qui sumus -</h1>
+            </div>
+            <div class="doctrina-left">
+              <h1>- Doctrina -</h1>
+            </div>
 
-				<!-- News -->
+            <div class="misso-left">
+              <h1>- Misso -</h1>
+            </div>
+            <div class="visum-left">
+              <h1>- Visum -</h1>
+            </div>
+          </div>
+          b
+          <div class="right-slide">
+            <div class="visum-right">
+              <h1 class="visum">
+                Recunoașterea pe plan național a calității serviciilor noastre
+              </h1>
+            </div>
+            <div class="misso-right">
+              <h1 class="misso">
+                Să fim mereu aproape de client pentru a încuraja evoluția lor
+                constantă
+              </h1>
+            </div>
+            <div class="doctrina-right">
+              <h1 class="doctrina">PRECIZIE | CALITATE | CONTINUĂ EVOLUȚIE</h1>
+            </div>
+            <div class="sumus-right">
+              <h1 class="sumus">
+                Mișcarea MusiCare a aparut din dorința de a umple un gol din
+                domeniul muzical, gol care era pregnant deja de câteva
+                generații. Necesitatea unui loc unde instrumentele muzicale pot
+                fi îngrijite într-un mod calitativ, chiar la noi în țară, a fost
+                piatra de temelie ce stă și astăzi la baza ideologiei MusiCare.
+              </h1>
+            </div>
+          </div>
+          <div class="action-buttons">
+            <button class="down-button">
+              <i class="fas fa-arrow-down"></i>
+            </button>
+          </div>
+        </div>
 
-				<div class="card-container">
-					<div class="card">
-						<div class="card-content">
-							<h5>03.09.1990</h5>
-							<p>
-								PRIMUL SLIDE!!!!!!!!!! dolor sit amet consectetur
-								adipisicing elit. Atque temporibus, id sed dolor aliquam
-								rem optio quae nihil rerum sint autem maxime suscipit.
-								Ipsa modi sit accusantium incidunt cumque minima voluptas
-								magni, exercitationem reiciendis explicabo porro
-								consequuntur, laudantium possimus maxime! Voluptates quam
-								fuga rerum. Unde fugit veritatis aliquid eius esse ipsam
-								mollitia ducimus, molestiae recusandae nulla maiores quas
-								expedita quidem. Esse deserunt voluptatibus aperiam sit
-								nam itaque nostrum quisquam perferendis.
-							</p>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-content">
-							<h5>24.05.2020</h5>
-							<p>
-								AL 2LEA SLIDE !!!!!!!!!sit amet consectetur adipisicing
-								elit. Soluta cumque amet aliquam aut alias voluptatum
-								deleniti natus aspernatur eius accusamus provident
-								blanditiis ut obcaecati quos, repellendus illum expedita
-								iusto tempora velit nobis commodi id. Dolorem vero
-								suscipit porro laudantium, dolorum maxime commodi
-								blanditiis ipsam facilis pariatur est laboriosam mollitia
-								atque quisquam numquam accusantium iusto, eos omnis dolore
-								aliquid, eveniet soluta consequuntur nemo. Modi eligendi
-								unde aliquam mollitia illum, tenetur ea velit eum maiores
-								eius! Corporis eveniet enim labore cum autem velit earum
-								libero quam sit omnis aspernatur amet, molestiae corrupti
-								voluptatum ullam. Ducimus voluptates praesentium quos
-								facere enim facilis cumque pariatur vero aliquid illum quo
-								numquam commodi ut magnam, laudantium rem tenetur
-								dignissimos quae. Expedita corporis officia ullam suscipit
-								exercitationem earum iste ab eaque commodi perspiciatis,
-								amet fuga velit deleniti. Velit quam suscipit provident
-								quo vitae eveniet, illo placeat dolore animi nulla
-								deserunt quasi a assumenda? Eos pariatur labore quaerat!
-							</p>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-content">
-							<h5>32.05.2020</h5>
-							<p>
-								AL 3LEA SLIDE !!!!!!!!!sit amet consectetur adipisicing
-								elit. Soluta cumque amet aliquam aut alias voluptatum
-								deleniti natus aspernatur eius accusamus provident
-								blanditiis ut obcaecati quos, repellendus illum expedita
-								iusto tempora velit nobis commodi id. Dolorem vero
-								suscipit porro laudantium, dolorum maxime commodi
-								blanditiis ipsam facilis pariatur est laboriosam mollitia
-								atque quisquam numquam accusantium iusto, eos omnis dolore
-								aliquid, eveniet soluta consequuntur nemo. Modi eligendi
-								unde aliquam mollitia illum, tenetur ea velit eum maiores
-								eius! Corporis eveniet enim labore cum autem velit earum
-								libero quam sit omnis aspernatur amet, molestiae corrupti
-								voluptatum ullam. Ducimus voluptates praesentium quos
-								facere enim facilis cumque pariatur vero aliquid illum quo
-								numquam commodi ut magnam, laudantium rem tenetur
-								dignissimos quae. Expedita corporis officia ullam suscipit
-								exercitationem earum iste ab eaque commodi perspiciatis,
-								amet fuga velit deleniti. Velit quam suscipit provident
-								quo vitae eveniet, illo placeat dolore animi nulla
-								deserunt quasi a assumenda? Eos pariatur labore quaerat!
-							</p>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-content">
-							<h5>24.05.1843</h5>
-							<p>
-								AL 4LEA SLIDE !!!!!!!!!sit amet consectetur adipisicing
-								elit. Soluta cumque amet aliquam aut alias voluptatum
-								deleniti natus aspernatur eius accusamus provident
-								blanditiis ut obcaecati quos, repellendus illum expedita
-								iusto tempora velit nobis commodi id. Dolorem vero
-								suscipit porro laudantium, dolorum maxime commodi
-								blanditiis ipsam facilis pariatur est laboriosam mollitia
-								atque quisquam numquam accusantium iusto, eos omnis dolore
-								aliquid, eveniet soluta consequuntur nemo. Modi eligendi
-								unde aliquam mollitia illum, tenetur ea velit eum maiores
-								eius! Corporis eveniet enim labore cum autem velit earum
-								libero quam sit omnis aspernatur amet, molestiae corrupti
-								voluptatum ullam. Ducimus voluptates praesentium quos
-								facere enim facilis cumque pariatur vero aliquid illum quo
-								numquam commodi ut magnam, laudantium rem tenetur
-								dignissimos quae. Expedita corporis officia ullam suscipit
-								exercitationem earum iste ab eaque commodi perspiciatis,
-								amet fuga velit deleniti. Velit quam suscipit provident
-								quo vitae eveniet, illo placeat dolore animi nulla
-								deserunt quasi a assumenda? Eos pariatur labore quaerat!
-							</p>
-						</div>
-					</div>
-				</div>
+        <!-- News -->
 
-				<!-- instruments grid  -->
+        <div class="card-container">
+          <div class="card">
+            <div class="card-content">
+              <h5>03.09.1990</h5>
+              <p>
+                PRIMUL SLIDE!!!!!!!!!! dolor sit amet consectetur adipisicing
+                elit. Atque temporibus, id sed dolor aliquam rem optio quae
+                nihil rerum sint autem maxime suscipit. Ipsa modi sit
+                accusantium incidunt cumque minima voluptas magni,
+                exercitationem reiciendis explicabo porro consequuntur,
+                laudantium possimus maxime! Voluptates quam fuga rerum. Unde
+                fugit veritatis aliquid eius esse ipsam mollitia ducimus,
+                molestiae recusandae nulla maiores quas expedita quidem. Esse
+                deserunt voluptatibus aperiam sit nam itaque nostrum quisquam
+                perferendis.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h5>24.05.2020</h5>
+              <p>
+                AL 2LEA SLIDE !!!!!!!!!sit amet consectetur adipisicing elit.
+                Soluta cumque amet aliquam aut alias voluptatum deleniti natus
+                aspernatur eius accusamus provident blanditiis ut obcaecati
+                quos, repellendus illum expedita iusto tempora velit nobis
+                commodi id. Dolorem vero suscipit porro laudantium, dolorum
+                maxime commodi blanditiis ipsam facilis pariatur est laboriosam
+                mollitia atque quisquam numquam accusantium iusto, eos omnis
+                dolore aliquid, eveniet soluta consequuntur nemo. Modi eligendi
+                unde aliquam mollitia illum, tenetur ea velit eum maiores eius!
+                Corporis eveniet enim labore cum autem velit earum libero quam
+                sit omnis aspernatur amet, molestiae corrupti voluptatum ullam.
+                Ducimus voluptates praesentium quos facere enim facilis cumque
+                pariatur vero aliquid illum quo numquam commodi ut magnam,
+                laudantium rem tenetur dignissimos quae. Expedita corporis
+                officia ullam suscipit exercitationem earum iste ab eaque
+                commodi perspiciatis, amet fuga velit deleniti. Velit quam
+                suscipit provident quo vitae eveniet, illo placeat dolore animi
+                nulla deserunt quasi a assumenda? Eos pariatur labore quaerat!
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h5>32.05.2020</h5>
+              <p>
+                AL 3LEA SLIDE !!!!!!!!!sit amet consectetur adipisicing elit.
+                Soluta cumque amet aliquam aut alias voluptatum deleniti natus
+                aspernatur eius accusamus provident blanditiis ut obcaecati
+                quos, repellendus illum expedita iusto tempora velit nobis
+                commodi id. Dolorem vero suscipit porro laudantium, dolorum
+                maxime commodi blanditiis ipsam facilis pariatur est laboriosam
+                mollitia atque quisquam numquam accusantium iusto, eos omnis
+                dolore aliquid, eveniet soluta consequuntur nemo. Modi eligendi
+                unde aliquam mollitia illum, tenetur ea velit eum maiores eius!
+                Corporis eveniet enim labore cum autem velit earum libero quam
+                sit omnis aspernatur amet, molestiae corrupti voluptatum ullam.
+                Ducimus voluptates praesentium quos facere enim facilis cumque
+                pariatur vero aliquid illum quo numquam commodi ut magnam,
+                laudantium rem tenetur dignissimos quae. Expedita corporis
+                officia ullam suscipit exercitationem earum iste ab eaque
+                commodi perspiciatis, amet fuga velit deleniti. Velit quam
+                suscipit provident quo vitae eveniet, illo placeat dolore animi
+                nulla deserunt quasi a assumenda? Eos pariatur labore quaerat!
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h5>24.05.1843</h5>
+              <p>
+                AL 4LEA SLIDE !!!!!!!!!sit amet consectetur adipisicing elit.
+                Soluta cumque amet aliquam aut alias voluptatum deleniti natus
+                aspernatur eius accusamus provident blanditiis ut obcaecati
+                quos, repellendus illum expedita iusto tempora velit nobis
+                commodi id. Dolorem vero suscipit porro laudantium, dolorum
+                maxime commodi blanditiis ipsam facilis pariatur est laboriosam
+                mollitia atque quisquam numquam accusantium iusto, eos omnis
+                dolore aliquid, eveniet soluta consequuntur nemo. Modi eligendi
+                unde aliquam mollitia illum, tenetur ea velit eum maiores eius!
+                Corporis eveniet enim labore cum autem velit earum libero quam
+                sit omnis aspernatur amet, molestiae corrupti voluptatum ullam.
+                Ducimus voluptates praesentium quos facere enim facilis cumque
+                pariatur vero aliquid illum quo numquam commodi ut magnam,
+                laudantium rem tenetur dignissimos quae. Expedita corporis
+                officia ullam suscipit exercitationem earum iste ab eaque
+                commodi perspiciatis, amet fuga velit deleniti. Velit quam
+                suscipit provident quo vitae eveniet, illo placeat dolore animi
+                nulla deserunt quasi a assumenda? Eos pariatur labore quaerat!
+              </p>
+            </div>
+          </div>
+        </div>
 
-				<div class="grid">
-					<div hidden instrumentType="Clarinet" class="box instrument">
-						<img
-							class="instrument-image"
-							src="https://i.pinimg.com/originals/ce/df/cf/cedfcff9cd0023b3bb0c1f8c1721790d.jpg"
-							alt=""
-						/>
-						<h6 class="price">3000</h6>
-						<p class="instrument-description">
-							oare asta apare aici, CLARINET sit amet consectetur
-							adipisicing elit. Perspiciatis odit quis aliquid iure ipsam
-							numquam, exercitationem magni corporis esse hic aliquam minima
-							accusantium labore a illo quasi assumenda. Ratione, dolores.
-						</p>
-					</div>
-					<!-- on click instrument image slider  -->
-					<div class="instrument-picture-container">
-						<div class="instrumnet-image-slider">
-							<div
-								class="image-slider-container"
-								id="image-container"
-							></div>
-							<button id="btn-up">
-								<i class="fas fa-arrow-up slider-buttons"></i>
-							</button>
-							<button id="buy">
-								<i class="fas fa-shopping-cart"></i> Cumpară
-							</button>
-						</div>
-					</div>
-				</div>
+        <!-- instruments grid  -->
 
-				<!-- TESTIMONIALS -->
+        <div class="grid">
+          <div hidden instrumentType="Clarinet" class="box instrument">
+            <img
+              class="instrument-image"
+              src="https://i.pinimg.com/originals/ce/df/cf/cedfcff9cd0023b3bb0c1f8c1721790d.jpg"
+              alt=""
+            />
+            <h6 class="price">3000</h6>
+            <p class="instrument-description">
+              oare asta apare aici, CLARINET sit amet consectetur adipisicing
+              elit. Perspiciatis odit quis aliquid iure ipsam numquam,
+              exercitationem magni corporis esse hic aliquam minima accusantium
+              labore a illo quasi assumenda. Ratione, dolores.
+            </p>
+          </div>
+          <!-- on click instrument image slider  -->
+          <div class="instrument-picture-container">
+            <div class="instrumnet-image-slider">
+              <div class="image-slider-container" id="image-container"></div>
+              <button id="btn-up">
+                <i class="fas fa-arrow-up slider-buttons"></i>
+              </button>
+              <button id="buy">
+                <i class="fas fa-shopping-cart"></i> Cumpară
+              </button>
+            </div>
+          </div>
+        </div>
 
-				<div class="testimonial-container">
-					<div class="progress-bar"></div>
-					<div class="fa fa-quote-right fa-quote"></div>
-					<div class="fa fa-quote-left fa-quote"></div>
-					<p class="testimonial">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non
-						nisi optio tempore fugit maiores repudiandae enim mollitia debitis
-						minima suscipit illum sint, inventore odit iusto incidunt laborum
-						eaque animi.
-					</p>
-					<div class="user">
-						<img
-							src="https://randomuser.me/api/portraits/women/23.jpg"
-							alt="user"
-							class="user-image"
-						/>
-						<div class="user-details">
-							<h4 class="username">Sofia Vicoveanca</h4>
-							<p class="role">Oboist</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <!-- TESTIMONIALS -->
 
-		<!-- filter tab -->
+        <div class="testimonial-container">
+          <div class="progress-bar"></div>
+          <div class="fa fa-quote-right fa-quote"></div>
+          <div class="fa fa-quote-left fa-quote"></div>
+          <p class="testimonial">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non
+            nisi optio tempore fugit maiores repudiandae enim mollitia debitis
+            minima suscipit illum sint, inventore odit iusto incidunt laborum
+            eaque animi.
+          </p>
+          <div class="user">
+            <img
+              src="https://randomuser.me/api/portraits/women/23.jpg"
+              alt="user"
+              class="user-image"
+            />
+            <div class="user-details">
+              <h4 class="username">Sofia Vicoveanca</h4>
+              <p class="role">Oboist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="filter-tab">
-			<h3>Adaugă filtrele dorite:</h3>
-			<div class="slider-container">
-				<h5>Ce instrument cauți:</h5>
-				<div class="checkboxes-container"></div>
+    <!-- filter tab -->
 
-				<h5>Ai o limită de preț?</h5>
-				<input
-					type="number"
-					class="min-value slider-value"
-					value=""
-					style="padding-left: 20px"
-					placeholder="Preț minim"
-				/>
-				<input
-					type="number"
-					class="max-value slider-value"
-					value=""
-					style="padding-left: 20px"
-					placeholder="Preț maxim"
-				/>
-				<br /><br /><br /><br />
-				<div class="double-handle-slider"></div>
-				<button class="search-btn" type="submit">
-					<i class="fa fa-search"></i>
-				</button>
+    <div class="filter-tab">
+      <h3>Adaugă filtrele dorite:</h3>
+      <div class="slider-container">
+        <h5>Ce instrument cauți:</h5>
+        <div class="checkboxes-container"></div>
 
-				<h5 class="see-instruments">Vei să vezi toate instrumentele</h5>
-			</div>
-		</div>
-		<!-- navigation -->
+        <h5>Ai o limită de preț?</h5>
+        <input
+          type="number"
+          class="min-value slider-value"
+          value=""
+          style="padding-left: 20px"
+          placeholder="Preț minim"
+        />
+        <input
+          type="number"
+          class="max-value slider-value"
+          value=""
+          style="padding-left: 20px"
+          placeholder="Preț maxim"
+        />
+        <br /><br /><br /><br />
+        <div class="double-handle-slider"></div>
+        <button class="search-btn" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
 
-		<div class="nav nav-white">
-			<img src="../resources/logo/fav-icon.png" alt="" class="nav stamp" />
-			<div class="nav nav-gray">
-				<div class="nav nav-background">
-					<img class="nav logo" src="../resources/logo/logo.png" height=60'>
+        <h5 class="see-instruments">Vei să vezi toate instrumentele</h5>
+      </div>
+    </div>
+    <!-- navigation -->
 
-					<ul class="list">
-						<li class="about">Cine suntem</li>
-						<li class="news-btn">Noutăți</li>
-						<li class="instruments-btn">
-							Instrumente
-							<div class="instr-options-container">
-								<div class="instr-options-background">
-									<ul>
-										<li class="filter">Vrei să cumperi?</li>
-										<li class="instrument-list">Vrei să repari?</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<li class="faq-button">Întrebări frecvente</li>
-						<li class="contact-btn">Contact</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<script src="slides.js"></script>
-		<script src="nouislider.min.js"></script>
-		<script src="instruments.js"></script>
-		<script src="main.js"></script>
-	</body>
+    <div class="nav nav-white">
+      <img src="../resources/logo/fav-icon.png" alt="" class="nav stamp" />
+      <div class="nav nav-gray">
+        <div class="nav nav-background">
+          <img class="nav logo" src="../resources/logo/logo.png" height=60'>
+
+          <ul class="list">
+            <li class="about">Cine suntem</li>
+            <li class="news-btn">Noutăți</li>
+            <li class="instruments-btn">
+              Instrumente
+              <div class="instr-options-container">
+                <div class="instr-options-background">
+                  <ul>
+                    <li class="filter">Vrei să cumperi?</li>
+                    <li class="instrument-list">Vrei să repari?</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="faq-button">Întrebări frecvente</li>
+            <li class="contact-btn">Contact</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="slides.js"></script>
+    <script src="nouislider.min.js"></script>
+    <script src="instruments.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>

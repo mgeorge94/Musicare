@@ -1,7 +1,10 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	]
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": ["wallabyjs.quokka-vscode"]
+  }
 }
