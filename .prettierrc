@@ -1,4 +1,7 @@
 {
   "singleQuote": true,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "printWidth": 130,
+
+  "proseWrap": "never"
 }

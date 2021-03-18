@@ -1,4 +1,4 @@
-//varialbes
+//variables
 const filterTab = document.querySelector('.filter-tab');
 const checkboxContainer = document.querySelector('.checkboxes-container');
 const instrumentsContainer = document.querySelector('.grid');
@@ -10,8 +10,9 @@ const searchBtn = document.querySelector('.search-btn');
 const imageSliderContainer = document.querySelector('.image-slider-container');
 const sliderBtnUp = document.querySelector('#btn-up');
 const morePictures = document.querySelector('.instrument-picture-container');
+const seeAllInstruments = document.querySelector('.see-instruments');
 
-// Instruments object aray
+// Instruments object array
 
 const allInstruments = [
   {
@@ -20,8 +21,7 @@ const allInstruments = [
     price: 932,
     description:
       ' Lorem, CLARINET BufetCrampon-profesional1 dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
-    picture:
-      'https://i.pinimg.com/originals/44/5b/8a/445b8a829cf2c88e83e73884671030c2.jpg',
+    picture: 'https://i.pinimg.com/originals/44/5b/8a/445b8a829cf2c88e83e73884671030c2.jpg',
   },
   {
     name: 'BufetCrampon-profesional50',
@@ -46,7 +46,7 @@ const allInstruments = [
     price: 2500,
     description:
       ' Lorem, FLAUT muramatsuheavy dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
-    picture: 'https://i.ebayimg.com/images/g/yVwAAOSwww1ceJOT/s-l640.jpg',
+    picture: 'https://wallpapercave.com/wp/wp1851717.jpg',
   },
   {
     name: 'yamaha881',
@@ -72,8 +72,7 @@ const allInstruments = [
     price: 1000,
     description:
       ' Lorem, FLAUT  sankyo84567 dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
-    picture:
-      'https://cdn11.bigcommerce.com/s-a47hlxhj54/images/stencil/1280x1280/products/199/2923/web-7Y0A0612__43924.1535649704.jpg?c=2',
+    picture: 'https://wallpapercave.com/wp/wp1851604.jpg',
   },
   {
     name: 'selmer22',
@@ -81,8 +80,7 @@ const allInstruments = [
     price: 2500,
     description:
       ' Lorem, SAXOFON  selmer22  dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
-    picture:
-      'https://d3re0f381bckq9.cloudfront.net/50704299_img-20200816-182545_1500x1125.jpg',
+    picture: 'https://d3re0f381bckq9.cloudfront.net/50704299_img-20200816-182545_1500x1125.jpg',
   },
   {
     name: 'selmer165',
@@ -90,8 +88,7 @@ const allInstruments = [
     price: 589,
     description:
       ' Lorem, SAXOFON  selmer165  dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
-    picture:
-      'https://www.hornhospital.com/main/wp-content/uploads/king-54187.jpg',
+    picture: 'https://www.hornhospital.com/main/wp-content/uploads/king-54187.jpg',
   },
   {
     name: 'BufetCrampon222',
@@ -116,8 +113,7 @@ const allInstruments = [
     price: 1900,
     description:
       ' Lorem, CHITARĂ  Alhambra-z  dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
-    picture:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGHtmVP1ck0_qZXxZfujLI57GqqwmU0yrUIw&usqp=CAU',
+    picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGHtmVP1ck0_qZXxZfujLI57GqqwmU0yrUIw&usqp=CAU',
   },
   {
     name: 'Alhambra-726',
@@ -134,8 +130,7 @@ const allInstruments = [
     price: 100,
     description:
       ' Lorem, CHITARĂ  Alhambra-Profesional-2  dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
-    picture:
-      'http://ikuzoguitars.com/wp-content/uploads/2015/01/Acoustic-Electric-Guitar-For-Sale.jpg',
+    picture: 'http://ikuzoguitars.com/wp-content/uploads/2015/01/Acoustic-Electric-Guitar-For-Sale.jpg',
   },
   {
     name: 'Alhambra-Profesional-44',
@@ -148,7 +143,7 @@ const allInstruments = [
   },
 ];
 //get instruments
-function getInstruments() {
+function paintInstruments() {
   allInstruments.forEach(function (instrument) {
     let price = instrument.price;
     let type = instrument.type;
@@ -175,15 +170,8 @@ function getInstruments() {
   });
 }
 
-getInstruments();
+paintInstruments();
 const instruments = Array.from(document.querySelectorAll('.instrument'));
-//get min and max price
-const minPrice = Math.min(
-  ...allInstruments.map((instrument) => instrument.price)
-);
-const maxPrice = Math.max(
-  ...allInstruments.map((instrument) => instrument.price)
-);
 
 //insert checkboxes into HTML
 
@@ -191,7 +179,7 @@ const makeCheckboxes = function (types) {
   checkboxContainer.innerHTML = types
     .map(function (type) {
       const htmlCheckbox = `<label class="checkbox-container">
-            <input type="checkbox" filter="${type}"> ${type}<span class="checkmark"></span></label>`;
+            <input   type="checkbox" filter="${type}"> ${type}<span  class="checkmark"></span></label>`;
 
       return htmlCheckbox;
     })
@@ -199,6 +187,9 @@ const makeCheckboxes = function (types) {
 };
 makeCheckboxes(uniqueInstrArr);
 
+//get min and max price
+const minPrice = Math.min(...allInstruments.map((instrument) => instrument.price));
+const maxPrice = Math.max(...allInstruments.map((instrument) => instrument.price));
 //slider function
 
 const sliderFunction = function () {
@@ -241,20 +232,23 @@ const sliderFunction = function () {
 };
 sliderFunction();
 
+const checkmark = document.querySelectorAll('.checkmark');
 //function that filters instruments
-
+let matchedPictures = [];
 const filteredInstruments = function (event) {
   // see if checkbox = checked
   const checkboxChecked = event.target.getAttribute('filter');
+
   if (!checkboxChecked) {
+    return;
   } else {
+    //? de ce nu merge asta
+    checkmark.forEach((item) => {
+      item.translate = 'false';
+    });
     searchBtn.addEventListener('click', () => {
-      let minWantedPrice = Math.round(
-        Math.min(...doubleHandleSlider.noUiSlider.get([0, null]))
-      );
-      let maxWantedPrice = Math.round(
-        Math.max(...doubleHandleSlider.noUiSlider.get([null, 1]))
-      );
+      let minWantedPrice = Math.round(Math.min(...doubleHandleSlider.noUiSlider.get([0, null])));
+      let maxWantedPrice = Math.round(Math.max(...doubleHandleSlider.noUiSlider.get([null, 1])));
       // filter Instruments
       instruments.forEach((element) => {
         if (
@@ -266,267 +260,6 @@ const filteredInstruments = function (event) {
         } else {
           element.setAttribute('hidden', 'true');
         }
-        const morePictures = document.querySelector(
-          '.instrument-picture-container'
-        );
-        //Instrument slider on instrument card click
-        instruments.forEach(function (instrument) {
-          let showActiveInstrument = function () {
-            instrument.addEventListener('click', (event) => {
-              let sliderIndex = 0;
-              // imagesArray
-
-              let matchedPictures = [];
-              const moreImages = [
-                {
-                  name: 'yamaha211',
-                  picture1:
-                    'https://res.cloudinary.com/flute-specialists-inc/images/e_auto_brightness/e_auto_color/e_auto_contrast/c_crop,e_vibrance:20,g_face:center,h_550,w_1000/f_auto,q_auto/v1603306617/New%20Flutes%20Photography/Muramatsu%20New%209K%2095026/Muramatsu_9K-3/Muramatsu_9K-3.jpg',
-                  picture2:
-                    'http://cdn.shopify.com/s/files/1/0379/9369/products/IMG_8331_grande.jpg?v=1533153032',
-                  picture3:
-                    'https://cdn.shopify.com/s/files/1/0379/9369/products/IMG_8327_large.jpg?v=1533153032',
-                  picture4:
-                    'https://cdn.shopify.com/s/files/1/0379/9369/products/IMG_8330_large.jpg?v=1533153032',
-                },
-                {
-                  name: 'yamaha881',
-                  picture1:
-                    'https://cdn.shopify.com/s/files/1/0206/0816/products/powellsnell_1024x1024.jpg?v=1571439142',
-                  picture2:
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNywuh5QleYOHlimIB_G8bsZ36nrbgucZkQ3_xkkuawyRtddrus60LOCn0FDQksOtQyVw&usqp=CAU',
-                  picture3:
-                    'https://gottfried.dk/media/cache/product_original/product-images/90/06/Powell-Handmade-Custom-14K-Aurumite-tvaerfl_jte-_9697_11585645387.2441.jpg?1585645387',
-                  picture4:
-                    'https://images.squarespace-cdn.com/content/v1/53c712e1e4b0b419ad2ee515/1471459397389-MLMCMJDS2E7QXF09LJ13/ke17ZwdGBToddI8pDm48kF5MLyJmrcdprjRrW5GQo_17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0m_nwPNs2kYVhoOQZiVFxSYW_sd1UQLdCCR5fAbkzLaxSXkJsxafbTSDrKnMnPh61A/DSC05323.jpg',
-                },
-                {
-                  name: 'muramatsuheavy',
-                  picture1:
-                    'https://previews.123rf.com/images/flynt/flynt0805/flynt080500069/3070404-flute-lay-diagonally-across-sheet-music-notes.jpg',
-                  picture2:
-                    'https://thumbs.dreamstime.com/b/flute-instrument-notes-29449236.jpg',
-                  picture3:
-                    'https://i.pinimg.com/originals/0d/2a/62/0d2a6206710e1f84d616c0ce2e1b0cfe.jpg',
-                  picture4:
-                    'https://cdn.shopify.com/s/files/1/0206/0816/products/9kMura91290_1024x1024.jpg?v=1571439138',
-                },
-                {
-                  name: 'sankyo84567',
-                  picture1:
-                    'https://lh3.googleusercontent.com/proxy/jcCgQuTixfKWSfJOzeyIodCVRIHv3WxbHK5GGjMk2gsLegqcToOOEwnqIBWYHvMvKSI_TCLnbylGzxd2qQ_gdUw6sa2uTfomr6A-rfyU0ZauRjmU_kA6U41yQ_H4y8RM-uI',
-                  picture2:
-                    'https://lh3.googleusercontent.com/proxy/1Njd7diM3W3fdGDVLroJcWRb2to_7zcYPzFhYNQ_DnzjFbjpHNJNPxDW5WHOvcgucmTBoV207AWckwAylYsoRDfprxPHqSP5yN_h4-7HBlLwyXm_35RkjibbF9t8NFU',
-                  picture3:
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9v4z71YNgBflqa_6NfQbgoq7C25fd5kNPLYPRSr3_1qR5fEjQNJG-Q3mrcR84qRqUHZI&usqp=CAU',
-                  picture4:
-                    'https://64.media.tumblr.com/862692547e508a9620fa7db2a932ffa2/tumblr_nlki7yu03a1tvvk6fo5_1280.jpg',
-                },
-                {
-                  name: 'selmer22',
-                  picture1:
-                    'https://images.pexels.com/photos/45243/saxophone-music-gold-gloss-45243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture2:
-                    'https://images.pexels.com/photos/164936/pexels-photo-164936.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture3:
-                    'https://images.pexels.com/photos/1049690/pexels-photo-1049690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture4:
-                    'https://images.pexels.com/photos/359995/pexels-photo-359995.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                  name: 'selmer165',
-                  picture1:
-                    'https://images.pexels.com/photos/164934/pexels-photo-164934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture2:
-                    'https://images.pexels.com/photos/4709822/pexels-photo-4709822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture3:
-                    'https://images.pexels.com/photos/2347916/pexels-photo-2347916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture4:
-                    'https://images.pexels.com/photos/4786236/pexels-photo-4786236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                  name: 'BufetCrampon222',
-                  picture1:
-                    'https://images.pexels.com/photos/5650687/pexels-photo-5650687.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture2:
-                    'https://images.pexels.com/photos/5657273/pexels-photo-5657273.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture3:
-                    'https://images.pexels.com/photos/4709816/pexels-photo-4709816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture4:
-                    'https://images.pexels.com/photos/4786240/pexels-photo-4786240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                  name: 'BufetCramponProfesioal',
-                  picture1:
-                    'https://images.pexels.com/photos/3984800/pexels-photo-3984800.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                  picture2:
-                    'https://images.pexels.com/photos/3857365/pexels-photo-3857365.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture3:
-                    'https://media.istockphoto.com/photos/saxophone-player-picture-id649639094',
-                  picture4:
-                    'https://media.istockphoto.com/photos/music-picture-id1063339278',
-                },
-                {
-                  name: 'Alhambra-z',
-                  picture1:
-                    'https://images.pexels.com/photos/3714523/pexels-photo-3714523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture2:
-                    'https://images.pexels.com/photos/3733338/pexels-photo-3733338.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture3:
-                    'https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture4:
-                    'https://images.pexels.com/photos/4471892/pexels-photo-4471892.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                  name: 'Alhambra-726',
-                  picture1:
-                    'https://images.pexels.com/photos/2105038/pexels-photo-2105038.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture2:
-                    'https://images.pexels.com/photos/2156327/pexels-photo-2156327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture3:
-                    'https://images.pexels.com/photos/4472061/pexels-photo-4472061.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture4:
-                    'https://images.pexels.com/photos/3984814/pexels-photo-3984814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                  name: 'Alhambra-Profesional-2',
-                  picture1:
-                    'https://images.pexels.com/photos/3977174/pexels-photo-3977174.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture2:
-                    'https://images.pexels.com/photos/1696832/pexels-photo-1696832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture3:
-                    'https://images.pexels.com/photos/3922579/pexels-photo-3922579.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture4:
-                    'https://images.pexels.com/photos/4079260/pexels-photo-4079260.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                  name: 'Alhambra-Profesional-44',
-                  picture1:
-                    'https://images.pexels.com/photos/1047796/pexels-photo-1047796.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture2:
-                    'https://images.pexels.com/photos/417451/pexels-photo-417451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture3:
-                    'https://images.pexels.com/photos/3660866/pexels-photo-3660866.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                  picture4:
-                    'https://images.pexels.com/photos/1539789/pexels-photo-1539789.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                  name: 'BufetCrampon224',
-                  picture1:
-                    'https://www.kesslerandsons.com/wp-content/uploads/leblanc-serenade-l225se-clarinet-19-lower.jpg',
-                  picture2:
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgoUyIv64kNJWXufuYaRBnNBG7fi3IYXHA-WyPOaM3KrymmcLDyb6mOT3mvITa4v9MU6w&usqp=CAU',
-                  picture3:
-                    'https://kesslermusic.com/SelmerLeblanc/lb120bex/set/clarinets.jpg',
-                  picture4:
-                    'https://www.kesslerandsons.com/wp-content/uploads/2015/10/backun-alpha-nickel-keys-reinforce.jpg',
-                },
-                {
-                  name: 'BufetCrampon-profesional20',
-                  picture1:
-                    'https://www.kesslerandsons.com/wp-content/uploads/2016/03/backun-model-f-coco-gold-reg.jpg',
-                  picture2:
-                    'https://www.kesslerandsons.com/wp-content/uploads/2016/03/backun-model-f-coco-gold-trills.jpg',
-                  picture3:
-                    'https://www.kesslerandsons.com/wp-content/uploads/2016/03/backun-model-f-coco-gold-bell.jpg',
-                  picture4:
-                    'https://assets.speakcdn.com/assets/1942/clarinet-banner-2.jpg',
-                },
-                {
-                  name: 'BufetCrampon-profesional50',
-                  picture1:
-                    'https://www.mmimports.com/wp-content/uploads/2018/02/clarinet-selection-banner-1200x400.jpg',
-                  picture2:
-                    'https://media.istockphoto.com/photos/clarinet-picture-id187119065?k=6&m=187119065&s=170667a&w=0&h=NPQBCGN1LO47nPqV6hW8mUThE4r7Ok-uu_kQAMm8o4I=',
-                  picture3:
-                    'https://thumbs.dreamstime.com/b/clarinet-notes-music-swing-relax-104622685.jpg',
-                  picture4:
-                    'https://i.pinimg.com/originals/d6/de/09/d6de0964ebe1e71620a538aa1fb31724.jpg',
-                },
-                {
-                  name: 'BufetCrampon-profesional1',
-                  picture1:
-                    'https://i.etsystatic.com/7735354/r/il/b740c9/922486948/il_570xN.922486948_8ye6.jpg',
-                  picture2:
-                    'https://images.snapwi.re/2024/54c67fdee3f4a2c25f3837b9.w800.jpg',
-                  picture3:
-                    'https://i.pinimg.com/736x/9c/f6/8a/9cf68aed7a68d447b48a51d84dbf79f5.jpg',
-                  picture4:
-                    'https://i.pinimg.com/originals/28/91/fa/2891fab2820c8c83f6e69b04eb2d6010.jpg',
-                },
-              ];
-              moreImages.forEach(function (image) {
-                if (instrument.dataset.name === image.name) {
-                  matchedPictures.push(image.name);
-                } else {
-                  matchedPictures.pop(instrument.image);
-                }
-
-                matchedPictures.forEach(function () {
-                  pic1 = image.picture1;
-                  pic2 = image.picture2;
-                  pic3 = image.picture3;
-                  pic4 = image.picture4;
-                  instrName = image.name;
-
-                  //\ HTML
-                  const htmlIstrumentImg = `<img src="${pic1}"data-name ="${instrName} " alt="">
-								<img src="${pic2}" alt="">
-								<img src="${pic3}" alt="">
-								<img src="${pic4}" alt="">`;
-                  //insert html to the end of every iteration
-                  imageSliderContainer.innerHTML = htmlIstrumentImg;
-                });
-              });
-
-              const image = imageSliderContainer.querySelectorAll('img');
-
-              //Make slider move
-              sliderBtnUp.addEventListener('click', function (event) {
-                event.stopPropagation();
-                sliderIndex++;
-                changeImage();
-              });
-              const changeImage = function () {
-                if (sliderIndex > image.length - 1) {
-                  sliderIndex = 0;
-                } else if (sliderIndex < 0) {
-                  sliderIndex = image.length - 1;
-                }
-                if (window.screen.width < 700) {
-                  imageSliderContainer.style.transform = `translateY(${
-                    -sliderIndex * 80
-                  }vh)`;
-                } else if (window.screen.width > 700) {
-                  imageSliderContainer.style.transform = `translateY(${
-                    -sliderIndex * 80
-                  }vh)`;
-                }
-              };
-
-              event.stopPropagation();
-              removeInstrumentActive();
-
-              instrument.classList.add('active');
-              morePictures.style.display = 'flex';
-              if (window.screen.width < 500) {
-                grid.style.margin = '47rem auto';
-              } else if (window.screen.width > 500) {
-                grid.style.margin = '35rem auto';
-              }
-
-              pageScroll();
-            });
-          };
-          showActiveInstrument();
-        });
-        function removeInstrumentActive() {
-          instruments.forEach(function (instrument) {
-            instrument.classList.remove('active');
-          });
-        }
-
-        //on click instrument image slider
       });
 
       pageScroll();
@@ -536,8 +269,202 @@ const filteredInstruments = function (event) {
     });
   }
 };
-filterTab.addEventListener('click', filteredInstruments, allInstruments, true);
-let a = 4;
-let b = 6;
-let total = a + b;
-total
+filterTab.addEventListener('click', (event) => {
+  filteredInstruments(event);
+});
+const moreImages = [
+  {
+    name: 'yamaha211',
+    picture1:
+      'https://res.cloudinary.com/flute-specialists-inc/images/e_auto_brightness/e_auto_color/e_auto_contrast/c_crop,e_vibrance:20,g_face:center,h_550,w_1000/f_auto,q_auto/v1603306617/New%20Flutes%20Photography/Muramatsu%20New%209K%2095026/Muramatsu_9K-3/Muramatsu_9K-3.jpg',
+    picture2: 'http://cdn.shopify.com/s/files/1/0379/9369/products/IMG_8331_grande.jpg?v=1533153032',
+    picture3: 'https://cdn.shopify.com/s/files/1/0379/9369/products/IMG_8327_large.jpg?v=1533153032',
+    picture4: 'https://cdn.shopify.com/s/files/1/0379/9369/products/IMG_8330_large.jpg?v=1533153032',
+  },
+  {
+    name: 'yamaha881',
+    picture1: 'https://wallpapercave.com/wp/wp1851549.jpg',
+    picture2: 'https://wallpapercave.com/wp/wp1851550.jpg',
+    picture3: 'https://wallpapercave.com/wp/wp1851562.jpg',
+    picture4: 'https://wallpapercave.com/wp/wp1851565.jpg',
+  },
+  {
+    name: 'muramatsuheavy',
+    picture1:
+      'https://previews.123rf.com/images/flynt/flynt0805/flynt080500069/3070404-flute-lay-diagonally-across-sheet-music-notes.jpg',
+    picture2: 'https://thumbs.dreamstime.com/b/flute-instrument-notes-29449236.jpg',
+    picture3: 'https://i.pinimg.com/originals/0d/2a/62/0d2a6206710e1f84d616c0ce2e1b0cfe.jpg',
+    picture4: 'https://cdn.shopify.com/s/files/1/0206/0816/products/9kMura91290_1024x1024.jpg?v=1571439138',
+  },
+  {
+    name: 'sankyo84567',
+    picture1: 'https://wallpapercave.com/wp/wp1851514.jpg',
+    picture2: 'https://wallpapercave.com/wp/wp1851526.jpg',
+    picture3: 'https://wallpapercave.com/wp/wp1851543.jpg',
+    picture4: 'https://64.media.tumblr.com/862692547e508a9620fa7db2a932ffa2/tumblr_nlki7yu03a1tvvk6fo5_1280.jpg',
+  },
+  {
+    name: 'selmer22',
+    picture1:
+      'https://images.pexels.com/photos/45243/saxophone-music-gold-gloss-45243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture2: 'https://images.pexels.com/photos/164936/pexels-photo-164936.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture3: 'https://images.pexels.com/photos/1049690/pexels-photo-1049690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture4: 'https://images.pexels.com/photos/359995/pexels-photo-359995.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  },
+  {
+    name: 'selmer165',
+    picture1: 'https://images.pexels.com/photos/164934/pexels-photo-164934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture2: 'https://images.pexels.com/photos/4709822/pexels-photo-4709822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture3: 'https://images.pexels.com/photos/2347916/pexels-photo-2347916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture4: 'https://images.pexels.com/photos/4786236/pexels-photo-4786236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  },
+  {
+    name: 'BufetCrampon222',
+    picture1: 'https://images.pexels.com/photos/5650687/pexels-photo-5650687.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture2: 'https://images.pexels.com/photos/5657273/pexels-photo-5657273.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture3: 'https://images.pexels.com/photos/4709816/pexels-photo-4709816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture4: 'https://images.pexels.com/photos/4786240/pexels-photo-4786240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  },
+  {
+    name: 'BufetCramponProfesioal',
+    picture1: 'https://images.pexels.com/photos/3984800/pexels-photo-3984800.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    picture2: 'https://images.pexels.com/photos/3857365/pexels-photo-3857365.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture3: 'https://media.istockphoto.com/photos/saxophone-player-picture-id649639094',
+    picture4: 'https://media.istockphoto.com/photos/music-picture-id1063339278',
+  },
+  {
+    name: 'Alhambra-z',
+    picture1: 'https://images.pexels.com/photos/3714523/pexels-photo-3714523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture2: 'https://images.pexels.com/photos/3733338/pexels-photo-3733338.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture3: 'https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture4: 'https://images.pexels.com/photos/4471892/pexels-photo-4471892.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  },
+  {
+    name: 'Alhambra-726',
+    picture1: 'https://images.pexels.com/photos/2105038/pexels-photo-2105038.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture2: 'https://images.pexels.com/photos/2156327/pexels-photo-2156327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture3: 'https://images.pexels.com/photos/4472061/pexels-photo-4472061.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture4: 'https://images.pexels.com/photos/3984814/pexels-photo-3984814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  },
+  {
+    name: 'Alhambra-Profesional-2',
+    picture1: 'https://images.pexels.com/photos/3977174/pexels-photo-3977174.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture2: 'https://images.pexels.com/photos/1696832/pexels-photo-1696832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture3: 'https://images.pexels.com/photos/3922579/pexels-photo-3922579.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture4: 'https://images.pexels.com/photos/4079260/pexels-photo-4079260.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  },
+  {
+    name: 'Alhambra-Profesional-44',
+    picture1: 'https://images.pexels.com/photos/1047796/pexels-photo-1047796.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture2: 'https://images.pexels.com/photos/417451/pexels-photo-417451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture3: 'https://images.pexels.com/photos/3660866/pexels-photo-3660866.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    picture4: 'https://images.pexels.com/photos/1539789/pexels-photo-1539789.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  },
+  {
+    name: 'BufetCrampon224',
+    picture1: 'https://www.kesslerandsons.com/wp-content/uploads/leblanc-serenade-l225se-clarinet-19-lower.jpg',
+    picture2:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgoUyIv64kNJWXufuYaRBnNBG7fi3IYXHA-WyPOaM3KrymmcLDyb6mOT3mvITa4v9MU6w&usqp=CAU',
+    picture3: 'https://kesslermusic.com/SelmerLeblanc/lb120bex/set/clarinets.jpg',
+    picture4: 'https://www.kesslerandsons.com/wp-content/uploads/2015/10/backun-alpha-nickel-keys-reinforce.jpg',
+  },
+  {
+    name: 'BufetCrampon-profesional20',
+    picture1: 'https://www.kesslerandsons.com/wp-content/uploads/2016/03/backun-model-f-coco-gold-reg.jpg',
+    picture2: 'https://www.kesslerandsons.com/wp-content/uploads/2016/03/backun-model-f-coco-gold-trills.jpg',
+    picture3: 'https://www.kesslerandsons.com/wp-content/uploads/2016/03/backun-model-f-coco-gold-bell.jpg',
+    picture4: 'https://assets.speakcdn.com/assets/1942/clarinet-banner-2.jpg',
+  },
+  {
+    name: 'BufetCrampon-profesional50',
+    picture1: 'https://www.mmimports.com/wp-content/uploads/2018/02/clarinet-selection-banner-1200x400.jpg',
+    picture2:
+      'https://media.istockphoto.com/photos/clarinet-picture-id187119065?k=6&m=187119065&s=170667a&w=0&h=NPQBCGN1LO47nPqV6hW8mUThE4r7Ok-uu_kQAMm8o4I=',
+    picture3: 'https://thumbs.dreamstime.com/b/clarinet-notes-music-swing-relax-104622685.jpg',
+    picture4: 'https://i.pinimg.com/originals/d6/de/09/d6de0964ebe1e71620a538aa1fb31724.jpg',
+  },
+  {
+    name: 'BufetCrampon-profesional1',
+    picture1: 'https://i.etsystatic.com/7735354/r/il/b740c9/922486948/il_570xN.922486948_8ye6.jpg',
+    picture2: 'https://images.snapwi.re/2024/54c67fdee3f4a2c25f3837b9.w800.jpg',
+    picture3: 'https://i.pinimg.com/736x/9c/f6/8a/9cf68aed7a68d447b48a51d84dbf79f5.jpg',
+    picture4: 'https://i.pinimg.com/originals/28/91/fa/2891fab2820c8c83f6e69b04eb2d6010.jpg',
+  },
+];
+instruments.forEach(function (instrument) {
+  let showActiveInstrument = function () {
+    instrument.addEventListener('click', (event) => {
+      // imagesArray
+
+      moreImages.forEach(function (image) {
+        if (instrument.dataset.name === image.name) {
+          matchedPictures.push(image.name);
+          pic1 = image.picture1;
+          pic2 = image.picture2;
+          pic3 = image.picture3;
+          pic4 = image.picture4;
+          instrName = image.name;
+
+          //\ HTML
+          const htmlIstrumentImg = `<img src="${pic1}"data-name ="${instrName} " alt="">
+        <img src="${pic2}" alt="">
+        <img src="${pic3}" alt="">
+        <img src="${pic4}" alt="">`;
+          //insert html to the end of every iteration
+          imageSliderContainer.innerHTML = htmlIstrumentImg;
+        } else if (instrument.dataset.name !== image.name) {
+          if (matchedPictures.indexOf(image.name) !== -1) {
+            matchedPictures.splice(matchedPictures.indexOf(image.name), 1);
+          }
+        }
+      });
+
+      const image = imageSliderContainer.querySelectorAll('img');
+
+      //Make slider move
+      let sliderIndex = 0;
+      sliderBtnUp.addEventListener('click', function (event) {
+        event.stopPropagation();
+        sliderIndex++;
+        changeImage();
+      });
+      const changeImage = function () {
+        if (sliderIndex > image.length - 1) {
+          sliderIndex = 0;
+        } else if (sliderIndex < 0) {
+          sliderIndex = image.length - 1;
+        }
+        if (window.screen.width < 700) {
+          imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
+        } else if (window.screen.width > 700) {
+          imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
+        }
+      };
+
+      event.stopPropagation();
+      removeInstrumentActiveClass();
+
+      instrument.classList.add('active');
+      morePictures.style.display = 'flex';
+      if (window.screen.width < 500) {
+        grid.style.margin = '47rem auto';
+      } else if (window.screen.width > 500) {
+        grid.style.margin = '35rem auto';
+      }
+
+      pageScroll();
+    });
+  };
+  showActiveInstrument();
+});
+
+// click to see all instruments
+seeAllInstruments.addEventListener('click', function () {
+  showGrid();
+  hideNav();
+  hideFilterTab();
+  grid.style.margin = '1rem auto';
+  removeInstrumentActiveClass();
+
+  showgridInstruments();
+});

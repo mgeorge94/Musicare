@@ -20,8 +20,7 @@ right.addEventListener('mouseleave', () => {
 const removeDualLandingPage = function () {
   left.style.animation = 'leftHide .8s ease-in forwards';
   right.style.animation = 'rightHide 1s ease-in forwards';
-  landingPageContainer.style.animation =
-    'hideLandingContainer 2s ease-in forwards';
+  landingPageContainer.style.animation = 'hideLandingContainer 2s ease-in forwards';
 };
 leftLandingBtn.addEventListener('click', removeDualLandingPage);
 rightLandingBtn.addEventListener('click', removeDualLandingPage);
@@ -52,7 +51,7 @@ function pageScroll() {
   });
 }
 
-slideContainer = document.querySelector('.slide');
+slideContainer = document.querySelector('.container-slide');
 //! Website pentru Instrumente reparate
 
 const repairInstrumentWebsite = function () {
@@ -74,8 +73,7 @@ const repairInstrumentWebsite = function () {
         pariatur eveniet velit placeat quaerat deserunt, debitis
         molestiae doloremque harum et ipsum in aperiam fugiat
         recusandae illo voluptatem, blanditiis, qui ex vero`,
-      fixingPic2:
-        'https://inhorn.files.wordpress.com/2014/08/20140805-121602-44162686.jpg',
+      fixingPic2: 'https://inhorn.files.wordpress.com/2014/08/20140805-121602-44162686.jpg',
       fixingPic3:
         'https://i1.wp.com/southfloridahorns.com/wp-content/uploads/2020/05/IMAG0005_exp_30-scaled.jpg?fit=2560%2C1505&ssl=1',
     },
@@ -96,16 +94,14 @@ const repairInstrumentWebsite = function () {
         pariatur eveniet velit placeat quaerat deserunt, debitis
         molestiae doloremque harum et ipsum in aperiam fugiat
         recusandae illo voluptatem, blanditiis, qui ex vero`,
-      fixingPic2:
-        'https://www.onksws.com/wp-content/uploads/2011/06/Before-e1537725052673-1030x989.jpg',
+      fixingPic2: 'https://www.onksws.com/wp-content/uploads/2011/06/Before-e1537725052673-1030x989.jpg',
       fixingPic3:
         'https://images.squarespace-cdn.com/content/v1/5d0566253dce700001855bff/1561228445281-T0NP4O1VUUFBGRF0BASB/ke17ZwdGBToddI8pDm48kJRYd4FYIcEcrh_msEIEbkZ7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UT1ZImrvDdHZk_1-CVtB4IJW58HC3_EugqL3Iws8RTt8g0wU7-gbCzcJVB_xdsPuSg/P1000550.jpg?format=1500w',
     },
     {
       type: 'Vioară',
       tech: 'Ion Iliescu',
-      techPic:
-        'https://oameniputereromania.org/wp-content/uploads/2020/08/ion-iliescu.jpg',
+      techPic: 'https://oameniputereromania.org/wp-content/uploads/2020/08/ion-iliescu.jpg',
       about: `'Doloribus, quaerat. Accusantium provident architecto earum
         aliquid harum quis molestias iusto quaerat qui ex iure
         similique ipsa amet facilis consequuntur neque sunt nihil
@@ -117,10 +113,8 @@ const repairInstrumentWebsite = function () {
         pariatur eveniet velit placeat quaerat deserunt, debitis
         molestiae doloremque harum et ipsum in aperiam fugiat
         recusandae illo voluptatem, blanditiis, qui ex vero`,
-      fixingPic2:
-        'https://trianglestrings.com/wp-content/uploads/2017/01/DSC_0248-1024x683.jpg',
-      fixingPic3:
-        'https://i1.wp.com/violin-world.com/wp-content/uploads/2019/05/Violin-Repair.png?fit=1920%2C1080&ssl=1',
+      fixingPic2: 'https://trianglestrings.com/wp-content/uploads/2017/01/DSC_0248-1024x683.jpg',
+      fixingPic3: 'https://i1.wp.com/violin-world.com/wp-content/uploads/2019/05/Violin-Repair.png?fit=1920%2C1080&ssl=1',
     },
     {
       type: 'Saxofon',
@@ -132,14 +126,12 @@ const repairInstrumentWebsite = function () {
         similique ipsa amet facilis consequuntur neque sunt nihil
         officia temporibus! Dicta quam, accusamus obcaecati quas culpa
         sed quo nemo. Provident quis, adipisci hic ipsum corrupti quo'`,
-      fixingPic1:
-        'https://salisburymusic.files.wordpress.com/2012/02/tenorsaxrepair.jpg',
+      fixingPic1: 'https://salisburymusic.files.wordpress.com/2012/02/tenorsaxrepair.jpg',
       experience: `quos architecto ipsam quasi doloremque. Laborum incidunt
         pariatur eveniet velit placeat quaerat deserunt, debitis
         molestiae doloremque harum et ipsum in aperiam fugiat
         recusandae illo voluptatem, blanditiis, qui ex vero`,
-      fixingPic2:
-        'https://cdn.shopify.com/s/files/1/0028/7712/files/Repair_y_840x.jpg?v=1498483671',
+      fixingPic2: 'https://cdn.shopify.com/s/files/1/0028/7712/files/Repair_y_840x.jpg?v=1498483671',
       fixingPic3: 'https://www.ntdaily.com/wp-uploads/2018/04/IMG_4902.jpg',
     },
     {
@@ -151,16 +143,14 @@ const repairInstrumentWebsite = function () {
         similique ipsa amet facilis consequuntur neque sunt nihil
         officia temporibus! Dicta quam, accusamus obcaecati quas culpa
         sed quo nemo. Provident quis, adipisci hic ipsum corrupti quo'`,
-      fixingPic1:
-        'https://ciomit.com/wp-content/uploads/2019/06/IMG_4553Edited-1024x768.jpg',
+      fixingPic1: 'https://ciomit.com/wp-content/uploads/2019/06/IMG_4553Edited-1024x768.jpg',
       experience: `quos architecto ipsam quasi doloremque. Laborum incidunt
         pariatur eveniet velit placeat quaerat deserunt, debitis
         molestiae doloremque harum et ipsum in aperiam fugiat
         recusandae illo voluptatem, blanditiis, qui ex vero`,
       fixingPic2:
         'https://images.squarespace-cdn.com/content/v1/5a8c5e9cb7411cfd6afc974e/1531857356054-K9NPR2TXWIHY776VE5RC/ke17ZwdGBToddI8pDm48kPOyYgnW7nyGjASOBc05s4cUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcmu9LPXh6MQ2js1S_zRc5FMg_8U215fhUVz0tlLN9nY9kaGBuGgADdJLkI-1Bdr5-/shutterstock_161569406+%281%29.jpg?format=2500w',
-      fixingPic3:
-        'https://www.purtle.com/sites/default/files/images/smashed-trumpet.jpg',
+      fixingPic3: 'https://www.purtle.com/sites/default/files/images/smashed-trumpet.jpg',
     },
     {
       type: 'Trombon',
@@ -172,8 +162,7 @@ const repairInstrumentWebsite = function () {
         similique ipsa amet facilis consequuntur neque sunt nihil
         officia temporibus! Dicta quam, accusamus obcaecati quas culpa
         sed quo nemo. Provident quis, adipisci hic ipsum corrupti quo'`,
-      fixingPic1:
-        'https://i.pinimg.com/originals/63/29/7e/63297e19b18cc0ce4943a2290a567c34.jpg',
+      fixingPic1: 'https://i.pinimg.com/originals/63/29/7e/63297e19b18cc0ce4943a2290a567c34.jpg',
       experience: `quos architecto ipsam quasi doloremque. Laborum incidunt
         pariatur eveniet velit placeat quaerat deserunt, debitis
         molestiae doloremque harum et ipsum in aperiam fugiat
@@ -191,16 +180,14 @@ const repairInstrumentWebsite = function () {
         similique ipsa amet facilis consequuntur neque sunt nihil
         officia temporibus! Dicta quam, accusamus obcaecati quas culpa
         sed quo nemo. Provident quis, adipisci hic ipsum corrupti quo'`,
-      fixingPic1:
-        'https://accordionuprising.files.wordpress.com/2017/02/repair.jpg',
+      fixingPic1: 'https://accordionuprising.files.wordpress.com/2017/02/repair.jpg',
       experience: `quos architecto ipsam quasi doloremque. Laborum incidunt
         pariatur eveniet velit placeat quaerat deserunt, debitis
         molestiae doloremque harum et ipsum in aperiam fugiat
         recusandae illo voluptatem, blanditiis, qui ex vero`,
       fixingPic2:
         'https://www.tornabuoniart.com/wp-content/uploads/2020/04/Arman-Accorde%CC%81on-1974-fisarmonica-rotta-incorporata-nel-cemento-in-cassa-di-legno-143x103x26-cm-Tornabuoni-Art.jpg',
-      fixingPic3:
-        'http://georgewhitfield.co.uk/wp-content/uploads/2018/03/Recent-Galotta.jpg',
+      fixingPic3: 'http://georgewhitfield.co.uk/wp-content/uploads/2018/03/Recent-Galotta.jpg',
     },
   ];
 
@@ -211,65 +198,106 @@ const repairInstrumentWebsite = function () {
 
       panels.forEach(function (panel) {
         panel.addEventListener('click', () => {
+          //if instrument type match, create html
           if (panel.dataset.instrumenttype === slide.type) {
             matchedFixedSlides.push(slide.name);
-          } else {
-            matchedFixedSlides.pop(slide.name);
+            matchedFixedSlides.forEach(function () {
+              let type = slide.type;
+              let tech = slide.tech;
+              let techPic = slide.techPic;
+              let about = slide.about;
+              let pic1 = slide.fixingPic1;
+              let pic2 = slide.fixingPic2;
+              let pic3 = slide.fixingPic3;
+              let experience = slide.experience;
+
+              // html
+
+              let leftSlideHTML = document.createElement('div');
+              leftSlideHTML.setAttribute('class', 'content-slide');
+              leftSlideHTML.classList.add('repair');
+              leftSlideHTML.setAttribute('data-instrumentType', '${type}');
+              leftSlideHTML.innerHTML = `
+              <div class = "slide-overlay"></div>
+               <img  class="technician" src="${techPic}";/>
+                      <h3 class="technician-name"> Tehnician : ${tech}</h3>
+                      
+                      <img class="repair-image one" src="${pic1}"	/>
+                      
+                      <img class="repair-image two" src="${pic2}"	/>
+                      <img class="repair-image three" src="${pic3}"	/>
+                      <div class="text-content">
+                      <p> ${about}</p>
+                      <h4>Experiență profesională: </h4>
+                      <p class ="experience">${experience}</p>
+                      </div>
+  
+                      `;
+              //insert html to the end of every iteration
+
+              while (slideContainer.firstChild) {
+                slideContainer.removeChild(slideContainer.firstChild);
+              }
+              slideContainer.appendChild(leftSlideHTML);
+
+              const slideContent = document.querySelector('.content-slide');
+              //display slide
+              pageScroll();
+              slideContent.style.display = 'block';
+              slideContainer.style.display = 'flex';
+              document;
+            });
+            //make image apear on scroll
+            const experienceClass = document.querySelector('.experience');
+            const onScrollImage1 = document.querySelector('.one');
+            const onScrollImage2 = document.querySelector('.two');
+            const onScrollImage3 = document.querySelector('.three');
+
+            //check if element is in view
+            function isInViewport(element) {
+              const elementCoordonates = element.getBoundingClientRect();
+              return (
+                elementCoordonates.top >= 0 &&
+                elementCoordonates.left >= 0 &&
+                elementCoordonates.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                elementCoordonates.right <= (window.innerWidth || document.documentElement.clientWidth)
+              );
+            }
+
+            document.addEventListener(
+              'scroll',
+              function () {
+                if (isInViewport(onScrollImage1)) {
+                  onScrollImage2.style.display = 'none';
+                  onScrollImage3.style.display = 'none';
+                } else {
+                  onScrollImage2.style.display = 'flex';
+                  onScrollImage3.style.display = 'none';
+                }
+                if (!isInViewport(testimonialContainer) && isInViewport(onScrollImage2)) {
+                  onScrollImage3.style.display = 'none';
+                } else if (isInViewport(testimonialContainer) && !isInViewport(onScrollImage2)) {
+                  onScrollImage3.style.display = 'flex';
+                }
+              },
+              {
+                passive: true,
+              }
+            );
+          } else if (panel.dataset.instrumenttype !== slide.name) {
+            if (matchedFixedSlides.indexOf(slide.name) !== -1) {
+              matchedFixedSlides.splice(matchedFixedSlides.indexOf(slide.name), 1);
+            }
           }
-
-          matchedFixedSlides.forEach(function () {
-            let type = slide.type;
-            let tech = slide.tech;
-            let techPic = slide.techPic;
-            let about = slide.about;
-            let pic1 = slide.fixingPic1;
-            let pic2 = slide.fixingPic2;
-            let pic3 = slide.fixingPic3;
-            let experience = slide.experience;
-
-            // html
-
-            let leftSlideHTML = `<div data-instrumentType = "${type}"class="content-slide repair">
-            <div class = "slide-overlay"></div>
-             <img  class="technician" src="${techPic}";/>
-                    <h3 class="technician-name"> Tehnician : ${tech}</h3>
-                    
-                    <img class="repair-image one" src="${pic1}"	/>
-                    
-                    <img class="repair-image two" src="${pic2}"	/>
-                    <img class="repair-image three" src="${pic3}"	/>
-                    <div class="text-content">
-                    <p> ${about}</p>
-                    <h4>Experiență profesională: </h4>
-                    <p>${experience}</p>
-                    </div>
-                    
-                    </div>`;
-            //insert html to the end of every iteration
-            slideContainer.innerHTML = leftSlideHTML;
-            const slideContent = document.querySelector('.content-slide');
-            //display slide
-            pageScroll();
-            slideContent.style.display = 'block';
-            slideContainer.style.display = 'flex';
-            document;
-
-            document.addEventListener('scroll', () => {
-              document.querySelector('.repair-image.two').style.display =
-                'flex';
-            });
-            document.addEventListener('scroll', () => {
-              document.querySelector('.repair-image.three').style.display =
-                'flex';
-            });
-          });
+          grid.style.display = 'none';
         });
       });
     });
   };
-
   paintFixedInstrumentSlides();
 };
+repairInstrumentWebsite();
+
 //!Website pentru cumparat de instrumentele
 const buyInstrumentWebsite = function () {
   //toBuy instrument Object array
@@ -323,8 +351,7 @@ const buyInstrumentWebsite = function () {
       dignissimos quae. Expedita corporis officia ullam suscipit
       exercitationem earum iste ab eaque commodi perspiciatis,
       amet fuga velit deleniti.`,
-      picture:
-        'https://i.pinimg.com/originals/e1/69/74/e16974ae56fdaa3f65ea1dbca5e79677.jpg',
+      picture: 'https://i.pinimg.com/originals/e1/69/74/e16974ae56fdaa3f65ea1dbca5e79677.jpg',
       advantages1: `blanditiis ut obcaecatd`,
       advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
       eius! `,
@@ -354,8 +381,7 @@ const buyInstrumentWebsite = function () {
       dignissimos quae. Expedita corporis officia ullam suscipit
       exercitationem earum iste ab eaque commodi perspiciatis,
       amet fuga velit deleniti.`,
-      picture:
-        'https://c4.wallpaperflare.com/wallpaper/682/819/765/violin-wallpaper-preview.jpg',
+      picture: 'https://c4.wallpaperflare.com/wallpaper/682/819/765/violin-wallpaper-preview.jpg',
       advantages1: `blanditiis ut obcaecatd`,
       advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
       eius! `,
@@ -416,8 +442,7 @@ const buyInstrumentWebsite = function () {
       dignissimos quae. Expedita corporis officia ullam suscipit
       exercitationem earum iste ab eaque commodi perspiciatis,
       amet fuga velit deleniti.`,
-      picture:
-        'https://longbeachsymphony.org/shared/2015/10/Golden-Trumpet-on-Black-Background-Stock-image.jpg',
+      picture: 'https://longbeachsymphony.org/shared/2015/10/Golden-Trumpet-on-Black-Background-Stock-image.jpg',
       advantages1: `blanditiis ut obcaecatd`,
       advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
       eius! `,
@@ -447,8 +472,7 @@ const buyInstrumentWebsite = function () {
       dignissimos quae. Expedita corporis officia ullam suscipit
       exercitationem earum iste ab eaque commodi perspiciatis,
       amet fuga velit deleniti.`,
-      picture:
-        'https://i.pinimg.com/originals/8a/19/24/8a1924f2a02b849a2ab836dc41652237.jpg',
+      picture: 'https://i.pinimg.com/originals/8a/19/24/8a1924f2a02b849a2ab836dc41652237.jpg',
       advantages1: `blanditiis ut obcaecatd`,
       advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
       eius! `,
@@ -478,8 +502,7 @@ const buyInstrumentWebsite = function () {
       dignissimos quae. Expedita corporis officia ullam suscipit
       exercitationem earum iste ab eaque commodi perspiciatis,
       amet fuga velit deleniti.`,
-      picture:
-        'https://img3.goodfon.com/wallpaper/nbig/c/cc/msica-de-acorden-acorden.jpg',
+      picture: 'https://img3.goodfon.com/wallpaper/nbig/c/cc/msica-de-acorden-acorden.jpg',
       advantages1: `blanditiis ut obcaecatd`,
       advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
       eius! `,
@@ -557,7 +580,7 @@ const buyInstrumentWebsite = function () {
               instruments.forEach((element) => {
                 if (element.dataset.instrumenttype === slide.type) {
                   element.removeAttribute('hidden');
-                  grid.style.display = 'grid';
+                  showGrid();
                   slideContainer.style.display = 'none';
                   pageScroll();
                 } else {
@@ -567,6 +590,7 @@ const buyInstrumentWebsite = function () {
             });
           });
         });
+        grid.style.display = 'none';
       });
     });
   };

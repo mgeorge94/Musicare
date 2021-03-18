@@ -7,25 +7,65 @@ const openBtn = document.getElementById('open');
 const nav = document.querySelectorAll('.nav');
 const seeInstruments = document.querySelector('.see-instruments');
 const grid = document.querySelector('.grid');
-
-const hideNav = () =>
-  nav.forEach((navElement) => navElement.classList.remove('visible'));
-
-openBtn.addEventListener('click', () => {
-  nav.forEach((navElement) => navElement.classList.add('visible'));
-  faqContent.style.display = 'none';
-  aboutUsContainer.style.display = 'none';
-  newsContent.style.display = 'none';
-  instrOptBkg.classList.remove('active');
-  instrOptContainer.classList.remove('active');
+// functions that show elements
+const showGrid = () => {
+  grid.style.display = 'grid';
+};
+const showGridInstruments = () => {
+  instruments.forEach(function (instrument) {
+    instrument.removeAttribute('hidden');
+  });
+};
+const showNav = () => nav.forEach((navElement) => navElement.classList.add('visible'));
+const showFaq = () => (faqContent.style.display = 'block');
+const showFilterTab = () => {
+  document.querySelector('.filter-tab').classList.add('visible');
+};
+const showNews = () => (newsContent.style.display = 'block');
+const showContactForm = () => {
+  contactForm.style.display = 'flex';
+};
+//functions that hide elements
+const hideGrid = () => {
   grid.style.display = 'none';
   morePictures.style.display = 'none';
-  slideContainer.style.display = 'none';
+};
+const hideNav = () => nav.forEach((navElement) => navElement.classList.remove('visible'));
+const removeInstrumentActiveClass = () => {
+  instruments.forEach((instrument) => {
+    instrument.classList.remove('active');
+  });
+};
+const hideFaq = () => (faqContent.style.display = 'none');
+const hideAboutUs = () => {
+  aboutUsContainer.style.display = 'none';
+  aboutUsContainer.style.display = 'none';
+};
+const hideNews = () => (newsContent.style.display = 'none');
+const hideSlides = () => (slideContainer.style.display = 'none');
+const hideFilterTab = () => {
+  document.querySelector('.filter-tab').classList.remove('visible');
+};
+const hideContactForm = () => {
+  contactForm.style.display = 'none';
+};
+//open nav btn click
+openBtn.addEventListener('click', () => {
+  hideGrid();
+  hideFaq();
+  hideAboutUs();
+  hideNews();
+  hideSlides();
+  showNav();
+  instrOptBkg.classList.remove('active');
+  instrOptContainer.classList.remove('active');
 });
 
 content.addEventListener('click', () => {
   hideNav();
-  aboutUsContainer.style.display = 'none';
+  hideFaq();
+  hideContactForm();
+  hideAboutUs();
 });
 
 //!FAQ
@@ -33,8 +73,7 @@ content.addEventListener('click', () => {
 const faqButton = document.querySelector('.faq-button');
 faqButton.addEventListener('click', () => {
   hideNav();
-
-  faqContent.style.display = 'block';
+  showFaq();
   pageScroll();
 });
 
@@ -46,9 +85,7 @@ addFAQ.forEach((FAQ) => {
     FAQ.classList.add('active');
   });
 });
-content.addEventListener('click', (event) => {
-  faqContent.style.display = 'none';
-});
+
 function removeFAQ() {
   addFAQ.forEach((faq) => {
     faq.classList.remove('active');
@@ -66,15 +103,12 @@ let isValid = false;
 
 function showForm() {
   contactBtn.addEventListener('click', () => {
-    contactForm.style.display = 'flex';
+    showContactForm();
     hideNav();
     pageScroll();
   });
 }
 
-content.addEventListener('click', () => {
-  contactForm.style.display = 'none';
-});
 showForm();
 contactForm.addEventListener('click', (event) => {
   event.stopPropagation();
@@ -87,8 +121,7 @@ function validateForm() {
     message.style.color = 'red';
     messageContainer.style.borderColor = 'red';
   } else if (isValid) {
-    message.textContent =
-      'Mulțumim pentru interes. Vă vorm răspunde în cel mai scurt timp posibil';
+    message.textContent = 'Mulțumim pentru interes. Vă vorm răspunde în cel mai scurt timp posibil';
     message.style.color = '#bebebe';
     messageContainer.style.borderColor = '#bebebe';
   }
@@ -143,12 +176,8 @@ const changeSlide = (direction) => {
       activeSlideIndex = 0;
     }
   }
-  slideRight.style.transform = `translateY(-${
-    activeSlideIndex * sliderHeight
-  }px)`;
-  slideLeft.style.transform = `translateY(${
-    activeSlideIndex * sliderHeight
-  }px)`;
+  slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight}px)`;
+  slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`;
 };
 aboutBtn.addEventListener('click', () => {
   hideNav();
@@ -168,10 +197,10 @@ newsBtn.addEventListener('click', () => {
   hideNav();
   pageScroll();
 
-  newsContent.style.display = 'block';
+  showNews();
 });
 content.addEventListener('click', () => {
-  newsContent.style.display = 'none';
+  hideNews();
 });
 newsContent.addEventListener('click', (event) => {
   event.stopPropagation();
@@ -181,20 +210,20 @@ newsContent.addEventListener('click', (event) => {
 const instrOptBkg = document.querySelector('.instr-options-background');
 const instrOptContainer = document.querySelector('.instr-options-container');
 const instrBtn = document.querySelector('.instruments-btn');
-const cautaBtn = document.querySelector('.filter');
+const filterBtn = document.querySelector('.filter');
 instrBtn.addEventListener('click', () => {
   instrOptBkg.classList.add('active');
   instrOptContainer.classList.add('active');
 });
 //make filterTab apear
-cautaBtn.addEventListener('click', (event) => {
+filterBtn.addEventListener('click', (event) => {
   event.stopPropagation();
 
-  document.querySelector('.filter-tab').classList.add('visible');
+  showFilterTab();
 });
 
 container.addEventListener('click', () => {
-  document.querySelector('.filter-tab').classList.remove('visible');
+  hideFilterTab();
 });
 
 //! Testimonials
