@@ -3,11 +3,14 @@ let index = 1;
 const faqContent = document.querySelector('.container-faq ');
 const container = document.querySelector('.container');
 const content = document.querySelector('.content');
-const openBtn = document.getElementById('open');
+const navBurgerBtn = document.getElementById('open');
 const nav = document.querySelectorAll('.nav');
 const seeInstruments = document.querySelector('.see-instruments');
 const grid = document.querySelector('.grid');
 // functions that show elements
+const showTestimonials = () => {
+  testimonialContainer.style.display = 'block';
+};
 const showGrid = () => {
   grid.style.display = 'grid';
 };
@@ -23,7 +26,13 @@ const showFilterTab = () => {
 };
 const showNews = () => (newsContent.style.display = 'block');
 const showContactForm = () => {
-  contactForm.style.display = 'flex';
+  contactFormContainer.style.display = 'flex';
+};
+const resetGridToPosition = () => {
+  grid.style.margin = '1rem auto';
+};
+const showCheckoutForm = () => {
+  checkoutForm.style.display = 'flex';
 };
 //functions that hide elements
 const hideGrid = () => {
@@ -34,6 +43,11 @@ const hideNav = () => nav.forEach((navElement) => navElement.classList.remove('v
 const removeInstrumentActiveClass = () => {
   instruments.forEach((instrument) => {
     instrument.classList.remove('active');
+  });
+};
+const hideGridInstruments = () => {
+  instruments.forEach(function (instrument) {
+    instrument.setAttribute('hidden', 'true');
   });
 };
 const hideFaq = () => (faqContent.style.display = 'none');
@@ -47,24 +61,33 @@ const hideFilterTab = () => {
   document.querySelector('.filter-tab').classList.remove('visible');
 };
 const hideContactForm = () => {
-  contactForm.style.display = 'none';
+  contactFormContainer.style.display = 'none';
+};
+const hideCheckoutForm = () => {
+  checkoutForm.style.display = 'none';
 };
 //open nav btn click
-openBtn.addEventListener('click', () => {
+navBurgerBtn.addEventListener('click', () => {
   hideGrid();
   hideFaq();
   hideAboutUs();
   hideNews();
   hideSlides();
   showNav();
+  hideCheckoutForm();
+  showTestimonials();
+  hideContactForm();
   instrOptBkg.classList.remove('active');
   instrOptContainer.classList.remove('active');
+  checkmark.forEach((checkmark) => {
+    checkmark.checked = false;
+  });
 });
 
 content.addEventListener('click', () => {
   hideNav();
   hideFaq();
-  hideContactForm();
+
   hideAboutUs();
 });
 
@@ -74,7 +97,7 @@ const faqButton = document.querySelector('.faq-button');
 faqButton.addEventListener('click', () => {
   hideNav();
   showFaq();
-  pageScroll();
+  pageScroll(500);
 });
 
 const addFAQ = document.querySelectorAll('.faq');
@@ -95,7 +118,7 @@ function removeFAQ() {
 //!contact form
 
 const contactBtn = document.querySelector('.contact-btn');
-const contactForm = document.querySelector('.form-container');
+const contactFormContainer = document.querySelector('.form-container');
 const form = document.getElementById('form');
 const messageContainer = document.querySelector('.message-container');
 const message = document.querySelector('#message');
@@ -105,12 +128,12 @@ function showForm() {
   contactBtn.addEventListener('click', () => {
     showContactForm();
     hideNav();
-    pageScroll();
+    pageScroll(500);
   });
 }
 
 showForm();
-contactForm.addEventListener('click', (event) => {
+contactFormContainer.addEventListener('click', (event) => {
   event.stopPropagation();
 });
 form.addEventListener('submit', processFormData);
@@ -183,7 +206,7 @@ aboutBtn.addEventListener('click', () => {
   hideNav();
 
   aboutUsContainer.style.display = 'flex';
-  pageScroll();
+  pageScroll(500);
 });
 aboutUsContainer.addEventListener('click', (event) => {
   event.stopPropagation();
@@ -195,7 +218,7 @@ const newsBtn = document.querySelector('.news-btn');
 const newsContent = document.querySelector('.card-container');
 newsBtn.addEventListener('click', () => {
   hideNav();
-  pageScroll();
+  pageScroll(500);
 
   showNews();
 });
@@ -234,6 +257,7 @@ const userImage = document.querySelector('.user-image');
 const username = document.querySelector('.username');
 const role = document.querySelector('.role');
 let testimonialIndex = 0;
+
 const testimonials = [
   {
     name: 'Georgiana Mihailă',

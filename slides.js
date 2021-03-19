@@ -44,9 +44,9 @@ function removeActiveClasses() {
   });
 }
 
-function pageScroll() {
+function pageScroll(value) {
   window.scroll({
-    top: 500,
+    top: value,
     behavior: 'smooth',
   });
 }
@@ -242,54 +242,37 @@ const repairInstrumentWebsite = function () {
 
               const slideContent = document.querySelector('.content-slide');
               //display slide
-              pageScroll();
+              pageScroll(500);
               slideContent.style.display = 'block';
               slideContainer.style.display = 'flex';
               document;
             });
             //make image apear on scroll
-            const experienceClass = document.querySelector('.experience');
-            const onScrollImage1 = document.querySelector('.one');
-            const onScrollImage2 = document.querySelector('.two');
-            const onScrollImage3 = document.querySelector('.three');
 
-            //check if element is in view
-            function isInViewport(element) {
-              const elementCoordonates = element.getBoundingClientRect();
-              return (
-                elementCoordonates.top >= 0 &&
-                elementCoordonates.left >= 0 &&
-                elementCoordonates.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                elementCoordonates.right <= (window.innerWidth || document.documentElement.clientWidth)
-              );
-            }
+            const onScrollImages = document.querySelectorAll('.repair-image');
 
-            document.addEventListener(
-              'scroll',
-              function () {
-                if (isInViewport(onScrollImage1)) {
-                  onScrollImage2.style.display = 'none';
-                  onScrollImage3.style.display = 'none';
-                } else {
-                  onScrollImage2.style.display = 'flex';
-                  onScrollImage3.style.display = 'none';
+            const showPicturesOnScroll = () => {
+              const trigger = (window.innerHeight / 5) * 4;
+
+              onScrollImages.forEach((image) => {
+                const testionialPosition = testimonialContainer.getBoundingClientRect().top;
+                if (testionialPosition < trigger) {
+                  image.style.display = 'flex';
                 }
-                if (!isInViewport(testimonialContainer) && isInViewport(onScrollImage2)) {
-                  onScrollImage3.style.display = 'none';
-                } else if (isInViewport(testimonialContainer) && !isInViewport(onScrollImage2)) {
-                  onScrollImage3.style.display = 'flex';
-                }
-              },
-              {
-                passive: true,
-              }
-            );
+              });
+            };
+            window.addEventListener('scroll', showPicturesOnScroll);
           } else if (panel.dataset.instrumenttype !== slide.name) {
             if (matchedFixedSlides.indexOf(slide.name) !== -1) {
               matchedFixedSlides.splice(matchedFixedSlides.indexOf(slide.name), 1);
             }
           }
-          grid.style.display = 'none';
+          hideGrid();
+          hideCheckoutForm();
+          resetGridToPosition();
+          showTestimonials();
+
+          hideContactForm();
         });
       });
     });
@@ -528,7 +511,7 @@ const buyInstrumentWebsite = function () {
           } else {
             matchedToBuySlides.pop(slide.name);
           }
-          pageScroll();
+          pageScroll(500);
           matchedToBuySlides.forEach(function () {
             let type = slide.type;
             let description = slide.description;
@@ -543,7 +526,7 @@ const buyInstrumentWebsite = function () {
             // html
 
             let rightSlideHTML = `
-            <div data-instrumentType = "${type}" class="content-slide buy">
+            <div data-instrumentType = "${type}" class="content-slide buy-slide">
             
             <img class="slide-banner-image"	src="${picture}"/>
             <div>
@@ -574,7 +557,6 @@ const buyInstrumentWebsite = function () {
             slideContent.style.display = 'block';
             slideContainer.style.display = 'flex';
 
-            //? why does it work wierd
             const seeInstrument = document.querySelector('.seeInstrument');
             seeInstrument.addEventListener('click', () => {
               instruments.forEach((element) => {
@@ -582,7 +564,7 @@ const buyInstrumentWebsite = function () {
                   element.removeAttribute('hidden');
                   showGrid();
                   slideContainer.style.display = 'none';
-                  pageScroll();
+                  pageScroll(500);
                 } else {
                   element.setAttribute('hidden', 'true');
                 }
@@ -590,7 +572,12 @@ const buyInstrumentWebsite = function () {
             });
           });
         });
-        grid.style.display = 'none';
+        hideGrid();
+        hideCheckoutForm();
+        resetGridToPosition();
+        showTestimonials();
+
+        hideContactForm();
       });
     });
   };

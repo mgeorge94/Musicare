@@ -19,7 +19,7 @@
     <link rel="icon" href="../resources/logo/fav-icon.png" />
   </head>
   <body>
-    <!-- ! slide comented for ease of testing -->
+    <!-- ! slide commented for ease of testing -->
 
     <div class="container-intro">
       <div class="slider-background">
@@ -169,69 +169,6 @@
             </div>
           </div>
         </div>
-        <!--CONTACT FORM  -->
-        <div class="form-container">
-          <div class="info">
-            <h2>Vrei să îți dezlănțui întregul potențial muzical?</h2>
-            <h2 class="contacteaza">Contactează-ne</h2>
-            <h3>Program:</h3>
-            <h4>Luni - Vineri: 08:00 – 17:00</h4>
-            <h4>Sambata: 08:00 – 14:00</h4>
-            <h4>Duminica: Indisponibil</h4>
-            <h3>Telefon: 0743934917</h3>
-          </div>
-
-          <form action="" id="form" novalidate data-netlify="true">
-            <div class="form">
-              <input
-                type="text"
-                style="padding-left: 25px"
-                id="name"
-                placeholder="Cine ești?"
-                name="name"
-                required
-                minlength="3"
-              />
-            </div>
-            <div class="form">
-              <input
-                type="email"
-                style="padding-left: 25px"
-                id="email"
-                placeholder="Cum te putem contata? "
-                name="email"
-                required
-              />
-            </div>
-            <div class="form">
-              <input
-                type="text"
-                style="padding-left: 25px"
-                id="instrument-text"
-                placeholder="Ce instrument are nevoie de atenția noastră?"
-                name="instrument"
-                required
-                minlength="2"
-              />
-            </div>
-            <div class="form">
-              <input
-                type="text"
-                style="padding-left: 25px"
-                id="email-text"
-                placeholder="Cu ce îți putem fi de folos"
-                name="cerere"
-                required
-                minlenght="20"
-              />
-            </div>
-
-            <button class="contact-button" type="trimite">Trimite</button>
-          </form>
-          <div class="message-container">
-            <h3 id="message">Nu sta pe gânduri!</h3>
-          </div>
-        </div>
 
         <!-- About us -->
         <div class="aboutUs-container">
@@ -367,9 +304,160 @@
               <button id="btn-up">
                 <i class="fas fa-arrow-up slider-buttons"></i>
               </button>
-              <button id="buy"><i class="fas fa-shopping-cart"></i> Cumpară</button>
+              <button class="buy"><i class="fas fa-shopping-cart"></i> Cumpară</button>
             </div>
           </div>
+        </div>
+        <!--CONTACT FORM  -->
+        <div class="form-container">
+          <div class="info">
+            <h2>Vrei să îți dezlănțui întregul potențial muzical?</h2>
+            <h2 class="contact">Contactează-ne</h2>
+            <h3>Program:</h3>
+            <h4>Luni - Vineri: 08:00 – 17:00</h4>
+            <h4>Sambata: 08:00 – 14:00</h4>
+            <h4>Duminica: Indisponibil</h4>
+            <h3>Telefon: 0743934917</h3>
+          </div>
+
+          <form action="" id="form" novalidate data-netlify="true">
+            <div class="form">
+              <input
+                type="text"
+                style="padding-left: 25px"
+                id="name"
+                placeholder="Cine ești?"
+                name="name"
+                required
+                minlength="3"
+              />
+            </div>
+            <div class="form">
+              <input
+                type="email"
+                style="padding-left: 25px"
+                id="email"
+                placeholder="Cum te putem contata? "
+                name="email"
+                required
+              />
+            </div>
+            <div class="form">
+              <input
+                type="text"
+                style="padding-left: 25px"
+                id="instrument-text"
+                placeholder="Ce instrument are nevoie de atenția noastră?"
+                name="instrument"
+                required
+                minlength="2"
+              />
+            </div>
+            <div class="form">
+              <input
+                type="text"
+                style="padding-left: 25px"
+                id="email-text"
+                placeholder="Cu ce îți putem fi de folos"
+                name="cerere"
+                required
+                minlenght="20"
+              />
+            </div>
+
+            <button class="contact-button" type="trimite">Trimite</button>
+          </form>
+          <div class="message-container">
+            <h3 id="message">Nu sta pe gânduri!</h3>
+          </div>
+        </div>
+        <!-- chechout form  -->
+
+        <div class="checkout-form-container">
+          <form action="/action_page.php">
+            <div class="row">
+              <div class="column">
+                <h3>Adresa de facturare</h3>
+
+                <input required style="padding-left: 25px" type="text" id="fname" name="firstname" placeholder="Nume complet:" />
+
+                <input required style="padding-left: 25px" type="text" id="email" name="email" placeholder=" Adresă de email:" />
+
+                <input required style="padding-left: 25px" type="text" id="adr" name="address" placeholder="Adresa: " />
+
+                <input required style="padding-left: 25px" type="text" id="city" name="city" placeholder="Oraș: " />
+
+                <div class="row">
+                  <div class="column small">
+                    <input required style="padding-left: 25px" type="text" id="state" name="state" placeholder="Județ: " />
+                  </div>
+                  <div class="column small">
+                    <input required style="padding-left: 25px" type="text" id="zip" name="zip" placeholder="Cod Poștal: " />
+                  </div>
+                </div>
+              </div>
+
+              <div class="column">
+                <h3>Plată</h3>
+                <label for="fname">Metode acceptate de plată: </label>
+                <div class="icon-container">
+                  <i class="fab fa-cc-visa" style="color: rgb(50, 94, 189)"></i>
+                  <i class="fab fa-cc-paypal" style="color: rgb(92, 176, 255)"></i>
+                  <i class="fab fa-cc-mastercard" style="color: rgb(255, 187, 0)"></i>
+                  <i class="fas fa-money-bill-wave" style="color: rgb(1, 179, 1)"></i>
+                </div>
+
+                <input required style="padding-left: 25px" type="text" id="cname" name="cardname" placeholder="Deținător card:" />
+
+                <input required style="padding-left: 25px" type="text" id="ccnum" name="cardnumber" placeholder="Nr. card:" />
+
+                <input
+                  required
+                  style="padding-left: 25px"
+                  type="text"
+                  id="expmonth"
+                  name="expmonth"
+                  placeholder="Lună exp. card"
+                />
+
+                <div class="row">
+                  <div class="column small">
+                    <input
+                      required
+                      style="padding-left: 25px"
+                      type="text"
+                      id="expyear"
+                      name="expyear"
+                      placeholder="An exp. card:"
+                    />
+                  </div>
+                  <div class="column small">
+                    <input required style="padding-left: 25px" type="text" id="cvv" name="cvv" placeholder="CVV: " />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <label class="checkbox-container">
+              <input checked="true" onclick="showOtherAdress()" type="checkbox" /> Adresa de livrare este aceiași cu cea de
+              facturare
+              <span class="checkmark adress-checkbox"></span>
+            </label>
+            <div class="other-address">
+              <input style="padding-left: 25px" type="text" id="adr" name="address" placeholder="Adresa: " />
+
+              <input style="padding-left: 25px" type="text" id="city" name="city" placeholder="Oraș: " />
+
+              <div class="row">
+                <div class="column small">
+                  <input style="padding-left: 25px" type="text" id="state" name="state" placeholder="Județ: " />
+                </div>
+                <div class="column small">
+                  <input style="padding-left: 25px" type="text" id="zip" name="zip" placeholder="Cod Poștal: " />
+                </div>
+              </div>
+            </div>
+            <input type="submit" value="Continuă către Check-out" class="checkout-btn" />
+          </form>
         </div>
 
         <!-- TESTIMONIALS -->

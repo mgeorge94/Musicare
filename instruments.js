@@ -179,7 +179,7 @@ const makeCheckboxes = function (types) {
   checkboxContainer.innerHTML = types
     .map(function (type) {
       const htmlCheckbox = `<label class="checkbox-container">
-            <input   type="checkbox" filter="${type}"> ${type}<span  class="checkmark"></span></label>`;
+            <input   type="checkbox" filter="${type}"> ${type}<span   class="checkmark" ></span></label>`;
 
       return htmlCheckbox;
     })
@@ -242,16 +242,13 @@ const filteredInstruments = function (event) {
   if (!checkboxChecked) {
     return;
   } else {
-    //? de ce nu merge asta
-    checkmark.forEach((item) => {
-      item.translate = 'false';
-    });
     searchBtn.addEventListener('click', () => {
       let minWantedPrice = Math.round(Math.min(...doubleHandleSlider.noUiSlider.get([0, null])));
       let maxWantedPrice = Math.round(Math.max(...doubleHandleSlider.noUiSlider.get([null, 1])));
       // filter Instruments
       instruments.forEach((element) => {
         if (
+          event.target.checked &&
           checkboxChecked === element.dataset.instrumenttype &&
           element.dataset.price >= minWantedPrice &&
           element.dataset.price <= maxWantedPrice
@@ -260,13 +257,15 @@ const filteredInstruments = function (event) {
         } else {
           element.setAttribute('hidden', 'true');
         }
-      });
 
-      pageScroll();
-      filterTab.classList.remove('visible');
-      grid.style.display = 'grid';
-      hideNav();
+        pageScroll(500);
+        filterTab.classList.remove('visible');
+        showGrid();
+        hideNav();
+      });
     });
+
+    resetGridToPosition();
   }
 };
 filterTab.addEventListener('click', (event) => {
@@ -443,7 +442,6 @@ instruments.forEach(function (instrument) {
 
       event.stopPropagation();
       removeInstrumentActiveClass();
-
       instrument.classList.add('active');
       morePictures.style.display = 'flex';
       if (window.screen.width < 500) {
@@ -452,7 +450,7 @@ instruments.forEach(function (instrument) {
         grid.style.margin = '35rem auto';
       }
 
-      pageScroll();
+      pageScroll(500);
     });
   };
   showActiveInstrument();
@@ -463,8 +461,39 @@ seeAllInstruments.addEventListener('click', function () {
   showGrid();
   hideNav();
   hideFilterTab();
-  grid.style.margin = '1rem auto';
+  resetGridToPosition();
   removeInstrumentActiveClass();
 
   showgridInstruments();
 });
+//buy btn
+const buyBtn = document.querySelector('.buy');
+const checkoutForm = document.querySelector('.checkout-form-container');
+buyBtn.addEventListener('click', () => {
+  //show checkout form
+
+  showCheckoutForm();
+  //hide testimonials
+  testimonialContainer.style.display = 'none';
+  //hide instruments from grid
+  instruments.forEach(function (instrument) {
+    if (!instrument.classList.contains('active')) {
+      instrument.setAttribute('hidden', 'true');
+    }
+  });
+  pageScroll(1200);
+});
+let checked = true;
+const otherAddress = document.querySelector('.other-address');
+const addressCheckmark = document.querySelector('.adress-checkbox');
+const showOtherAdress = () => {
+  if (checked === true) {
+    otherAddress.style.display = 'block';
+    checked = false;
+    pageScroll(1600);
+  } else if (checked === false) {
+    otherAddress.style.display = 'none';
+    checked = true;
+    pageScroll(1300);
+  }
+};
