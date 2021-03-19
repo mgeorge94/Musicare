@@ -444,8 +444,8 @@ instruments.forEach(function (instrument) {
       removeInstrumentActiveClass();
       instrument.classList.add('active');
       morePictures.style.display = 'flex';
-      if (window.screen.width < 500) {
-        grid.style.margin = '47rem auto';
+      if (window.screen.width < 800) {
+        grid.style.margin = '49rem auto';
       } else if (window.screen.width > 500) {
         grid.style.margin = '35rem auto';
       }

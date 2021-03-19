@@ -566,10 +566,10 @@ input[type='number'] {
   background-color: white;
   top: 0rem;
   width: 100%;
-  height: 45rem;
+  height: 30rem;
   z-index: 1;
   position: absolute;
-  clip-path: polygon(0 0, 100% 1%, 100% 36%, 0 75%);
+  /* clip-path: polygon(0 0, 100% 1%, 100% 36%, 0 75%); */
   box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
   animation: polygon 5s linear forwards;
 }
@@ -624,7 +624,7 @@ input[type='number'] {
   color: #fff;
   position: relative;
   margin: 1rem auto;
-  width: 80vw;
+  width: 90vw;
   display: none;
   border-radius: 15px;
   justify-content: center;
@@ -691,8 +691,7 @@ input[type='number'] {
 .content-slide.repair {
   border-radius: 15px;
   text-align: justify;
-
-  width: 90vw;
+  width: 100%;
   overflow: hidden;
   display: none;
   min-height: 100%;
@@ -704,7 +703,7 @@ h4 {
 
 .repair-image {
   position: relative;
-  width: 100%;
+  min-width: 100%;
   box-shadow: 4px 8px 11px 9px rgba(0, 0, 0, 0.8);
   height: 20rem;
   object-fit: cover;
@@ -748,10 +747,6 @@ h4 {
   }
 }
 
-.text-content {
-  margin: 1rem;
-}
-
 /* leftSlide slides */
 
 #avantaje {
@@ -776,7 +771,7 @@ h4 {
 .content-slide.buy-slide {
   text-align: justify;
   position: relative;
-  width: 90vw;
+  width: 100vw;
   overflow: hidden;
   display: none;
   min-height: 100%;
@@ -1097,11 +1092,6 @@ input:valid {
 }
 .other-address {
   display: none;
-}
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
 }
 
 /*  */
@@ -1455,16 +1445,142 @@ input:valid {
 }
 /* fixes for small screns */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   * {
     font-size: 15px;
   }
+
+  .landingPage-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 100;
+    overflow: hidden;
+  }
+  @keyframes hideLandingContainer {
+    0% {
+      top: 0px;
+    }
+    70% {
+      top: 0;
+    }
+
+    100% {
+      top: -1000%;
+    }
+  }
+
+  .split h1 {
+    font-size: 1.5rem;
+  }
+  .landingPage-container button {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    background-color: rgba(31, 31, 31, 0.4);
+    border-radius: 15px;
+    border: none;
+    font-size: 0.4em;
+
+    padding: 1.2rem;
+    cursor: pointer;
+  }
+  .landingPage-container button a {
+    text-decoration: none;
+    color: #bababa;
+    font-weight: bolder;
+  }
+  .landingPage-container button:hover,
+  .landingPage-container button:focus {
+    background-color: rgba(31, 31, 31, 0.8);
+    color: rgb(40, 40, 40);
+  }
+
+  .landingPage-container button:focus {
+    background-color: rgba(31, 31, 31, 0.8);
+    color: rgb(55, 55, 55);
+  }
+
+  .split {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+  }
+  .left {
+    background-image: url(../resources/splitLandingPage/landingPage-Left.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.67);
+  }
+  @keyframes leftHide {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: -100%;
+    }
+  }
+  .right {
+    bottom: 0px;
+    left: 0px;
+    background-image: url(../resources/splitLandingPage/landingPage-Right.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  @keyframes rightHide {
+    0% {
+      bottom: 0px;
+    }
+    100% {
+      bottom: -100%;
+    }
+  }
+  .hover-left .left {
+    box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.67);
+    height: 65%;
+    width: 100%;
+    z-index: 101;
+  }
+  .hover-left .right {
+    height: 35%;
+    width: 100%;
+  }
+  .hover-right .right {
+    box-shadow: 0px -21px 14px -10px rgba(0, 0, 0, 0.67);
+    height: 65%;
+    width: 100%;
+    z-index: 101;
+  }
+  .hover-right .left {
+    height: 35%;
+    width: 100%;
+  }
+  .split.right,
+  .split.left,
+  .split.right:before,
+  .split.left:before {
+    transition: height 0.8s ease-in-out;
+  }
+
   .hero h1 {
     font-size: 4rem;
   }
   .panel:nth-of-type(7),
   .panel:nth-of-type(6) {
     display: none;
+  }
+  .container-slide {
+    width: 96%;
   }
   .filter-tab {
     right: 0px;
@@ -1510,6 +1626,102 @@ input:valid {
   .action-buttons button {
     font-size: 0.7rem;
     padding: 0.5rem;
+  }
+  .row {
+    flex-direction: column-reverse;
+  }
+  .grid {
+    width: 96vw;
+  }
+
+  .box.active {
+    top: -46rem;
+    position: absolute;
+    min-width: 100%;
+    height: 15rem;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: 0px 6px 6px 2px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+  }
+  .price {
+    padding-top: 1rem;
+  }
+  .box.active > img {
+    display: none;
+  }
+
+  /* INSTRUMENT PICTURE SLIDE*/
+  .instrument-picture-container {
+    top: -34rem;
+    right: 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+  }
+
+  .instrumnet-image-slider {
+    box-shadow: 0px 6px 6px 2px rgba(0, 0, 0, 0.4);
+    min-width: 100%;
+    height: 32rem;
+    overflow: hidden;
+
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+  .image-slider-container {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    transform: translateY(0);
+    transition: transform 0.5s ease-in-out;
+  }
+  .image-slider-container img {
+    height: 80vh;
+    object-fit: cover;
+  }
+
+  .slider-buttons:hover {
+    color: #a3a3a3;
+  }
+  .slider-buttons:focus {
+    outline: none;
+  }
+
+  .fa-arrow-up {
+    position: absolute;
+    top: 65%;
+    z-index: 100;
+    background-color: rgba(51, 51, 51, 0.4);
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1rem;
+    outline: none;
+    right: 0rem;
+    left: auto;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  /* checkout form */
+
+  .column {
+    flex: 50%;
+  }
+
+  .checkout-form-container {
+    background-color: rgb(35, 35, 35);
+
+    width: 96vw;
+
+    margin-top: 85rem;
   }
 }
 @media screen and (max-width: 500px) {
@@ -1557,85 +1769,6 @@ input:valid {
     font-size: 16px;
     max-width: 250px;
     float: left;
-  }
-
-  .grid {
-    width: 96vw;
-  }
-
-  /* testing  new stuf */
-
-  .box.active {
-    top: -45rem;
-    position: absolute;
-    min-width: 100%;
-    height: 15rem;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    box-shadow: 0px 6px 6px 2px rgba(0, 0, 0, 0.8);
-    z-index: 2;
-  }
-  .price {
-    padding-top: 1rem;
-  }
-  .box.active > img {
-    display: none;
-  }
-
-  /* INSTRUMENT PICTURE SLIDE*/
-  .instrument-picture-container {
-    top: -35rem;
-    right: 0px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: absolute;
-  }
-
-  .instrumnet-image-slider {
-    box-shadow: 0px 6px 6px 2px rgba(0, 0, 0, 0.4);
-    min-width: 100%;
-    height: 32rem;
-    overflow: hidden;
-
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-  }
-  .image-slider-container {
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
-    transform: translateY(0);
-    transition: transform 0.5s ease-in-out;
-  }
-  .image-slider-container img {
-    height: 80vh;
-    object-fit: cover;
-  }
-
-  .slider-buttons:hover {
-    color: #a3a3a3;
-  }
-  .slider-buttons:focus {
-    outline: none;
-  }
-
-  .fa-arrow-up {
-    position: absolute;
-    top: 75%;
-    z-index: 100;
-    background-color: rgba(51, 51, 51, 0.4);
-    color: rgb(255, 255, 255);
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 1rem;
-    outline: none;
-    left: 0rem;
-    border-bottom-right-radius: 6px;
-    border-top-right-radius: 6px;
   }
 }
 
