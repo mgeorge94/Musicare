@@ -172,6 +172,32 @@ function paintInstruments() {
 }
 
 paintInstruments();
+// //////////////////////////////////////////////////////////////////
+//fliter  instruments alphabetically
+const aZBtn = document.querySelector('.a-z');
+
+const filterAlphabetically = () => {
+  allInstruments.sort(function (i, j) {
+    if (i.name < j.name) {
+      return -1;
+    }
+    if (i.name > j.name) {
+      return 1;
+    }
+    return 0;
+  });
+};
+
+const cleanInstruments = () => {
+  grid.innerHTML = '';
+};
+aZBtn.addEventListener('click', function () {
+  filterAlphabetically();
+  cleanInstruments();
+  paintInstruments();
+});
+
+// //////////////////////////////////////////////////////////////////
 const instruments = Array.from(document.querySelectorAll('.instrument'));
 
 //insert checkboxes into HTML
@@ -235,6 +261,7 @@ sliderFunction();
 
 const checkmark = document.querySelectorAll('.checkmark');
 //function that filters instruments
+
 let matchedPictures = [];
 const filteredInstruments = function (event) {
   // see if checkbox = checked
@@ -397,6 +424,7 @@ instruments.forEach(function (instrument) {
     instrument.addEventListener('click', (event) => {
       // imagesArray
       hideOrderBy();
+
       moreImages.forEach(function (image) {
         if (instrument.dataset.name === image.name) {
           matchedPictures.push(image.name);
@@ -499,34 +527,3 @@ const showOtherAdress = () => {
     pageScroll(1300);
   }
 };
-//fliter alphabetically
-const aZBtn = document.querySelector('.a-z');
-
-const filterAlphabetically = () => {
-  instruments.forEach(function (instrument) {
-    instrument.setAttribute('hidden', 'true');
-  });
-
-  instruments.forEach(function (instrument) {
-    for (i = 0; i < instruments.length; i++) {
-      for (j = 0; j < instruments.length; j++) {
-        instruments.sort(function (i, j) {
-          if (i.dataset.name < j.dataset.name) {
-            return -1;
-          }
-          if (i.dataset.name > j.dataset.name) {
-            return 1;
-          }
-          return 0;
-        });
-      }
-    }
-  });
-};
-
-aZBtn.addEventListener('click', function () {
-  filterAlphabetically();
-  instruments.forEach(function (instrument) {
-    instrument.removeAttribute('hidden');
-  });
-});
