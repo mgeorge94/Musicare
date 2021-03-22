@@ -14,6 +14,9 @@ const showTestimonials = () => {
 const showGrid = () => {
   grid.style.display = 'grid';
 };
+const showOrderBy = () => {
+  orderByContainer.style.display = 'block';
+};
 const showGridInstruments = () => {
   instruments.forEach(function (instrument) {
     instrument.removeAttribute('hidden');
@@ -35,6 +38,9 @@ const showCheckoutForm = () => {
   checkoutForm.style.display = 'flex';
 };
 //functions that hide elements
+const hideOrderBy = () => {
+  orderByContainer.style.display = 'none';
+};
 const hideGrid = () => {
   grid.style.display = 'none';
   morePictures.style.display = 'none';

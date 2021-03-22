@@ -282,29 +282,44 @@
         </div>
 
         <!-- instruments grid  -->
-
-        <div class="grid">
-          <div hidden instrumentType="Clarinet" class="box instrument">
-            <img
-              class="instrument-image"
-              src="https://i.pinimg.com/originals/ce/df/cf/cedfcff9cd0023b3bb0c1f8c1721790d.jpg"
-              alt=""
-            />
-            <h6 class="price">3000</h6>
-            <p class="instrument-description">
-              oare asta apare aici, CLARINET sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam
-              numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione,
-              dolores.
-            </p>
+        <div class="grid-container">
+          <div class="order-by-btn">
+            <i class="fas fa-angle-left"></i>
           </div>
-          <!-- on click instrument image slider  -->
-          <div class="instrument-picture-container">
-            <div class="instrumnet-image-slider">
-              <div class="image-slider-container" id="image-container"></div>
-              <button id="btn-up">
-                <i class="fas fa-arrow-up slider-buttons"></i>
-              </button>
-              <button class="buy"><i class="fas fa-shopping-cart"></i> Cumpară</button>
+          <div class="order-by-container">
+            <div class="order-by background-dark-gray"></div>
+            <div class="order-by background-gray"></div>
+            <ul>
+              <li class="a-z">Alfabetic</li>
+              <li class="ascending-price">Preț Crescător</li>
+              <li class="descending-price">Preț Descrescător</li>
+              <li class="discount">Discount %</li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="grid">
+            <!-- <div hidden instrumentType="Clarinet" class="box instrument">
+              <img
+                class="instrument-image"
+                src="https://i.pinimg.com/originals/ce/df/cf/cedfcff9cd0023b3bb0c1f8c1721790d.jpg"
+                alt=""
+              />
+              <h6 class="price">3000</h6>
+              <p class="instrument-description">
+                oare asta apare aici, CLARINET sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam
+                numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione,
+                dolores.
+              </p>
+            </div> -->
+            <!-- on click instrument image slider  -->
+            <div class="instrument-picture-container">
+              <div class="instrumnet-image-slider">
+                <div class="image-slider-container" id="image-container"></div>
+                <button id="btn-up">
+                  <i class="fas fa-arrow-up slider-buttons"></i>
+                </button>
+                <button class="buy"><i class="fas fa-shopping-cart"></i> Cumpară</button>
+              </div>
             </div>
           </div>
         </div>
@@ -379,20 +394,27 @@
               <div class="column">
                 <h3>Adresa de facturare</h3>
 
-                <input required style="padding-left: 25px" type="text" id="fname" name="firstname" placeholder="Nume complet:" />
+                <input
+                  required
+                  style="padding-left: 25px"
+                  minlength="5"
+                  type="text"
+                  name="firstname"
+                  placeholder="Nume complet:"
+                />
 
-                <input required style="padding-left: 25px" type="text" id="email" name="email" placeholder=" Adresă de email:" />
+                <input required style="padding-left: 25px" type=email" name="email" placeholder=" Adresă de email:" />
 
-                <input required style="padding-left: 25px" type="text" id="adr" name="address" placeholder="Adresa: " />
+                <input required style="padding-left: 25px" type="text" name="address" minlength="10" placeholder="Adresa: " />
 
-                <input required style="padding-left: 25px" type="text" id="city" name="city" placeholder="Oraș: " />
+                <input required style="padding-left: 25px" type="text" name="city" minlength="3" placeholder="Oraș: " />
 
                 <div class="row">
                   <div class="column small">
-                    <input required style="padding-left: 25px" type="text" id="state" name="state" placeholder="Județ: " />
+                    <input required style="padding-left: 25px" type="text" name="state" minlength="3" placeholder="Județ: " />
                   </div>
-                  <div class="column small">
-                    <input required style="padding-left: 25px" type="text" id="zip" name="zip" placeholder="Cod Poștal: " />
+                  <div class="column small gap">
+                    <input required style="padding-left: 25px" type="text" name="zip" minlength="4" placeholder="Cod Poștal: " />
                   </div>
                 </div>
               </div>
@@ -407,16 +429,31 @@
                   <i class="fas fa-money-bill-wave" style="color: rgb(1, 179, 1)"></i>
                 </div>
 
-                <input required style="padding-left: 25px" type="text" id="cname" name="cardname" placeholder="Deținător card:" />
-
-                <input required style="padding-left: 25px" type="text" id="ccnum" name="cardnumber" placeholder="Nr. card:" />
+                <input
+                  required
+                  style="padding-left: 25px"
+                  type="text"
+                  name="cardname"
+                  minlength="5"
+                  placeholder="Deținător card:"
+                />
 
                 <input
                   required
                   style="padding-left: 25px"
                   type="text"
-                  id="expmonth"
+                  name="cardnumber"
+                  pattern="1111-1111-1111-1111"
+                  placeholder="Nr. card: 1111-1111-1111-1111"
+                />
+
+                <input
+                  required
+                  style="padding-left: 25px"
+                  type="number"
                   name="expmonth"
+                  minlength="1"
+                  maxlength="3"
                   placeholder="Lună exp. card"
                 />
 
@@ -425,14 +462,23 @@
                     <input
                       required
                       style="padding-left: 25px"
-                      type="text"
-                      id="expyear"
+                      type="number"
                       name="expyear"
                       placeholder="An exp. card:"
+                      minlength="4"
+                      maxlength="4"
                     />
                   </div>
-                  <div class="column small">
-                    <input required style="padding-left: 25px" type="text" id="cvv" name="cvv" placeholder="CVV: " />
+                  <div class="column small gap">
+                    <input
+                      required
+                      style="padding-left: 25px"
+                      type="number"
+                      name="cvv"
+                      placeholder="CVV: "
+                      minlength="3"
+                      maxlemgth="3"
+                    />
                   </div>
                 </div>
               </div>
@@ -443,16 +489,16 @@
               <span class="checkmark adress-checkbox"></span>
             </label>
             <div class="other-address">
-              <input style="padding-left: 25px" type="text" id="adr" name="address" placeholder="Adresa: " />
+              <input style="padding-left: 25px" type="text" minlength="10" name="address" placeholder="Adresa: " />
 
-              <input style="padding-left: 25px" type="text" id="city" name="city" placeholder="Oraș: " />
+              <input style="padding-left: 25px" type="text" minlength="3" name="city" placeholder="Oraș: " />
 
               <div class="row">
                 <div class="column small">
-                  <input style="padding-left: 25px" type="text" id="state" name="state" placeholder="Județ: " />
+                  <input style="padding-left: 25px" type="text" minlength="3" name="state" placeholder="Județ: " />
                 </div>
                 <div class="column small">
-                  <input style="padding-left: 25px" type="text" id="zip" name="zip" placeholder="Cod Poștal: " />
+                  <input minlength="4" style="padding-left: 25px" type="number" name="zip" placeholder="Cod Poștal: " />
                 </div>
               </div>
             </div>

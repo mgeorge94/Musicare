@@ -705,7 +705,7 @@ h4 {
   position: relative;
   min-width: 100%;
   box-shadow: 4px 8px 11px 9px rgba(0, 0, 0, 0.8);
-  height: 20rem;
+  height: 40rem;
   object-fit: cover;
 }
 .repair-image.one {
@@ -828,6 +828,7 @@ h4 {
   padding: 1rem;
   text-align: left;
   text-indent: 0px;
+  margin-top: 2rem;
 }
 .disadvantages-list {
   width: 48%;
@@ -835,6 +836,7 @@ h4 {
   padding: 1rem;
   text-align: left;
   text-indent: 0px;
+  margin-top: 2rem;
 }
 .seeInstrument {
   position: relative;
@@ -1042,7 +1044,10 @@ input:valid {
   padding-right: 1rem;
 }
 .column.small {
-  padding: 5px;
+  padding-right: 0px;
+}
+.column.small.gap {
+  padding-left: 0.5rem;
 }
 
 .checkout-form-container {
@@ -1069,9 +1074,8 @@ input:valid {
 }
 
 .icon-container {
-  margin-bottom: 20px;
   padding: 7px 0;
-  font-size: 24px;
+  font-size: 27px;
 }
 
 .checkout-btn {
@@ -1094,8 +1098,6 @@ input:valid {
   display: none;
 }
 
-/*  */
-/*  */
 /* AboutUs */
 .aboutUs-container {
   width: 90vw;
@@ -1246,6 +1248,33 @@ input:valid {
 
 /* instruments */
 
+.order-by-container {
+  margin: 2rem;
+  right: 0px;
+  padding-bottom: 5rem;
+  display: none;
+}
+
+.order-by-container ul {
+  color: #bababa;
+  background-color: rgba(12, 12, 12, 0.2);
+  /* border-top-left-radius: 10px; */
+  border-bottom-left-radius: 10px;
+  display: flex;
+  float: right;
+  transform: translateX(20px);
+  height: 3rem;
+  box-shadow: 0px 4px 5px 4px rgba(0, 0, 0, 0.2);
+}
+.order-by-container ul li {
+  margin: 1rem;
+  list-style-type: none;
+  cursor: pointer;
+}
+.order-by-container li:hover {
+  color: #fff;
+}
+
 .grid {
   width: 90vw;
   margin: 1rem auto;
@@ -1369,7 +1398,7 @@ input:valid {
   width: fit-content;
   border-radius: 6px;
   font-family: 'Bebas Neue';
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: rgb(255, 255, 255);
 }
 #buy:hover {
@@ -1714,6 +1743,9 @@ input:valid {
 
   .column {
     flex: 50%;
+  }
+  .column.small.gap {
+    padding-left: 0rem;
   }
 
   .checkout-form-container {

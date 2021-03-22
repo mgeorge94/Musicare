@@ -11,6 +11,7 @@ const imageSliderContainer = document.querySelector('.image-slider-container');
 const sliderBtnUp = document.querySelector('#btn-up');
 const morePictures = document.querySelector('.instrument-picture-container');
 const seeAllInstruments = document.querySelector('.see-instruments');
+const orderByContainer = document.querySelector('.order-by-container');
 
 // Instruments object array
 
@@ -152,13 +153,13 @@ function paintInstruments() {
     let name = instrument.name;
     // HTML
 
-    let instrumentsHTML = `<div  data-instrumentType='${type}'class="box instrument" data-price="${price}" data-name = "${name}">
+    let instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}" data-name = "${name}">
         <img class="instrument-image" src="${picture}" alt="${picture}">
        <h6 class="price">${price} lei</h6>
         <p class="instrument-description">${description}</p>
         </div>`;
     // Insert the html to the end of every iteration
-    instrumentsContainer.insertAdjacentHTML('afterbegin', instrumentsHTML);
+    instrumentsContainer.insertAdjacentHTML('beforeend', instrumentsHTML);
     //make instrument array
     instrArr.push(instrument.type);
 
@@ -245,7 +246,7 @@ const filteredInstruments = function (event) {
     searchBtn.addEventListener('click', () => {
       let minWantedPrice = Math.round(Math.min(...doubleHandleSlider.noUiSlider.get([0, null])));
       let maxWantedPrice = Math.round(Math.max(...doubleHandleSlider.noUiSlider.get([null, 1])));
-      // filter Instruments
+      // filter Instruments by type
       instruments.forEach((element) => {
         if (
           event.target.checked &&
@@ -262,6 +263,7 @@ const filteredInstruments = function (event) {
         filterTab.classList.remove('visible');
         showGrid();
         hideNav();
+        showOrderBy();
       });
     });
 
@@ -394,7 +396,7 @@ instruments.forEach(function (instrument) {
   let showActiveInstrument = function () {
     instrument.addEventListener('click', (event) => {
       // imagesArray
-
+      hideOrderBy();
       moreImages.forEach(function (image) {
         if (instrument.dataset.name === image.name) {
           matchedPictures.push(image.name);
@@ -433,11 +435,8 @@ instruments.forEach(function (instrument) {
         } else if (sliderIndex < 0) {
           sliderIndex = image.length - 1;
         }
-        if (window.screen.width < 700) {
-          imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
-        } else if (window.screen.width > 700) {
-          imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
-        }
+
+        imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
       };
 
       event.stopPropagation();
@@ -463,12 +462,14 @@ seeAllInstruments.addEventListener('click', function () {
   hideFilterTab();
   resetGridToPosition();
   removeInstrumentActiveClass();
-
-  showgridInstruments();
+  showOrderBy();
+  // showgridInstruments();
 });
 //buy btn
 const buyBtn = document.querySelector('.buy');
 const checkoutForm = document.querySelector('.checkout-form-container');
+const checkoutBtn = document.querySelector('.checkout-btn');
+const formMessage = document.querySelector('.formMessage');
 buyBtn.addEventListener('click', () => {
   //show checkout form
 
@@ -483,6 +484,7 @@ buyBtn.addEventListener('click', () => {
   });
   pageScroll(1200);
 });
+
 let checked = true;
 const otherAddress = document.querySelector('.other-address');
 const addressCheckmark = document.querySelector('.adress-checkbox');
@@ -497,3 +499,34 @@ const showOtherAdress = () => {
     pageScroll(1300);
   }
 };
+//fliter alphabetically
+const aZBtn = document.querySelector('.a-z');
+
+const filterAlphabetically = () => {
+  instruments.forEach(function (instrument) {
+    instrument.setAttribute('hidden', 'true');
+  });
+
+  instruments.forEach(function (instrument) {
+    for (i = 0; i < instruments.length; i++) {
+      for (j = 0; j < instruments.length; j++) {
+        instruments.sort(function (i, j) {
+          if (i.dataset.name < j.dataset.name) {
+            return -1;
+          }
+          if (i.dataset.name > j.dataset.name) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+    }
+  });
+};
+
+aZBtn.addEventListener('click', function () {
+  filterAlphabetically();
+  instruments.forEach(function (instrument) {
+    instrument.removeAttribute('hidden');
+  });
+});

@@ -549,7 +549,7 @@ const buyInstrumentWebsite = function () {
               </div>
               </div>
             </div>
-            <button class="seeInstrument">Ve zi instrumentele</button>`;
+            <button class="seeInstrument">Vezi  instrumentele</button>`;
             //insert html to the end of every iteration
             slideContainer.innerHTML = rightSlideHTML;
             const slideContent = document.querySelector('.content-slide');
@@ -563,6 +563,7 @@ const buyInstrumentWebsite = function () {
                 if (element.dataset.instrumenttype === slide.type) {
                   element.removeAttribute('hidden');
                   showGrid();
+                  showOrderBy();
                   slideContainer.style.display = 'none';
                   pageScroll(500);
                 } else {
@@ -573,6 +574,7 @@ const buyInstrumentWebsite = function () {
           });
         });
         hideGrid();
+        hideOrderBy();
         hideCheckoutForm();
         resetGridToPosition();
         showTestimonials();
