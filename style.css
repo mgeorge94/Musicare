@@ -151,7 +151,7 @@ button:focus {
   left: 50%;
   top: 40%;
   transform: translateX(-50%);
-  background-color: rgba(31, 31, 31, 0.4);
+  background-color: rgba(73, 73, 73, 0.6);
   border-radius: 15px;
   border: none;
   font-size: 0.8rem;
@@ -164,15 +164,17 @@ button:focus {
   color: #bababa;
   font-weight: bolder;
 }
-.landingPage-container button:hover,
-.landingPage-container button:focus {
-  background-color: rgba(31, 31, 31, 0.8);
-  color: rgb(40, 40, 40);
+.btn-split-left:hover {
+  background-color: rgba(28, 9, 61, 0.6);
 }
-
-.landingPage-container button:focus {
-  background-color: rgba(31, 31, 31, 0.8);
-  color: rgb(55, 55, 55);
+.btn-split-right:hover {
+  background-color: rgba(61, 0, 0, 0.6);
+}
+.btn-split-left:focus {
+  background-color: rgba(28, 9, 61, 0.8);
+}
+.btn-split-right:focus {
+  background-color: rgba(61, 0, 0, 0.8);
 }
 
 .split {
@@ -181,7 +183,8 @@ button:focus {
   height: 100%;
   overflow: hidden;
 }
-.left {
+.split.left {
+  left: 0;
   background-image: url(../resources/splitLandingPage/landingPage-Left.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -194,8 +197,16 @@ button:focus {
     left: -100%;
   }
 }
-.right {
-  right: 0px;
+.hover-left .left {
+  box-shadow: 6px 0px 5px rgba(0, 0, 0, 0.6);
+  width: 65%;
+  z-index: 101;
+}
+.hover-left .right {
+  width: 35%;
+}
+.split.right {
+  right: 0;
   background-image: url(../resources/splitLandingPage/landingPage-Right.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -209,14 +220,7 @@ button:focus {
     right: -100%;
   }
 }
-.hover-left .left {
-  box-shadow: 6px 0px 5px rgba(0, 0, 0, 0.6);
-  width: 65%;
-  z-index: 101;
-}
-.hover-left .right {
-  width: 35%;
-}
+
 .hover-right .right {
   box-shadow: -6px 0 5px rgba(0, 0, 0, 0.6);
   width: 65%;
@@ -705,7 +709,7 @@ h4 {
   position: relative;
   min-width: 100%;
   box-shadow: 4px 8px 11px 9px rgba(0, 0, 0, 0.8);
-  height: 40rem;
+  min-height: 80vh;
   object-fit: cover;
 }
 .repair-image.one {
@@ -1545,16 +1549,6 @@ input:valid {
     text-decoration: none;
     color: #bababa;
     font-weight: bolder;
-  }
-  .landingPage-container button:hover,
-  .landingPage-container button:focus {
-    background-color: rgba(31, 31, 31, 0.8);
-    color: rgb(40, 40, 40);
-  }
-
-  .landingPage-container button:focus {
-    background-color: rgba(31, 31, 31, 0.8);
-    color: rgb(55, 55, 55);
   }
 
   .split {

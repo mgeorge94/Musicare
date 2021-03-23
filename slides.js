@@ -4,6 +4,7 @@ const right = document.querySelector('.right');
 const landingPageContainer = document.querySelector('.landingPage-container');
 const leftLandingBtn = document.querySelector('.btn-split-left');
 const rightLandingBtn = document.querySelector('.btn-split-right');
+const panelsContainer = document.querySelector('.container-panel');
 
 left.addEventListener('mouseenter', () => {
   landingPageContainer.classList.add('hover-left');
@@ -24,32 +25,6 @@ const removeDualLandingPage = function () {
 };
 leftLandingBtn.addEventListener('click', removeDualLandingPage);
 rightLandingBtn.addEventListener('click', removeDualLandingPage);
-
-//! panels
-const containerPanels = document.querySelector('.container-panel');
-const panels = document.querySelectorAll('.panel');
-panels.forEach((panel) => {
-  panel.addEventListener('mouseenter', () => {
-    removeActiveClasses();
-    panel.classList.add('active');
-  });
-
-  containerPanels.addEventListener('mouseleave', () => {
-    removeActiveClasses();
-  });
-});
-function removeActiveClasses() {
-  panels.forEach((panel) => {
-    panel.classList.remove('active');
-  });
-}
-
-function pageScroll(value) {
-  window.scroll({
-    top: value,
-    behavior: 'smooth',
-  });
-}
 
 slideContainer = document.querySelector('.container-slide');
 //! Website pentru Instrumente reparate
@@ -78,6 +53,24 @@ const repairInstrumentWebsite = function () {
         'https://i1.wp.com/southfloridahorns.com/wp-content/uploads/2020/05/IMAG0005_exp_30-scaled.jpg?fit=2560%2C1505&ssl=1',
     },
     {
+      type: 'Chitară',
+      tech: 'Andrei Tiberiu Maria',
+      techPic: 'https://smiley.ro/wp-content/uploads/2014/02/smiley_bio.jpg',
+      about: `'Doloribus, quaerat. Accusantium provident architecto earum
+        aliquid harum quis molestias iusto quaerat qui ex iure
+        similique ipsa amet facilis consequuntur neque sunt nihil
+        officia temporibus! Dicta quam, accusamus obcaecati quas culpa
+        sed quo nemo. Provident quis, adipisci hic ipsum corrupti quo'`,
+      fixingPic1: 'http://steellemon.com/files/2012/06/broken-guitar-strings.png',
+      experience: `quos architecto ipsam quasi doloremque. Laborum incidunt
+        pariatur eveniet velit placeat quaerat deserunt, debitis
+        molestiae doloremque harum et ipsum in aperiam fugiat
+        recusandae illo voluptatem, blanditiis, qui ex vero`,
+      fixingPic2: 'https://tribeza.com/wp-content/uploads/2016/05/FPO_Tribeza_guitar_smash.jpg',
+      fixingPic3:
+        'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c9509e16-63db-457f-ab1c-3ef059b8013c/d2zzfz9-21d6715a-6576-4cf8-9862-a19bd9df66f2.jpg/v1/fill/w_800,h_539,q_75,strp/broken_guitar_by_reening_d2zzfz9-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01MzkiLCJwYXRoIjoiXC9mXC9jOTUwOWUxNi02M2RiLTQ1N2YtYWIxYy0zZWYwNTliODAxM2NcL2QyenpmejktMjFkNjcxNWEtNjU3Ni00Y2Y4LTk4NjItYTE5YmQ5ZGY2NmYyLmpwZyIsIndpZHRoIjoiPD04MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.eTbcL9u9AgrFc6-wvfIMy6Az_8BkQhlhV6WjR8xzRp0',
+    },
+    {
       type: 'Oboi',
       tech: 'Corneliu Vadim Tudor',
       techPic:
@@ -87,8 +80,7 @@ const repairInstrumentWebsite = function () {
         similique ipsa amet facilis consequuntur neque sunt nihil
         officia temporibus! Dicta quam, accusamus obcaecati quas culpa
         sed quo nemo. Provident quis, adipisci hic ipsum corrupti quo'`,
-      fixingPic1:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLFnlFcSKZYZtytx3SSm9gRvUf8fSHQfXwFOrO3U7E1kj7kr_tEkiEGgqkyIGYGY0EnA&usqp=CAU',
+      fixingPic1: 'http://aaronlakota.com/wp-content/uploads/2016/08/img_1717-1.jpg',
 
       experience: `quos architecto ipsam quasi doloremque. Laborum incidunt
         pariatur eveniet velit placeat quaerat deserunt, debitis
@@ -190,6 +182,67 @@ const repairInstrumentWebsite = function () {
       fixingPic3: 'http://georgewhitfield.co.uk/wp-content/uploads/2018/03/Recent-Galotta.jpg',
     },
   ];
+  const fixedInstrumentsPanels = [
+    {
+      photo: '../resources/fixIt-panels/violin-panel.jpg',
+      type: 'Vioară',
+      name: 'Vioară',
+    },
+    {
+      photo: '../resources/fixIt-panels/trumpet-panel.jpg',
+      type: 'Trompetă',
+      name: ' Trompetă',
+    },
+    {
+      photo: '../resources/fixIt-panels/sax-panel.jpg',
+      type: 'Saxofon',
+      name: 'Saxofon',
+    },
+    {
+      photo: '../resources/fixIt-panels/flute-panel.jpg',
+      type: 'Flaut',
+      name: 'Flaut',
+    },
+    // {
+    //   photo: '../resources/fixIt-panels/trombone-panel.jpg',
+    //   type: 'Trombon',
+    //   name: 'Trombon',
+    // },
+    {
+      photo: '../resources/fixIt-panels/oboe-panel.jpg',
+      type: 'Oboi',
+      name: 'Oboi',
+    },
+    {
+      photo: '../resources/fixIt-panels/guitar-panel.jpg',
+      type: 'Chitară',
+      name: 'Chitară',
+    },
+    {
+      photo: '../resources/fixIt-panels/acordeon-panel.jpg',
+      type: 'Acordeon',
+      name: 'Acordeon',
+    },
+  ];
+  //paint panels
+  const paintPanels = () => {
+    panelsContainer.innerHTML = '';
+    fixedInstrumentsPanels.forEach(function (panel) {
+      let type = panel.type;
+      let name = panel.name;
+      let photo = panel.photo;
+
+      //insert html
+      const pannelsHTML = ` <div data-instrumentType="${type}" class="panel" id="${name}"style="background-image:url('${photo}')">
+      <h3>${name}</h3></div>`;
+
+      // Insert the html to the end of every iteration
+      panelsContainer.insertAdjacentHTML('beforeend', pannelsHTML);
+    });
+  };
+  paintPanels();
+  hoverOverPannels();
+  const panels = document.querySelectorAll('.panel');
 
   //Showing instruments
   const paintFixedInstrumentSlides = function () {
@@ -199,6 +252,7 @@ const repairInstrumentWebsite = function () {
       panels.forEach(function (panel) {
         panel.addEventListener('click', () => {
           //if instrument type match, create html
+
           if (panel.dataset.instrumenttype === slide.type) {
             matchedFixedSlides.push(slide.name);
             matchedFixedSlides.forEach(function () {
@@ -279,7 +333,6 @@ const repairInstrumentWebsite = function () {
   };
   paintFixedInstrumentSlides();
 };
-repairInstrumentWebsite();
 
 //!Website pentru cumparat de instrumentele
 const buyInstrumentWebsite = function () {
@@ -501,6 +554,69 @@ const buyInstrumentWebsite = function () {
   ];
 
   const paintToBuyInstrumentSlides = function () {
+    const toBuyInstrumentsPanels = [
+      {
+        photo: '../resources/buyIt-panels/vioara-panel.jpg',
+        type: 'Vioară',
+        name: 'Vioară',
+      },
+      {
+        photo: '../resources/buyIt-panels/trompeta-panel.jpg',
+        type: 'Trompetă',
+        name: ' Trompetă',
+      },
+      {
+        photo: '../resources/buyIt-panels/sax-panel.jpg',
+        type: 'Saxofon',
+        name: 'Saxofon',
+      },
+      // {
+      //   photo: '../resources/buyIt-panels/corn-panel.jpg',
+      //   type: 'percution',
+      //   name: 'Percuție',
+      // },
+      {
+        photo: '../resources/buyIt-panels/trombone-panel.webp',
+        type: 'Trombon',
+        name: 'Trombon',
+      },
+      // {
+      //   photo: '../resources/buyIt-panels/oboe-panel.jpg',
+      //   type: 'Oboi',
+      //   name: 'Oboi',
+      // },
+      {
+        photo: '../resources/buyIt-panels/flute-panel.jpg',
+        type: 'Flaut',
+        name: 'Flaut',
+      },
+      {
+        photo: '../resources/buyIt-panels/acordeon-panel.jpg',
+        type: 'Acordeon',
+        name: 'Acordeon',
+      },
+    ];
+    // //////////////////////////////////////////////////////////////////////////
+    //paint panels
+    const paintPanels = () => {
+      panelsContainer.innerHTML = '';
+      toBuyInstrumentsPanels.forEach(function (panel) {
+        let type = panel.type;
+        let name = panel.name;
+        let photo = panel.photo;
+
+        //insert html
+        const pannelsHTML = ` <div data-instrumentType="${type}" class="panel" id="${name}"style="background-image:url('${photo}')">
+      <h3>${name}</h3></div>`;
+
+        // Insert the html to the end of every iteration
+        panelsContainer.insertAdjacentHTML('beforeend', pannelsHTML);
+      });
+    };
+    paintPanels();
+    hoverOverPannels();
+    const panels = document.querySelectorAll('.panel');
+    ///////////////////////////////////////////////////////////////////////
     toBuyInstrumentsSlides.forEach(function (slide) {
       let matchedToBuySlides = [];
 
@@ -585,3 +701,37 @@ const buyInstrumentWebsite = function () {
   };
   paintToBuyInstrumentSlides();
 };
+//! panels
+const containerPanels = document.querySelector('.container-panel');
+
+const hoverOverPannels = () => {
+  const panels = document.querySelectorAll('.panel');
+  panels.forEach((panel) => {
+    panel.addEventListener('mouseenter', () => {
+      removeActiveClasses();
+      panel.classList.add('active');
+    });
+
+    containerPanels.addEventListener('mouseleave', () => {
+      removeActiveClasses();
+    });
+  });
+  function removeActiveClasses() {
+    panels.forEach((panel) => {
+      panel.classList.remove('active');
+    });
+  }
+  function pageScroll(value) {
+    window.scroll({
+      top: value,
+      behavior: 'smooth',
+    });
+  }
+};
+// make page scroll
+function pageScroll(value) {
+  window.scroll({
+    top: value,
+    behavior: 'smooth',
+  });
+}
