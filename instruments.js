@@ -20,6 +20,7 @@ const allInstruments = [
     name: 'BufetCrampon-profesional1',
     type: 'Clarinet',
     price: 932,
+    discount: -50,
     description:
       ' Lorem, CLARINET BufetCrampon-profesional1 dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
     picture: 'https://i.pinimg.com/originals/44/5b/8a/445b8a829cf2c88e83e73884671030c2.jpg',
@@ -36,8 +37,9 @@ const allInstruments = [
     name: 'BufetCrampon-profesional20',
     type: 'Clarinet',
     price: 8300,
+    discount: -900,
     description:
-      ' Lorem, CLARINET BufetCrampon-profesional20 dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
+      ' Lorem, CLARINET BufetCrampon-profesional20  DISCOUNTED dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
     picture:
       'http://static1.squarespace.com/static/57f8eaa2f5e231f7e7a8e07f/58ca7a6c1b631b18af872428/58d04718e3df284bada517f3/1588434729879/25FEBA3B-DED0-4F26-B0B1-DF548861FF6A_1_201_a.jpeg?format=1500w',
   },
@@ -45,8 +47,9 @@ const allInstruments = [
     name: 'muramatsuheavy',
     type: 'Flaut',
     price: 2500,
+    discount: -500,
     description:
-      ' Lorem, FLAUT muramatsuheavy dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
+      ' Lorem, FLAUT muramatsuheavy dolor sit amet  DISCOUNTEDconsectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
     picture: 'https://wallpapercave.com/wp/wp1851717.jpg',
   },
   {
@@ -112,6 +115,7 @@ const allInstruments = [
     name: 'Alhambra-z',
     type: 'Chitară',
     price: 1900,
+    discount: -100,
     description:
       ' Lorem, CHITARĂ  Alhambra-z  dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
     picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGHtmVP1ck0_qZXxZfujLI57GqqwmU0yrUIw&usqp=CAU',
@@ -129,6 +133,7 @@ const allInstruments = [
     name: 'Alhambra-Profesional-2',
     type: 'Chitară',
     price: 100,
+
     description:
       ' Lorem, CHITARĂ  Alhambra-Profesional-2  dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
     picture: 'http://ikuzoguitars.com/wp-content/uploads/2015/01/Acoustic-Electric-Guitar-For-Sale.jpg',
@@ -147,17 +152,28 @@ const allInstruments = [
 function paintInstruments() {
   allInstruments.forEach(function (instrument) {
     let price = instrument.price;
+    let discount = instrument.discount;
     let type = instrument.type;
     let description = instrument.description;
     let picture = instrument.picture;
     let name = instrument.name;
     // HTML
+    if (discount !== undefined) {
+      instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"  data-discount="${discount}LEI " data-name = "${name}">
+      <img class="instrument-image" src="${picture}" alt="${picture}">
+     <h6 class="price">${price} lei</h6>
+     <h6 class = 'discount-text'>${discount} Lei</h6>
+      <p class="instrument-description">${description}</p>
+      </div>`;
+    } else {
+      instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"   data-name = "${name}">
+      <img class="instrument-image" src="${picture}" alt="${picture}">
+     <h6 class="price">${price} lei</h6>
 
-    let instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}" data-name = "${name}">
-        <img class="instrument-image" src="${picture}" alt="${picture}">
-       <h6 class="price">${price} lei</h6>
-        <p class="instrument-description">${description}</p>
-        </div>`;
+      <p class="instrument-description">${description}</p>
+      </div>`;
+    }
+
     // Insert the html to the end of every iteration
     instrumentsContainer.insertAdjacentHTML('beforeend', instrumentsHTML);
     //make instrument array
@@ -172,6 +188,7 @@ function paintInstruments() {
 }
 
 paintInstruments();
+let instruments = Array.from(document.querySelectorAll('.instrument'));
 // //////////////////////////////////////////////////////////////////
 //fliter  instruments alphabetically
 const aZBtn = document.querySelector('.a-z');
@@ -195,10 +212,78 @@ aZBtn.addEventListener('click', function () {
   filterAlphabetically();
   cleanInstruments();
   paintInstruments();
+  clickOnInstrument();
 });
+//  filter by price
+//ascending order
+const ascendingPriceBtn = document.querySelector('.ascending-price');
+const filterByAscendingOrder = () => {
+  allInstruments.sort(function (i, j) {
+    if (i.price < j.price) {
+      return -1;
+    }
+    if (i.price > j.price) {
+      return 1;
+    }
+    return 0;
+  });
+};
+ascendingPriceBtn.addEventListener('click', function () {
+  filterByAscendingOrder();
+  cleanInstruments();
+  paintInstruments();
+  clickOnInstrument();
+});
+//descending order
+const descendingPriceBtn = document.querySelector('.descending-price');
+descendingPriceBtn.addEventListener('click', function () {
+  const filterByDescendingOrder = () => {
+    allInstruments.sort(function (i, j) {
+      if (i.price > j.price) {
+        return -1;
+      }
+      if (i.price < j.price) {
+        return 1;
+      }
+      return 0;
+    });
+  };
+  descendingPriceBtn.addEventListener('click', function () {
+    filterByDescendingOrder();
+    cleanInstruments();
+    paintInstruments();
+    clickOnInstrument();
+  });
+});
+//filter by discount
+const discountBtn = document.querySelector('.discount');
+const paintDiscountedInstruments = function () {
+  allInstruments.forEach(function (instrument) {
+    let price = instrument.price;
+    let discount = instrument.discount;
+    let type = instrument.type;
+    let description = instrument.description;
+    let picture = instrument.picture;
+    let name = instrument.name;
+    // HTML
+    if (discount !== undefined) {
+      instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"  data-discount="${discount}LEI " data-name = "${name}">
+      <img class="instrument-image" src="${picture}" alt="${picture}">
+     <h6 class="price">${price} lei</h6>
+     <h6 class = 'discount-text'>${discount} Lei</h6>
+      <p class="instrument-description">${description}</p>
+      </div>`;
+      // Insert the html to the end of every iteration
+      instrumentsContainer.insertAdjacentHTML('beforeend', instrumentsHTML);
+    } else return;
+  });
+};
 
+discountBtn.addEventListener('click', function () {
+  cleanInstruments();
+  paintDiscountedInstruments();
+});
 // //////////////////////////////////////////////////////////////////
-const instruments = Array.from(document.querySelectorAll('.instrument'));
 
 //insert checkboxes into HTML
 
@@ -419,69 +504,73 @@ const moreImages = [
     picture4: 'https://i.pinimg.com/originals/28/91/fa/2891fab2820c8c83f6e69b04eb2d6010.jpg',
   },
 ];
-instruments.forEach(function (instrument) {
-  let showActiveInstrument = function () {
-    instrument.addEventListener('click', (event) => {
-      // imagesArray
-      hideOrderBy();
 
-      moreImages.forEach(function (image) {
-        if (instrument.dataset.name === image.name) {
-          matchedPictures.push(image.name);
-          pic1 = image.picture1;
-          pic2 = image.picture2;
-          pic3 = image.picture3;
-          pic4 = image.picture4;
-          instrName = image.name;
+const clickOnInstrument = () => {
+  instruments.forEach(function (instrument) {
+    let showActiveInstrument = function () {
+      instrument.addEventListener('click', (event) => {
+        // imagesArray
+        hideOrderBy();
 
-          //\ HTML
-          const htmlIstrumentImg = `<img src="${pic1}"data-name ="${instrName} " alt="">
+        moreImages.forEach(function (image) {
+          if (instrument.dataset.name === image.name) {
+            matchedPictures.push(image.name);
+            pic1 = image.picture1;
+            pic2 = image.picture2;
+            pic3 = image.picture3;
+            pic4 = image.picture4;
+            instrName = image.name;
+
+            //\ HTML
+            const htmlIstrumentImg = `<img src="${pic1}"data-name ="${instrName} " alt="">
         <img src="${pic2}" alt="">
         <img src="${pic3}" alt="">
         <img src="${pic4}" alt="">`;
-          //insert html to the end of every iteration
-          imageSliderContainer.innerHTML = htmlIstrumentImg;
-        } else if (instrument.dataset.name !== image.name) {
-          if (matchedPictures.indexOf(image.name) !== -1) {
-            matchedPictures.splice(matchedPictures.indexOf(image.name), 1);
+            //insert html to the end of every iteration
+            imageSliderContainer.innerHTML = htmlIstrumentImg;
+          } else if (instrument.dataset.name !== image.name) {
+            if (matchedPictures.indexOf(image.name) !== -1) {
+              matchedPictures.splice(matchedPictures.indexOf(image.name), 1);
+            }
           }
-        }
-      });
+        });
 
-      const image = imageSliderContainer.querySelectorAll('img');
+        const image = imageSliderContainer.querySelectorAll('img');
 
-      //Make slider move
-      let sliderIndex = 0;
-      sliderBtnUp.addEventListener('click', function (event) {
+        //Make slider move
+        let sliderIndex = 0;
+        sliderBtnUp.addEventListener('click', function (event) {
+          event.stopPropagation();
+          sliderIndex++;
+          changeImage();
+        });
+        const changeImage = function () {
+          if (sliderIndex > image.length - 1) {
+            sliderIndex = 0;
+          } else if (sliderIndex < 0) {
+            sliderIndex = image.length - 1;
+          }
+
+          imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
+        };
+
         event.stopPropagation();
-        sliderIndex++;
-        changeImage();
-      });
-      const changeImage = function () {
-        if (sliderIndex > image.length - 1) {
-          sliderIndex = 0;
-        } else if (sliderIndex < 0) {
-          sliderIndex = image.length - 1;
+        removeInstrumentActiveClass();
+        instrument.classList.add('active');
+        morePictures.style.display = 'flex';
+        if (window.screen.width < 800) {
+          grid.style.margin = '49rem auto';
+        } else if (window.screen.width > 500) {
+          grid.style.margin = '35rem auto';
         }
 
-        imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
-      };
-
-      event.stopPropagation();
-      removeInstrumentActiveClass();
-      instrument.classList.add('active');
-      morePictures.style.display = 'flex';
-      if (window.screen.width < 800) {
-        grid.style.margin = '49rem auto';
-      } else if (window.screen.width > 500) {
-        grid.style.margin = '35rem auto';
-      }
-
-      pageScroll(500);
-    });
-  };
-  showActiveInstrument();
-});
+        pageScroll(500);
+      });
+    };
+    showActiveInstrument();
+  });
+};
+clickOnInstrument();
 
 // click to see all instruments
 seeAllInstruments.addEventListener('click', function () {
