@@ -224,6 +224,7 @@ const repairInstrumentWebsite = function () {
       name: 'Acordeon',
     },
   ];
+
   //paint panels
   const paintPanels = () => {
     panelsContainer.innerHTML = '';
@@ -335,10 +336,72 @@ const repairInstrumentWebsite = function () {
 };
 
 //!Website pentru cumparat de instrumentele
+let onStockInstrumentPanels = [];
 const buyInstrumentWebsite = function () {
   //toBuy instrument Object array
 
   const toBuyInstrumentsSlides = [
+    {
+      type: 'Vioară',
+      description: `blanditiis ut obcaecati quos, repellendus illum expedita
+      iusto tempora velit nobis commodi id. Dolorem vero
+      suscipit porro laudantium, dolorum maxime commodi
+      blanditiis ipsam facilis pariatur est laboriosam mollitia
+      atque quisquam numquam accusantium iusto, eos omnis dolore
+      aliquid, eveniet soluta consequuntur nemo. Modi eligendi
+      unde aliquam mollitia illum, tenetur ea velit eum maiores
+      eius! Corporis eveniet enim labore cum autem velit earum
+      libero quam sit omnis aspernatur amet, molestiae corrupti
+      voluptatum ullam. Ducimus voluptates praesentium quos
+      facere enim facilis cumque pariatur vero aliquid illum quo
+      numquam commodi ut magnam, laudantium rem tenetur
+      dignissimos quae. Expedita corporis officia ullam suscipit
+      exercitationem earum iste ab eaque commodi perspiciatis,
+      amet fuga velit deleniti.`,
+      picture:
+        'http://images.ctfassets.net/3s5io6mnxfqz/3MsJWevSoLAE1KDjgXZr4h/490c512dbde074e276589655ab02f0a8/AdobeStock_137204208.jpeg',
+      advantages1: `blanditiis ut obcaecatd`,
+      advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
+      eius! `,
+      advantages3: `Soluta cumque amet aliquam aut alias voluptatum
+      deleniti  vero`,
+      advantages4: `Corporis eveniet enim labore cum autem v
+      voluptatum ullam. `,
+      disadvantages1: `Expedita corporis officia ullam suscipit
+      exercitationeis,`,
+      disadvantages2: `Dolorem vero
+      suscios omnis dolore`,
+    },
+    {
+      type: 'Corn',
+      description: `blanditiis ut obcaecati quos, repellendus illum expedita
+      iusto tempora velit nobis commodi id. Dolorem vero
+      suscipit porro laudantium, dolorum maxime commodi
+      blanditiis ipsam facilis pariatur est laboriosam mollitia
+      atque quisquam numquam accusantium iusto, eos omnis dolore
+      aliquid, eveniet soluta consequuntur nemo. Modi eligendi
+      unde aliquam mollitia illum, tenetur ea velit eum maiores
+      eius! Corporis eveniet enim labore cum autem velit earum
+      libero quam sit omnis aspernatur amet, molestiae corrupti
+      voluptatum ullam. Ducimus voluptates praesentium quos
+      facere enim facilis cumque pariatur vero aliquid illum quo
+      numquam commodi ut magnam, laudantium rem tenetur
+      dignissimos quae. Expedita corporis officia ullam suscipit
+      exercitationem earum iste ab eaque commodi perspiciatis,
+      amet fuga velit deleniti.`,
+      picture: 'https://s3.amazonaws.com/libapps/accounts/126044/images/french_horn.jpg',
+      advantages1: `blanditiis ut obcaecatd`,
+      advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
+      eius! `,
+      advantages3: `Soluta cumque amet aliquam aut alias voluptatum
+      deleniti  vero`,
+      advantages4: `Corporis eveniet enim labore cum autem v
+      voluptatum ullam. `,
+      disadvantages1: `Expedita corporis officia ullam suscipit
+      exercitationeis,`,
+      disadvantages2: `Dolorem vero
+      suscios omnis dolore`,
+    },
     {
       type: 'Flaut',
       description: `blanditiis ut obcaecati quos, repellendus illum expedita
@@ -358,6 +421,36 @@ const buyInstrumentWebsite = function () {
       amet fuga velit deleniti.`,
       picture:
         'https://images.pexels.com/photos/2254140/pexels-photo-2254140.jpeg?cs=srgb&dl=pexels-teddy-yang-2254140.jpg&fm=jpg',
+      advantages1: `blanditiis ut obcaecatd`,
+      advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
+      eius! `,
+      advantages3: `Soluta cumque amet aliquam aut alias voluptatum
+      deleniti  vero`,
+      advantages4: `Corporis eveniet enim labore cum autem v
+      voluptatum ullam. `,
+      disadvantages1: `Expedita corporis officia ullam suscipit
+      exercitationeis,`,
+      disadvantages2: `Dolorem vero
+      suscios omnis dolore`,
+    },
+    {
+      type: 'Chitară',
+      description: `blanditiis ut obcaecati quos, repellendus illum expedita
+      iusto tempora velit nobis commodi id. Dolorem vero
+      suscipit porro laudantium, dolorum maxime commodi
+      blanditiis ipsam facilis pariatur est laboriosam mollitia
+      atque quisquam numquam accusantium iusto, eos omnis dolore
+      aliquid, eveniet soluta consequuntur nemo. Modi eligendi
+      unde aliquam mollitia illum, tenetur ea velit eum maiores
+      eius! Corporis eveniet enim labore cum autem velit earum
+      libero quam sit omnis aspernatur amet, molestiae corrupti
+      voluptatum ullam. Ducimus voluptates praesentium quos
+      facere enim facilis cumque pariatur vero aliquid illum quo
+      numquam commodi ut magnam, laudantium rem tenetur
+      dignissimos quae. Expedita corporis officia ullam suscipit
+      exercitationem earum iste ab eaque commodi perspiciatis,
+      amet fuga velit deleniti.`,
+      picture: 'https://images.pexels.com/photos/15919/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
       advantages1: `blanditiis ut obcaecatd`,
       advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
       eius! `,
@@ -551,6 +644,37 @@ const buyInstrumentWebsite = function () {
       disadvantages2: `Dolorem vero
       suscios omnis dolore`,
     },
+    {
+      type: 'Clarinet',
+      description: `blanditiis ut obcaecati quos, repellendus illum expedita
+      iusto tempora velit nobis commodi id. Dolorem vero
+      suscipit porro laudantium, dolorum maxime commodi
+      blanditiis ipsam facilis pariatur est laboriosam mollitia
+      atque quisquam numquam accusantium iusto, eos omnis dolore
+      aliquid, eveniet soluta consequuntur nemo. Modi eligendi
+      unde aliquam mollitia illum, tenetur ea velit eum maiores
+      eius! Corporis eveniet enim labore cum autem velit earum
+      libero quam sit omnis aspernatur amet, molestiae corrupti
+      voluptatum ullam. Ducimus voluptates praesentium quos
+      facere enim facilis cumque pariatur vero aliquid illum quo
+      numquam commodi ut magnam, laudantium rem tenetur
+      dignissimos quae. Expedita corporis officia ullam suscipit
+      exercitationem earum iste ab eaque commodi perspiciatis,
+      amet fuga velit deleniti.`,
+      picture:
+        'https://media1.s-nbcnews.com/j/streams/2013/November/131108/8C9627596-131107-clarinet-4x3-649p.nbcnews-fp-1200-630.jpg',
+      advantages1: `blanditiis ut obcaecatd`,
+      advantages2: `unde aliquam mollitia illum, tenetur ea velit eum maiores
+      eius! `,
+      advantages3: `Soluta cumque amet aliquam aut alias voluptatum
+      deleniti  vero`,
+      advantages4: `Corporis eveniet enim labore cum autem v
+      voluptatum ullam. `,
+      disadvantages1: `Expedita corporis officia ullam suscipit
+      exercitationeis,`,
+      disadvantages2: `Dolorem vero
+      suscios omnis dolore`,
+    },
   ];
 
   const paintToBuyInstrumentSlides = function () {
@@ -570,25 +694,42 @@ const buyInstrumentWebsite = function () {
         type: 'Saxofon',
         name: 'Saxofon',
       },
-      // {
-      //   photo: '../resources/buyIt-panels/corn-panel.jpg',
-      //   type: 'percution',
-      //   name: 'Percuție',
-      // },
+      ////////////////////////
+      {
+        photo: '../resources/buyIt-panels/clarinet-panel.jpg',
+        type: 'Clarinet',
+        name: 'Clarinet',
+      },
+      //////////////////////
+      {
+        photo: '../resources/buyIt-panels/corn-panel.jpg',
+        type: 'Corn',
+        name: 'Corn',
+      },
+      {
+        photo: '../resources/buyIt-panels/percution-panel.jpg',
+        type: 'Percuție',
+        name: 'Percuție',
+      },
       {
         photo: '../resources/buyIt-panels/trombone-panel.webp',
         type: 'Trombon',
         name: 'Trombon',
       },
-      // {
-      //   photo: '../resources/buyIt-panels/oboe-panel.jpg',
-      //   type: 'Oboi',
-      //   name: 'Oboi',
-      // },
+      {
+        photo: '../resources/buyIt-panels/oboe-panel.jpg',
+        type: 'Oboi',
+        name: 'Oboi',
+      },
       {
         photo: '../resources/buyIt-panels/flute-panel.jpg',
         type: 'Flaut',
         name: 'Flaut',
+      },
+      {
+        photo: '../resources/buyIt-panels/guitar-panel.jpg',
+        type: 'Chitară',
+        name: 'Chitară',
       },
       {
         photo: '../resources/buyIt-panels/acordeon-panel.jpg',
@@ -597,10 +738,25 @@ const buyInstrumentWebsite = function () {
       },
     ];
     // //////////////////////////////////////////////////////////////////////////
+
+    //see if instruments are on stocks
+
+    instruments.forEach(function (instrument) {
+      toBuyInstrumentsPanels.forEach(function (slide) {
+        if (instrument.dataset.instrumenttype === slide.type) {
+          onStockInstrumentPanels.push(slide);
+        }
+      });
+    });
+    //make unique array of on stock instrument slides
+    const uniqueOnStockPanels = onStockInstrumentPanels.filter(function (panel, index) {
+      return onStockInstrumentPanels.indexOf(panel) === index;
+    });
     //paint panels
+    console.log(onStockInstrumentPanels);
     const paintPanels = () => {
       panelsContainer.innerHTML = '';
-      toBuyInstrumentsPanels.forEach(function (panel) {
+      uniqueOnStockPanels.forEach(function (panel) {
         let type = panel.type;
         let name = panel.name;
         let photo = panel.photo;

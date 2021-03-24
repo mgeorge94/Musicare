@@ -17,6 +17,7 @@ const showGrid = () => {
 const showOrderBy = () => {
   orderByContainer.style.display = 'block';
 };
+
 const showGridInstruments = () => {
   instruments.forEach(function (instrument) {
     instrument.removeAttribute('hidden');
@@ -38,6 +39,11 @@ const showCheckoutForm = () => {
   checkoutForm.style.display = 'flex';
 };
 //functions that hide elements
+const hideActiveInstruments = () => {
+  instruments.forEach(function (instrument) {
+    instrument.classList.remove('active');
+  });
+};
 const hideOrderBy = () => {
   orderByContainer.style.display = 'none';
 };
@@ -83,6 +89,7 @@ navBurgerBtn.addEventListener('click', () => {
   hideCheckoutForm();
   showTestimonials();
   hideContactForm();
+  hideActiveInstruments();
   instrOptBkg.classList.remove('active');
   instrOptContainer.classList.remove('active');
   checkmark.forEach((checkmark) => {

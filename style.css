@@ -151,7 +151,7 @@ button:focus {
   left: 50%;
   top: 40%;
   transform: translateX(-50%);
-  background-color: rgba(73, 73, 73, 0.6);
+  background-color: rgba(36, 36, 36, 0.6);
   border-radius: 15px;
   border: none;
   font-size: 0.8rem;
@@ -709,7 +709,7 @@ h4 {
   position: relative;
   min-width: 100%;
   box-shadow: 4px 8px 11px 9px rgba(0, 0, 0, 0.8);
-  min-height: 80vh;
+  min-height: 100vh;
   object-fit: cover;
 }
 .repair-image.one {
