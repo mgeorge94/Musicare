@@ -301,6 +301,7 @@ const repairInstrumentWebsite = function () {
               slideContent.style.display = 'block';
               slideContainer.style.display = 'flex';
               document;
+              hideCheckoutForm();
             });
             //make image apear on scroll
 
@@ -323,18 +324,60 @@ const repairInstrumentWebsite = function () {
             }
           }
           hideGrid();
-          hideCheckoutForm();
+
           resetGridToPosition();
           showTestimonials();
-
+          hideCheckoutForm();
           hideContactForm();
         });
       });
     });
   };
   paintFixedInstrumentSlides();
-};
+  // filter instruments tab
 
+  instrBtn.addEventListener('click', () => {
+    instrOptBkg.classList.add('active');
+    instrOptContainer.classList.add('active');
+  });
+  //make filterTab apear
+  filterBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+
+    showFilterTab();
+  });
+  //show All repairable instruments
+  const repairableInstrumentsBtn = document.querySelector('.instrument-list');
+  //make instr lst apear
+  repairableInstrumentsBtn.addEventListener('click', (event) => {
+    showAllRepairableInstruments();
+  });
+  //loop through instruments
+  const repairableInstruments = document.querySelectorAll('ul.repairable-instruments > li');
+  repairableInstruments.forEach(function (instr) {
+    if (instr.classList.contains('instrTypeHeader')) return;
+    else {
+      instr.addEventListener('mouseenter', () => {
+        instr.style.color = 'white';
+      });
+      instr.addEventListener('mouseleave', () => {
+        instr.style.color = '#bababa';
+      });
+      instr.addEventListener('click', () => {
+        hideReparableInstruments();
+        autoAddInstrumentToForm(instr);
+        pageScroll(500);
+        showContactForm();
+        hideNav();
+      });
+    }
+  });
+};
+const autoAddInstrumentToForm = (instr) => {
+  const inNeedInstrument = document.querySelector('#instrument-in-need');
+  inNeedInstrument.placeholder = `Salvați-mi instrumentul: ${instr.innerHTML} `;
+  inNeedInstrument.setAttribute('readonly', 'true');
+};
 //!Website pentru cumparat de instrumentele
 let onStockInstrumentPanels = [];
 const buyInstrumentWebsite = function () {
@@ -844,18 +887,24 @@ const buyInstrumentWebsite = function () {
               });
             });
           });
+          hideGrid();
+          hideCheckoutForm();
+          resetGridToPosition();
+          hideOrderBy();
+          showTestimonials();
+          hideOrderBy();
+          hideContactForm();
+          hideActiveInstruments();
+          hideImageSlider();
         });
-        hideGrid();
-        hideOrderBy();
-        hideCheckoutForm();
-        resetGridToPosition();
-        showTestimonials();
-
-        hideContactForm();
       });
     });
   };
   paintToBuyInstrumentSlides();
+  const FilterInstrumentsBtn = document.querySelector('.instruments-btn');
+  FilterInstrumentsBtn.addEventListener('click', () => {
+    showFilterTab();
+  });
 };
 //! panels
 const containerPanels = document.querySelector('.container-panel');

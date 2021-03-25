@@ -9,6 +9,7 @@ const seeInstruments = document.querySelector('.see-instruments');
 const grid = document.querySelector('.grid');
 // functions that show elements
 const showTestimonials = () => {
+  const testimonialContainer = document.querySelector('.testimonial-container');
   testimonialContainer.style.display = 'block';
 };
 const showGrid = () => {
@@ -19,6 +20,7 @@ const showOrderBy = () => {
 };
 
 const showGridInstruments = () => {
+  const instruments = document.querySelectorAll('.instrument');
   instruments.forEach(function (instrument) {
     instrument.removeAttribute('hidden');
   });
@@ -28,36 +30,51 @@ const showFaq = () => (faqContent.style.display = 'block');
 const showFilterTab = () => {
   document.querySelector('.filter-tab').classList.add('visible');
 };
+const showAllRepairableInstruments = () => {
+  document.querySelector('.all-instruments').classList.add('visible');
+};
 const showNews = () => (newsContent.style.display = 'block');
 const showContactForm = () => {
+  const contactFormContainer = document.querySelector('.form-container');
   contactFormContainer.style.display = 'flex';
 };
 const resetGridToPosition = () => {
+  const grid = document.querySelector('.grid');
   grid.style.margin = '1rem auto';
 };
 const showCheckoutForm = () => {
   checkoutForm.style.display = 'flex';
 };
 //functions that hide elements
+const hideReparableInstruments = () => {
+  document.querySelector('.all-instruments').classList.remove('visible');
+};
 const hideActiveInstruments = () => {
+  const instruments = document.querySelectorAll('.instrument');
   instruments.forEach(function (instrument) {
     instrument.classList.remove('active');
   });
 };
 const hideOrderBy = () => {
+  const orderByContainer = document.querySelector('.order-by-container');
   orderByContainer.style.display = 'none';
 };
 const hideGrid = () => {
+  const morePictures = document.querySelector('.instrument-picture-container');
+  const grid = document.querySelector('.grid');
   grid.style.display = 'none';
   morePictures.style.display = 'none';
+  hideOrderBy();
 };
 const hideNav = () => nav.forEach((navElement) => navElement.classList.remove('visible'));
 const removeInstrumentActiveClass = () => {
+  const instruments = document.querySelectorAll('.instrument');
   instruments.forEach((instrument) => {
     instrument.classList.remove('active');
   });
 };
 const hideGridInstruments = () => {
+  const instruments = document.querySelectorAll('.instrument');
   instruments.forEach(function (instrument) {
     instrument.setAttribute('hidden', 'true');
   });
@@ -73,11 +90,37 @@ const hideFilterTab = () => {
   document.querySelector('.filter-tab').classList.remove('visible');
 };
 const hideContactForm = () => {
+  const contactFormContainer = document.querySelector('.form-container');
   contactFormContainer.style.display = 'none';
 };
 const hideCheckoutForm = () => {
+  const checkoutForm = document.querySelector('.checkout-form-container');
   checkoutForm.style.display = 'none';
 };
+const removeActiveClassInstrument = () => {
+  const instruments = document.querySelectorAll('.instrument');
+
+  instruments.forEach(function (instrument) {
+    if (instrument.classList.contains('active')) {
+      instrument.style.display = none;
+    }
+  });
+};
+const removeInstrumentsWithoutActiveClass = () => {
+  const instruments = document.querySelectorAll('.instrument');
+
+  instruments.forEach(function (instrument) {
+    if (!instrument.classList.contains('active')) {
+      instrument.style.display = 'none';
+    }
+  });
+};
+const hideImageSlider = () => {
+  const imageSliderContainer = document.querySelector('.instrument-picture-container');
+  imageSliderContainer.style.display = 'none';
+};
+
+const removeAllStuff = () => {};
 //open nav btn click
 navBurgerBtn.addEventListener('click', () => {
   hideGrid();
@@ -90,6 +133,8 @@ navBurgerBtn.addEventListener('click', () => {
   showTestimonials();
   hideContactForm();
   hideActiveInstruments();
+  hideReparableInstruments();
+
   instrOptBkg.classList.remove('active');
   instrOptContainer.classList.remove('active');
   checkmark.forEach((checkmark) => {
@@ -139,6 +184,9 @@ let isValid = false;
 
 function showForm() {
   contactBtn.addEventListener('click', () => {
+    const inNeedInstrument = document.querySelector('#instrument-in-need');
+    inNeedInstrument.placeholder = 'Ce instrument are nevoie de atenția noastră?';
+    inNeedInstrument.removeAttribute('readonly');
     showContactForm();
     hideNav();
     pageScroll(500);
@@ -247,16 +295,6 @@ const instrOptBkg = document.querySelector('.instr-options-background');
 const instrOptContainer = document.querySelector('.instr-options-container');
 const instrBtn = document.querySelector('.instruments-btn');
 const filterBtn = document.querySelector('.filter');
-instrBtn.addEventListener('click', () => {
-  instrOptBkg.classList.add('active');
-  instrOptContainer.classList.add('active');
-});
-//make filterTab apear
-filterBtn.addEventListener('click', (event) => {
-  event.stopPropagation();
-
-  showFilterTab();
-});
 
 container.addEventListener('click', () => {
   hideFilterTab();

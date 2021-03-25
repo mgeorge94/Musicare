@@ -271,6 +271,7 @@ aZBtn.addEventListener('click', function () {
   paintInstruments();
   resetGridToPosition();
   clickOnInstrument();
+  hideCheckoutForm();
 });
 //  filter by price
 //ascending order
@@ -292,6 +293,7 @@ ascendingPriceBtn.addEventListener('click', function () {
   paintInstruments();
   clickOnInstrument();
   resetGridToPosition();
+  hideCheckoutForm();
 });
 //descending order
 const descendingPriceBtn = document.querySelector('.descending-price');
@@ -313,6 +315,7 @@ descendingPriceBtn.addEventListener('click', function () {
     paintInstruments();
     clickOnInstrument();
     resetGridToPosition();
+    hideCheckoutForm();
   });
 });
 //filter by discount
@@ -448,6 +451,30 @@ const filteredInstruments = function (event) {
 filterTab.addEventListener('click', (event) => {
   filteredInstruments(event);
 });
+//buy btn
+
+const checkoutForm = document.querySelector('.checkout-form-container');
+const checkoutBtn = document.querySelector('.checkout-btn');
+const formMessage = document.querySelector('.formMessage');
+const clickOnBuy = () => {
+  const buyBtn = document.querySelector('.buy');
+  buyBtn.addEventListener('click', () => {
+    //show checkout form
+
+    showCheckoutForm();
+
+    //hide testimonials
+    testimonialContainer.style.display = 'none';
+    //hide instruments from grid
+    instruments.forEach(function (instrument) {
+      if (!instrument.classList.contains('active')) {
+        instrument.setAttribute('hidden', 'true');
+      }
+    });
+    pageScroll(1200);
+  });
+};
+clickOnBuy();
 
 const clickOnInstrument = () => {
   //!!!!! why variables need  to be bound to the function
@@ -719,6 +746,7 @@ const clickOnInstrument = () => {
       });
     };
     showActiveInstrument();
+    clickOnBuy();
   });
 };
 clickOnInstrument();
@@ -732,25 +760,6 @@ seeAllInstruments.addEventListener('click', function () {
   removeInstrumentActiveClass();
   showOrderBy();
   showGridInstruments();
-});
-//buy btn
-const buyBtn = document.querySelector('.buy');
-const checkoutForm = document.querySelector('.checkout-form-container');
-const checkoutBtn = document.querySelector('.checkout-btn');
-const formMessage = document.querySelector('.formMessage');
-buyBtn.addEventListener('click', () => {
-  //show checkout form
-
-  showCheckoutForm();
-  //hide testimonials
-  testimonialContainer.style.display = 'none';
-  //hide instruments from grid
-  instruments.forEach(function (instrument) {
-    if (!instrument.classList.contains('active')) {
-      instrument.setAttribute('hidden', 'true');
-    }
-  });
-  pageScroll(1200);
 });
 
 let checked = true;

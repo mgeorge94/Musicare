@@ -426,6 +426,20 @@ button:focus {
 .see-instruments:hover {
   color: white;
 }
+/* all repairable instruments */
+
+.repairable-instruments {
+  list-style: none;
+  line-height: 2rem;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+.instrTypeHeader {
+  font-size: 1.3rem;
+  padding: 2rem auto;
+  margin-left: -1rem;
+  color: red;
+}
 
 /* Clear floats */
 form.example::after {
@@ -1066,7 +1080,7 @@ input:valid {
   box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
   animation: slide 0.5s ease-in-out forwards;
   position: absolute;
-  margin-top: 73rem;
+  margin-top: 79rem;
   margin-bottom: 50rem;
 }
 
@@ -1768,7 +1782,7 @@ input:valid {
 
     width: 96vw;
 
-    margin-top: 85rem;
+    margin-top: 90rem;
   }
 }
 @media screen and (max-width: 500px) {
