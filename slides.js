@@ -1,33 +1,35 @@
 //! Split landing page
-const left = document.querySelector('.left');
-const right = document.querySelector('.right');
-const landingPageContainer = document.querySelector('.landingPage-container');
-const leftLandingBtn = document.querySelector('.btn-split-left');
-const rightLandingBtn = document.querySelector('.btn-split-right');
-const panelsContainer = document.querySelector('.container-panel');
-
-left.addEventListener('mouseenter', () => {
-  landingPageContainer.classList.add('hover-left');
-});
-left.addEventListener('mouseleave', () => {
-  landingPageContainer.classList.remove('hover-left');
-});
-right.addEventListener('mouseenter', () => {
-  landingPageContainer.classList.add('hover-right');
-});
-right.addEventListener('mouseleave', () => {
-  landingPageContainer.classList.remove('hover-right');
-});
-const removeDualLandingPage = function () {
-  left.style.animation = 'leftHide .8s ease-in forwards';
-  right.style.animation = 'rightHide 1s ease-in forwards';
-  landingPageContainer.style.animation = 'hideLandingContainer 2s ease-in forwards';
-};
-leftLandingBtn.addEventListener('click', removeDualLandingPage);
-rightLandingBtn.addEventListener('click', removeDualLandingPage);
 
 slideContainer = document.querySelector('.container-slide');
-//! Website pentru Instrumente reparate
+const makeSplitLandingPageMove = () => {
+  const left = document.querySelector('.left');
+  const right = document.querySelector('.right');
+  const landingPageContainer = document.querySelector('.landingPage-container');
+  const leftLandingBtn = document.querySelector('.btn-split-left');
+  const rightLandingBtn = document.querySelector('.btn-split-right');
+
+  left.addEventListener('mouseenter', () => {
+    landingPageContainer.classList.add('hover-left');
+  });
+  left.addEventListener('mouseleave', () => {
+    landingPageContainer.classList.remove('hover-left');
+  });
+  right.addEventListener('mouseenter', () => {
+    landingPageContainer.classList.add('hover-right');
+  });
+  right.addEventListener('mouseleave', () => {
+    landingPageContainer.classList.remove('hover-right');
+  });
+  const removeDualLandingPage = function () {
+    left.style.animation = 'leftHide .8s ease-in forwards';
+    right.style.animation = 'rightHide 1s ease-in forwards';
+    landingPageContainer.style.animation = 'hideLandingContainer 2s ease-in forwards';
+  };
+  leftLandingBtn.addEventListener('click', removeDualLandingPage);
+  rightLandingBtn.addEventListener('click', removeDualLandingPage);
+};
+makeSplitLandingPageMove();
+//! Website pentru reparat Instrumente
 
 const repairInstrumentWebsite = function () {
   //fixed instruments slides Object Array
@@ -227,6 +229,7 @@ const repairInstrumentWebsite = function () {
 
   //paint panels
   const paintPanels = () => {
+    const panelsContainer = document.querySelector('.container-panel');
     panelsContainer.innerHTML = '';
     fixedInstrumentsPanels.forEach(function (panel) {
       let type = panel.type;
@@ -335,7 +338,7 @@ const repairInstrumentWebsite = function () {
   };
   paintFixedInstrumentSlides();
   // filter instruments tab
-
+  const instrBtn = document.querySelector('.instruments-btn');
   instrBtn.addEventListener('click', () => {
     instrOptBkg.classList.add('active');
     instrOptContainer.classList.add('active');
@@ -343,6 +346,7 @@ const repairInstrumentWebsite = function () {
   //make filterTab apear
   filterBtn.addEventListener('click', (event) => {
     event.stopPropagation();
+    hideAllRepairableInstruments();
 
     showFilterTab();
   });
@@ -352,32 +356,42 @@ const repairInstrumentWebsite = function () {
   repairableInstrumentsBtn.addEventListener('click', (event) => {
     showAllRepairableInstruments();
   });
+
   //loop through instruments
-  const repairableInstruments = document.querySelectorAll('ul.repairable-instruments > li');
+  const repairableInstruments = document.querySelectorAll('ul.repair-instr-column > li');
   repairableInstruments.forEach(function (instr) {
-    if (instr.classList.contains('instrTypeHeader')) return;
-    else {
-      instr.addEventListener('mouseenter', () => {
-        instr.style.color = 'white';
-      });
-      instr.addEventListener('mouseleave', () => {
-        instr.style.color = '#bababa';
-      });
-      instr.addEventListener('click', () => {
-        hideReparableInstruments();
-        autoAddInstrumentToForm(instr);
-        pageScroll(500);
-        showContactForm();
-        hideNav();
-      });
-    }
+    instr.addEventListener('mouseenter', () => {
+      instr.style.color = '#f28422';
+    });
+    instr.addEventListener('mouseleave', () => {
+      instr.style.color = 'white';
+    });
+    instr.addEventListener('click', () => {
+      hideAllRepairableInstruments();
+      autoAddInstrumentToForm(instr);
+      pageScroll(500);
+      showContactForm();
+      hideNav();
+    });
   });
+  //change accent colors of website
+  ////////////////////////////////////////////////////////////////////////////////////
+  changeAccentColors('#8f430f', '#f28422');
 };
 const autoAddInstrumentToForm = (instr) => {
   const inNeedInstrument = document.querySelector('#instrument-in-need');
   inNeedInstrument.placeholder = `Salvați-mi instrumentul: ${instr.innerHTML} `;
   inNeedInstrument.setAttribute('readonly', 'true');
 };
+// dealing with media queries
+const handeLayoutForRaepairedInstruments = () => {
+  if (window.screen.width < 900) {
+    document.querySelectorAll('.repair-instr-column').forEach(item, () => {
+      item.remove();
+    });
+  }
+};
+handeLayoutForRaepairedInstruments();
 //!Website pentru cumparat de instrumentele
 let onStockInstrumentPanels = [];
 const buyInstrumentWebsite = function () {
@@ -798,6 +812,7 @@ const buyInstrumentWebsite = function () {
     //paint panels
     console.log(onStockInstrumentPanels);
     const paintPanels = () => {
+      const panelsContainer = document.querySelector('.container-panel');
       panelsContainer.innerHTML = '';
       uniqueOnStockPanels.forEach(function (panel) {
         let type = panel.type;
@@ -905,6 +920,9 @@ const buyInstrumentWebsite = function () {
   FilterInstrumentsBtn.addEventListener('click', () => {
     showFilterTab();
   });
+  //change accent colors of website
+  //////////////////////////////////////////////////////////////////////////////
+  changeAccentColors('#76433a', '#7fab75');
 };
 //! panels
 const containerPanels = document.querySelector('.container-panel');
@@ -934,9 +952,9 @@ const hoverOverPannels = () => {
   }
 };
 // make page scroll
-function pageScroll(value) {
+const pageScroll = (value) => {
   window.scroll({
     top: value,
     behavior: 'smooth',
   });
-}
+};
