@@ -196,8 +196,8 @@ const allInstruments = [
   },
 ];
 //get instruments
-function paintInstruments() {
-  allInstruments.forEach(function (instrument) {
+function paintInstruments(instrumentList) {
+  instrumentList.forEach(function (instrument) {
     let price = instrument.price;
     let discount = instrument.discount;
     let type = instrument.type;
@@ -234,26 +234,11 @@ function paintInstruments() {
   });
 }
 
-paintInstruments();
+paintInstruments(allInstruments);
 let instruments = Array.from(document.querySelectorAll('.instrument'));
-
-// //////////////////////////////////////////////////////////////////
-//fliter  instruments alphabetically
-const aZBtn = document.querySelector('.a-z');
-
-const filterAlphabetically = () => {
-  allInstruments.sort(function (i, j) {
-    if (i.name < j.name) {
-      return -1;
-    }
-    if (i.name > j.name) {
-      return 1;
-    }
-    return 0;
-  });
-};
-
+//clean html grid
 const cleanInstruments = () => {
+  const grid = document.querySelector('.grid');
   grid.innerHTML = `<div class="instrument-picture-container">
   <div class="instrumnet-image-slider">
     <div class="image-slider-container" id="image-container"></div>
@@ -265,41 +250,61 @@ const cleanInstruments = () => {
 </div>
 </div>`;
 };
-aZBtn.addEventListener('click', function () {
-  filterAlphabetically();
-  cleanInstruments();
-  paintInstruments();
-  resetGridToPosition();
-  clickOnInstrument();
-  hideCheckoutForm();
-});
-//  filter by price
-//ascending order
-const ascendingPriceBtn = document.querySelector('.ascending-price');
-const filterByAscendingOrder = () => {
-  allInstruments.sort(function (i, j) {
-    if (i.price < j.price) {
-      return -1;
-    }
-    if (i.price > j.price) {
-      return 1;
-    }
-    return 0;
+//fliter  instruments alphabetically
+const paintInstrumentsAlphabetically = (instrArr) => {
+  const aZBtn = document.querySelector('.a-z');
+
+  const filterAlphabetically = () => {
+    instrArr.sort(function (i, j) {
+      if (i.name < j.name) {
+        return -1;
+      }
+      if (i.name > j.name) {
+        return 1;
+      }
+      return 0;
+    });
+  };
+
+  aZBtn.addEventListener('click', function () {
+    filterAlphabetically();
+    cleanInstruments();
+    paintInstruments(instrArr);
+    resetGridToPosition();
+    clickOnInstrument();
+    hideCheckoutForm();
   });
 };
-ascendingPriceBtn.addEventListener('click', function () {
-  filterByAscendingOrder();
-  cleanInstruments();
-  paintInstruments();
-  clickOnInstrument();
-  resetGridToPosition();
-  hideCheckoutForm();
-});
+
+//  filter by price
+//ascending order
+const paintinAscendingOrder = (instrArr) => {
+  const ascendingPriceBtn = document.querySelector('.ascending-price');
+  const filterByAscendingOrder = () => {
+    instrArr.sort(function (i, j) {
+      if (i.price < j.price) {
+        return -1;
+      }
+      if (i.price > j.price) {
+        return 1;
+      }
+      return 0;
+    });
+  };
+  ascendingPriceBtn.addEventListener('click', function () {
+    filterByAscendingOrder();
+    cleanInstruments();
+    paintInstruments(instrArr);
+    clickOnInstrument();
+    resetGridToPosition();
+    hideCheckoutForm();
+  });
+};
+
 //descending order
-const descendingPriceBtn = document.querySelector('.descending-price');
-descendingPriceBtn.addEventListener('click', function () {
+const paintInDescendingOrder = function (instrList) {
   const filterByDescendingOrder = () => {
-    allInstruments.sort(function (i, j) {
+    instrList.sort(function (i, j) {
       if (i.price > j.price) {
         return -1;
       }
@@ -309,55 +314,61 @@ descendingPriceBtn.addEventListener('click', function () {
       return 0;
     });
   };
+  const descendingPriceBtn = document.querySelector('.descending-price');
   descendingPriceBtn.addEventListener('click', function () {
     filterByDescendingOrder();
     cleanInstruments();
-    paintInstruments();
+    paintInstruments(instrList);
     clickOnInstrument();
     resetGridToPosition();
     hideCheckoutForm();
   });
-});
-//filter by discount
-const discountBtn = document.querySelector('.discount');
-const paintDiscountedInstruments = function () {
-  allInstruments.forEach(function (instrument) {
-    let price = instrument.price;
-    let discount = instrument.discount;
-    let type = instrument.type;
-    let description = instrument.description;
-    let picture = instrument.picture;
-    let name = instrument.name;
-    // HTML
-    if (discount !== undefined) {
-      instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"  data-discount="${discount}LEI " data-name = "${name}">
-      <img class="instrument-image" src="${picture}" alt="${picture}">
-     <h6 class="price">${price} lei</h6>
-     <h6 class = 'discount-text'>${discount} Lei</h6>
-      <p class="instrument-description">${description}</p>
-      </div>
-      `;
-      // Insert the html to the end of every iteration
-      instrumentsContainer.insertAdjacentHTML('beforeend', instrumentsHTML);
-    } else return;
-  });
 };
 
-discountBtn.addEventListener('click', function () {
-  cleanInstruments();
-  paintDiscountedInstruments();
-  clickOnInstrument();
-  resetGridToPosition();
-});
-// //////////////////////////////////////////////////////////////////
+//filter by discount
+const filterByDiscount = (instrList) => {
+  const discountBtn = document.querySelector('.discount');
+  const paintDiscountedInstruments = function () {
+    instrList.forEach(function (instrument) {
+      let price = instrument.price;
+      let discount = instrument.discount;
+      let type = instrument.type;
+      let description = instrument.description;
+      let picture = instrument.picture;
+      let name = instrument.name;
+      // HTML
+      if (discount !== undefined) {
+        instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"  data-discount="${discount}LEI " data-name = "${name}">
+        <img class="instrument-image" src="${picture}" alt="${picture}">
+       <h6 class="price">${price} lei</h6>
+       <h6 class = 'discount-text'>${discount} Lei</h6>
+        <p class="instrument-description">${description}</p>
+        </div>
+        `;
+        // Insert the html to the end of every iteration
+        instrumentsContainer.insertAdjacentHTML('beforeend', instrumentsHTML);
+      } else return;
+    });
+  };
+
+  discountBtn.addEventListener('click', function () {
+    cleanInstruments();
+    paintDiscountedInstruments(allInstruments);
+    clickOnInstrument();
+    resetGridToPosition();
+  });
+};
 
 //insert checkboxes into HTML
 
 const makeCheckboxes = function (types) {
   checkboxContainer.innerHTML = types
     .map(function (type) {
-      const htmlCheckbox = `<label class="checkbox-container">
-            <input   type="checkbox" filter="${type}"> ${type}<span   class="checkmark" ></span></label>`;
+      const htmlCheckbox = ` <label class="checkbox-container"
+      >${type}
+      <input type="radio" name="radio"  filter="${type}"/>
+      <span class="checkmark"></span>
+    </label>`;
 
       return htmlCheckbox;
     })
@@ -409,6 +420,8 @@ const sliderFunction = function () {
   });
 };
 sliderFunction();
+//array of filterd instruments
+let filteredInstrumentsArr = [];
 
 const checkmark = document.querySelectorAll('.checkmark');
 //function that filters instruments
@@ -421,34 +434,48 @@ const filteredInstruments = function (event) {
   if (!checkboxChecked) {
     return;
   } else {
+    // showCheckmarks();
+
+    let matchedInstruments = [];
+
     searchBtn.addEventListener('click', () => {
       let minWantedPrice = Math.round(Math.min(...doubleHandleSlider.noUiSlider.get([0, null])));
       let maxWantedPrice = Math.round(Math.max(...doubleHandleSlider.noUiSlider.get([null, 1])));
+
       // filter Instruments by type
-      instruments.forEach((element) => {
+      allInstruments.forEach((instrument) => {
         if (
           event.target.checked &&
-          checkboxChecked === element.dataset.instrumenttype &&
-          element.dataset.price >= minWantedPrice &&
-          element.dataset.price <= maxWantedPrice
+          checkboxChecked === instrument.type &&
+          instrument.price >= minWantedPrice &&
+          instrument.price <= maxWantedPrice
         ) {
-          element.removeAttribute('hidden');
-        } else {
-          element.setAttribute('hidden', 'true');
+          instrument;
+          matchedInstruments.push(instrument);
         }
+        cleanInstruments();
+        paintInstruments(matchedInstruments);
 
         pageScroll(500);
         filterTab.classList.remove('visible');
         showGrid();
         hideNav();
         showOrderBy();
+        //make a filtred array ob instrument objects
+        allInstruments.forEach((element) => {
+          if (element.type === checkboxChecked) {
+            filteredInstrumentsArr.push(element);
+          }
+          filteredInstrumentsArr.forEach((element) => {
+            filteredInstrumentsArr = filteredInstrumentsArr.filter(function (instrument, index) {
+              return filteredInstrumentsArr.indexOf(instrument) == index;
+            });
+          });
+        });
       });
-<<<<<<< Updated upstream
-=======
-      clickOnInstrument();
+
       filterinstrumentsTab();
-      pageScroll(500);
->>>>>>> Stashed changes
+      clickOnInstrument();
     });
 
     resetGridToPosition();
@@ -457,8 +484,25 @@ const filteredInstruments = function (event) {
 filterTab.addEventListener('click', (event) => {
   filteredInstruments(event);
 });
+
+//filtering tabs
+const filterinstrumentsTab = () => {
+  if (filteredInstrumentsArr.length === 0) {
+    filterByDiscount(allInstruments);
+    paintInDescendingOrder(allInstruments);
+    paintInstrumentsAlphabetically(allInstruments);
+    paintinAscendingOrder(allInstruments);
+  } else {
+    filterByDiscount(filteredInstrumentsArr);
+    paintInDescendingOrder(filteredInstrumentsArr);
+    paintInstrumentsAlphabetically(filteredInstrumentsArr);
+    paintinAscendingOrder(filteredInstrumentsArr);
+  }
+};
+// filterinstrumentsTab();
 //buy btn
 
+console.log(filteredInstrumentsArr);
 const checkoutForm = document.querySelector('.checkout-form-container');
 const checkoutBtn = document.querySelector('.checkout-btn');
 const formMessage = document.querySelector('.formMessage');
@@ -483,23 +527,16 @@ const clickOnBuy = () => {
 clickOnBuy();
 
 const clickOnInstrument = () => {
-  //!!!!! why variables need  to be bound to the function
-  ////////////////////////
-  let instruments = Array.from(document.querySelectorAll('.instrument'));
+  let instruments = document.querySelectorAll('.instrument');
   const morePictures = document.querySelector('.instrument-picture-container');
   const imageSliderContainer = document.querySelector('.image-slider-container');
   const sliderBtnUp = document.querySelector('#btn-up');
 
-  ////////////////////////////////
   instruments.forEach(function (instrument) {
     let showActiveInstrument = function () {
       instrument.addEventListener('click', (event) => {
         event.stopPropagation();
-<<<<<<< Updated upstream
-        //!!why outside function didnt work
-=======
-        console.log(instruments);
->>>>>>> Stashed changes
+
         // hideActiveInstruments();
         instruments.forEach(function (instrument) {
           instrument.classList.remove('active');
@@ -744,7 +781,7 @@ const clickOnInstrument = () => {
 
           imageSliderContainer.style.transform = `translateY(${-sliderIndex * 80}vh)`;
         };
-
+        const grid = document.querySelector('.grid');
         morePictures.style.display = 'flex';
         if (window.screen.width < 800) {
           grid.style.margin = '49rem auto';
@@ -769,8 +806,12 @@ seeAllInstruments.addEventListener('click', function () {
   resetGridToPosition();
   removeInstrumentActiveClass();
   showOrderBy();
+  filteredInstrumentsArr = [];
+  filterinstrumentsTab();
+  paintInstruments(allInstruments);
   showGridInstruments();
   clickOnInstrument();
+  pageScroll(500);
 });
 
 let checked = true;

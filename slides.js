@@ -391,10 +391,11 @@ const handeLayoutForRaepairedInstruments = () => {
     });
   }
 };
-handeLayoutForRaepairedInstruments();
+// handeLayoutForRaepairedInstruments();
 //!Website pentru cumparat de instrumentele
 let onStockInstrumentPanels = [];
 const buyInstrumentWebsite = function () {
+  const instruments = document.querySelectorAll('.instrument');
   //toBuy instrument Object array
 
   const toBuyInstrumentsSlides = [
@@ -810,7 +811,7 @@ const buyInstrumentWebsite = function () {
       return onStockInstrumentPanels.indexOf(panel) === index;
     });
     //paint panels
-    console.log(onStockInstrumentPanels);
+
     const paintPanels = () => {
       const panelsContainer = document.querySelector('.container-panel');
       panelsContainer.innerHTML = '';
@@ -830,7 +831,6 @@ const buyInstrumentWebsite = function () {
     paintPanels();
     hoverOverPannels();
     const panels = document.querySelectorAll('.panel');
-    ///////////////////////////////////////////////////////////////////////
     toBuyInstrumentsSlides.forEach(function (slide) {
       let matchedToBuySlides = [];
 
@@ -889,17 +889,23 @@ const buyInstrumentWebsite = function () {
 
             const seeInstrument = document.querySelector('.seeInstrument');
             seeInstrument.addEventListener('click', () => {
-              instruments.forEach((element) => {
-                if (element.dataset.instrumenttype === slide.type) {
-                  element.removeAttribute('hidden');
-                  showGrid();
-                  showOrderBy();
-                  slideContainer.style.display = 'none';
-                  pageScroll(500);
-                } else {
-                  element.setAttribute('hidden', 'true');
+              //clean filtered instruments array
+              filteredInstrumentsArr = [];
+              showMatchedInstruments(slide.type);
+
+              showGrid();
+              showOrderBy();
+              slideContainer.style.display = 'none';
+              pageScroll(500);
+
+              //make a filtred array ob instrument objects
+              allInstruments.forEach((element) => {
+                if (element.type === slide.type) {
+                  filteredInstrumentsArr.push(element);
                 }
               });
+              filterinstrumentsTab();
+              clickOnInstrument();
             });
           });
           hideGrid();
@@ -923,6 +929,17 @@ const buyInstrumentWebsite = function () {
   //change accent colors of website
 
   changeAccentColors('#76433a', '#7fab75');
+};
+
+const showMatchedInstruments = (slideInstrType) => {
+  cleanInstruments();
+  let matchedInstruments = [];
+  allInstruments.forEach((instrument) => {
+    if (instrument.type === slideInstrType) {
+      matchedInstruments.push(instrument);
+    }
+  });
+  paintInstruments(matchedInstruments);
 };
 //! panels
 const containerPanels = document.querySelector('.container-panel');
