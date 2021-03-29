@@ -900,11 +900,6 @@ const buyInstrumentWebsite = function () {
                   element.setAttribute('hidden', 'true');
                 }
               });
-<<<<<<< Updated upstream
-=======
-              filterinstrumentsTab();
-              clickOnInstrument();
->>>>>>> Stashed changes
             });
           });
           hideGrid();
