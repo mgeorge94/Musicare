@@ -900,6 +900,11 @@ const buyInstrumentWebsite = function () {
                   element.setAttribute('hidden', 'true');
                 }
               });
+<<<<<<< Updated upstream
+=======
+              filterinstrumentsTab();
+              clickOnInstrument();
+>>>>>>> Stashed changes
             });
           });
           hideGrid();
@@ -921,7 +926,7 @@ const buyInstrumentWebsite = function () {
     showFilterTab();
   });
   //change accent colors of website
-  //////////////////////////////////////////////////////////////////////////////
+
   changeAccentColors('#76433a', '#7fab75');
 };
 //! panels

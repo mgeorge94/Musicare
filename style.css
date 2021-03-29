@@ -1389,6 +1389,7 @@ input:valid {
   right: 0px;
   padding-bottom: 5rem;
   display: none;
+  white-space: nowrap;
 }
 
 .order-by-container ul {

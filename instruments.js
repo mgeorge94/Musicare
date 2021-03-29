@@ -443,6 +443,12 @@ const filteredInstruments = function (event) {
         hideNav();
         showOrderBy();
       });
+<<<<<<< Updated upstream
+=======
+      clickOnInstrument();
+      filterinstrumentsTab();
+      pageScroll(500);
+>>>>>>> Stashed changes
     });
 
     resetGridToPosition();
@@ -489,7 +495,11 @@ const clickOnInstrument = () => {
     let showActiveInstrument = function () {
       instrument.addEventListener('click', (event) => {
         event.stopPropagation();
+<<<<<<< Updated upstream
         //!!why outside function didnt work
+=======
+        console.log(instruments);
+>>>>>>> Stashed changes
         // hideActiveInstruments();
         instruments.forEach(function (instrument) {
           instrument.classList.remove('active');
@@ -760,6 +770,7 @@ seeAllInstruments.addEventListener('click', function () {
   removeInstrumentActiveClass();
   showOrderBy();
   showGridInstruments();
+  clickOnInstrument();
 });
 
 let checked = true;
