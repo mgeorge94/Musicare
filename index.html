@@ -275,7 +275,7 @@
             <h3>Telefon: 0743934917</h3>
           </div>
 
-          <form action="" id="form" novalidate data-netlify="true">
+          <form action="" id="form" novalidate>
             <div class="form">
               <input
                 type="text"
@@ -329,7 +329,7 @@
         <!-- chechout form  -->
 
         <div class="checkout-form-container">
-          <form action="/action_page.php">
+          <form  id = "checkout-form"action="" novalidate>
             <div class="row">
               <div class="column">
                 <h3>Adresa de facturare</h3>
@@ -360,67 +360,41 @@
               </div>
 
               <div class="column">
-                <h3>Plată</h3>
-                <label for="fname">Metode acceptate de plată: </label>
-                <div class="icon-container">
-                  <i class="fab fa-cc-visa" style="color: rgb(50, 94, 189)"></i>
-                  <i class="fab fa-cc-paypal" style="color: rgb(92, 176, 255)"></i>
-                  <i class="fab fa-cc-mastercard" style="color: rgb(255, 187, 0)"></i>
-                  <i class="fas fa-money-bill-wave" style="color: rgb(1, 179, 1)"></i>
-                </div>
-
+                <h3>Produs</h3>
                 <input
-                  required
-                  style="padding-left: 25px"
-                  type="text"
-                  name="cardname"
-                  minlength="5"
-                  placeholder="Deținător card:"
-                />
-
-                <input
-                  required
-                  style="padding-left: 25px"
-                  type="text"
-                  name="cardnumber"
-                  pattern="1111-1111-1111-1111"
-                  placeholder="Nr. card: 1111-1111-1111-1111"
-                />
-
-                <input
-                  required
-                  style="padding-left: 25px"
-                  type="number"
-                  name="expmonth"
-                  minlength="1"
-                  maxlength="3"
-                  placeholder="Lună exp. card"
-                />
-
+                readonly
+                style="padding-left: 25px"
+                type="text"
+                name="instrumentBought"
+                id ="instrumentBought"
+                placeholder="Some Instrument name"
+              />
+              
                 <div class="row">
                   <div class="column small">
-                    <input
-                      required
-                      style="padding-left: 25px"
-                      type="number"
-                      name="expyear"
-                      placeholder="An exp. card:"
-                      minlength="4"
-                      maxlength="4"
-                    />
+                    <h3>Preț</h3>
+                    <input id ="boughtInstrumentPrice" readonly style="padding-left: 25px" type="text" name="price" minlength="3" placeholder="100 lei" />
                   </div>
                   <div class="column small gap">
-                    <input
-                      required
-                      style="padding-left: 25px"
-                      type="number"
-                      name="cvv"
-                      placeholder="CVV: "
-                      minlength="3"
-                      maxlemgth="3"
-                    />
+                    <h3>Transport</h3>
+                    <input readonly style="padding-left: 25px" type="text" name="zip" minlength="4" placeholder="  40lei" />
                   </div>
                 </div>
+              
+                <label for="" class="checkbox-container">
+                  <input type="checkbox" checked="true" />Plată cash
+                  <span class="checkmark adress-checkbox"></span>
+                </label>
+               
+                <div class="total">  
+                        <h3>Total: </h3>
+                  <h4 id ="totalPrice">100lei</h4></div>
+               
+                
+               
+               
+               
+
               </div>
             </div>
             <label class="checkbox-container">
@@ -437,14 +411,39 @@
                 <div class="column small">
                   <input style="padding-left: 25px" type="text" minlength="3" name="state" placeholder="Județ: " />
                 </div>
-                <div class="column small">
+                <div class="column small gap">
                   <input minlength="4" style="padding-left: 25px" type="number" name="zip" placeholder="Cod Poștal: " />
                 </div>
               </div>
             </div>
-            <input type="submit" value="Continuă către Check-out" class="checkout-btn" />
+            <!-- <input type="submit" value="Continuă către Check-out" class="checkout-btn" /> -->
+            <button type = "trimite"class="checkout-btn">Cumpără</buttontype>
           </form>
+          <div class="message-container" id="checkout-message-container">
+            <h3 id="checkoutMessage">Nu sta pe gânduri!</h3>
+          </div>
         </div>
+
+        <!-- TESTIMONIALS -->
+
+        <div class="testimonial-container">
+          <div class="progress-bar"></div>
+          <div class="fa fa-quote-right fa-quote"></div>
+          <div class="fa fa-quote-left fa-quote"></div>
+          <p class="testimonial">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non nisi optio tempore fugit maiores repudiandae enim
+            mollitia debitis minima suscipit illum sint, inventore odit iusto incidunt laborum eaque animi.
+          </p>
+          <div class="user">
+            <img src="https://randomuser.me/api/portraits/women/13.jpg" alt="user" class="user-image" />
+            <div class="user-details">
+              <h4 class="username">Sofia Vicoveanca</h4>
+              <p class="role">Oboist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
         <!-- TESTIMONIALS -->
 

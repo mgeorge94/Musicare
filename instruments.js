@@ -19,7 +19,7 @@ const allInstruments = [
   {
     name: 'Stradivarius',
     type: 'Vioară',
-    price: '234567890',
+    price: '23456',
     description:
       ' Lorem, VIOARA Stradivarius dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
     picture:
@@ -28,7 +28,7 @@ const allInstruments = [
   {
     name: 'Hora model 22',
     type: 'Vioară',
-    price: '150',
+    price: '1599',
     discount: 7,
     description:
       ' Lorem, VIOARA Hora model 22 dolor sit amet consectetur adipisicing elit. Perspiciatis odit quis aliquid iure ipsam numquam, exercitationem magni corporis esse hic aliquam minima accusantium labore a illo quasi assumenda. Ratione, dolores.',
@@ -273,6 +273,7 @@ const paintInstrumentsAlphabetically = (instrArr) => {
     resetGridToPosition();
     clickOnInstrument();
     hideCheckoutForm();
+    filteredInstrumentsArr = [];
   });
 };
 
@@ -298,6 +299,7 @@ const paintinAscendingOrder = (instrArr) => {
     clickOnInstrument();
     resetGridToPosition();
     hideCheckoutForm();
+    filteredInstrumentsArr = [];
   });
 };
 
@@ -322,6 +324,7 @@ const paintInDescendingOrder = function (instrList) {
     clickOnInstrument();
     resetGridToPosition();
     hideCheckoutForm();
+    filteredInstrumentsArr = [];
   });
 };
 
@@ -356,6 +359,7 @@ const filterByDiscount = (instrList) => {
     paintDiscountedInstruments(allInstruments);
     clickOnInstrument();
     resetGridToPosition();
+    filteredInstrumentsArr = [];
   });
 };
 
@@ -502,8 +506,8 @@ const filterinstrumentsTab = () => {
 // filterinstrumentsTab();
 //buy btn
 
-console.log(filteredInstrumentsArr);
-const checkoutForm = document.querySelector('.checkout-form-container');
+const checkoutFormContainer = document.querySelector('.checkout-form-container');
+const checkoutForm = checkoutFormContainer.querySelector('#checkout-form');
 const checkoutBtn = document.querySelector('.checkout-btn');
 const formMessage = document.querySelector('.formMessage');
 const clickOnBuy = () => {
@@ -516,15 +520,27 @@ const clickOnBuy = () => {
     //hide testimonials
     testimonialContainer.style.display = 'none';
     //hide instruments from grid
+    const instruments = document.querySelectorAll('.instrument');
     instruments.forEach(function (instrument) {
       if (!instrument.classList.contains('active')) {
         instrument.setAttribute('hidden', 'true');
+      } else {
+        autoAddInstrumentToCheckoutForm(instrument);
       }
     });
     pageScroll(1200);
   });
 };
 clickOnBuy();
+// add instrument to form
+const autoAddInstrumentToCheckoutForm = (instr) => {
+  const instrument = document.querySelector('#instrumentBought');
+  const instrPrice = document.querySelector('#boughtInstrumentPrice');
+  const totalPrice = document.querySelector('#totalPrice');
+  instrument.placeholder = `${instr.dataset.instrumenttype}:  ${instr.dataset.name} `;
+  instrPrice.placeholder = `${instr.dataset.price} lei`;
+  totalPrice.innerHTML = `${Number(instr.dataset.price) + 40} lei`;
+};
 
 const clickOnInstrument = () => {
   let instruments = document.querySelectorAll('.instrument');
@@ -808,6 +824,7 @@ seeAllInstruments.addEventListener('click', function () {
   showOrderBy();
   filteredInstrumentsArr = [];
   filterinstrumentsTab();
+  cleanInstruments();
   paintInstruments(allInstruments);
   showGridInstruments();
   clickOnInstrument();
@@ -828,3 +845,48 @@ const showOtherAdress = () => {
     pageScroll(1300);
   }
 };
+//hide message
+
+checkoutForm.addEventListener('submit', processCheckoutFormData);
+function validateCheckoutForm() {
+  const messageContainer = document.querySelector('#checkout-message-container');
+  isValid = checkoutForm.checkValidity();
+  if (!isValid) {
+    messageContainer.classList.add('active');
+    const message = document.querySelector('#checkoutMessage');
+    message.innerHTML = 'Vă rugăm să completați toate spațiile de mai sus';
+    message.style.color = 'red';
+    messageContainer.style.borderColor = 'red';
+    pageScroll(1300);
+  } else if (isValid) {
+    messageContainer.classList.add('active');
+    message.innerHTML = 'Mulțumim pentru interes. Vă vorm răspunde în cel mai scurt timp posibil';
+    message.style.display = 'none';
+    pageScroll(1300);
+  }
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach((input) => {
+    input.addEventListener('input', () => {
+      message.classlist.remove('active');
+    });
+  });
+}
+function storeFormData() {
+  const user = {
+    name: form.name.value,
+    email: form.email.value,
+    instrument: form.instrument.value,
+    cerere: form.cerere.value,
+  };
+  console.log(user);
+}
+
+/////////    !Do something with data//////
+
+function processCheckoutFormData(event) {
+  event.preventDefault();
+  validateCheckoutForm();
+  if (isValid) {
+    storeFormData();
+  }
+}

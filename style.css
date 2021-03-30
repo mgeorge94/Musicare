@@ -1068,6 +1068,7 @@ h4 {
   animation: slide 0.5s ease-in-out forwards;
   position: relative;
   display: none;
+  margin-bottom: 10rem;
 }
 .form-container.buying {
   position: absolute;
@@ -1131,7 +1132,7 @@ input:valid {
 }
 .contact-button {
   cursor: pointer;
-  color: #bababa;
+  color: white;
   font-size: 1.2rem;
   font-weight: bold;
   background-color: var(--accent-color);
@@ -1144,7 +1145,7 @@ input:valid {
 }
 .contact-button:hover {
   filter: brightness('200%');
-  /* background: #d8d8d8; */
+  color: rgb(35, 35, 35);
   background: var(--second-accent-color);
 }
 .contact-button:focus {
@@ -1157,13 +1158,41 @@ input:valid {
 }
 .message-container {
   border: 1px solid #bebebe;
-  border-radius: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   width: 90%;
-  height: 4rem;
+  height: 5rem;
+  position: absolute;
+  bottom: 10rem;
+  padding: 20px;
+  background-color: rgb(35, 35, 35);
+  border-top: 0px;
+  box-shadow: inset 2px 11px 5px -4px rgba(0, 0, 0, 0.57);
+  display: flex;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 14px;
+  left: 50%;
+  transform: translateX(-50%);
   display: none;
-  padding: 20px;
+  z-index: -1;
+}
+.message-container.active {
+  bottom: -5rem;
+  display: flex;
+  animation: showMessage 0.5s ease-in-out forwards;
+}
+@keyframes showMessage {
+  0% {
+    display: none;
+    bottom: 10rem;
+  }
+  100% {
+    display: flex;
+    bottom: -5rem;
+  }
 }
 /*  */
 /* checkout form */
@@ -1185,13 +1214,31 @@ input:valid {
   padding-left: 0.5rem;
 }
 
+.total {
+  padding-top: 2rem;
+  padding-left: 11rem;
+  display: flex;
+  align-items: center;
+  color: #bababa;
+  white-space: nowrap;
+  /* background-color: red; */
+}
+.total h3 {
+  font-size: 2.5rem;
+}
+.total h4 {
+  font-size: 2rem;
+  color: var(--second-accent-color);
+}
+
 .checkout-form-container {
   background-color: rgb(35, 35, 35);
   padding: 5px 20px 15px 20px;
-  width: 90vw;
+  width: 70vw;
   left: 50%;
   transform: translateX(-50%);
   padding: 1rem;
+  padding-top: 2rem;
   border-radius: 15px;
   display: none;
   box-shadow: 2px 5px 4px 2px rgba(0, 0, 0, 0.6);
@@ -1208,14 +1255,9 @@ input:valid {
   padding: 1rem;
 }
 
-.icon-container {
-  padding: 7px 0;
-  font-size: 27px;
-}
-
 .checkout-btn {
   background-color: var(--accent-color);
-  color: #bababa;
+  color: white;
   padding: 12px;
   margin: 10px 0;
   border: none;
@@ -1223,10 +1265,12 @@ input:valid {
   border-radius: 3px;
   cursor: pointer;
   font-size: 17px;
+  font-weight: bold;
 }
 
 .checkout-btn:hover {
   filter: brightness('200%');
+  color: rgb(35, 35, 35);
   background: var(--second-accent-color);
 }
 .other-address {
@@ -1902,7 +1946,7 @@ input:valid {
 
   .checkout-form-container {
     background-color: rgb(35, 35, 35);
-
+    z-index: 2;
     width: 96vw;
 
     margin-top: 90rem;

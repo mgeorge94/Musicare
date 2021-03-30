@@ -46,9 +46,13 @@ const resetGridToPosition = () => {
   grid.style.margin = '1rem auto';
 };
 const showCheckoutForm = () => {
-  checkoutForm.style.display = 'flex';
+  checkoutFormContainer.style.display = 'flex';
 };
 //functions that hide elements
+const hideTestimonials = () => {
+  const testimonialContainer = document.querySelector('.testimonial-container');
+  testimonialContainer.style.display = 'none';
+};
 const hideAllRepairableInstruments = () => {
   const allRepairableInstruments = document.querySelectorAll('.repair-instr-column');
   allRepairableInstruments.forEach(function (panel) {
@@ -191,8 +195,7 @@ function removeFAQ() {
 const contactBtn = document.querySelector('.contact-btn');
 const contactFormContainer = document.querySelector('.form-container');
 const form = document.getElementById('form');
-const messageContainer = document.querySelector('.message-container');
-const message = document.querySelector('#message');
+
 let isValid = false;
 
 function showForm() {
@@ -205,6 +208,7 @@ function showForm() {
     hideAllRepairableInstruments();
     hideFilterTab();
     pageScroll(500);
+    hideTestimonials();
   });
 }
 
@@ -216,10 +220,15 @@ form.addEventListener('submit', processFormData);
 function validateForm() {
   isValid = form.checkValidity();
   if (!isValid) {
+    const messageContainer = document.querySelector('.message-container');
+    const message = document.querySelector('#message');
+    messageContainer.classList.add('active');
+
     message.textContent = 'Vă rugăm să completați toate spațiile de mai sus';
     message.style.color = 'red';
     messageContainer.style.borderColor = 'red';
   } else if (isValid) {
+    messageContainer.classList.add('active');
     message.textContent = 'Mulțumim pentru interes. Vă vorm răspunde în cel mai scurt timp posibil';
     message.style.color = '#bebebe';
     messageContainer.style.borderColor = '#bebebe';
