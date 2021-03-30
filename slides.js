@@ -839,7 +839,7 @@ const buyInstrumentWebsite = function () {
           if (panel.dataset.instrumenttype === slide.type) {
             matchedToBuySlides.push(slide.name);
           } else {
-            matchedToBuySlides.pop(slide.name);
+            matchedToBuySlides.pop();
           }
           pageScroll(500);
           matchedToBuySlides.forEach(function () {

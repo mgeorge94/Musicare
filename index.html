@@ -327,7 +327,7 @@
           </div>
         </div>
         <!-- chechout form  -->
-
+<div class="container-for-checkout-fontainer">
         <div class="checkout-form-container">
           <form  id = "checkout-form"action="" novalidate>
             <div class="row">
@@ -339,22 +339,23 @@
                   style="padding-left: 25px"
                   minlength="5"
                   type="text"
-                  name="firstname"
+                  name="name"
+                  id ="checkoutname"
                   placeholder="Nume complet:"
                 />
 
-                <input required style="padding-left: 25px" type=email" name="email" placeholder=" Adresă de email:" />
+                <input required style="padding-left: 25px" type=email" name="email" id="checkoutemail" placeholder=" Adresă de email:" />
 
-                <input required style="padding-left: 25px" type="text" name="address" minlength="10" placeholder="Adresa: " />
+                <input required style="padding-left: 25px" type="text" name="address" id="checkoutaddress" minlength="10" placeholder="Adresa: " />
 
-                <input required style="padding-left: 25px" type="text" name="city" minlength="3" placeholder="Oraș: " />
+                <input required style="padding-left: 25px" type="text" name="city" minlength="3" id="checkoutcity" placeholder="Oraș: " />
 
                 <div class="row">
                   <div class="column small">
-                    <input required style="padding-left: 25px" type="text" name="state" minlength="3" placeholder="Județ: " />
+                    <input required style="padding-left: 25px" type="text" name="state"  id="checkoutjudet" minlength="3" placeholder="Județ: " />
                   </div>
                   <div class="column small gap">
-                    <input required style="padding-left: 25px" type="text" name="zip" minlength="4" placeholder="Cod Poștal: " />
+                    <input required style="padding-left: 25px" type="text" name="zip"  id="checkoutzip"minlength="4" placeholder="Cod Poștal: " />
                   </div>
                 </div>
               </div>
@@ -423,6 +424,7 @@
             <h3 id="checkoutMessage">Nu sta pe gânduri!</h3>
           </div>
         </div>
+      </div>
 
         <!-- TESTIMONIALS -->
 

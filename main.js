@@ -218,20 +218,20 @@ contactFormContainer.addEventListener('click', (event) => {
 });
 form.addEventListener('submit', processFormData);
 function validateForm() {
+  const messageContainer = document.querySelector('.message-container');
+  const message = document.querySelector('#message');
   isValid = form.checkValidity();
   if (!isValid) {
-    const messageContainer = document.querySelector('.message-container');
-    const message = document.querySelector('#message');
     messageContainer.classList.add('active');
 
-    message.textContent = 'Vă rugăm să completați toate spațiile de mai sus';
+    message.textContent = 'Te rog să completezi toate spațiile de mai sus';
     message.style.color = 'red';
     messageContainer.style.borderColor = 'red';
   } else if (isValid) {
     messageContainer.classList.add('active');
-    message.textContent = 'Mulțumim pentru interes. Vă vorm răspunde în cel mai scurt timp posibil';
-    message.style.color = '#bebebe';
-    messageContainer.style.borderColor = '#bebebe';
+    message.textContent = 'Perfect. Te vom contacta curând';
+    message.style.color = 'green';
+    messageContainer.style.borderColor = 'green';
   }
 }
 function storeFormData() {

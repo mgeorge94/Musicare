@@ -850,33 +850,38 @@ const showOtherAdress = () => {
 checkoutForm.addEventListener('submit', processCheckoutFormData);
 function validateCheckoutForm() {
   const messageContainer = document.querySelector('#checkout-message-container');
+  const message = document.querySelector('#checkoutMessage');
   isValid = checkoutForm.checkValidity();
   if (!isValid) {
     messageContainer.classList.add('active');
-    const message = document.querySelector('#checkoutMessage');
-    message.innerHTML = 'Vă rugăm să completați toate spațiile de mai sus';
+
+    message.innerHTML = 'Te rog să completezi toate spațiile de mai sus';
     message.style.color = 'red';
     messageContainer.style.borderColor = 'red';
-    pageScroll(1300);
+    pageScroll(1500);
   } else if (isValid) {
     messageContainer.classList.add('active');
-    message.innerHTML = 'Mulțumim pentru interes. Vă vorm răspunde în cel mai scurt timp posibil';
-    message.style.display = 'none';
-    pageScroll(1300);
+    message.innerHTML = 'Comanda dumneavoastră a fost înregistrată';
+    message.style.color = 'lime';
+    messageContainer.style.borderColor = 'lime';
+    pageScroll(1500);
   }
-  const inputs = document.querySelectorAll('input');
-  inputs.forEach((input) => {
-    input.addEventListener('input', () => {
-      message.classlist.remove('active');
-    });
-  });
 }
-function storeFormData() {
+function storeCheckoutFormData() {
   const user = {
-    name: form.name.value,
-    email: form.email.value,
-    instrument: form.instrument.value,
-    cerere: form.cerere.value,
+    date: Date.now(),
+    name: document.querySelector('#checkoutname').value,
+    email: document.querySelector('#checkoutemail').value,
+    oras: document.querySelector('#checkoutcity').value,
+    adresa: document.querySelector('#checkoutaddress').value,
+    zipCode: document.querySelector('#checkoutzip').value,
+    judet: document.querySelector('#checkoutjudet').value,
+    instrument: document.querySelector('#instrumentBought').placeholder,
+    price: document.querySelector('#boughtInstrumentPrice').placeholder,
+    totalPrice: document.querySelector('#totalPrice').innerHTML,
+
+    // produsCumparat: checkoutForm.instrumentBought.paceholder.value,
+    // price: checkoutForm.price.placeholder.value,
   };
   console.log(user);
 }
@@ -887,6 +892,6 @@ function processCheckoutFormData(event) {
   event.preventDefault();
   validateCheckoutForm();
   if (isValid) {
-    storeFormData();
+    storeCheckoutFormData();
   }
 }
