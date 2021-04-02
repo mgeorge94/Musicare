@@ -74,6 +74,50 @@
         <div class="panel-background"></div>
         <div class="container-panel" async></div>
 
+        <!-- Quiz -->
+<div class="quiz-container">
+  <div class="quiz-timeout-bar hide"></div>
+  <div class="quiz-rules">
+    <h2>Music Quiz</h2>
+    <h5>Câștigă și o reducere de 50 lei  ce se a aplică tuturor produselor nereduse de pe site!</h5>
+    <h4>Regulament:</h4>
+    
+<ul >
+  <li>Ai timp 30 secunde pentru a răspunde la fiecare întrebare </li>
+  <li>Poți juca o singură dată</li>
+  <li>Poți aplica reducerea o singură dată pe comandă</li>
+
+</ul>
+  </div>
+  <div class="quiz-results hide">
+    <div class="left-results hide">
+    <h4>Rezultate</h4>
+    <h5>Numărul de întrebrări: 10</h5>
+    <h5 id  ="number-of-correct-answers">Numărul de răspunsuri corecte: 8</h5>
+  </div>
+  <div class="right-results hide">
+    <h1>Felicitări</h1>
+  </div>
+    
+  </div>
+<div id="questions-container" class="hide">
+ 
+  <div class="questionCount">Întrebarea 1:</div>
+  <div id="question">intrebare Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum, temporibus?</div>
+  <div id="answer-buttons" class="question-btn-grid">
+    <button id="question-btn" class="answer-btn" >Raspuns1 Lorem, ipsum.</button>
+    <button id="question-btn" class="answer-btn" >Raspuns2 Lorem, ipsum .</button>
+    <button id="question-btn" class="answer-btn" >Raspuns3 Lorem, ipsum.</button>
+    <button id="question-btn" class="answer-btn " >Raspuns4 Lorem, ipsum.</button>
+  </div>
+</div>
+
+<div class="controls"></div>
+<button id="startQuiz-btn"class="start-btn quiz-btn">Începe</button>
+<button id="nextQuiz-btn"class="next-btn quiz-btn hide">Următoarea întrebare</button>
+<button id="quizResultsBtn" class="quiz-btn hide">Vezi rezultatul</button>
+</div>
+
         <!-- SLIDE-down -->
 
         <div class="container-slide"></div>
@@ -551,6 +595,8 @@
         </div>
       </div>
     </div>
+    <script src = "confetti.js"></script>
+    <script src="quiz.js"></script>
     <script src="slides.js"></script>
     <script src="nouislider.min.js"></script>
     <script src="instruments.js"></script>

@@ -327,11 +327,15 @@ const repairInstrumentWebsite = function () {
             }
           }
           hideGrid();
-
+          hideNav();
           resetGridToPosition();
           showTestimonials();
           hideCheckoutForm();
           hideContactForm();
+          hideFaq();
+          hideAllRepairableInstruments();
+          hideFilterTab();
+          stopConfetti();
         });
       });
     });
@@ -355,6 +359,7 @@ const repairInstrumentWebsite = function () {
   //make instr lst apear
   repairableInstrumentsBtn.addEventListener('click', (event) => {
     showAllRepairableInstruments();
+    hideFilterTab();
   });
 
   //loop through instruments
@@ -375,7 +380,7 @@ const repairInstrumentWebsite = function () {
     });
   });
   //change accent colors of website
-  ////////////////////////////////////////////////////////////////////////////////////
+
   changeAccentColors('#8f430f', '#f28422');
 };
 const autoAddInstrumentToForm = (instr) => {
@@ -917,6 +922,7 @@ const buyInstrumentWebsite = function () {
           hideContactForm();
           hideActiveInstruments();
           hideImageSlider();
+          stopConfetti();
         });
       });
     });
@@ -939,7 +945,7 @@ const showMatchedInstruments = (slideInstrType) => {
       matchedInstruments.push(instrument);
     }
   });
-  paintInstruments(matchedInstruments);
+  paintInstruments(matchedInstruments, gameDiscount);
 };
 //! panels
 const containerPanels = document.querySelector('.container-panel');

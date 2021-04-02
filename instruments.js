@@ -196,7 +196,7 @@ const allInstruments = [
   },
 ];
 //get instruments
-function paintInstruments(instrumentList) {
+function paintInstruments(instrumentList, gameDiscount) {
   instrumentList.forEach(function (instrument) {
     let price = instrument.price;
     let discount = instrument.discount;
@@ -205,20 +205,40 @@ function paintInstruments(instrumentList) {
     let picture = instrument.picture;
     let name = instrument.name;
     // HTML
-    if (discount !== undefined) {
-      instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"  data-discount="${discount}LEI " data-name = "${name}">
+    if (gameDiscount === true) {
+      if (discount !== undefined) {
+        instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"  data-discount="${discount}LEI " data-name = "${name}">
+        <img class="instrument-image" src="${picture}" alt="${picture}">
+       <h6 class="price">${price} lei</h6>
+       
+       <h6 class = 'discount-text'>${discount} Lei</h6>
+        <p class="instrument-description">${description}</p>
+        </div>`;
+      } else {
+        instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"   data-name = "${name}">
       <img class="instrument-image" src="${picture}" alt="${picture}">
-     <h6 class="price">${price} lei</h6>
-     <h6 class = 'discount-text'>${discount} Lei</h6>
+     <h6 class="price"><s>  ${price} Lei  </s> ${price - 50} lei</h6>
+     
       <p class="instrument-description">${description}</p>
       </div>`;
+      }
     } else {
-      instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"   data-name = "${name}">
-      <img class="instrument-image" src="${picture}" alt="${picture}">
-     <h6 class="price">${price} lei</h6>
-
-      <p class="instrument-description">${description}</p>
-      </div>`;
+      if (discount !== undefined) {
+        instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"  data-discount="${discount}LEI " data-name = "${name}">
+          <img class="instrument-image" src="${picture}" alt="${picture}">
+         <h6 class="price">${price} lei</h6>
+         
+         <h6 class = 'discount-text'>${discount} Lei</h6>
+          <p class="instrument-description">${description}</p>
+          </div>`;
+      } else {
+        instrumentsHTML = `<div  data-instrumenttype='${type}'class="box instrument" data-price="${price}"   data-name = "${name}">
+        <img class="instrument-image" src="${picture}" alt="${picture}">
+       <h6 class="price">${price} lei</h6>
+       <h6 class ='discount-game'></h6>
+        <p class="instrument-description">${description}</p>
+        </div>`;
+      }
     }
 
     // Insert the html to the end of every iteration
@@ -234,7 +254,7 @@ function paintInstruments(instrumentList) {
   });
 }
 
-paintInstruments(allInstruments);
+paintInstruments(allInstruments, gameDiscount);
 let instruments = Array.from(document.querySelectorAll('.instrument'));
 //clean html grid
 const cleanInstruments = () => {
@@ -269,7 +289,7 @@ const paintInstrumentsAlphabetically = (instrArr) => {
   aZBtn.addEventListener('click', function () {
     filterAlphabetically();
     cleanInstruments();
-    paintInstruments(instrArr);
+    paintInstruments(instrArr, gameDiscount);
     resetGridToPosition();
     clickOnInstrument();
     hideCheckoutForm();
@@ -295,7 +315,7 @@ const paintinAscendingOrder = (instrArr) => {
   ascendingPriceBtn.addEventListener('click', function () {
     filterByAscendingOrder();
     cleanInstruments();
-    paintInstruments(instrArr);
+    paintInstruments(instrArr, gameDiscount);
     clickOnInstrument();
     resetGridToPosition();
     hideCheckoutForm();
@@ -320,7 +340,7 @@ const paintInDescendingOrder = function (instrList) {
   descendingPriceBtn.addEventListener('click', function () {
     filterByDescendingOrder();
     cleanInstruments();
-    paintInstruments(instrList);
+    paintInstruments(instrList, gameDiscount);
     clickOnInstrument();
     resetGridToPosition();
     hideCheckoutForm();
@@ -458,7 +478,7 @@ const filteredInstruments = function (event) {
           matchedInstruments.push(instrument);
         }
         cleanInstruments();
-        paintInstruments(matchedInstruments);
+        paintInstruments(matchedInstruments, gameDiscount);
 
         pageScroll(500);
         filterTab.classList.remove('visible');
@@ -494,12 +514,12 @@ const filterinstrumentsTab = () => {
   if (filteredInstrumentsArr.length === 0) {
     filterByDiscount(allInstruments);
     paintInDescendingOrder(allInstruments);
-    paintInstrumentsAlphabetically(allInstruments);
+    paintInstrumentsAlphabetically(allInstruments, gameDiscount);
     paintinAscendingOrder(allInstruments);
   } else {
     filterByDiscount(filteredInstrumentsArr);
     paintInDescendingOrder(filteredInstrumentsArr);
-    paintInstrumentsAlphabetically(filteredInstrumentsArr);
+    paintInstrumentsAlphabetically(filteredInstrumentsArr, gameDiscount);
     paintinAscendingOrder(filteredInstrumentsArr);
   }
 };
@@ -825,7 +845,7 @@ seeAllInstruments.addEventListener('click', function () {
   filteredInstrumentsArr = [];
   filterinstrumentsTab();
   cleanInstruments();
-  paintInstruments(allInstruments);
+  paintInstruments(allInstruments, gameDiscount);
   showGridInstruments();
   clickOnInstrument();
   pageScroll(500);

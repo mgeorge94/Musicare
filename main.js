@@ -136,7 +136,6 @@ const changeAccentColors = (color, color2) => {
   document.documentElement.style.setProperty('--second-accent-color', color2);
 };
 
-// changeAccentColors('#a14c45'); for to buy website
 //open nav btn click
 navBurgerBtn.addEventListener('click', () => {
   hideGrid();
@@ -150,6 +149,7 @@ navBurgerBtn.addEventListener('click', () => {
   hideContactForm();
   hideActiveInstruments();
   hideAllRepairableInstruments();
+  stopConfetti();
 
   instrOptBkg.classList.remove('active');
   instrOptContainer.classList.remove('active');
@@ -160,7 +160,7 @@ navBurgerBtn.addEventListener('click', () => {
 
 content.addEventListener('click', () => {
   hideNav();
-  hideFaq();
+
   hideAllRepairableInstruments();
 
   hideAboutUs();
@@ -173,6 +173,7 @@ faqButton.addEventListener('click', () => {
   hideNav();
   showFaq();
   pageScroll(500);
+  hideAllRepairableInstruments();
 });
 
 const addFAQ = document.querySelectorAll('.faq');
@@ -209,6 +210,7 @@ function showForm() {
     hideFilterTab();
     pageScroll(500);
     hideTestimonials();
+    hideFilterTab();
   });
 }
 
@@ -238,7 +240,7 @@ function storeFormData() {
   const user = {
     name: form.name.value,
     email: form.email.value,
-    instrument: form.instrument.value,
+    instrument: document.querySelector('#instrument-in-need').value || document.querySelector('#instrument-in-need').placeholder,
     cerere: form.cerere.value,
   };
   console.log(user);
@@ -289,6 +291,8 @@ const changeSlide = (direction) => {
 };
 aboutBtn.addEventListener('click', () => {
   hideNav();
+  hideAllRepairableInstruments();
+  hideFilterTab();
 
   aboutUsContainer.style.display = 'flex';
   pageScroll(500);
@@ -304,8 +308,9 @@ const newsContent = document.querySelector('.card-container');
 newsBtn.addEventListener('click', () => {
   hideNav();
   pageScroll(500);
-
+  hideAllRepairableInstruments();
   showNews();
+  hideFilterTab();
 });
 content.addEventListener('click', () => {
   hideNews();
