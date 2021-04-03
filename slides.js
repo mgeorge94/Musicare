@@ -336,6 +336,7 @@ const repairInstrumentWebsite = function () {
           hideAllRepairableInstruments();
           hideFilterTab();
           stopConfetti();
+          hideQuiz();
         });
       });
     });
@@ -923,6 +924,7 @@ const buyInstrumentWebsite = function () {
           hideActiveInstruments();
           hideImageSlider();
           stopConfetti();
+          hideQuiz();
         });
       });
     });

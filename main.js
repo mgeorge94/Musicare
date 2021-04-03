@@ -48,7 +48,17 @@ const resetGridToPosition = () => {
 const showCheckoutForm = () => {
   checkoutFormContainer.style.display = 'flex';
 };
+const showQuiz = () => {
+  document.querySelector('.hero').addEventListener('click', () => {
+    document.querySelector('.quiz-container').style.display = 'block';
+    pageScroll(500);
+  });
+};
+showQuiz();
 //functions that hide elements
+const hideQuiz = () => {
+  document.querySelector('.quiz-container').style.display = 'none';
+};
 const hideTestimonials = () => {
   const testimonialContainer = document.querySelector('.testimonial-container');
   testimonialContainer.style.display = 'none';
@@ -150,6 +160,7 @@ navBurgerBtn.addEventListener('click', () => {
   hideActiveInstruments();
   hideAllRepairableInstruments();
   stopConfetti();
+  hideQuiz();
 
   instrOptBkg.classList.remove('active');
   instrOptContainer.classList.remove('active');
@@ -160,9 +171,7 @@ navBurgerBtn.addEventListener('click', () => {
 
 content.addEventListener('click', () => {
   hideNav();
-
   hideAllRepairableInstruments();
-
   hideAboutUs();
 });
 

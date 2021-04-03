@@ -117,7 +117,7 @@ const questions = [
   },
 
   {
-    question: 'Ce reprezintă notația  <em>pressez</em> din partitură',
+    question: 'Ce reprezintă notația  pressez din partitură',
     answers: [
       { text: 'Mai tare', correct: true },
       { text: 'Mai repede', correct: false },
@@ -147,7 +147,7 @@ function restartAnimation() {
   quizTimeoutBar.classList.add('active');
 }
 function upQuestionCount() {
-  document.querySelector('.questionCount').innerText = `Întrebarea ${questionCount}:`;
+  document.querySelector('.questionCount').innerText = `Întrebarea ${questionCount} :`;
   questionCount++;
 }
 function setNextQuestion() {
@@ -221,14 +221,14 @@ let wait = null;
 function set30SecTimeout(button) {
   setTimeout(function () {
     button.setAttribute('disabled', 'true');
-  }, 15000);
+  }, 30000);
   if (wait) {
     clearTimeout(wait);
     wait = null;
   }
   wait = setTimeout(function () {
     isLastQuestion();
-  }, 15000);
+  }, 30000);
 }
 //results
 function showResults() {
@@ -241,7 +241,7 @@ function showResults() {
   document.querySelector('#number-of-correct-answers').innerText = `Numărul de răspunsuri corecte: ${correctAnswers}`;
   document.querySelector('.questionCount').classList.add('hide');
 
-  if (correctAnswers > questions.length - 9) {
+  if (correctAnswers === questions.length - 1) {
     document.querySelectorAll('.discount-game').forEach(function (instrument) {
       //make discount stiker show
       instrument.style.display = 'block';
