@@ -684,39 +684,9 @@ input[type='number'] {
   color: var(--accent-color);
   cursor: pointer;
 }
-.hero span {
-  font-family: Roboto, sans-serif;
-  letter-spacing: 2px;
-  font-size: 0.8rem;
+.hero h1:hover {
+  filter: brightness(75%);
 }
-/* /////////// */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: rgb(63, 63, 63);
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  padding: 0.6rem;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 108%;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-/* /////////////// */
 .catchfrase {
   padding-bottom: 2rem;
   font-size: 1.3rem;
@@ -909,8 +879,7 @@ input[type='number'] {
 }
 .quiz-btn:hover,
 .quiz-btn:focus {
-  background-color: var(--second-accent-color);
-  color: black;
+  filter: brightness(120%);
 }
 .hide {
   display: none;
@@ -963,7 +932,7 @@ input[type='number'] {
   color: #fff;
   position: relative;
   margin: 1rem auto;
-  width: 90vw;
+  width: 70vw;
   display: none;
   border-radius: 15px;
   justify-content: center;
@@ -1355,9 +1324,7 @@ input:valid {
   margin-bottom: 2rem;
 }
 .contact-button:hover {
-  filter: brightness('200%');
-  color: rgb(35, 35, 35);
-  background: var(--second-accent-color);
+  filter: brightness(120%);
 }
 .contact-button:focus {
   outline: none;
@@ -1483,9 +1450,7 @@ input:valid {
 }
 
 .checkout-btn:hover {
-  filter: brightness('200%');
-  color: rgb(35, 35, 35);
-  background: var(--second-accent-color);
+  filter: brightness(120%);
 }
 .other-address {
   display: none;
@@ -1602,7 +1567,6 @@ input:valid {
   padding: 1rem;
 }
 .action-buttons button:hover {
-  /* color: #a3a3a3; */
   color: var(--second-accent-color);
 }
 .action-buttons button:focus {
@@ -1667,7 +1631,6 @@ input:valid {
   cursor: pointer;
 }
 .order-by-container li:hover {
-  /* color: #fff; */
   color: var(--second-accent-color);
 }
 
@@ -1784,7 +1747,6 @@ input:valid {
 }
 
 .slider-buttons:hover {
-  /* color: #a3a3a3; */
   color: var(--second-accent-color);
 }
 .slider-buttons:focus {
@@ -1824,11 +1786,11 @@ input:valid {
   font-size: 1.2rem;
   color: rgb(255, 255, 255);
 }
-#buy:hover {
+.buy:hover {
   /* color: #a3a3a3; */
   color: var(--second-accent-color);
 }
-#buy:focus {
+.buy:focus {
   outline: none;
 }
 

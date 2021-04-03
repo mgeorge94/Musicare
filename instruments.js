@@ -1,17 +1,7 @@
 //variables
 const filterTab = document.querySelector('.filter-tab');
-const checkboxContainer = document.querySelector('.checkboxes-container');
-const instrumentsContainer = document.querySelector('.grid');
 const instrArr = [];
-let doubleHandleSlider = document.querySelector('.double-handle-slider');
-let minValInput = document.querySelector('.min-value');
-let maxValInput = document.querySelector('.max-value');
-const searchBtn = document.querySelector('.search-btn');
-const imageSliderContainer = document.querySelector('.image-slider-container');
-const sliderBtnUp = document.querySelector('#btn-up');
-const morePictures = document.querySelector('.instrument-picture-container');
 const seeAllInstruments = document.querySelector('.see-instruments');
-const orderByContainer = document.querySelector('.order-by-container');
 
 // Instruments object array
 
@@ -197,6 +187,7 @@ const allInstruments = [
 ];
 //get instruments
 function paintInstruments(instrumentList, gameDiscount) {
+  const grid = document.querySelector('.grid');
   instrumentList.forEach(function (instrument) {
     let price = instrument.price;
     let discount = instrument.discount;
@@ -242,7 +233,7 @@ function paintInstruments(instrumentList, gameDiscount) {
     }
 
     // Insert the html to the end of every iteration
-    instrumentsContainer.insertAdjacentHTML('beforeend', instrumentsHTML);
+    grid.insertAdjacentHTML('beforeend', instrumentsHTML);
     //make instrument array
     instrArr.push(instrument.type);
 
@@ -350,6 +341,7 @@ const paintInDescendingOrder = function (instrList) {
 
 //filter by discount
 const filterByDiscount = (instrList) => {
+  const grid = document.querySelector('.grid');
   const discountBtn = document.querySelector('.discount');
   const paintDiscountedInstruments = function () {
     instrList.forEach(function (instrument) {
@@ -369,7 +361,7 @@ const filterByDiscount = (instrList) => {
         </div>
         `;
         // Insert the html to the end of every iteration
-        instrumentsContainer.insertAdjacentHTML('beforeend', instrumentsHTML);
+        grid.insertAdjacentHTML('beforeend', instrumentsHTML);
       } else return;
     });
   };
@@ -386,6 +378,7 @@ const filterByDiscount = (instrList) => {
 //insert checkboxes into HTML
 
 const makeCheckboxes = function (types) {
+  const checkboxContainer = document.querySelector('.checkboxes-container');
   checkboxContainer.innerHTML = types
     .map(function (type) {
       const htmlCheckbox = ` <label class="checkbox-container"
@@ -406,6 +399,9 @@ const maxPrice = Math.max(...allInstruments.map((instrument) => instrument.price
 //slider function
 
 const sliderFunction = function () {
+  let doubleHandleSlider = document.querySelector('.double-handle-slider');
+  let minValInput = document.querySelector('.min-value');
+  let maxValInput = document.querySelector('.max-value');
   noUiSlider.create(doubleHandleSlider, {
     start: [minPrice, maxPrice],
     connect: true,
@@ -453,7 +449,9 @@ const checkmark = document.querySelectorAll('.checkmark');
 let matchedPictures = [];
 const filteredInstruments = function (event) {
   // see if checkbox = checked
+  const searchBtn = document.querySelector('.search-btn');
   const checkboxChecked = event.target.getAttribute('filter');
+  let doubleHandleSlider = document.querySelector('.double-handle-slider');
 
   if (!checkboxChecked) {
     return;
@@ -523,13 +521,10 @@ const filterinstrumentsTab = () => {
     paintinAscendingOrder(filteredInstrumentsArr);
   }
 };
-// filterinstrumentsTab();
-//buy btn
 
 const checkoutFormContainer = document.querySelector('.checkout-form-container');
 const checkoutForm = checkoutFormContainer.querySelector('#checkout-form');
-const checkoutBtn = document.querySelector('.checkout-btn');
-const formMessage = document.querySelector('.formMessage');
+
 const clickOnBuy = () => {
   const buyBtn = document.querySelector('.buy');
   buyBtn.addEventListener('click', () => {
@@ -852,9 +847,9 @@ seeAllInstruments.addEventListener('click', function () {
 });
 
 let checked = true;
-const otherAddress = document.querySelector('.other-address');
-const addressCheckmark = document.querySelector('.adress-checkbox');
+
 const showOtherAdress = () => {
+  const otherAddress = document.querySelector('.other-address');
   if (checked === true) {
     otherAddress.style.display = 'block';
     checked = false;
@@ -899,9 +894,6 @@ function storeCheckoutFormData() {
     instrument: document.querySelector('#instrumentBought').placeholder,
     price: document.querySelector('#boughtInstrumentPrice').placeholder,
     totalPrice: document.querySelector('#totalPrice').innerHTML,
-
-    // produsCumparat: checkoutForm.instrumentBought.paceholder.value,
-    // price: checkoutForm.price.placeholder.value,
   };
   console.log(user);
 }

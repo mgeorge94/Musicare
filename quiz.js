@@ -241,7 +241,7 @@ function showResults() {
   document.querySelector('#number-of-correct-answers').innerText = `Numărul de răspunsuri corecte: ${correctAnswers}`;
   document.querySelector('.questionCount').classList.add('hide');
 
-  if (correctAnswers === questions.length - 1) {
+  if (correctAnswers > questions.length - 9) {
     document.querySelectorAll('.discount-game').forEach(function (instrument) {
       //make discount stiker show
       instrument.style.display = 'block';
@@ -250,6 +250,7 @@ function showResults() {
       cleanInstruments();
 
       paintInstruments(allInstruments, gameDiscount);
+      addDiscountToForms(gameDiscount);
     });
     document.querySelector('.right-results').classList.remove('hide');
     startConfetti();
@@ -258,3 +259,26 @@ function showResults() {
   nextBtn.classList.add('hide');
   seeResultBtn.classList.add('hide');
 }
+const addDiscountToForms = (gameDiscount) => {
+  if (gameDiscount === true) {
+    document.querySelector('#contact-form-discount').classList.remove('hide');
+  }
+};
+const showQuiz = () => {
+  document.querySelector('#brand-name').addEventListener('click', () => {
+    document.querySelector('.quiz-container').style.display = 'block';
+    pageScroll(500);
+    hideAboutUs();
+    hideGrid();
+
+    hideGrid();
+    hideFaq();
+    hideAboutUs();
+    hideNews();
+    hideSlides();
+    hideCheckoutForm();
+    hideContactForm();
+    hideActiveInstruments();
+    hideAllRepairableInstruments();
+  });
+};

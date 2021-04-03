@@ -1,7 +1,6 @@
 //! Split landing page
-
-slideContainer = document.querySelector('.container-slide');
-const makeSplitLandingPageMove = () => {
+//IFFE for landing page
+(() => {
   const left = document.querySelector('.left');
   const right = document.querySelector('.right');
   const landingPageContainer = document.querySelector('.landingPage-container');
@@ -27,10 +26,176 @@ const makeSplitLandingPageMove = () => {
   };
   leftLandingBtn.addEventListener('click', removeDualLandingPage);
   rightLandingBtn.addEventListener('click', removeDualLandingPage);
-};
-makeSplitLandingPageMove();
-//! Website pentru reparat Instrumente
+})();
 
+slideContainer = document.querySelector('.container-slide');
+//common functions
+const paintPanels = (panels) => {
+  const panelsContainer = document.querySelector('.container-panel');
+  panelsContainer.innerHTML = '';
+  panels.forEach(function (panel) {
+    let type = panel.type;
+    let name = panel.name;
+    let photo = panel.photo;
+
+    //insert html
+    const pannelsHTML = ` <div data-instrumentType="${type}" class="panel" id="${name}"style="background-image:url('${photo}')">
+  <h3>${name}</h3></div>`;
+
+    // Insert the html to the end of every iteration
+    panelsContainer.insertAdjacentHTML('beforeend', pannelsHTML);
+  });
+};
+
+//change colors
+const changeAccentColors = (color, color2) => {
+  document.documentElement.style.setProperty('--accent-color', color);
+  document.documentElement.style.setProperty('--second-accent-color', color2);
+};
+
+//! Website for fixing instruments
+//create slides
+const paintFixedInstrumentSlides = function (slides) {
+  const panels = document.querySelectorAll('.panel');
+  slides.forEach(function (slide) {
+    let matchedFixedSlides = [];
+
+    panels.forEach(function (panel) {
+      panel.addEventListener('click', () => {
+        //if instrument type match, create html
+
+        if (panel.dataset.instrumenttype === slide.type) {
+          createFixedInstrumentsHTML(matchedFixedSlides, slide);
+          makeImageAppearOnScroll();
+        } else if (panel.dataset.instrumenttype !== slide.name) {
+          if (matchedFixedSlides.indexOf(slide.name) !== -1) {
+            matchedFixedSlides.splice(matchedFixedSlides.indexOf(slide.name), 1);
+          }
+        }
+        hideGrid();
+        hideNav();
+        resetGridToPosition();
+        showTestimonials();
+        hideCheckoutForm();
+        hideContactForm();
+        hideFaq();
+        hideAllRepairableInstruments();
+        hideFilterTab();
+        stopConfetti();
+        hideQuiz();
+      });
+    });
+  });
+};
+//create HTML
+const createFixedInstrumentsHTML = (matchedFixedSlides, slide) => {
+  matchedFixedSlides.push(slide.name);
+  matchedFixedSlides.forEach(function () {
+    let type = slide.type;
+    let tech = slide.tech;
+    let techPic = slide.techPic;
+    let about = slide.about;
+    let pic1 = slide.fixingPic1;
+    let pic2 = slide.fixingPic2;
+    let pic3 = slide.fixingPic3;
+    let experience = slide.experience;
+
+    // html
+
+    let leftSlideHTML = document.createElement('div');
+    leftSlideHTML.setAttribute('class', 'content-slide');
+    leftSlideHTML.classList.add('repair');
+    leftSlideHTML.setAttribute('data-instrumentType', '${type}');
+    leftSlideHTML.innerHTML = `
+    <div class = "slide-overlay"></div>
+     <img  class="technician" src="${techPic}";/>
+            <h3 class="technician-name"> Tehnician : ${tech}</h3>
+            
+            <img class="repair-image one" src="${pic1}"	/>
+            
+            <img class="repair-image two" src="${pic2}"	/>
+            <img class="repair-image three" src="${pic3}"	/>
+            <div class="text-content">
+            <p> ${about}</p>
+            <h4>Experiență profesională: </h4>
+            <p class ="experience">${experience}</p>
+            </div>
+
+            `;
+    //insert html to the end of every iteration
+
+    while (slideContainer.firstChild) {
+      slideContainer.removeChild(slideContainer.firstChild);
+    }
+    slideContainer.appendChild(leftSlideHTML);
+
+    //display slide
+    pageScroll(500);
+    showSlideContent();
+    hideCheckoutForm();
+  });
+};
+//make image appear on scroll
+const makeImageAppearOnScroll = () => {
+  const onScrollImages = document.querySelectorAll('.repair-image');
+
+  const showPicturesOnScroll = () => {
+    const trigger = (window.innerHeight / 5) * 4;
+
+    onScrollImages.forEach((image) => {
+      const testionialPosition = testimonialContainer.getBoundingClientRect().top;
+      if (testionialPosition < trigger) {
+        image.style.display = 'flex';
+      }
+    });
+  };
+  window.addEventListener('scroll', showPicturesOnScroll);
+};
+//add hover effect on fixed instruments
+const eventListenersForFixedInstruments = () => {
+  const repairableInstruments = document.querySelectorAll('ul.repair-instr-column > li');
+  repairableInstruments.forEach(function (instr) {
+    instr.addEventListener('mouseenter', () => {
+      instr.style.color = '#f28422';
+    });
+    instr.addEventListener('mouseleave', () => {
+      instr.style.color = 'white';
+    });
+    instr.addEventListener('click', () => {
+      hideAllRepairableInstruments();
+      autoAddInstrumentToForm(instr);
+      pageScroll(500);
+      showContactForm();
+      hideNav();
+    });
+  });
+};
+//show more Instrument options
+const showMoreInstrumentOptions = () => {
+  const instrBtn = document.querySelector('.instruments-btn');
+  instrBtn.addEventListener('click', () => {
+    instrOptBkg.classList.add('active');
+    instrOptContainer.classList.add('active');
+  });
+};
+//show filter tab under the fixted instrumnets website
+const showFilterTabFIXEDWebsite = () => {
+  filterBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    hideAllRepairableInstruments();
+    showFilterTab();
+  });
+};
+//show repairable Instruments
+const showRepairableInstruments = () => {
+  const repairableInstrumentsBtn = document.querySelector('.instrument-list');
+  //make instr lst apear
+  repairableInstrumentsBtn.addEventListener('click', (event) => {
+    showAllRepairableInstruments();
+    hideFilterTab();
+  });
+};
+//putting it all together
 const repairInstrumentWebsite = function () {
   //fixed instruments slides Object Array
   const fixedInstrumentsSlides = [
@@ -228,158 +393,20 @@ const repairInstrumentWebsite = function () {
   ];
 
   //paint panels
-  const paintPanels = () => {
-    const panelsContainer = document.querySelector('.container-panel');
-    panelsContainer.innerHTML = '';
-    fixedInstrumentsPanels.forEach(function (panel) {
-      let type = panel.type;
-      let name = panel.name;
-      let photo = panel.photo;
 
-      //insert html
-      const pannelsHTML = ` <div data-instrumentType="${type}" class="panel" id="${name}"style="background-image:url('${photo}')">
-      <h3>${name}</h3></div>`;
-
-      // Insert the html to the end of every iteration
-      panelsContainer.insertAdjacentHTML('beforeend', pannelsHTML);
-    });
-  };
-  paintPanels();
+  paintPanels(fixedInstrumentsPanels);
   hoverOverPannels();
-  const panels = document.querySelectorAll('.panel');
 
   //Showing instruments
-  const paintFixedInstrumentSlides = function () {
-    fixedInstrumentsSlides.forEach(function (slide) {
-      let matchedFixedSlides = [];
 
-      panels.forEach(function (panel) {
-        panel.addEventListener('click', () => {
-          //if instrument type match, create html
+  paintFixedInstrumentSlides(fixedInstrumentsSlides);
+  showMoreInstrumentOptions();
 
-          if (panel.dataset.instrumenttype === slide.type) {
-            matchedFixedSlides.push(slide.name);
-            matchedFixedSlides.forEach(function () {
-              let type = slide.type;
-              let tech = slide.tech;
-              let techPic = slide.techPic;
-              let about = slide.about;
-              let pic1 = slide.fixingPic1;
-              let pic2 = slide.fixingPic2;
-              let pic3 = slide.fixingPic3;
-              let experience = slide.experience;
+  showFilterTabFIXEDWebsite();
 
-              // html
+  showRepairableInstruments();
+  eventListenersForFixedInstruments();
 
-              let leftSlideHTML = document.createElement('div');
-              leftSlideHTML.setAttribute('class', 'content-slide');
-              leftSlideHTML.classList.add('repair');
-              leftSlideHTML.setAttribute('data-instrumentType', '${type}');
-              leftSlideHTML.innerHTML = `
-              <div class = "slide-overlay"></div>
-               <img  class="technician" src="${techPic}";/>
-                      <h3 class="technician-name"> Tehnician : ${tech}</h3>
-                      
-                      <img class="repair-image one" src="${pic1}"	/>
-                      
-                      <img class="repair-image two" src="${pic2}"	/>
-                      <img class="repair-image three" src="${pic3}"	/>
-                      <div class="text-content">
-                      <p> ${about}</p>
-                      <h4>Experiență profesională: </h4>
-                      <p class ="experience">${experience}</p>
-                      </div>
-  
-                      `;
-              //insert html to the end of every iteration
-
-              while (slideContainer.firstChild) {
-                slideContainer.removeChild(slideContainer.firstChild);
-              }
-              slideContainer.appendChild(leftSlideHTML);
-
-              const slideContent = document.querySelector('.content-slide');
-              //display slide
-              pageScroll(500);
-              slideContent.style.display = 'block';
-              slideContainer.style.display = 'flex';
-              document;
-              hideCheckoutForm();
-            });
-            //make image apear on scroll
-
-            const onScrollImages = document.querySelectorAll('.repair-image');
-
-            const showPicturesOnScroll = () => {
-              const trigger = (window.innerHeight / 5) * 4;
-
-              onScrollImages.forEach((image) => {
-                const testionialPosition = testimonialContainer.getBoundingClientRect().top;
-                if (testionialPosition < trigger) {
-                  image.style.display = 'flex';
-                }
-              });
-            };
-            window.addEventListener('scroll', showPicturesOnScroll);
-          } else if (panel.dataset.instrumenttype !== slide.name) {
-            if (matchedFixedSlides.indexOf(slide.name) !== -1) {
-              matchedFixedSlides.splice(matchedFixedSlides.indexOf(slide.name), 1);
-            }
-          }
-          hideGrid();
-          hideNav();
-          resetGridToPosition();
-          showTestimonials();
-          hideCheckoutForm();
-          hideContactForm();
-          hideFaq();
-          hideAllRepairableInstruments();
-          hideFilterTab();
-          stopConfetti();
-          hideQuiz();
-        });
-      });
-    });
-  };
-  paintFixedInstrumentSlides();
-  // filter instruments tab
-  const instrBtn = document.querySelector('.instruments-btn');
-  instrBtn.addEventListener('click', () => {
-    instrOptBkg.classList.add('active');
-    instrOptContainer.classList.add('active');
-  });
-  //make filterTab apear
-  filterBtn.addEventListener('click', (event) => {
-    event.stopPropagation();
-    hideAllRepairableInstruments();
-
-    showFilterTab();
-  });
-  //show All repairable instruments
-  const repairableInstrumentsBtn = document.querySelector('.instrument-list');
-  //make instr lst apear
-  repairableInstrumentsBtn.addEventListener('click', (event) => {
-    showAllRepairableInstruments();
-    hideFilterTab();
-  });
-
-  //loop through instruments
-  const repairableInstruments = document.querySelectorAll('ul.repair-instr-column > li');
-  repairableInstruments.forEach(function (instr) {
-    instr.addEventListener('mouseenter', () => {
-      instr.style.color = '#f28422';
-    });
-    instr.addEventListener('mouseleave', () => {
-      instr.style.color = 'white';
-    });
-    instr.addEventListener('click', () => {
-      hideAllRepairableInstruments();
-      autoAddInstrumentToForm(instr);
-      pageScroll(500);
-      showContactForm();
-      hideNav();
-    });
-  });
   //change accent colors of website
 
   changeAccentColors('#8f430f', '#f28422');
@@ -389,19 +416,128 @@ const autoAddInstrumentToForm = (instr) => {
   inNeedInstrument.placeholder = `Salvați-mi instrumentul: ${instr.innerHTML} `;
   inNeedInstrument.setAttribute('readonly', 'true');
 };
-// dealing with media queries
-const handeLayoutForRaepairedInstruments = () => {
-  if (window.screen.width < 900) {
-    document.querySelectorAll('.repair-instr-column').forEach(item, () => {
-      item.remove();
-    });
-  }
-};
+// // dealing with media queries
+// const handeLayoutForRaepairedInstruments = () => {
+//   if (window.screen.width < 900) {
+//     document.querySelectorAll('.repair-instr-column').forEach(item, () => {
+//       item.remove();
+//     });
+//   }
+// };
 // handeLayoutForRaepairedInstruments();
 //!Website pentru cumparat de instrumentele
 let onStockInstrumentPanels = [];
-const buyInstrumentWebsite = function () {
+//see if instrument is in stock
+const isInstrumentInStock = (toBuyInstrumentsPanels) => {
   const instruments = document.querySelectorAll('.instrument');
+  instruments.forEach(function (instrument) {
+    toBuyInstrumentsPanels.forEach(function (slide) {
+      if (instrument.dataset.instrumenttype === slide.type) {
+        onStockInstrumentPanels.push(slide);
+      }
+    });
+  });
+};
+//paint panels for To buy website
+const paintToBuyInstrumentPanels = (toBuyInstrumentsSlides) => {
+  const panels = document.querySelectorAll('.panel');
+  toBuyInstrumentsSlides.forEach(function (slide) {
+    let matchedToBuySlides = [];
+
+    panels.forEach(function (panel) {
+      panel.addEventListener('click', () => {
+        if (panel.dataset.instrumenttype === slide.type) {
+          matchedToBuySlides.push(slide.name);
+        } else {
+          matchedToBuySlides.pop();
+        }
+        pageScroll(500);
+        matchedToBuySlides.forEach(function () {
+          let type = slide.type;
+          let description = slide.description;
+          let picture = slide.picture;
+          let advantages1 = slide.advantages1;
+          let advantages2 = slide.advantages2;
+          let advantages3 = slide.advantages3;
+          let advantages4 = slide.advantages4;
+          let disadvantages1 = slide.disadvantages1;
+          let disadvantages2 = slide.disadvantages2;
+
+          // html
+
+          let rightSlideHTML = `
+          <div data-instrumentType = "${type}" class="content-slide buy-slide">
+          
+          <img class="slide-banner-image"	src="${picture}"/>
+          <div>
+          
+            <h4> Descriere</h4>
+            <p>${description}</p>
+           
+            <p id= "avantaje">Avantaje</p>
+            <p id= "dezavantaje" >Dezavantaje</p>	
+            <div class="advantages-disadvantages">
+            <div class ="advantages-list">
+              <h4>${advantages1}</h4>
+              <h4>${advantages2}</h4>
+              <h4>${advantages3}</h4>
+              <h4>${advantages4}</h4>
+            </div>
+            <div class ="disadvantages-list">
+              <h4>${disadvantages1}</h4>
+              <h4>${disadvantages2}</h4>
+            </div>
+            </div>
+          </div>
+          <button class="seeInstrument">Vezi  instrumentele</button>`;
+          //insert html to the end of every iteration
+          slideContainer.innerHTML = rightSlideHTML;
+          showSlideContent();
+
+          const seeInstrument = document.querySelector('.seeInstrument');
+          seeInstrument.addEventListener('click', () => {
+            //clean filtered instruments array
+            filteredInstrumentsArr = [];
+            showMatchedInstruments(slide.type);
+
+            showGrid();
+            showOrderBy();
+            slideContainer.style.display = 'none';
+            pageScroll(500);
+
+            //make a filtred array ob instrument objects
+            allInstruments.forEach((element) => {
+              if (element.type === slide.type) {
+                filteredInstrumentsArr.push(element);
+              }
+            });
+            filterinstrumentsTab();
+            clickOnInstrument();
+          });
+        });
+        hideGrid();
+        hideCheckoutForm();
+        resetGridToPosition();
+        hideOrderBy();
+        showTestimonials();
+        hideOrderBy();
+        hideContactForm();
+        hideActiveInstruments();
+        hideImageSlider();
+        stopConfetti();
+        hideQuiz();
+      });
+    });
+  });
+};
+const showFilterTabTOBUYWebsite = () => {
+  const FilterInstrumentsBtn = document.querySelector('.instruments-btn');
+  FilterInstrumentsBtn.addEventListener('click', () => {
+    showFilterTab();
+  });
+};
+const buyInstrumentWebsite = function () {
+  // const instruments = document.querySelectorAll('.instrument');
   //toBuy instrument Object array
 
   const toBuyInstrumentsSlides = [
@@ -805,135 +941,19 @@ const buyInstrumentWebsite = function () {
 
     //see if instruments are on stocks
 
-    instruments.forEach(function (instrument) {
-      toBuyInstrumentsPanels.forEach(function (slide) {
-        if (instrument.dataset.instrumenttype === slide.type) {
-          onStockInstrumentPanels.push(slide);
-        }
-      });
-    });
+    isInstrumentInStock(toBuyInstrumentsPanels);
     //make unique array of on stock instrument slides
     const uniqueOnStockPanels = onStockInstrumentPanels.filter(function (panel, index) {
       return onStockInstrumentPanels.indexOf(panel) === index;
     });
     //paint panels
 
-    const paintPanels = () => {
-      const panelsContainer = document.querySelector('.container-panel');
-      panelsContainer.innerHTML = '';
-      uniqueOnStockPanels.forEach(function (panel) {
-        let type = panel.type;
-        let name = panel.name;
-        let photo = panel.photo;
-
-        //insert html
-        const pannelsHTML = ` <div data-instrumentType="${type}" class="panel" id="${name}"style="background-image:url('${photo}')">
-      <h3>${name}</h3></div>`;
-
-        // Insert the html to the end of every iteration
-        panelsContainer.insertAdjacentHTML('beforeend', pannelsHTML);
-      });
-    };
-    paintPanels();
+    paintPanels(uniqueOnStockPanels);
     hoverOverPannels();
-    const panels = document.querySelectorAll('.panel');
-    toBuyInstrumentsSlides.forEach(function (slide) {
-      let matchedToBuySlides = [];
-
-      panels.forEach(function (panel) {
-        panel.addEventListener('click', () => {
-          if (panel.dataset.instrumenttype === slide.type) {
-            matchedToBuySlides.push(slide.name);
-          } else {
-            matchedToBuySlides.pop();
-          }
-          pageScroll(500);
-          matchedToBuySlides.forEach(function () {
-            let type = slide.type;
-            let description = slide.description;
-            let picture = slide.picture;
-            let advantages1 = slide.advantages1;
-            let advantages2 = slide.advantages2;
-            let advantages3 = slide.advantages3;
-            let advantages4 = slide.advantages4;
-            let disadvantages1 = slide.disadvantages1;
-            let disadvantages2 = slide.disadvantages2;
-
-            // html
-
-            let rightSlideHTML = `
-            <div data-instrumentType = "${type}" class="content-slide buy-slide">
-            
-            <img class="slide-banner-image"	src="${picture}"/>
-            <div>
-            
-              <h4> Descriere</h4>
-              <p>${description}</p>
-             
-              <p id= "avantaje">Avantaje</p>
-              <p id= "dezavantaje" >Dezavantaje</p>	
-              <div class="advantages-disadvantages">
-              <div class ="advantages-list">
-                <h4>${advantages1}</h4>
-                <h4>${advantages2}</h4>
-                <h4>${advantages3}</h4>
-                <h4>${advantages4}</h4>
-              </div>
-              <div class ="disadvantages-list">
-                <h4>${disadvantages1}</h4>
-                <h4>${disadvantages2}</h4>
-              </div>
-              </div>
-            </div>
-            <button class="seeInstrument">Vezi  instrumentele</button>`;
-            //insert html to the end of every iteration
-            slideContainer.innerHTML = rightSlideHTML;
-            const slideContent = document.querySelector('.content-slide');
-
-            slideContent.style.display = 'block';
-            slideContainer.style.display = 'flex';
-
-            const seeInstrument = document.querySelector('.seeInstrument');
-            seeInstrument.addEventListener('click', () => {
-              //clean filtered instruments array
-              filteredInstrumentsArr = [];
-              showMatchedInstruments(slide.type);
-
-              showGrid();
-              showOrderBy();
-              slideContainer.style.display = 'none';
-              pageScroll(500);
-
-              //make a filtred array ob instrument objects
-              allInstruments.forEach((element) => {
-                if (element.type === slide.type) {
-                  filteredInstrumentsArr.push(element);
-                }
-              });
-              filterinstrumentsTab();
-              clickOnInstrument();
-            });
-          });
-          hideGrid();
-          hideCheckoutForm();
-          resetGridToPosition();
-          hideOrderBy();
-          showTestimonials();
-          hideOrderBy();
-          hideContactForm();
-          hideActiveInstruments();
-          hideImageSlider();
-          stopConfetti();
-          hideQuiz();
-        });
-      });
-    });
+    paintToBuyInstrumentPanels(toBuyInstrumentsSlides);
   };
   paintToBuyInstrumentSlides();
-  const FilterInstrumentsBtn = document.querySelector('.instruments-btn');
-  FilterInstrumentsBtn.addEventListener('click', () => {
-    showFilterTab();
-  });
+  showFilterTabTOBUYWebsite();
   //change accent colors of website
 
   changeAccentColors('#76433a', '#7fab75');
@@ -956,25 +976,22 @@ const hoverOverPannels = () => {
   const panels = document.querySelectorAll('.panel');
   panels.forEach((panel) => {
     panel.addEventListener('mouseenter', () => {
-      removeActiveClasses();
+      removePanelsActiveClasses(panels);
       panel.classList.add('active');
     });
 
     containerPanels.addEventListener('mouseleave', () => {
-      removeActiveClasses();
+      removePanelsActiveClasses(panels);
     });
   });
-  function removeActiveClasses() {
-    panels.forEach((panel) => {
-      panel.classList.remove('active');
-    });
-  }
-  function pageScroll(value) {
-    window.scroll({
-      top: value,
-      behavior: 'smooth',
-    });
-  }
+  removePanelsActiveClasses(panels);
+  // pageScroll(500);
+};
+//remove Panel Active Classes
+const removePanelsActiveClasses = (panels) => {
+  panels.forEach((panel) => {
+    panel.classList.remove('active');
+  });
 };
 // make page scroll
 const pageScroll = (value) => {

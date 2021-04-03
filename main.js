@@ -1,32 +1,42 @@
 //!show navigation
 let index = 1;
-const faqContent = document.querySelector('.container-faq ');
-const container = document.querySelector('.container');
+
 const content = document.querySelector('.content');
 const navBurgerBtn = document.getElementById('open');
-const nav = document.querySelectorAll('.nav');
-const seeInstruments = document.querySelector('.see-instruments');
-const grid = document.querySelector('.grid');
+
 // functions that show elements
 const showTestimonials = () => {
   const testimonialContainer = document.querySelector('.testimonial-container');
   testimonialContainer.style.display = 'block';
 };
 const showGrid = () => {
+  const grid = document.querySelector('.grid');
   grid.style.display = 'grid';
 };
 const showOrderBy = () => {
+  const orderByContainer = document.querySelector('.order-by-container');
+
   orderByContainer.style.display = 'block';
 };
-
+const showSlideContent = () => {
+  const slideContent = document.querySelector('.content-slide');
+  slideContent.style.display = 'block';
+  slideContainer.style.display = 'flex';
+};
 const showGridInstruments = () => {
   const instruments = document.querySelectorAll('.instrument');
   instruments.forEach(function (instrument) {
     instrument.removeAttribute('hidden');
   });
 };
-const showNav = () => nav.forEach((navElement) => navElement.classList.add('visible'));
-const showFaq = () => (faqContent.style.display = 'block');
+const showNav = () => {
+  const nav = document.querySelectorAll('.nav');
+  nav.forEach((navElement) => navElement.classList.add('visible'));
+};
+const showFaq = () => {
+  const faqContent = document.querySelector('.container-faq ');
+  faqContent.style.display = 'block';
+};
 const showFilterTab = () => {
   document.querySelector('.filter-tab').classList.add('visible');
 };
@@ -46,14 +56,10 @@ const resetGridToPosition = () => {
   grid.style.margin = '1rem auto';
 };
 const showCheckoutForm = () => {
+  const checkoutFormContainer = document.querySelector('.checkout-form-container');
   checkoutFormContainer.style.display = 'flex';
 };
-const showQuiz = () => {
-  document.querySelector('.hero').addEventListener('click', () => {
-    document.querySelector('.quiz-container').style.display = 'block';
-    pageScroll(500);
-  });
-};
+
 showQuiz();
 //functions that hide elements
 const hideQuiz = () => {
@@ -86,7 +92,10 @@ const hideGrid = () => {
   morePictures.style.display = 'none';
   hideOrderBy();
 };
-const hideNav = () => nav.forEach((navElement) => navElement.classList.remove('visible'));
+const hideNav = () => {
+  const nav = document.querySelectorAll('.nav');
+  nav.forEach((navElement) => navElement.classList.remove('visible'));
+};
 const removeInstrumentActiveClass = () => {
   const instruments = document.querySelectorAll('.instrument');
   instruments.forEach((instrument) => {
@@ -99,7 +108,10 @@ const hideGridInstruments = () => {
     instrument.setAttribute('hidden', 'true');
   });
 };
-const hideFaq = () => (faqContent.style.display = 'none');
+const hideFaq = () => {
+  const faqContent = document.querySelector('.container-faq ');
+  faqContent.style.display = 'none';
+};
 const hideAboutUs = () => {
   aboutUsContainer.style.display = 'none';
   aboutUsContainer.style.display = 'none';
@@ -138,12 +150,6 @@ const removeInstrumentsWithoutActiveClass = () => {
 const hideImageSlider = () => {
   const imageSliderContainer = document.querySelector('.instrument-picture-container');
   imageSliderContainer.style.display = 'none';
-};
-
-//change colors
-const changeAccentColors = (color, color2) => {
-  document.documentElement.style.setProperty('--accent-color', color);
-  document.documentElement.style.setProperty('--second-accent-color', color2);
 };
 
 //open nav btn click
@@ -323,6 +329,7 @@ newsBtn.addEventListener('click', () => {
 });
 content.addEventListener('click', () => {
   hideNews();
+  hideFilterTab();
 });
 newsContent.addEventListener('click', (event) => {
   event.stopPropagation();
@@ -333,10 +340,6 @@ const instrOptBkg = document.querySelector('.instr-options-background');
 const instrOptContainer = document.querySelector('.instr-options-container');
 
 const filterBtn = document.querySelector('.filter');
-
-container.addEventListener('click', () => {
-  hideFilterTab();
-});
 
 //! Testimonials
 
