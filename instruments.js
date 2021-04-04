@@ -2,7 +2,73 @@
 const filterTab = document.querySelector('.filter-tab');
 const instrArr = [];
 const seeAllInstruments = document.querySelector('.see-instruments');
+//functions
+const showGrid = () => {
+  const grid = document.querySelector('.grid');
+  grid.style.display = 'grid';
+};
+const hideGrid = () => {
+  const morePictures = document.querySelector('.instrument-picture-container');
+  const grid = document.querySelector('.grid');
+  grid.style.display = 'none';
+  morePictures.style.display = 'none';
+  hideOrderBy();
+};
+const showGridInstruments = () => {
+  const instruments = document.querySelectorAll('.instrument');
+  instruments.forEach(function (instrument) {
+    instrument.removeAttribute('hidden');
+  });
+};
+const hideGridInstruments = () => {
+  const instruments = document.querySelectorAll('.instrument');
+  instruments.forEach(function (instrument) {
+    instrument.setAttribute('hidden', 'true');
+  });
+};
 
+const showOrderBy = () => {
+  const orderByContainer = document.querySelector('.order-by-container');
+
+  orderByContainer.style.display = 'block';
+};
+const hideOrderBy = () => {
+  const orderByContainer = document.querySelector('.order-by-container');
+  orderByContainer.style.display = 'none';
+};
+const resetGridToPosition = () => {
+  const grid = document.querySelector('.grid');
+  grid.style.margin = '1rem auto';
+};
+
+const removeInstrumentActiveClass = () => {
+  const instruments = document.querySelectorAll('.instrument');
+  instruments.forEach((instrument) => {
+    instrument.classList.remove('active');
+  });
+};
+
+const removeInstrumentsWithoutActiveClass = () => {
+  const instruments = document.querySelectorAll('.instrument');
+
+  instruments.forEach(function (instrument) {
+    if (!instrument.classList.contains('active')) {
+      instrument.style.display = 'none';
+    }
+  });
+};
+const hideImageSlider = () => {
+  const imageSliderContainer = document.querySelector('.instrument-picture-container');
+  imageSliderContainer.style.display = 'none';
+};
+const showCheckoutForm = () => {
+  const checkoutFormContainer = document.querySelector('.checkout-form-container');
+  checkoutFormContainer.style.display = 'flex';
+};
+const hideCheckoutForm = () => {
+  const checkoutForm = document.querySelector('.checkout-form-container');
+  checkoutForm.style.display = 'none';
+};
 // Instruments object array
 
 const allInstruments = [
@@ -284,7 +350,6 @@ const paintInstrumentsAlphabetically = (instrArr) => {
     resetGridToPosition();
     clickOnInstrument();
     hideCheckoutForm();
-    filteredInstrumentsArr = [];
   });
 };
 
@@ -310,7 +375,6 @@ const paintinAscendingOrder = (instrArr) => {
     clickOnInstrument();
     resetGridToPosition();
     hideCheckoutForm();
-    filteredInstrumentsArr = [];
   });
 };
 
@@ -335,7 +399,6 @@ const paintInDescendingOrder = function (instrList) {
     clickOnInstrument();
     resetGridToPosition();
     hideCheckoutForm();
-    filteredInstrumentsArr = [];
   });
 };
 
@@ -371,7 +434,6 @@ const filterByDiscount = (instrList) => {
     paintDiscountedInstruments(allInstruments);
     clickOnInstrument();
     resetGridToPosition();
-    filteredInstrumentsArr = [];
   });
 };
 
@@ -440,13 +502,13 @@ const sliderFunction = function () {
   });
 };
 sliderFunction();
-//array of filterd instruments
-let filteredInstrumentsArr = [];
 
+let matchedInstruments = [];
 const checkmark = document.querySelectorAll('.checkmark');
+//Array of matched intruments
+let matchedPictures = [];
 //function that filters instruments
 
-let matchedPictures = [];
 const filteredInstruments = function (event) {
   // see if checkbox = checked
   const searchBtn = document.querySelector('.search-btn');
@@ -456,9 +518,8 @@ const filteredInstruments = function (event) {
   if (!checkboxChecked) {
     return;
   } else {
-    // showCheckmarks();
-
-    let matchedInstruments = [];
+    //resset array of matched instruments
+    matchedInstruments = [];
 
     searchBtn.addEventListener('click', () => {
       let minWantedPrice = Math.round(Math.min(...doubleHandleSlider.noUiSlider.get([0, null])));
@@ -483,15 +544,10 @@ const filteredInstruments = function (event) {
         showGrid();
         hideNav();
         showOrderBy();
-        //make a filtred array ob instrument objects
-        allInstruments.forEach((element) => {
-          if (element.type === checkboxChecked) {
-            filteredInstrumentsArr.push(element);
-          }
-          filteredInstrumentsArr.forEach((element) => {
-            filteredInstrumentsArr = filteredInstrumentsArr.filter(function (instrument, index) {
-              return filteredInstrumentsArr.indexOf(instrument) == index;
-            });
+
+        matchedInstruments.forEach((element) => {
+          matchedInstruments = matchedInstruments.filter(function (instrument, index) {
+            return matchedInstruments.indexOf(instrument) == index;
           });
         });
       });
@@ -509,16 +565,16 @@ filterTab.addEventListener('click', (event) => {
 
 //filtering tabs
 const filterinstrumentsTab = () => {
-  if (filteredInstrumentsArr.length === 0) {
+  if (matchedInstruments.length === 0) {
     filterByDiscount(allInstruments);
     paintInDescendingOrder(allInstruments);
     paintInstrumentsAlphabetically(allInstruments, gameDiscount);
     paintinAscendingOrder(allInstruments);
   } else {
-    filterByDiscount(filteredInstrumentsArr);
-    paintInDescendingOrder(filteredInstrumentsArr);
-    paintInstrumentsAlphabetically(filteredInstrumentsArr, gameDiscount);
-    paintinAscendingOrder(filteredInstrumentsArr);
+    filterByDiscount(matchedInstruments);
+    paintInDescendingOrder(matchedInstruments);
+    paintInstrumentsAlphabetically(matchedInstruments, gameDiscount);
+    paintinAscendingOrder(matchedInstruments);
   }
 };
 
@@ -568,10 +624,7 @@ const clickOnInstrument = () => {
       instrument.addEventListener('click', (event) => {
         event.stopPropagation();
 
-        // hideActiveInstruments();
-        instruments.forEach(function (instrument) {
-          instrument.classList.remove('active');
-        });
+        removeInstrumentActiveClass();
 
         // imagesArray
 
@@ -837,7 +890,6 @@ seeAllInstruments.addEventListener('click', function () {
   resetGridToPosition();
   removeInstrumentActiveClass();
   showOrderBy();
-  filteredInstrumentsArr = [];
   filterinstrumentsTab();
   cleanInstruments();
   paintInstruments(allInstruments, gameDiscount);

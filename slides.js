@@ -22,7 +22,7 @@
   const removeDualLandingPage = function () {
     left.style.animation = 'leftHide .8s ease-in forwards';
     right.style.animation = 'rightHide 1s ease-in forwards';
-    landingPageContainer.style.animation = 'hideLandingContainer 2s ease-in forwards';
+    landingPageContainer.style.animation = 'hideLandingContainer 0.7s ease-in forwards';
   };
   leftLandingBtn.addEventListener('click', removeDualLandingPage);
   rightLandingBtn.addEventListener('click', removeDualLandingPage);
@@ -46,7 +46,12 @@ const paintPanels = (panels) => {
     panelsContainer.insertAdjacentHTML('beforeend', pannelsHTML);
   });
 };
-
+const showSlideContent = () => {
+  const slideContent = document.querySelector('.content-slide');
+  slideContent.style.display = 'block';
+  slideContainer.style.display = 'flex';
+};
+const hideSlides = () => (slideContainer.style.display = 'none');
 //change colors
 const changeAccentColors = (color, color2) => {
   document.documentElement.style.setProperty('--accent-color', color);
@@ -193,6 +198,19 @@ const showRepairableInstruments = () => {
   repairableInstrumentsBtn.addEventListener('click', (event) => {
     showAllRepairableInstruments();
     hideFilterTab();
+  });
+};
+//show all repairable instruments
+const showAllRepairableInstruments = () => {
+  const allRepairableInstruments = document.querySelectorAll('.repair-instr-column');
+  allRepairableInstruments.forEach(function (panel) {
+    panel.classList.add('visible');
+  });
+};
+const hideAllRepairableInstruments = () => {
+  const allRepairableInstruments = document.querySelectorAll('.repair-instr-column');
+  allRepairableInstruments.forEach(function (panel) {
+    panel.classList.remove('visible');
   });
 };
 //putting it all together
@@ -497,7 +515,7 @@ const paintToBuyInstrumentPanels = (toBuyInstrumentsSlides) => {
           const seeInstrument = document.querySelector('.seeInstrument');
           seeInstrument.addEventListener('click', () => {
             //clean filtered instruments array
-            filteredInstrumentsArr = [];
+            matchedInstruments = [];
             showMatchedInstruments(slide.type);
 
             showGrid();
@@ -508,7 +526,7 @@ const paintToBuyInstrumentPanels = (toBuyInstrumentsSlides) => {
             //make a filtred array ob instrument objects
             allInstruments.forEach((element) => {
               if (element.type === slide.type) {
-                filteredInstrumentsArr.push(element);
+                matchedInstruments.push(element);
               }
             });
             filterinstrumentsTab();
@@ -522,7 +540,7 @@ const paintToBuyInstrumentPanels = (toBuyInstrumentsSlides) => {
         showTestimonials();
         hideOrderBy();
         hideContactForm();
-        hideActiveInstruments();
+        removeInstrumentActiveClass();
         hideImageSlider();
         stopConfetti();
         hideQuiz();

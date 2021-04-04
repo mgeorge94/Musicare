@@ -264,6 +264,7 @@ const addDiscountToForms = (gameDiscount) => {
     document.querySelector('#contact-form-discount').classList.remove('hide');
   }
 };
+
 const showQuiz = () => {
   document.querySelector('#brand-name').addEventListener('click', () => {
     document.querySelector('.quiz-container').style.display = 'block';
@@ -278,7 +279,10 @@ const showQuiz = () => {
     hideSlides();
     hideCheckoutForm();
     hideContactForm();
-    hideActiveInstruments();
+    removeInstrumentActiveClass();
     hideAllRepairableInstruments();
   });
+};
+const hideQuiz = () => {
+  document.querySelector('.quiz-container').style.display = 'none';
 };

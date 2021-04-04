@@ -9,26 +9,7 @@ const showTestimonials = () => {
   const testimonialContainer = document.querySelector('.testimonial-container');
   testimonialContainer.style.display = 'block';
 };
-const showGrid = () => {
-  const grid = document.querySelector('.grid');
-  grid.style.display = 'grid';
-};
-const showOrderBy = () => {
-  const orderByContainer = document.querySelector('.order-by-container');
 
-  orderByContainer.style.display = 'block';
-};
-const showSlideContent = () => {
-  const slideContent = document.querySelector('.content-slide');
-  slideContent.style.display = 'block';
-  slideContainer.style.display = 'flex';
-};
-const showGridInstruments = () => {
-  const instruments = document.querySelectorAll('.instrument');
-  instruments.forEach(function (instrument) {
-    instrument.removeAttribute('hidden');
-  });
-};
 const showNav = () => {
   const nav = document.querySelectorAll('.nav');
   nav.forEach((navElement) => navElement.classList.add('visible'));
@@ -40,74 +21,50 @@ const showFaq = () => {
 const showFilterTab = () => {
   document.querySelector('.filter-tab').classList.add('visible');
 };
-const showAllRepairableInstruments = () => {
-  const allRepairableInstruments = document.querySelectorAll('.repair-instr-column');
-  allRepairableInstruments.forEach(function (panel) {
-    panel.classList.add('visible');
+
+const showNews = () => {
+  const newsContent = document.querySelector('.card-container');
+  newsContent.style.display = 'block';
+  const newsCards = document.querySelectorAll('.card');
+
+  const triggerBottom = (window.innerHeight / 7) * 4;
+
+  newsCards.forEach((card) => {
+    const testionialPosition = testimonialContainer.getBoundingClientRect().top;
+    if (testionialPosition < triggerBottom) {
+      if (card.classList.contains('focus')) {
+        card.classList.remove('focus');
+        card.classList.add('passed');
+      } else {
+        card.classList.add('focus');
+      }
+    }
   });
+
+  window.addEventListener('scroll', showNews);
 };
-const showNews = () => (newsContent.style.display = 'block');
+
 const showContactForm = () => {
   const contactFormContainer = document.querySelector('.form-container');
   contactFormContainer.style.display = 'flex';
 };
-const resetGridToPosition = () => {
-  const grid = document.querySelector('.grid');
-  grid.style.margin = '1rem auto';
-};
-const showCheckoutForm = () => {
-  const checkoutFormContainer = document.querySelector('.checkout-form-container');
-  checkoutFormContainer.style.display = 'flex';
-};
 
 showQuiz();
 //functions that hide elements
-const hideQuiz = () => {
-  document.querySelector('.quiz-container').style.display = 'none';
-};
+
 const hideTestimonials = () => {
   const testimonialContainer = document.querySelector('.testimonial-container');
   testimonialContainer.style.display = 'none';
 };
-const hideAllRepairableInstruments = () => {
-  const allRepairableInstruments = document.querySelectorAll('.repair-instr-column');
-  allRepairableInstruments.forEach(function (panel) {
-    panel.classList.remove('visible');
-  });
-};
-const hideActiveInstruments = () => {
-  const instruments = document.querySelectorAll('.instrument');
-  instruments.forEach(function (instrument) {
-    instrument.classList.remove('active');
-  });
-};
-const hideOrderBy = () => {
-  const orderByContainer = document.querySelector('.order-by-container');
-  orderByContainer.style.display = 'none';
-};
-const hideGrid = () => {
-  const morePictures = document.querySelector('.instrument-picture-container');
-  const grid = document.querySelector('.grid');
-  grid.style.display = 'none';
-  morePictures.style.display = 'none';
-  hideOrderBy();
-};
+
 const hideNav = () => {
   const nav = document.querySelectorAll('.nav');
   nav.forEach((navElement) => navElement.classList.remove('visible'));
 };
-const removeInstrumentActiveClass = () => {
-  const instruments = document.querySelectorAll('.instrument');
-  instruments.forEach((instrument) => {
-    instrument.classList.remove('active');
-  });
+const hideFilterTab = () => {
+  document.querySelector('.filter-tab').classList.remove('visible');
 };
-const hideGridInstruments = () => {
-  const instruments = document.querySelectorAll('.instrument');
-  instruments.forEach(function (instrument) {
-    instrument.setAttribute('hidden', 'true');
-  });
-};
+
 const hideFaq = () => {
   const faqContent = document.querySelector('.container-faq ');
   faqContent.style.display = 'none';
@@ -116,40 +73,19 @@ const hideAboutUs = () => {
   aboutUsContainer.style.display = 'none';
   aboutUsContainer.style.display = 'none';
 };
-const hideNews = () => (newsContent.style.display = 'none');
-const hideSlides = () => (slideContainer.style.display = 'none');
-const hideFilterTab = () => {
-  document.querySelector('.filter-tab').classList.remove('visible');
+const hideNews = () => {
+  const newsContent = document.querySelector('.card-container');
+  const newsCards = document.querySelectorAll('.card');
+  newsCards.forEach((card) => {
+    card.classList.remove('focus');
+    card.classList.remove('passed');
+  });
+  newsContent.style.display = 'none';
 };
+
 const hideContactForm = () => {
   const contactFormContainer = document.querySelector('.form-container');
   contactFormContainer.style.display = 'none';
-};
-const hideCheckoutForm = () => {
-  const checkoutForm = document.querySelector('.checkout-form-container');
-  checkoutForm.style.display = 'none';
-};
-const removeActiveClassInstrument = () => {
-  const instruments = document.querySelectorAll('.instrument');
-
-  instruments.forEach(function (instrument) {
-    if (instrument.classList.contains('active')) {
-      instrument.style.display = none;
-    }
-  });
-};
-const removeInstrumentsWithoutActiveClass = () => {
-  const instruments = document.querySelectorAll('.instrument');
-
-  instruments.forEach(function (instrument) {
-    if (!instrument.classList.contains('active')) {
-      instrument.style.display = 'none';
-    }
-  });
-};
-const hideImageSlider = () => {
-  const imageSliderContainer = document.querySelector('.instrument-picture-container');
-  imageSliderContainer.style.display = 'none';
 };
 
 //open nav btn click
@@ -163,7 +99,7 @@ navBurgerBtn.addEventListener('click', () => {
   hideCheckoutForm();
   showTestimonials();
   hideContactForm();
-  hideActiveInstruments();
+  removeInstrumentActiveClass();
   hideAllRepairableInstruments();
   stopConfetti();
   hideQuiz();
@@ -187,13 +123,14 @@ const faqButton = document.querySelector('.faq-button');
 faqButton.addEventListener('click', () => {
   hideNav();
   showFaq();
+  hideFilterTab();
   pageScroll(500);
   hideAllRepairableInstruments();
 });
 
 const addFAQ = document.querySelectorAll('.faq');
 addFAQ.forEach((FAQ) => {
-  FAQ.addEventListener('click', (event) => {
+  FAQ.addEventListener('mouseenter', (event) => {
     event.stopPropagation();
     removeFAQ();
     FAQ.classList.add('active');
@@ -304,6 +241,7 @@ const changeSlide = (direction) => {
   slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight}px)`;
   slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`;
 };
+
 aboutBtn.addEventListener('click', () => {
   hideNav();
   hideAllRepairableInstruments();
@@ -319,7 +257,7 @@ aboutUsContainer.addEventListener('click', (event) => {
 //!NEWS
 
 const newsBtn = document.querySelector('.news-btn');
-const newsContent = document.querySelector('.card-container');
+
 newsBtn.addEventListener('click', () => {
   hideNav();
   pageScroll(500);
@@ -331,6 +269,7 @@ content.addEventListener('click', () => {
   hideNews();
   hideFilterTab();
 });
+const newsContent = document.querySelector('.card-container');
 newsContent.addEventListener('click', (event) => {
   event.stopPropagation();
 });
