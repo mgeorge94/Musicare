@@ -605,11 +605,14 @@ const clickOnBuy = () => {
 clickOnBuy();
 // add instrument to form
 const autoAddInstrumentToCheckoutForm = (instr) => {
-  const instrument = document.querySelector('#instrumentBought');
-  const instrPrice = document.querySelector('#boughtInstrumentPrice');
+  let instrument = document.querySelector('#instrumentBought');
+  let transportPrice = document.querySelector('#transportPrice');
+  let instrPrice = document.querySelector('#boughtInstrumentPrice');
   const totalPrice = document.querySelector('#totalPrice');
-  instrument.placeholder = `${instr.dataset.instrumenttype}:  ${instr.dataset.name} `;
-  instrPrice.placeholder = `${instr.dataset.price} lei`;
+
+  instrument.value = `${instr.dataset.instrumenttype}:  ${instr.dataset.name} `;
+  transportPrice.value = 40 + ' lei';
+  instrPrice.value = `${instr.dataset.price} lei`;
   totalPrice.innerHTML = `${Number(instr.dataset.price) + 40} lei`;
 };
 
@@ -934,28 +937,8 @@ function validateCheckoutForm() {
     pageScroll(1500);
   }
 }
-function storeCheckoutFormData() {
-  const user = {
-    date: Date.now(),
-    name: document.querySelector('#checkoutname').value,
-    email: document.querySelector('#checkoutemail').value,
-    oras: document.querySelector('#checkoutcity').value,
-    adresa: document.querySelector('#checkoutaddress').value,
-    zipCode: document.querySelector('#checkoutzip').value,
-    judet: document.querySelector('#checkoutjudet').value,
-    instrument: document.querySelector('#instrumentBought').placeholder,
-    price: document.querySelector('#boughtInstrumentPrice').placeholder,
-    totalPrice: document.querySelector('#totalPrice').innerHTML,
-  };
-  console.log(user);
-}
-
-/////////    !Do something with data//////
 
 function processCheckoutFormData(event) {
   event.preventDefault();
   validateCheckoutForm();
-  if (isValid) {
-    storeCheckoutFormData();
-  }
 }

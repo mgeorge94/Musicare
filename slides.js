@@ -431,7 +431,7 @@ const repairInstrumentWebsite = function () {
 };
 const autoAddInstrumentToForm = (instr) => {
   const inNeedInstrument = document.querySelector('#instrument-in-need');
-  inNeedInstrument.placeholder = `Salvați-mi instrumentul: ${instr.innerHTML} `;
+  inNeedInstrument.value = `Salvați-mi instrumentul: ${instr.innerHTML} `;
   inNeedInstrument.setAttribute('readonly', 'true');
 };
 // // dealing with media queries

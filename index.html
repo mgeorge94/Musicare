@@ -447,7 +447,12 @@
             <h3>Telefon: 0743934917</h3>
           </div>
 
-          <form action="" id="form" novalidate>
+          <form class="gform" method="POST" data-email="musicare.store@gmail.com"action="https://script.google.com/macros/s/AKfycbzE5xzyO6ZbIwF5D851unWzzRxsRM4zmR6ECNZhGgwZI5kkQoU/exec" id="form" >
+            <div style="display:none" class="thankyou_message">
+              <!-- You can customize the thankyou message by editing the code below -->
+              <h2>
+              </h2>
+             </div>
             <div class="form">
               <input
                 type="text"
@@ -491,11 +496,12 @@
                 minlenght="20"
               />
             </div>
-            <label  id="contact-form-discount"for="" class="checkbox-container">
+            <label  id="contact-form-discount"for="" class="checkbox-container hide">
               <input type="checkbox" checked="true" />Am câștigat discount de 50 lei 
               <span class="checkmark adress-checkbox"></span>
             </label>
             <button class="contact-button" type="trimite">Trimite</button>
+            
           </form>
           <div class="message-container">
             <h3 id="message">Nu sta pe gânduri!</h3>
@@ -504,7 +510,7 @@
         <!-- chechout form  -->
 <div class="container-for-checkout-fontainer">
         <div class="checkout-form-container">
-          <form  id = "checkout-form"action="" novalidate>
+          <form class="gform"method="POST"  data-email="musicare.store@gmail.com" action="https://script.google.com/macros/s/AKfycbwUm5FudK6iZfzoe_oJIt2tFJNa3w3tRgfeC2mE/exec"id = "checkout-form"action="" novalidate>
             <div class="row">
               <div class="column">
                 <h3>Adresa de facturare</h3>
@@ -534,6 +540,7 @@
                   </div>
                 </div>
               </div>
+              
 
               <div class="column">
                 <h3>Produs</h3>
@@ -552,7 +559,7 @@
                   </div>
                   <div class="column small gap">
                     <h3>Transport</h3>
-                    <input readonly style="padding-left: 25px" type="text" name="zip" minlength="4" placeholder="  40lei" />
+                    <input  id = "transportPrice"readonly style="padding-left: 25px" type="text" name="transport-price" minlength="4" placeholder="  40lei" />
                   </div>
                 </div>
               
@@ -577,26 +584,29 @@
               facturare
               <span class="checkmark adress-checkbox"></span>
             </label>
+            <div class="column">
             <div class="other-address">
-              <input style="padding-left: 25px" type="text" minlength="10" name="address" placeholder="Adresa: " />
+              <input style="padding-left: 25px" type="text" minlength="10" name="billing-address" placeholder="Adresa: " />
 
-              <input style="padding-left: 25px" type="text" minlength="3" name="city" placeholder="Oraș: " />
+              <input style="padding-left: 25px" type="text" minlength="3" name="billing-address-city" placeholder="Oraș: " />
 
               <div class="row">
-                <div class="column small">
-                  <input style="padding-left: 25px" type="text" minlength="3" name="state" placeholder="Județ: " />
+                <div class="column small other">
+                  <input style="padding-left: 25px" type="text" minlength="3" name="billing-adress-state" placeholder="Județ: " />
                 </div>
-                <div class="column small gap">
-                  <input minlength="4" style="padding-left: 25px" type="number" name="zip" placeholder="Cod Poștal: " />
+                <div class="column small gap other">
+                  <input minlength="4" style="padding-left: 25px" type="number" name="billing-address-zip" placeholder="Cod Poștal: " />
                 </div>
               </div>
             </div>
-            <!-- <input type="submit" value="Continuă către Check-out" class="checkout-btn" /> -->
+          
+        
             <button type = "trimite"class="checkout-btn">Cumpără</buttontype>
           </form>
           <div class="message-container" id="checkout-message-container">
             <h3 id="checkoutMessage">Nu sta pe gânduri!</h3>
           </div>
+        </div>
         </div>
       </div>
 
@@ -725,6 +735,7 @@
         </div>
       </div>
     </div>
+    <script data-cfasync="false" type="text/javascript" src="./email-handler/form-submission-handler.js"></script>
     <script src = "confetti.js"></script>
     <script src="quiz.js"></script>
     <script src="slides.js"></script>

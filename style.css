@@ -2174,22 +2174,45 @@ input:valid {
   /* checkout form */
 
   .row {
-    flex-direction: column;
+    display: block;
+    width: 94vw;
+
+    position: relative;
+  }
+  .column {
+    position: relative;
   }
   .column.small.gap {
     padding-left: 0rem;
   }
-
+  .column.small {
+    position: relative;
+    max-width: fit-width;
+    margin-right: 1rem;
+  }
+  .column.small.other {
+    margin-right: 0px;
+    width: 96%;
+  }
+  .other-address {
+    width: 96%;
+  }
   .checkout-form-container {
-    background-color: rgb(35, 35, 35);
-    z-index: 2;
-    width: 96vw;
-    white-space: nowrap;
-    margin-top: 90rem;
+    width: 98%;
+    contain: inherit;
   }
   .checkout-form-container input {
     position: relative;
   }
+  .total h3 {
+    margin-left: -3rem;
+  }
+
+  /* .column {
+    background: red;
+    flex: 30%;
+    padding-right: 1rem;
+  } */
 }
 @media screen and (max-width: 500px) {
   body {

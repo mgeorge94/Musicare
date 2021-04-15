@@ -201,7 +201,7 @@ function storeFormData() {
 /////////    !Do something with data//////
 
 function processFormData(event) {
-  event.preventDefault();
+  // event.preventDefault();
   validateForm();
   if (isValid) {
     storeFormData();

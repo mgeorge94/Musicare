@@ -241,7 +241,7 @@ function showResults() {
   document.querySelector('#number-of-correct-answers').innerText = `Numărul de răspunsuri corecte: ${correctAnswers}`;
   document.querySelector('.questionCount').classList.add('hide');
 
-  if (correctAnswers > questions.length - 9) {
+  if (correctAnswers >= questions.length - 1) {
     document.querySelectorAll('.discount-game').forEach(function (instrument) {
       //make discount stiker show
       instrument.style.display = 'block';
