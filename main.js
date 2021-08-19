@@ -22,28 +22,6 @@ const showFilterTab = () => {
   document.querySelector('.filter-tab').classList.add('visible');
 };
 
-const showNews = () => {
-  const newsContent = document.querySelector('.card-container');
-  newsContent.style.display = 'block';
-  const newsCards = document.querySelectorAll('.card');
-
-  const triggerBottom = (window.innerHeight / 7) * 4;
-
-  newsCards.forEach((card) => {
-    const testionialPosition = testimonialContainer.getBoundingClientRect().top;
-    if (testionialPosition < triggerBottom) {
-      if (card.classList.contains('focus')) {
-        card.classList.remove('focus');
-        card.classList.add('passed');
-      } else {
-        card.classList.add('focus');
-      }
-    }
-  });
-
-  window.addEventListener('scroll', showNews);
-};
-
 const showContactForm = () => {
   const contactFormContainer = document.querySelector('.form-container');
   contactFormContainer.style.display = 'flex';
@@ -73,15 +51,6 @@ const hideAboutUs = () => {
   aboutUsContainer.style.display = 'none';
   aboutUsContainer.style.display = 'none';
 };
-const hideNews = () => {
-  const newsContent = document.querySelector('.card-container');
-  const newsCards = document.querySelectorAll('.card');
-  newsCards.forEach((card) => {
-    card.classList.remove('focus');
-    card.classList.remove('passed');
-  });
-  newsContent.style.display = 'none';
-};
 
 const hideContactForm = () => {
   const contactFormContainer = document.querySelector('.form-container');
@@ -93,7 +62,6 @@ navBurgerBtn.addEventListener('click', () => {
   hideGrid();
   hideFaq();
   hideAboutUs();
-  hideNews();
   hideSlides();
   showNav();
   hideCheckoutForm();
@@ -114,7 +82,7 @@ navBurgerBtn.addEventListener('click', () => {
 content.addEventListener('click', () => {
   hideNav();
   hideAllRepairableInstruments();
-  hideAboutUs();
+  hideFilterTab();
 });
 
 //!FAQ
@@ -253,27 +221,6 @@ aboutBtn.addEventListener('click', () => {
 aboutUsContainer.addEventListener('click', (event) => {
   event.stopPropagation();
 });
-
-//!NEWS
-
-const newsBtn = document.querySelector('.news-btn');
-
-newsBtn.addEventListener('click', () => {
-  hideNav();
-  pageScroll(500);
-  hideAllRepairableInstruments();
-  showNews();
-  hideFilterTab();
-});
-content.addEventListener('click', () => {
-  hideNews();
-  hideFilterTab();
-});
-const newsContent = document.querySelector('.card-container');
-newsContent.addEventListener('click', (event) => {
-  event.stopPropagation();
-});
-
 //!INSTRUMENTE
 const instrOptBkg = document.querySelector('.instr-options-background');
 const instrOptContainer = document.querySelector('.instr-options-container');

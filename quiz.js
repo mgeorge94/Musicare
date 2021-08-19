@@ -275,7 +275,6 @@ const showQuiz = () => {
     hideGrid();
     hideFaq();
     hideAboutUs();
-    hideNews();
     hideSlides();
     hideCheckoutForm();
     hideContactForm();

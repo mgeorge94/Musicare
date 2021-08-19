@@ -219,9 +219,9 @@ const repairInstrumentWebsite = function () {
   const fixedInstrumentsSlides = [
     {
       type: 'Flaut',
-      tech: 'Alexandru Badea',
+      tech: 'Marius Catalin Popusoi',
       techPic:
-        'https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-9/120116923_3878302778864802_8385313668396921367_o.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeF6RJKmEU76o5KvWE6Yf-T767_EbyLMw6nrv8RvIszDqXGIqpPELLksvULSXIPD6-qasZ3sDPK7-xhRw6ptmyct&_nc_ohc=rjTz33whsssAX8pxXi4&_nc_ht=scontent-otp1-1.xx&oh=739a73ad843f33fe57787b1a6a57a8ef&oe=6072FF00',
+        'https://wantsome.ro/wp-content/uploads/2021/02/marius-popusoi.jpg',
       about: `'Doloribus, quaerat. Accusantium provident architecto earum
         aliquid harum quis molestias iusto quaerat qui ex iure
         similique ipsa amet facilis consequuntur neque sunt nihil
@@ -349,9 +349,9 @@ const repairInstrumentWebsite = function () {
     },
     {
       type: 'Acordeon',
-      tech: 'Bidașcu Silvestru',
+      tech: 'Maestrul FS',
       techPic:
-        'https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-9/13083188_1183253418360175_165385587124781752_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=174925&_nc_eui2=AeGYJTKZfSo9C4kTsgzKz5xW_Snrw3Vyb9T9KevDdXJv1AGPNzf-Dkvtuo9iuox3Re315n0iuX8SwGERK0k-Uv5_&_nc_ohc=LpVS_wsUIJkAX_Wzm0y&_nc_ht=scontent-otp1-1.xx&oh=b1cba9ed03f8a4132ad424d905168cf7&oe=60759E44',
+        'https://i1.sndcdn.com/artworks-000544920855-bu0dqd-t500x500.jpg',
       about: `'Doloribus, quaerat. Accusantium provident architecto earum
         aliquid harum quis molestias iusto quaerat qui ex iure
         similique ipsa amet facilis consequuntur neque sunt nihil
