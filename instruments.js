@@ -921,14 +921,7 @@ function validateCheckoutForm() {
   const messageContainer = document.querySelector('#checkout-message-container');
   const message = document.querySelector('#checkoutMessage');
   isValid = checkoutForm.checkValidity();
-  if (!isValid) {
-    messageContainer.classList.add('active');
-
-    message.innerHTML = 'Te rog să completezi toate spațiile de mai sus';
-    message.style.color = 'red';
-    messageContainer.style.borderColor = 'red';
-    pageScroll(1500);
-  } else if (isValid) {
+   if (isValid) {
     messageContainer.classList.add('active');
     message.innerHTML = 'Comanda dumneavoastră a fost înregistrată';
     message.style.color = 'lime';

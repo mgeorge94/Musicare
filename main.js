@@ -143,30 +143,14 @@ function validateForm() {
   const messageContainer = document.querySelector('.message-container');
   const message = document.querySelector('#message');
   isValid = form.checkValidity();
-  if (!isValid) {
-    messageContainer.classList.add('active');
-
-    message.textContent = 'Te rog să completezi toate spațiile de mai sus';
-    message.style.color = 'red';
-    messageContainer.style.borderColor = 'red';
-  } else if (isValid) {
+ if (isValid) {
     messageContainer.classList.add('active');
     message.textContent = 'Perfect. Te vom contacta curând';
     message.style.color = 'green';
     messageContainer.style.borderColor = 'green';
   }
 }
-function storeFormData() {
-  const user = {
-    name: form.name.value,
-    email: form.email.value,
-    instrument: document.querySelector('#instrument-in-need').value || document.querySelector('#instrument-in-need').placeholder,
-    cerere: form.cerere.value,
-  };
-  console.log(user);
-}
 
-/////////    !Do something with data//////
 
 function processFormData(event) {
   // event.preventDefault();
