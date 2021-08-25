@@ -524,7 +524,6 @@ const filteredInstruments = function (event) {
     searchBtn.addEventListener('click', () => {
       let minWantedPrice = Math.round(Math.min(...doubleHandleSlider.noUiSlider.get([0, null])));
       let maxWantedPrice = Math.round(Math.max(...doubleHandleSlider.noUiSlider.get([null, 1])));
-
       // filter Instruments by type
       allInstruments.forEach((instrument) => {
         if (
