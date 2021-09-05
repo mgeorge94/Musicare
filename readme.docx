@@ -1,0 +1,53 @@
+#THE MUSICARE PROJECT
+
+####THE "WHY" PART:
+This project is very close to my heart, and it represents all my work during the beginning phase of my coding journey. It is for the most part my way of transitioning from a full-time professional flute player, to a very enthusiastic, driven and eager to learn FE programmer.
+####TEHCNOLOGIES I’VE PLAYED WITH:
+Being given the fact that this project was started at the beginning of the year and finished in 3 months (with small adjustments added later), there is not much to say about technologies, because, for all intents and purposes I was a full-blown noob at that time.  But I think are worth mentioning:
+- Html
+- Css
+- JavaScript
+- the noUiSlider package
+- the confetti-JS package
+- an imported Git project for sending email (without configuring a server)
+
+####APP STRUCTURE/DESCRIPTION:
+The app is structured in a mono-page style, different elements being painted according to the flow the user chooses. 
+There are two flows that the user can choose from:
+######1: The “I want to buy a musical instrument” way
+- the user clicks left slide button (or the top slide in mobile view)
+- the user is presented with a screen in which he can choose a few usually searched for music instruments
+- user can click each card, and is presented with details about that musical instrument, with advantages and disadvantages, all topped off with a button that transforms the UI in a presentable grid-like fashion screen for choosing a specific instrument from that category.
+- by clicking one listing card, the Ui transforms into a slider (with more photos of that specific instrument), with a description and a “Buy Now” button.
+-by clicking the “Buy now” button, the user is presented with a checkout form from which he can order the desired musical instrument.
+
+######2: The “I want to repair my musical instrument” way
+- the user clicks right slide button (or the bottom slide in mobile view)
+- the user is presented with a screen in which he can choose from the most repaired instruments on our website
+- the user can click on each card and will be presented with details about the technician who oversees that instrument. By sliding down, on the screen will pop of, in a fashionly manner, other photos pf that specific instrument
+######Things that are similar in both mentioned scenarios:
+- by clicking the burger button on the top right, the user will be presented with a navigation menu that shows a few options (about us, instruments, FAQ, contact). 
+- the contact button will change the UI into a double direction slider, showcasing information about the company
+- by clicking the instruments button (while in the first scenario) the user will be presented with a filter slide, where he can choose which instrument, he is interested in, a price range, or he can opt for viewing all the instruments available.
+PS:  If the user chose the second scenario in the beginning, the instruments button will show a submenu, where the user can choose to see, all the repairable instruments that we can help with, or the filter menu (in case he actually wants to buy an instrument but wrongfully choose the scenario in the beginning)
+- when seeing the instruments grid view, the user is able to sort alphabetically, ascending price, descending price, or only show discounted instruments.
+- at the bottom of the page, the user can see a review card that changes every 15 seconds
+- the FAQ button changes the UI into a card view with most frequently asked questions, that on hover (on touch while on mobile) show the answer to that specific question
+- the Contact button changes the UI into a contact form.
+###### THE SECRET QUIZ GAME FOR DISCOUNTING THE PRICES
+- while clicking the main button (above the slides), the user is presented with a card that showcases the benefits of playing and the rules for winning the game. If the user wins, confetti start falling form the top of the screen
+WANA` SEE IT?
+Well, it’s not hard. Just go to  https://musicare.ml/.
+####BIBLIOGRAPHY:
+-	Collecting info from the sensei’s fountain of knoledge
+-	https://developer.mozilla.org/en-US/
+-	https://refreshless.com/nouislider/
+-	https://www.npmjs.com/package/confetti-js
+-	https://css-tricks.com/ 
+-	https://css-tricks.com/
+-	https://www.codecademy.com/
+-	https://www.freecodecamp.org/
+-	https://jsbin.com/
+-	https://www.pluralsight.com/
+-	https://stackoverflow.com/
+
