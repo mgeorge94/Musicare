@@ -912,13 +912,11 @@ const buyInstrumentWebsite = function () {
         type: 'Saxofon',
         name: 'Saxofon',
       },
-      ////////////////////////
       {
         photo: '../resources/buyIt-panels/clarinet-panel.jpg',
         type: 'Clarinet',
         name: 'Clarinet',
       },
-      //////////////////////
       {
         photo: '../resources/buyIt-panels/corn-panel.jpg',
         type: 'Corn',
@@ -955,9 +953,8 @@ const buyInstrumentWebsite = function () {
         name: 'Acordeon',
       },
     ];
-    // //////////////////////////////////////////////////////////////////////////
 
-    //see if instruments are on stocks
+    //see if instruments are on stock
 
     isInstrumentInStock(toBuyInstrumentsPanels);
     //make unique array of on stock instrument slides
